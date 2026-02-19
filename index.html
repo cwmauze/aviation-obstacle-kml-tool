@@ -24,9 +24,10 @@
             --input-border: #ccc;
         }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; max-width: 600px; margin: 40px auto; padding: 20px; background-color: var(--bg-color); color: var(--text-color); transition: 0.3s; }
-        .card { background: var(--card-bg); padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); position: relative; }
-        h2 { margin-top: 0; }
-        .theme-toggle { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-color); padding: 0; margin: 0; }
+        .card { background: var(--card-bg); padding: 50px 30px 30px 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); position: relative; }
+        h2 { margin-top: 0; margin-bottom: 5px; }
+        .version-subtitle { color: var(--btn-bg); cursor: pointer; font-size: 0.9em; margin-top: 0; margin-bottom: 15px; text-decoration: underline; display: inline-block; }
+        .theme-toggle { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-color); padding: 0; margin: 0; z-index: 10; }
         label { display: block; margin-top: 15px; font-weight: bold; color: var(--label-color); }
         input[type="number"], input[type="text"], input[type="range"] { width: 100%; padding: 10px; margin-top: 5px; background: var(--input-bg); color: var(--text-color); border: 1px solid var(--input-border); border-radius: 5px; box-sizing: border-box; }
         .color-group { display: flex; gap: 20px; margin-top: 15px; }
@@ -38,6 +39,12 @@
         .checkbox-group input { width: auto; margin: 0; }
         .slider-group { margin-top: 10px; }
         #opacityValue { font-weight: normal; font-size: 0.9em; }
+        
+        /* Modal Styles */
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); }
+        .modal-content { background-color: var(--card-bg); margin: 15% auto; padding: 20px; border: 1px solid var(--input-border); width: 80%; max-width: 500px; border-radius: 10px; color: var(--text-color); position: relative; }
+        .close { position: absolute; top: 10px; right: 15px; color: var(--label-color); font-size: 28px; font-weight: bold; cursor: pointer; }
+        .close:hover { color: var(--text-color); }
     </style>
 </head>
 <body>
@@ -45,6 +52,7 @@
 <div class="card">
     <button class="theme-toggle" onclick="toggleTheme()" id="themeIcon">☀️</button>
     <h2>KML Obstacle Generator</h2>
+    <div class="version-subtitle" onclick="openVersionModal()">v1.1 - Click for version history</div>
     <p>Generate a 100% local KML obstacle file for ForeFlight.</p>
 
     <label>Centerpoint latitude (decimal degrees)</label>
@@ -56,6 +64,18 @@
     <label>Search radius (nautical miles)</label>
     <input type="number" id="radiusNM" value="150">
 
+    <div class="checkbox-group">
+        <input type="checkbox" id="enableBoundary" checked>
+        <label style="margin: 0;">Draw search boundary ring</label>
+    </div>
+
+    <div class="color-group" id="boundaryColorGroup">
+        <div>
+            <label>Search boundary ring color</label>
+            <input type="color" id="boundaryColor" value="#0000ff">
+        </div>
+    </div>
+
     <label>Minimum obstacle height (feet AGL)</label>
     <input type="number" id="minAGL" value="1000">
 
@@ -64,7 +84,7 @@
 
     <div class="color-group">
         <div>
-            <label>Ring outline color</label>
+            <label>Obstacle ring outline color</label>
             <input type="color" id="outlineColor" value="#ff0000">
         </div>
         <div>
@@ -86,6 +106,17 @@
     <button onclick="generateKML()">Download KML</button>
 </div>
 
+<div id="versionModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeVersionModal()">&times;</span>
+    <h3 style="margin-top: 0;">Version History</h3>
+    <ul style="padding-left: 20px; line-height: 1.5;">
+        <li><strong>v1.1:</strong> Added search boundary ring, customizable boundary colors, dark mode UI fixes, and single-file consolidation.</li>
+        <li><strong>v1.0:</strong> Initial release. Added custom coordinate selection, height filtering, nautical mile conversion, and obstacle opacity settings.</li>
+    </ul>
+  </div>
+</div>
+
 <script>
 // Theme toggle
 function toggleTheme() {
@@ -96,6 +127,22 @@ function toggleTheme() {
         icon.textContent = '🌙';
     } else {
         icon.textContent = '☀️';
+    }
+}
+
+// Modal functions
+function openVersionModal() {
+    document.getElementById('versionModal').style.display = 'block';
+}
+
+function closeVersionModal() {
+    document.getElementById('versionModal').style.display = 'none';
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById('versionModal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
     }
 }
 
@@ -166,6 +213,9 @@ async function generateKML() {
     const outlineColor = hexToKmlColor(document.getElementById('outlineColor').value, 'ff'); // Outline is always 100% opaque
     const fillColor = hexToKmlColor(document.getElementById('fillColor').value, opacityHex);
     const enableFill = isFilled ? '1' : '0';
+    
+    const enableBoundary = document.getElementById('enableBoundary').checked;
+    const boundaryColorHex = hexToKmlColor(document.getElementById('boundaryColor').value, 'ff');
 
     try {
         // Fetch the local JSON file
@@ -174,6 +224,16 @@ async function generateKML() {
         
         let kml = `<?xml version="1.0" encoding="UTF-8"?>\n<kml xmlns="http://www.opengis.net/kml/2.2">\n<Document>\n`;
         kml += `\t<name>Obstacles > ${minAGL} AGL</name>\n`;
+        
+        // Add Boundary Style and Placemark if checked
+        if (enableBoundary) {
+            const boundaryCoords = generateCircleCoords(centerLat, centerLon, searchRadiusNM);
+            kml += `\t<Style id="boundaryStyle">\n\t\t<LineStyle>\n\t\t\t<color>${boundaryColorHex}</color>\n\t\t\t<width>2</width>\n\t\t</LineStyle>\n\t\t<PolyStyle>\n\t\t\t<fill>0</fill>\n\t\t</PolyStyle>\n\t</Style>\n`;
+            kml += `\t<Placemark>\n\t\t<name>Search Area Boundary (${searchRadiusNM} NM)</name>\n\t\t<styleUrl>#boundaryStyle</styleUrl>\n`;
+            kml += `\t\t<Polygon>\n\t\t\t<outerBoundaryIs>\n\t\t\t\t<LinearRing>\n\t\t\t\t\t<coordinates>\n\t\t\t\t\t\t${boundaryCoords}\n\t\t\t\t\t</coordinates>\n\t\t\t\t</LinearRing>\n\t\t\t</outerBoundaryIs>\n\t\t</Polygon>\n\t</Placemark>\n`;
+        }
+        
+        // Add Custom Circle Style for obstacles
         kml += `\t<Style id="customCircle">\n\t\t<LineStyle>\n\t\t\t<color>${outlineColor}</color>\n\t\t\t<width>2</width>\n\t\t</LineStyle>\n`;
         kml += `\t\t<PolyStyle>\n\t\t\t<color>${fillColor}</color>\n\t\t\t<fill>${enableFill}</fill>\n\t\t</PolyStyle>\n\t</Style>\n`;
 
