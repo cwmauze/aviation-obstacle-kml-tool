@@ -48,7 +48,7 @@
         .checkbox-group input { width: auto; margin: 0; cursor: pointer; }
         .slider-group { margin-top: 10px; }
         #opacityValue { font-weight: normal; font-size: 0.9em; color: var(--primary); }
-        #facilityName { font-size: 11px; font-weight: bold; color: var(--success); margin-top: 6px; min-height: 14px; text-transform: uppercase; }
+        #facilityName { font-size: 11px; font-weight: bold; margin-top: 6px; min-height: 14px; text-transform: uppercase; }
 
         .btn-group { display: flex; gap: 15px; margin-top: 30px; }
         button.action { flex: 1; padding: 15px; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.2s; }
@@ -95,7 +95,7 @@
     <div class="header-row">
         <div>
             <h2>KML Obstacle Generator</h2>
-            <div class="version-subtitle" onclick="openVersionModal()">v1.4 - Click for version history</div>
+            <div class="version-subtitle" onclick="openVersionModal()">v1.5 - Click for version history</div>
             <p style="margin: 0; font-size: 13px; opacity: 0.8;">Generate a 100% local KML obstacle file for ForeFlight.</p>
         </div>
         <button class="action-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 16px; padding: 6px 10px; height: auto;">☀️</button>
@@ -195,6 +195,7 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
+        <li><strong>v1.5:</strong> Updated UI feedback for centerpoint facility validation.</li>
         <li><strong>v1.4:</strong> Smart K-identifier lookup, facility name auto-population, and simplified direct map layer controls.</li>
         <li><strong>v1.3:</strong> Integrated NASR FAA Airport database lookup and live DB validity status card.</li>
         <li><strong>v1.2:</strong> UI upgrade to Genesys styling. Added full visual Map Preview capability with Leaflet integration and FAA sectional charts.</li>
@@ -293,16 +294,17 @@ function getResolvedAirport(id) {
     return null;
 }
 
+// --- SURGICAL UI UPDATE (v1.5) ---
 function updateFacilityName() {
     const id = document.getElementById('faaId').value.trim().toUpperCase();
     const apt = getResolvedAirport(id);
     const nameDiv = document.getElementById('facilityName');
     
     if (apt) {
-        nameDiv.innerText = apt.name || "Facility Located";
+        nameDiv.innerText = `Centerpoint set to ${apt.name || "Facility Located"}`;
         nameDiv.style.color = "var(--success)";
     } else if (id.length > 0) {
-        nameDiv.innerText = "Searching...";
+        nameDiv.innerText = "Identifier not found.";
         nameDiv.style.color = "var(--danger)";
     } else {
         nameDiv.innerText = "";
