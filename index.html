@@ -118,7 +118,7 @@
     <div class="header-row">
         <div>
             <h2>KML Obstacle Overlay Generator</h2>
-            <span class="version-subtitle" onclick="openVersionModal()">v1.9.1 - Click for version history</span>
+            <span class="version-subtitle" onclick="openVersionModal()">v1.9.2 - Click for version history</span>
             <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub Project Home</a>
         </div>
         <button class="action-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 16px; padding: 6px 10px; height: auto;">☀️</button>
@@ -268,6 +268,7 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
+        <li><strong>v1.9.2:</strong> Fixed Leaflet bounds crash that caused false 'Could not load JSON' errors when auto-zooming Map Preview.</li>
         <li><strong>v1.9.1:</strong> Added Cache-Buster logic to ensure browsers automatically download the latest database after a GitHub Action runs. Added memory caching to massively improve map preview speed.</li>
         <li><strong>v1.9:</strong> Major Update. Added advanced Multi-Radii search support and entire State/Territory filtering mode for comprehensive route planning. Map preview logic updated to dynamically bound to generated coordinates.</li>
         <li><strong>v1.8.3:</strong> Added strict data validation guardrails to prevent mathematical errors and browser crashes from invalid inputs.</li>
@@ -688,7 +689,8 @@ async function showMapPreview() {
             vfr: L.tileLayer('https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/VFR_Sectional/MapServer/tile/{z}/{y}/{x}', {maxZoom: 12})
         };
 
-        previewLayerGroup = L.layerGroup().addTo(leafletMap);
+        // SURGICAL FIX: Use FeatureGroup so getBounds() actually exists!
+        previewLayerGroup = L.featureGroup().addTo(leafletMap);
     }
     
     leafletMap.invalidateSize(); 
