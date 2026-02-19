@@ -70,11 +70,11 @@ def parse_dof_dms(dms_str):
     if direction in ['S', 'W']: decimal = -decimal
     return decimal
 
-# --- NEW: NOTAM HARVESTER LOGIC (Version 2.0 MVP - Automated) ---
+# --- NEW: NOTAM HARVESTER LOGIC (Version 2.0 MVP - Geography Search) ---
 
 def harvest_notams():
     """
-    MVP Scraper version of the NOTAM Harvester.
+    MVP Scraper version of the NOTAM Harvester using Geography Search.
     Automated for headless servers (GitHub Actions) - No interactive prompts.
     """
     SEARCH_URL = "https://notams.aim.faa.gov/notamSearch/search"
@@ -84,15 +84,21 @@ def harvest_notams():
         "Content-Type": "application/x-www-form-urlencoded"
     }
     
-    # --- AUTOMATED ARTCC LIST ---
-    # Hardcoded to Washington Center
-    designators = "ZDC"
+    # --- AUTOMATED GEOGRAPHY SEARCH CONFIG ---
+    # Set your centerpoint identifier and search radius in Nautical Miles
+    center_id = "RDU" 
+    search_radius = "150" 
     
-    # Payload mimicking a web form search for the selected ARTCCs
-    payload = f"searchType=0&designatorsForLocation={designators}"
+    # Payload mimicking a web form "Geography Search"
+    payload = (
+        f"searchType=3"
+        f"&radiusSearchOnDesignator=true"
+        f"&radiusSearchDesignator={center_id}"
+        f"&radius={search_radius}"
+    )
     
     processed_notams = []
-    print(f"[-] Scraping public NOTAMs for light outages in: {designators}...")
+    print(f"[-] Scraping public NOTAMs for light outages within {search_radius}NM of {center_id}...")
     
     try:
         # 1. Fetch the data (simulating a web browser form submission)
