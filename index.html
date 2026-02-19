@@ -118,7 +118,7 @@
     <div class="header-row">
         <div>
             <h2>KML Obstacle Overlay Generator</h2>
-            <span class="version-subtitle" onclick="openVersionModal()">v1.9.3 - Click for version history</span>
+            <span class="version-subtitle" onclick="openVersionModal()">v2.0.1 (Beta) - Click for version history</span>
             <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub Project Home</a>
         </div>
         <button class="action-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 16px; padding: 6px 10px; height: auto;">☀️</button>
@@ -142,6 +142,13 @@
             <div style="display:flex; align-items:center; gap:8px;">
                 <span id="apt-status">Checking...</span>
                 <div class="status-dot loading" id="apt-dot"></div>
+            </div>
+        </div>
+        <div class="status-line">
+            <span>NOTAM Scrape (Experimental):</span>
+            <div style="display:flex; align-items:center; gap:8px;">
+                <span id="notam-status">Checking...</span>
+                <div class="status-dot loading" id="notam-dot"></div>
             </div>
         </div>
     </div>
@@ -258,6 +265,48 @@
         </div>
     </div>
 
+    <div class="section-card">
+        <div class="section-title">4. Unlit Towers (Experimental)</div>
+        <div class="grid-2">
+            <div>
+                <div style="display: flex; align-items: center; height: 26px; margin-bottom: 8px;">
+                    <div class="checkbox-group" style="padding: 0; margin: 0;">
+                        <input type="checkbox" id="notamInclude" checked>
+                        <label for="notamInclude" style="font-weight: bold; color: var(--dispatch); font-size: 12px;">Include Active Light Outage NOTAMs</label>
+                    </div>
+                </div>
+                <div class="inline-control">
+                    <label>Ring radius (NM)</label>
+                    <input type="number" id="notamRingNM" value="3.0" step="0.1" style="width: 60px; height: 26px; padding: 2px 6px; margin: 0; background: var(--card);">
+                </div>
+            </div>
+            <div>
+                <div style="display: flex; align-items: center; height: 26px; margin-bottom: 8px;">
+                    <div style="font-weight: bold; color: var(--dispatch); font-size: 12px; margin-left: 2px;">Hazard Styling</div>
+                </div>
+                <div class="inline-control">
+                    <label>Line color</label>
+                    <input type="color" id="notamOutlineColor" value="#ff9900">
+                </div>
+                <div class="inline-control">
+                    <label>Line thickness (px)</label>
+                    <input type="number" id="notamRingWidth" value="3" min="1" max="10" style="width: 60px; height: 26px; padding: 2px 6px; margin: 0; background: var(--card);">
+                </div>
+                <div class="checkbox-group" style="margin-top: 10px; margin-bottom: 4px;">
+                    <input type="checkbox" id="notamEnableFill" checked onchange="toggleNotamOpacitySlider()">
+                    <label for="notamEnableFill">Enable polygon fill shading</label>
+                </div>
+                <div class="inline-control" id="notamOpacityGroup">
+                    <label style="display:flex; align-items:center; width:100%;">
+                        <span style="font-size: 11px; min-width: 50px;">Opac (<span id="notamOpacityValue" style="color:var(--primary);">60%</span>)</span>
+                        <input type="range" id="notamFillOpacity" min="1" max="100" value="60" oninput="updateNotamOpacityLabel()">
+                    </label>
+                    <input type="color" id="notamFillColor" value="#ff9900">
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="btn-group">
         <button class="action btn-preview" onclick="showMapPreview()">Preview .KML <span>STREET / SAT / AVIATION</span></button>
         <button class="action btn-download" onclick="generateKML()">Download .KML</button>
@@ -273,6 +322,7 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
+        <li><strong>v2.0.1 (Beta):</strong> Added Experimental Section 4 for scraping and rendering active FAA NOTAM light outages as high-visibility hazards.</li>
         <li><strong>v1.9.3:</strong> Added Real-Time Obstacle Counter, background RAM pre-loading, US State/Territory code validation guardrails, and unified ring radius styling options.</li>
         <li><strong>v1.9.2:</strong> Fixed Leaflet bounds crash that caused false 'Could not load JSON' errors when auto-zooming Map Preview.</li>
         <li><strong>v1.9.1:</strong> Added Cache-Buster logic to ensure browsers automatically download the latest database after a GitHub Action runs. Added memory caching to massively improve map preview speed.</li>
@@ -322,6 +372,7 @@
 // --- GLOBAL DB INITIALIZATION ---
 let globalAirports = {};
 let globalObstacles = null; // Memory Cache 
+let globalNotams = []; // NOTAM Cache
 let dbVersion = new Date().getTime(); // Cache Buster
 
 const validStates = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY', 'DC', 'PR', 'VI', 'GU', 'AS', 'MP'];
@@ -349,6 +400,18 @@ window.onload = async () => {
         
         // Preload massive JSON into RAM silently and trigger counter
         getObstacles().then(() => triggerCounterUpdate());
+
+        // Fetch Experimental NOTAMs
+        try {
+            const notamRes = await fetch(`notams.json?v=${dbVersion}`);
+            globalNotams = await notamRes.json();
+            document.getElementById('notam-status').innerText = `Loaded (${globalNotams.length} Active Outages)`;
+            document.getElementById('notam-dot').className = globalNotams.length > 0 ? 'status-dot ready' : 'status-dot error';
+        } catch(e) {
+            console.warn("NOTAM fetch failed or file missing.");
+            document.getElementById('notam-status').innerText = "Offline / No Data";
+            document.getElementById('notam-dot').className = 'status-dot error';
+        }
 
     } catch(e) {
         console.error("Database fetch failed: ", e);
@@ -458,6 +521,10 @@ window.onclick = function(event) { if (event.target === document.getElementById(
 
 function updateOpacityLabel() { document.getElementById('opacityValue').textContent = document.getElementById('fillOpacity').value + '%'; }
 function toggleOpacitySlider() { document.getElementById('opacityGroup').style.display = document.getElementById('enableFill').checked ? 'flex' : 'none'; }
+
+// NOTAM Specific Sliders
+function updateNotamOpacityLabel() { document.getElementById('notamOpacityValue').textContent = document.getElementById('notamFillOpacity').value + '%'; }
+function toggleNotamOpacitySlider() { document.getElementById('notamOpacityGroup').style.display = document.getElementById('notamEnableFill').checked ? 'flex' : 'none'; }
 
 function checkAGLWarning() {
     const agl = parseInt(document.getElementById('minAGL').value) || 0;
@@ -636,17 +703,29 @@ async function generateKML() {
     
     const searchRadiusNM = mode !== 'state' ? parseFloat(document.getElementById('radiusNM').value) : 0;
     const minAGL = parseInt(document.getElementById('minAGL').value);
-    const ringRadiusNM = parseFloat(document.getElementById('ringNM').value); 
     
+    // Standard Obstacle Setup
+    const ringRadiusNM = parseFloat(document.getElementById('ringNM').value); 
     const isFilled = document.getElementById('enableFill').checked;
     const opacityPercent = isFilled ? parseInt(document.getElementById('fillOpacity').value) : 0;
     let opacityHex = Math.round((opacityPercent / 100) * 255).toString(16).padStart(2, '0');
-
-    const boundaryWidth = mode !== 'state' ? document.getElementById('boundaryWidth').value : 2;
     const ringWidth = document.getElementById('ringWidth').value;
     const outlineColor = hexToKmlColor(document.getElementById('outlineColor').value, 'ff');
     const fillColor = hexToKmlColor(document.getElementById('fillColor').value, opacityHex);
     const enableFill = isFilled ? '1' : '0';
+
+    // NOTAM Setup
+    const incNotam = document.getElementById('notamInclude').checked;
+    const notamRingNM = parseFloat(document.getElementById('notamRingNM').value);
+    const notamWidth = document.getElementById('notamRingWidth').value;
+    const notamOutlineColor = hexToKmlColor(document.getElementById('notamOutlineColor').value, 'ff');
+    const notamEnableFillRaw = document.getElementById('notamEnableFill').checked;
+    const notamOpacPercent = notamEnableFillRaw ? parseInt(document.getElementById('notamFillOpacity').value) : 0;
+    const notamOpacityHex = Math.round((notamOpacPercent / 100) * 255).toString(16).padStart(2, '0');
+    const notamFillColor = hexToKmlColor(document.getElementById('notamFillColor').value, notamOpacityHex);
+    const notamEnableFill = notamEnableFillRaw ? '1' : '0';
+
+    const boundaryWidth = mode !== 'state' ? document.getElementById('boundaryWidth').value : 2;
     const enableBoundary = document.getElementById('enableBoundary').checked;
     const boundaryColorHex = hexToKmlColor(document.getElementById('boundaryColor').value, 'ff');
 
@@ -684,6 +763,11 @@ async function generateKML() {
         kml += `\t<Style id="customCircle">\n\t\t<LineStyle>\n\t\t\t<color>${outlineColor}</color>\n\t\t\t<width>${ringWidth}</width>\n\t\t</LineStyle>\n`;
         kml += `\t\t<PolyStyle>\n\t\t\t<color>${fillColor}</color>\n\t\t\t<fill>${enableFill}</fill>\n\t\t</PolyStyle>\n\t</Style>\n`;
 
+        if (incNotam) {
+            kml += `\t<Style id="notamCircle">\n\t\t<LineStyle>\n\t\t\t<color>${notamOutlineColor}</color>\n\t\t\t<width>${notamWidth}</width>\n\t\t</LineStyle>\n`;
+            kml += `\t\t<PolyStyle>\n\t\t\t<color>${notamFillColor}</color>\n\t\t\t<fill>${notamEnableFill}</fill>\n\t\t</PolyStyle>\n\t</Style>\n`;
+        }
+
         let count = 0;
 
         obstacles.forEach(obs => {
@@ -709,6 +793,30 @@ async function generateKML() {
                 }
             }
         });
+
+        if (incNotam && globalNotams) {
+            globalNotams.forEach(notam => {
+                let keep = false;
+                if (mode === 'state') {
+                    keep = true; // Include all scraped NOTAMs for MVP state view
+                } else {
+                    for (const c of centers) {
+                        if (haversineNM(c.lat, c.lon, notam.lat, notam.lon) <= searchRadiusNM) {
+                            keep = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (keep) {
+                    const circleCoords = generateCircleCoords(notam.lat, notam.lon, notamRingNM);
+                    kml += `\t<Placemark>\n\t\t<name>UNLIT TOWER - ${notam.agl} ft AGL</name>\n`;
+                    kml += `\t\t<description><![CDATA[${notam.text}]]></description>\n`;
+                    kml += `\t\t<styleUrl>#notamCircle</styleUrl>\n`;
+                    kml += `\t\t<Polygon>\n\t\t\t<outerBoundaryIs>\n\t\t\t\t<LinearRing>\n\t\t\t\t\t<coordinates>\n\t\t\t\t\t\t${circleCoords}\n\t\t\t\t\t</coordinates>\n\t\t\t\t</LinearRing>\n\t\t\t</outerBoundaryIs>\n\t\t</Polygon>\n\t</Placemark>\n`;
+                }
+            });
+        }
 
         kml += `</Document>\n</kml>`;
         
@@ -776,15 +884,25 @@ async function showMapPreview() {
 
     const searchRadiusNM = mode !== 'state' ? parseFloat(document.getElementById('radiusNM').value) : 0;
     const minAGL = parseInt(document.getElementById('minAGL').value);
-    const ringNM = parseFloat(document.getElementById('ringNM').value);
-
-    const boundaryWidth = mode !== 'state' ? (parseInt(document.getElementById('boundaryWidth').value) || 2) : 2;
-    const ringWidth = parseInt(document.getElementById('ringWidth').value) || 2;
     
+    // Standard Obstacle setup
+    const ringNM = parseFloat(document.getElementById('ringNM').value);
+    const ringWidth = parseInt(document.getElementById('ringWidth').value) || 2;
     const isFilled = document.getElementById('enableFill').checked;
     const fillOpacFloat = isFilled ? (parseInt(document.getElementById('fillOpacity').value) / 100) : 0;
     const outlineColor = document.getElementById('outlineColor').value;
     const fillColor = document.getElementById('fillColor').value;
+    
+    // NOTAM setup
+    const incNotam = document.getElementById('notamInclude').checked;
+    const notamRingNM = parseFloat(document.getElementById('notamRingNM').value);
+    const notamWidth = parseInt(document.getElementById('notamRingWidth').value) || 3;
+    const notamFilled = document.getElementById('notamEnableFill').checked;
+    const notamOpacFloat = notamFilled ? (parseInt(document.getElementById('notamFillOpacity').value) / 100) : 0;
+    const notamOutlineColor = document.getElementById('notamOutlineColor').value;
+    const notamFillColor = document.getElementById('notamFillColor').value;
+
+    const boundaryWidth = mode !== 'state' ? (parseInt(document.getElementById('boundaryWidth').value) || 2) : 2;
     const enableBoundary = document.getElementById('enableBoundary').checked;
     const boundaryColor = document.getElementById('boundaryColor').value;
 
@@ -830,6 +948,33 @@ async function showMapPreview() {
                 }
             }
         });
+
+        if (incNotam && globalNotams) {
+            globalNotams.forEach(notam => {
+                let keep = false;
+                if (mode === 'state') {
+                    keep = true;
+                } else {
+                    for (const c of centers) {
+                        if (haversineNM(c.lat, c.lon, notam.lat, notam.lon) <= searchRadiusNM) {
+                            keep = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (keep) {
+                    L.circle([notam.lat, notam.lon], {
+                        radius: notamRingNM * 1852,
+                        color: notamOutlineColor,
+                        fillColor: notamFillColor,
+                        fillOpacity: notamOpacFloat,
+                        weight: notamWidth
+                    }).bindPopup(`<b>UNLIT TOWER - ${notam.agl} ft AGL</b><br><span style="color:var(--danger); font-size:10px;">${notam.text}</span>`)
+                      .addTo(previewLayerGroup);
+                }
+            });
+        }
 
         // Smart Map Framing
         if (previewLayerGroup.getLayers().length > 0) {
