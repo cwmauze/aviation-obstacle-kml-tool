@@ -244,25 +244,24 @@
 // --- GLOBAL DB INITIALIZATION ---
 let globalAirports = {};
 
-// --- GLOBAL DB INITIALIZATION ---
-let globalAirports = {};
-
 window.onload = async () => {
     try {
         const metaRes = await fetch('metadata.json');
         const meta = await metaRes.json();
         
-        // Dynamic Obstacle Status
         const obsCount = meta.obs_count || 0;
         document.getElementById('dof-status').innerText = `Verified (Eff. ${meta.dof_date} | ${obsCount} Obstacles)`;
         document.getElementById('dof-dot').className = obsCount > 0 ? 'status-dot ready' : 'status-dot error';
         
-        // Dynamic Airport Status
-        const aptCount = meta.apt_count || 0;
+        const aptRes = await fetch('airports.json');
+        globalAirports = await aptRes.json();
+        
+        const aptCount = meta.apt_count || Object.keys(globalAirports).length;
         document.getElementById('apt-status').innerText = `Verified (${aptCount} Airports)`;
         document.getElementById('apt-dot').className = aptCount > 0 ? 'status-dot ready' : 'status-dot error';
         
     } catch(e) {
+        console.error("Database fetch failed: ", e);
         document.getElementById('dof-status').innerText = "Offline (Local mode only)";
         document.getElementById('dof-dot').className = 'status-dot error';
         document.getElementById('apt-status').innerText = "Offline";
