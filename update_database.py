@@ -13,6 +13,7 @@ DOF_URL = "https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/
 # Exact FAA APT.txt Column Slices (0-indexed)
 APT_COLS = {
     'id': (27, 31),
+    'name': (133, 183),
     'lat': (523, 538), 
     'lon': (550, 565)  
 }
@@ -29,7 +30,6 @@ def get_current_airac_cycle():
     return base_date + datetime.timedelta(days=cycles_passed*28)
 
 def get_dof_zip_url():
-    """Aggressively scrapes the FAA page to bypass dynamic loading."""
     response = requests.get(DOF_URL, headers=HEADERS)
     response.raise_for_status()
     
@@ -83,8 +83,6 @@ def process_data():
         
         r_dof = requests.get(dof_zip_url, headers=HEADERS)
         with zipfile.ZipFile(io.BytesIO(r_dof.content)) as z:
-            # THE FIX: Require the filename to explicitly end in "DOF.DAT" 
-            # This rejects DOFA.DAT, DOFC.DAT, and DOFD.DAT
             dat_filename = next(name for name in z.namelist() if name.upper().endswith('DOF.DAT'))
             with z.open(dat_filename) as f:
                 for line_bytes in f:
@@ -138,13 +136,14 @@ def process_data():
                         line = line_bytes.decode('latin-1', errors='ignore')
                         if line.startswith("APT"):
                             loc_id = line[APT_COLS['id'][0]:APT_COLS['id'][1]].strip()
+                            name_str = line[APT_COLS['name'][0]:APT_COLS['name'][1]].strip()
                             lat_str = line[APT_COLS['lat'][0]:APT_COLS['lat'][1]].strip()
                             lon_str = line[APT_COLS['lon'][0]:APT_COLS['lon'][1]].strip()
                             if loc_id and lat_str and lon_str:
                                 lat = faa_to_decimal(lat_str)
                                 lon = faa_to_decimal(lon_str)
                                 if lat != 0.0 and lon != 0.0:
-                                    airports[loc_id] = {"lat": lat, "lon": lon}
+                                    airports[loc_id] = {"name": name_str, "lat": lat, "lon": lon}
             print(f"    > Parsed {len(airports)} Airports/Heliports.")
         else:
             print("[!] Could not find NASR ZIP link.")
