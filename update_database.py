@@ -70,36 +70,23 @@ def parse_dof_dms(dms_str):
     if direction in ['S', 'W']: decimal = -decimal
     return decimal
 
-# --- NEW: NOTAM HARVESTER LOGIC (Version 2.0 MVP) ---
+# --- NEW: NOTAM HARVESTER LOGIC (Version 2.0 MVP - Automated) ---
 
 def harvest_notams():
     """
     MVP Scraper version of the NOTAM Harvester.
-    Bypasses the need for an API key by scraping the public search endpoint.
-    Includes an interactive prompt for user-defined ARTCCs.
+    Automated for headless servers (GitHub Actions) - No interactive prompts.
     """
     SEARCH_URL = "https://notams.aim.faa.gov/notamSearch/search"
     
-    # Disguise the request as a standard web browser to avoid immediate blocks
     HEADERS_NOTAM = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
         "Content-Type": "application/x-www-form-urlencoded"
     }
     
-    # --- INTERACTIVE ARTCC PROMPT ---
-    print("\n--- NOTAM Harvester (MVP Scraper) ---")
-    print("Enter the 3-letter FAA ARTCC codes you want to search, separated by commas.")
-    print("Examples: ZDC (Washington), ZNY (New York), ZDV (Denver)")
-    print("Press ENTER to use the default list: ZDC,ZNY,ZBW")
-    
-    user_input = input("ARTCC Codes: ").strip()
-    
-    # Fallback to default if nothing is entered, otherwise clean up user input
-    if not user_input:
-        designators = "ZDC,ZNY,ZBW"
-    else:
-        # Removes accidental spaces and ensures uppercase
-        designators = ",".join([code.strip().upper() for code in user_input.split(",")])
+    # --- AUTOMATED ARTCC LIST ---
+    # Hardcoded to Washington Center
+    designators = "ZDC"
     
     # Payload mimicking a web form search for the selected ARTCCs
     payload = f"searchType=0&designatorsForLocation={designators}"
