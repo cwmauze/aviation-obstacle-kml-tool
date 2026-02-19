@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aviation Obstacle .KML Overlay Generator</title>
+    <title>KML Obstacle Overlay Generator</title>
     
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
@@ -117,15 +117,15 @@
 <div class="container">
     <div class="header-row">
         <div>
-            <h2>Aviation Obstacle .KML Overlay Generator</h2>
-            <span class="version-subtitle" onclick="openVersionModal()">v1.8.1 - Click for version history</span>
+            <h2>KML Obstacle Overlay Generator</h2>
+            <span class="version-subtitle" onclick="openVersionModal()">v1.8.2 - Click for version history</span>
             <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub Project Home</a>
         </div>
         <button class="action-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 16px; padding: 6px 10px; height: auto;">☀️</button>
     </div>
 
     <div style="font-size: 13px; color: #90949c; margin-bottom: 25px; line-height: 1.5; max-width: 1400px; border-left: 2px solid var(--border); padding-left: 15px;">
-        This tool generates visual overlays around obstacles to make them easier to see and avoid when using ForeFlight, Google Earth, or any EFB/mapping platform that supports KML imports. The backend automatically synchronizes with the FAA's latest 56-Day Digital Obstacle File (DOF) and 28-Day NASR databases. Simply set your centerpoint via FAA Identifier or Lat/Lon, define your search radius and altitude thresholds, customize your visual styling, and export your overlay.
+        This tool generates custom KML obstacle overlays for use in ForeFlight, Google Earth, or any EFB/mapping platform that supports KML imports. The backend automatically synchronizes with the FAA's latest 56-Day Digital Obstacle File (DOF) and 28-Day NASR databases. Simply set your centerpoint via FAA Identifier or Lat/Lon, define your search radius and altitude thresholds, customize your visual styling, and export your overlay.
     </div>
 
     <div class="session-status-card">
@@ -183,7 +183,8 @@
             </div>
             <div>
                 <label>Minimum obstacle height (ft AGL)</label>
-                <input type="number" id="minAGL" value="1000">
+                <input type="number" id="minAGL" value="1000" oninput="checkAGLWarning()">
+                <div id="aglWarning" style="display: none; color: var(--danger); font-size: 10px; margin-top: 5px; font-weight: bold;">FAA database excludes obstacles under 200 AGL.</div>
             </div>
             <div>
                 <label>Ring radius around obstacles (NM)</label>
@@ -250,7 +251,7 @@
     </div>
 
     <footer class="app-footer">
-        <span class="disclaimer-bold">DISCLAIMER:</span> This tool is for utility purposes only and is not a substitute for a qualified pilot and/or an updated TAWS. While the database is meticulously parsed, cumulo-granite and steel towers remain strictly unforgiving. Generating a colorful KML file does not grant you invincibility. Cross-reference official charts and don't hit stuff.
+        <span class="disclaimer-bold">DISCLAIMER:</span> This tool is for utility purposes only and is not a substitute for a qualified pilot or common sense. While the database is meticulously parsed, cumulus granite and steel towers remain strictly unforgiving. Generating a colorful KML file does not grant you invincibility. Cross-reference official charts and don't hit stuff.
     </footer>
 </div>
 
@@ -259,6 +260,7 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
+        <li><strong>v1.8.2:</strong> Added dynamic safety warning for obstacle heights below 200 ft AGL and updated project repository URL.</li>
         <li><strong>v1.8.1:</strong> Added expanded introductory text, GitHub repository link, UI alignment fixes, light mode contrast adjustments, and snarky footer disclaimer.</li>
         <li><strong>v1.8:</strong> Fixed layout grouping in Overlay Options. Added line thickness controls for boundary and rings. Default colors unified to red.</li>
         <li><strong>v1.7:</strong> UI Optimization. Migrated to responsive 2-column card grid and compact inline color pickers to eliminate dead space.</li>
@@ -351,6 +353,11 @@ window.onclick = function(event) { if (event.target === document.getElementById(
 
 function updateOpacityLabel() { document.getElementById('opacityValue').textContent = document.getElementById('fillOpacity').value + '%'; }
 function toggleOpacitySlider() { document.getElementById('opacityGroup').style.display = document.getElementById('enableFill').checked ? 'flex' : 'none'; }
+
+function checkAGLWarning() {
+    const agl = parseInt(document.getElementById('minAGL').value) || 0;
+    document.getElementById('aglWarning').style.display = agl < 200 ? 'block' : 'none';
+}
 
 // --- SMART LOOKUP LOGIC ---
 function getResolvedAirport(id) {
