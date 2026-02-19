@@ -70,6 +70,98 @@ def parse_dof_dms(dms_str):
     if direction in ['S', 'W']: decimal = -decimal
     return decimal
 
+# --- NEW: NOTAM HARVESTER LOGIC (Version 2.0 MVP) ---
+
+def harvest_notams():
+    """
+    MVP Scraper version of the NOTAM Harvester.
+    Bypasses the need for an API key by scraping the public search endpoint.
+    Includes an interactive prompt for user-defined ARTCCs.
+    """
+    SEARCH_URL = "https://notams.aim.faa.gov/notamSearch/search"
+    
+    # Disguise the request as a standard web browser to avoid immediate blocks
+    HEADERS_NOTAM = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+        "Content-Type": "application/x-www-form-urlencoded"
+    }
+    
+    # --- INTERACTIVE ARTCC PROMPT ---
+    print("\n--- NOTAM Harvester (MVP Scraper) ---")
+    print("Enter the 3-letter FAA ARTCC codes you want to search, separated by commas.")
+    print("Examples: ZDC (Washington), ZNY (New York), ZDV (Denver)")
+    print("Press ENTER to use the default list: ZDC,ZNY,ZBW")
+    
+    user_input = input("ARTCC Codes: ").strip()
+    
+    # Fallback to default if nothing is entered, otherwise clean up user input
+    if not user_input:
+        designators = "ZDC,ZNY,ZBW"
+    else:
+        # Removes accidental spaces and ensures uppercase
+        designators = ",".join([code.strip().upper() for code in user_input.split(",")])
+    
+    # Payload mimicking a web form search for the selected ARTCCs
+    payload = f"searchType=0&designatorsForLocation={designators}"
+    
+    processed_notams = []
+    print(f"[-] Scraping public NOTAMs for light outages in: {designators}...")
+    
+    try:
+        # 1. Fetch the data (simulating a web browser form submission)
+        response = requests.post(SEARCH_URL, headers=HEADERS_NOTAM, data=payload, timeout=30)
+        response.raise_for_status()
+        
+        # 2. Extract JSON or fallback to HTML table parsing
+        notam_list = []
+        try:
+            notam_list = response.json().get('notamList', [])
+        except ValueError:
+            from bs4 import BeautifulSoup
+            soup = BeautifulSoup(response.text, 'html.parser')
+            notam_list = [{'icaoMessage': cell.get_text()} for cell in soup.find_all('td')]
+            
+        # 3. Regex Patterns
+        keywords = ["OBST TOWER LGT", "OUT OF SERVICE", "U/S"]
+        coord_pattern = r"(\d{2,3})(\d{2})(\d{2})([NS])\s?(\d{2,3})(\d{2})(\d{2})([EW])"
+        agl_pattern = r"(\d+)\s?FT\s?AGL"
+
+        for item in notam_list:
+            text = item.get('icaoMessage', '')
+            if not text:
+                continue
+                
+            text = text.upper()
+            
+            # Filter for specific outage keywords
+            if any(key in text for key in keywords):
+                coords = re.search(coord_pattern, text)
+                agl = re.search(agl_pattern, text)
+                
+                if coords:
+                    lat = dms_to_dd_notam(coords.group(1), coords.group(2), coords.group(3), coords.group(4))
+                    lon = dms_to_dd_notam(coords.group(5), coords.group(6), coords.group(7), coords.group(8))
+                    
+                    processed_notams.append({
+                        "lat": lat,
+                        "lon": lon,
+                        "agl": agl.group(1) if agl else "Unknown",
+                        "text": text
+                    })
+        
+        with open("notams.json", 'w') as f:
+            json.dump(processed_notams, f, indent=2)
+        print(f"    > Scraped and saved {len(processed_notams)} NOTAM obstacles to notams.json.")
+        
+    except Exception as e:
+        print(f"[!] NOTAM Scraper failed: {e}")
+
+def dms_to_dd_notam(d, m, s, direction):
+    """Specific converter for NOTAM DMS format."""
+    dd = float(d) + float(m)/60 + float(s)/3600
+    if direction in ['S', 'W']: dd *= -1
+    return round(dd, 6)
+
 def process_data():
     obstacles = []
     airports = {}
@@ -177,6 +269,9 @@ def process_data():
         
     with open("metadata.json", 'w') as f:
         json.dump(metadata, f)
+        
+    # --- 4. NEW: NOTAM HARVEST (Version 2.0 MVP) ---
+    harvest_notams()
         
     print("[-] Success. Database update complete.")
 
