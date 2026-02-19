@@ -390,9 +390,19 @@ async function generateKML() {
     try {
         const response = await fetch('obstacles.json');
         const obstacles = await response.json();
+
+        // Determine center label early so it can be used for both the KML Document Name and the Filename
+        let centerLabel = "CustomCoords";
+        if (document.getElementById('faaMode').checked) {
+            centerLabel = document.getElementById('faaId').value.trim().toUpperCase() || "UNKNOWN";
+        } else {
+            const latLabel = parseFloat(document.getElementById('lat').value).toFixed(2);
+            const lonLabel = parseFloat(document.getElementById('lon').value).toFixed(2);
+            centerLabel = `${latLabel}_${lonLabel}`;
+        }
         
         let kml = `<?xml version="1.0" encoding="UTF-8"?>\n<kml xmlns="http://www.opengis.net/kml/2.2">\n<Document>\n`;
-        kml += `\t<name>Obstacles > ${minAGL} AGL</name>\n`;
+        kml += `\t<name>${centerLabel} obstacles > ${minAGL} AGL within ${searchRadiusNM}NM</name>\n`;
         
         if (enableBoundary) {
             const boundaryCoords = generateCircleCoords(centerLat, centerLon, searchRadiusNM);
@@ -419,16 +429,6 @@ async function generateKML() {
         });
 
         kml += `</Document>\n</kml>`;
-
-        // Dynamic Filename Generation
-        let centerLabel = "CustomCoords";
-        if (document.getElementById('faaMode').checked) {
-            centerLabel = document.getElementById('faaId').value.trim().toUpperCase() || "UNKNOWN";
-        } else {
-            const latLabel = parseFloat(document.getElementById('lat').value).toFixed(2);
-            const lonLabel = parseFloat(document.getElementById('lon').value).toFixed(2);
-            centerLabel = `${latLabel}_${lonLabel}`;
-        }
         
         const now = new Date();
         const dtStr = now.getFullYear() + 
