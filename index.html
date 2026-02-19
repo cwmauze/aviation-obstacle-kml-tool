@@ -118,7 +118,7 @@
     <div class="header-row">
         <div>
             <h2>KML Obstacle Overlay Generator</h2>
-            <span class="version-subtitle" onclick="openVersionModal()">v1.8.2 - Click for version history</span>
+            <span class="version-subtitle" onclick="openVersionModal()">v1.8.3 - Click for version history</span>
             <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub Project Home</a>
         </div>
         <button class="action-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 16px; padding: 6px 10px; height: auto;">☀️</button>
@@ -260,6 +260,7 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
+        <li><strong>v1.8.3:</strong> Added strict data validation guardrails to prevent mathematical errors and browser crashes from invalid inputs.</li>
         <li><strong>v1.8.2:</strong> Added dynamic safety warning for obstacle heights below 200 ft AGL and updated project repository URL.</li>
         <li><strong>v1.8.1:</strong> Added expanded introductory text, GitHub repository link, UI alignment fixes, light mode contrast adjustments, and snarky footer disclaimer.</li>
         <li><strong>v1.8:</strong> Fixed layout grouping in Overlay Options. Added line thickness controls for boundary and rings. Default colors unified to red.</li>
@@ -359,6 +360,54 @@ function checkAGLWarning() {
     document.getElementById('aglWarning').style.display = agl < 200 ? 'block' : 'none';
 }
 
+// --- INPUT VALIDATION (v1.8.3) ---
+function validateInputs() {
+    const radiusNM = parseFloat(document.getElementById('radiusNM').value);
+    if (isNaN(radiusNM) || radiusNM < 1 || radiusNM > 500) {
+        alert("Search radius must be between 1 and 500 NM.");
+        return false;
+    }
+
+    if (document.getElementById('coordMode').checked) {
+        const lat = parseFloat(document.getElementById('lat').value);
+        const lon = parseFloat(document.getElementById('lon').value);
+        if (isNaN(lat) || lat < -90.0 || lat > 90.0) {
+            alert("Latitude must be between -90.0 and 90.0 degrees.");
+            return false;
+        }
+        if (isNaN(lon) || lon < -180.0 || lon > 180.0) {
+            alert("Longitude must be between -180.0 and 180.0 degrees.");
+            return false;
+        }
+    }
+
+    const minAGL = parseInt(document.getElementById('minAGL').value);
+    if (isNaN(minAGL) || minAGL < 0 || minAGL > 10000) {
+        alert("Minimum obstacle height must be between 0 and 10,000 ft AGL.");
+        return false;
+    }
+
+    const ringNM = parseFloat(document.getElementById('ringNM').value);
+    if (isNaN(ringNM) || ringNM < 0.1 || ringNM > 10.0) {
+        alert("Ring radius around obstacles must be between 0.1 and 10.0 NM.");
+        return false;
+    }
+
+    const boundaryWidth = parseInt(document.getElementById('boundaryWidth').value);
+    if (isNaN(boundaryWidth) || boundaryWidth < 1 || boundaryWidth > 10) {
+        alert("Search boundary line thickness must be between 1 and 10 px.");
+        return false;
+    }
+
+    const ringWidth = parseInt(document.getElementById('ringWidth').value);
+    if (isNaN(ringWidth) || ringWidth < 1 || ringWidth > 10) {
+        alert("Obstacle ring line thickness must be between 1 and 10 px.");
+        return false;
+    }
+
+    return true;
+}
+
 // --- SMART LOOKUP LOGIC ---
 function getResolvedAirport(id) {
     if (!id) return null;
@@ -440,6 +489,8 @@ function generateCircleCoords(lat, lon, radiusNM) {
 
 // --- KML GENERATOR ---
 async function generateKML() {
+    if (!validateInputs()) return;
+    
     const center = getCenterCoords();
     if (!center) return;
     const centerLat = center.lat;
@@ -532,6 +583,8 @@ let leafletMap = null, previewLayerGroup = null;
 let layers = {}, activeBase = 'street';
 
 async function showMapPreview() {
+    if (!validateInputs()) return;
+    
     const center = getCenterCoords();
     if (!center) return;
     const centerLat = center.lat;
