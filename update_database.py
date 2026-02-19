@@ -3,6 +3,7 @@ import json
 import zipfile
 import io
 import requests
+import re
 from bs4 import BeautifulSoup
 
 # --- CONSTANTS ---
@@ -22,23 +23,27 @@ def get_latest_zip_url(base_url, keyword):
     for link in soup.find_all('a', href=True):
         href = link['href']
         if keyword.lower() in href.lower() and href.endswith('.zip'):
-            # Handle relative vs absolute URLs
             if href.startswith('http'):
                 return href
             return f"https://www.faa.gov{href}"
     raise Exception(f"Could not find a valid {keyword} ZIP link on {base_url}")
 
-def parse_dms(dms_str, is_apt=False):
+def parse_dof_dms(dms_str):
+    """Parses space-separated DOF format."""
     dms_str = dms_str.strip()
     if not dms_str: return 0.0
     direction = dms_str[-1]
-    
-    if is_apt:
-        parts = dms_str[:-1].split('-')
-    else:
-        parts = dms_str[:-1].split()
-        
+    parts = dms_str[:-1].split()
     if len(parts) != 3: return 0.0
+    decimal = float(parts[0]) + (float(parts[1]) / 60.0) + (float(parts[2]) / 3600.0)
+    if direction in ['S', 'W']: decimal = -decimal
+    return decimal
+
+def parse_regex_dms(dms_str):
+    """Parses dash-separated NASR format."""
+    dms_str = dms_str.strip()
+    direction = dms_str[-1]
+    parts = dms_str[:-1].split('-')
     decimal = float(parts[0]) + (float(parts[1]) / 60.0) + (float(parts[2]) / 3600.0)
     if direction in ['S', 'W']: decimal = -decimal
     return decimal
@@ -55,7 +60,6 @@ def process_data():
     
     r_dof = requests.get(dof_zip_url, headers=HEADERS)
     with zipfile.ZipFile(io.BytesIO(r_dof.content)) as z:
-        # Find the .DAT file inside the zip (names change by cycle)
         dat_filename = next(name for name in z.namelist() if name.upper().endswith('.DAT'))
         with z.open(dat_filename) as f:
             for line_bytes in f:
@@ -73,8 +77,8 @@ def process_data():
                     agl = int(agl_str)
                     if agl < 200: continue
                     
-                    lat = parse_dms(line[35:47])
-                    lon = parse_dms(line[48:61])
+                    lat = parse_dof_dms(line[35:47])
+                    lon = parse_dof_dms(line[48:61])
                     city = line[18:34].strip()
                     oas = line[0:9].strip()
                     
@@ -90,25 +94,29 @@ def process_data():
     nasr_zip_url = get_latest_zip_url(NASR_URL, "28DaySubscription")
     print(f"Downloading: {nasr_zip_url}")
     
+    # RegEx patterns for exact coordinate matching
+    lat_pattern = re.compile(r'([0-9]{1,2}-[0-9]{2}-[0-9]{2}\.[0-9]{4}[NS])')
+    lon_pattern = re.compile(r'([0-9]{1,3}-[0-9]{2}-[0-9]{2}\.[0-9]{4}[EW])')
+
     r_nasr = requests.get(nasr_zip_url, headers=HEADERS)
     with zipfile.ZipFile(io.BytesIO(r_nasr.content)) as z:
         with z.open('APT.txt') as f:
             for line_bytes in f:
                 line = line_bytes.decode('utf-8', errors='ignore')
+                
                 if line.startswith("APT"):
-                    try:
-                        loc_id = line[27:31].strip()
-                        lat_str = line[526:540].strip()
-                        lon_str = line[553:567].strip()
-                        
-                        lat = parse_dms(lat_str, is_apt=True)
-                        lon = parse_dms(lon_str, is_apt=True)
-                        
-                        if loc_id:
+                    loc_id = line[27:31].strip()
+                    lat_match = lat_pattern.search(line)
+                    lon_match = lon_pattern.search(line)
+                    
+                    if loc_id and lat_match and lon_match:
+                        try:
+                            lat = parse_regex_dms(lat_match.group(1))
+                            lon = parse_regex_dms(lon_match.group(1))
                             airports[loc_id] = {"lat": lat, "lon": lon}
-                    except:
-                        continue
-                        
+                        except:
+                            continue
+                            
     metadata["apt_count"] = len(airports)
     print(f"Parsed {len(airports)} airports/heliports.")
 
@@ -120,7 +128,7 @@ def process_data():
     with open("metadata.json", 'w') as f:
         json.dump(metadata, f)
         
-    print("\nSuccess! Saved obstacles.json, airports.json, and metadata.json.")
+    print("\nSuccess! Saved JSON files.")
 
 if __name__ == "__main__":
     process_data()
