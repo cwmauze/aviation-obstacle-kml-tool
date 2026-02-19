@@ -117,6 +117,9 @@ def process_data():
     date_str = cycle_date.strftime("%Y-%m-%d")
     landing_url = f"https://www.faa.gov/air_traffic/flight_info/aeronav/aero_data/NASR_Subscription/{date_str}"
     
+    # Save the formatted date for the UI
+    metadata["apt_date"] = cycle_date.strftime("%m/%d/%y")
+    
     try:
         page_resp = requests.get(landing_url, headers=HEADERS, timeout=15)
         match = re.search(r'href=["\']([^"\']+\.zip)["\']', page_resp.text)

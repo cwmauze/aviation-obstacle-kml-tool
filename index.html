@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KML Obstacle Generator</title>
+    <title>KML Obstacle Overlay Generator</title>
     
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
@@ -94,8 +94,8 @@
 <div class="container">
     <div class="header-row">
         <div>
-            <h2>KML Obstacle Generator</h2>
-            <div class="version-subtitle" onclick="openVersionModal()">v1.5 - Click for version history</div>
+            <h2>KML Obstacle Overlay Generator</h2>
+            <div class="version-subtitle" onclick="openVersionModal()">v1.6 - Click for version history</div>
             <p style="margin: 0; font-size: 13px; opacity: 0.8;">Generate a 100% local KML obstacle file for ForeFlight.</p>
         </div>
         <button class="action-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 16px; padding: 6px 10px; height: auto;">☀️</button>
@@ -111,7 +111,7 @@
             </div>
         </div>
         <div class="status-line">
-            <span>Airport data (NASR):</span>
+            <span>Airport/Heliport data (NASR):</span>
             <div style="display:flex; align-items:center; gap:8px;">
                 <span id="apt-status">Checking...</span>
                 <div class="status-dot loading" id="apt-dot"></div>
@@ -195,6 +195,7 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
+        <li><strong>v1.6:</strong> Title update, dynamic filename generation, and NASR effective date display.</li>
         <li><strong>v1.5:</strong> Updated UI feedback for centerpoint facility validation.</li>
         <li><strong>v1.4:</strong> Smart K-identifier lookup, facility name auto-population, and simplified direct map layer controls.</li>
         <li><strong>v1.3:</strong> Integrated NASR FAA Airport database lookup and live DB validity status card.</li>
@@ -247,7 +248,8 @@ window.onload = async () => {
         globalAirports = await aptRes.json();
         
         const aptCount = meta.apt_count || Object.keys(globalAirports).length;
-        document.getElementById('apt-status').innerText = `Verified (${aptCount} Airports)`;
+        const aptDate = meta.apt_date || meta.dof_date || "Unknown";
+        document.getElementById('apt-status').innerText = `Verified (Eff. ${aptDate} | ${aptCount} airports/heliports found)`;
         document.getElementById('apt-dot').className = aptCount > 0 ? 'status-dot ready' : 'status-dot error';
         
     } catch(e) {
@@ -287,7 +289,6 @@ function toggleOpacitySlider() { document.getElementById('opacityGroup').style.d
 function getResolvedAirport(id) {
     if (!id) return null;
     if (globalAirports[id]) return globalAirports[id];
-    // Smart 'K' prefix handling (e.g., KABQ -> ABQ)
     if (id.length === 4 && id.startsWith('K') && globalAirports[id.substring(1)]) {
         return globalAirports[id.substring(1)];
     }
@@ -419,11 +420,28 @@ async function generateKML() {
 
         kml += `</Document>\n</kml>`;
 
+        // Dynamic Filename Generation
+        let centerLabel = "CustomCoords";
+        if (document.getElementById('faaMode').checked) {
+            centerLabel = document.getElementById('faaId').value.trim().toUpperCase() || "UNKNOWN";
+        } else {
+            const latLabel = parseFloat(document.getElementById('lat').value).toFixed(2);
+            const lonLabel = parseFloat(document.getElementById('lon').value).toFixed(2);
+            centerLabel = `${latLabel}_${lonLabel}`;
+        }
+        
+        const now = new Date();
+        const dtStr = now.getFullYear() + 
+                      String(now.getMonth() + 1).padStart(2, '0') + 
+                      String(now.getDate()).padStart(2, '0') + "-" + 
+                      String(now.getHours()).padStart(2, '0') + 
+                      String(now.getMinutes()).padStart(2, '0');
+
         const blob = new Blob([kml], { type: 'application/vnd.google-earth.kml+xml' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `Obstacles_${minAGL}AGL_${searchRadiusNM}NM.kml`;
+        a.download = `Obstacles-${centerLabel}-${minAGL}AGL-${searchRadiusNM}NM-${dtStr}.kml`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
