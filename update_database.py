@@ -102,9 +102,10 @@ def process_data():
                         lat = parse_dof_dms(line[35:47])
                         lon = parse_dof_dms(line[48:61])
                         city = line[18:34].strip()
+                        state = line[15:17].strip().upper() # ADDED: 2-Letter State Code
                         oas = line[0:9].strip()
                         
-                        obstacles.append({"id": oas, "city": city, "lat": lat, "lon": lon, "agl": agl})
+                        obstacles.append({"id": oas, "state": state, "city": city, "lat": lat, "lon": lon, "agl": agl})
                     except:
                         continue
         print(f"    > Parsed {len(obstacles)} Obstacles.")
@@ -117,7 +118,6 @@ def process_data():
     date_str = cycle_date.strftime("%Y-%m-%d")
     landing_url = f"https://www.faa.gov/air_traffic/flight_info/aeronav/aero_data/NASR_Subscription/{date_str}"
     
-    # Save the formatted date for the UI
     metadata["apt_date"] = cycle_date.strftime("%m/%d/%y")
     
     try:
