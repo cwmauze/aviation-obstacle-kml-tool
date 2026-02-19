@@ -14,6 +14,8 @@
             --success: #28a745; --earth: #2d81ff; --link: #a3c7ff; --dispatch: #f39c12;
             --header-sep: rgba(255, 255, 255, 0.1);
             --glass: rgba(30, 31, 32, 0.98);
+            --section-bg: rgba(0,0,0,0.15);
+            --input-bg: #3a3b3c;
         }
         [data-theme="light"] {
             --bg: #f0f2f5; --card: #ffffff; --text: #1c1e21; --border: #dadde1;
@@ -21,11 +23,17 @@
             --link: #1a73e8; --dispatch: #f39c12;
             --header-sep: rgba(0, 0, 0, 0.1);
             --glass: rgba(255, 255, 255, 0.95);
+            --section-bg: #f7f8fa; 
+            --input-bg: #ffffff; 
         }
 
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 20px; background: var(--bg); color: var(--text); transition: background 0.3s; }
         .container { max-width: 700px; margin: auto; background: var(--card); padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); position: relative; }
+        
+        /* Headers & Links */
         .version-subtitle { font-size: 11px; color: var(--link); margin-top: 4px; margin-bottom: 20px; display: inline-block; font-weight: normal; cursor: pointer; text-decoration: underline; }
+        .project-link { font-size: 11px; color: #90949c; margin-left: 15px; text-decoration: underline; cursor: pointer; transition: color 0.2s; }
+        .project-link:hover { color: var(--link); }
         .header-row { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 20px; }
         h2 { margin: 0; color: var(--primary); line-height: 1; font-size: 22px; }
         
@@ -39,17 +47,17 @@
         @keyframes dbPulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
 
         /* UI Grouping & Grid */
-        .section-card { border: 1px solid var(--border); border-radius: 8px; padding: 15px 20px; margin-bottom: 15px; background: rgba(0,0,0,0.1); }
+        .section-card { border: 1px solid var(--border); border-radius: 8px; padding: 15px 20px; margin-bottom: 15px; background: var(--section-bg); }
         .section-title { font-weight: bold; color: var(--primary); margin-bottom: 12px; text-transform: uppercase; font-size: 10px; letter-spacing: 0.5px; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         @media (max-width: 500px) { .grid-2 { grid-template-columns: 1fr; gap: 10px; } }
 
         label { display: block; font-weight: bold; color: var(--text); font-size: 12px; opacity: 0.9; margin-bottom: 4px; }
-        input[type="number"], input[type="text"] { width: 100%; padding: 8px 10px; background: var(--secondary); color: var(--text); border: 1px solid var(--border); border-radius: 5px; box-sizing: border-box; font-size: 13px; }
+        input[type="number"], input[type="text"] { width: 100%; padding: 8px 10px; background: var(--input-bg); color: var(--text); border: 1px solid var(--border); border-radius: 5px; box-sizing: border-box; font-size: 13px; }
         input[type="range"] { flex: 1; margin: 0 10px; cursor: pointer; }
         
         /* Compact Inline Controls */
-        .inline-control { display: flex; align-items: center; justify-content: space-between; background: var(--secondary); padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border); margin-bottom: 8px; min-height: 28px;}
+        .inline-control { display: flex; align-items: center; justify-content: space-between; background: var(--input-bg); padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border); margin-bottom: 8px; min-height: 28px;}
         .inline-control label { margin: 0; font-weight: normal; }
         .inline-control input[type="color"] { width: 35px; height: 24px; padding: 0; border: 1px solid var(--border); background: none; cursor: pointer; border-radius: 4px; flex-shrink: 0; }
         
@@ -67,11 +75,17 @@
         .btn-download { background-color: var(--success); display: flex; align-items: center; justify-content: center; font-size: 15px;}
         .btn-download:hover { background-color: #218838; }
         
+        /* Modal Styles */
         .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); }
         .modal-content { background-color: var(--card); margin: 15% auto; padding: 25px; border: 1px solid var(--border); width: 80%; max-width: 500px; border-radius: 10px; color: var(--text); position: relative; }
         .close { position: absolute; top: 10px; right: 15px; color: var(--text); font-size: 28px; font-weight: bold; cursor: pointer; opacity: 0.6;}
         .close:hover { opacity: 1; }
 
+        /* Footer */
+        .app-footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 11px; color: #90949c; line-height: 1.6; text-align: left; }
+        .disclaimer-bold { font-weight: bold; color: var(--text); }
+
+        /* Map UI */
         #mapOverlay { 
             display: none; position: fixed; top: 5%; left: 5%; width: 90%; height: 80%; 
             background: var(--card); z-index: 3000; border: 2px solid var(--primary); 
@@ -104,10 +118,14 @@
     <div class="header-row">
         <div>
             <h2>KML Obstacle Overlay Generator</h2>
-            <div class="version-subtitle" onclick="openVersionModal()">v1.8 - Click for version history</div>
-            <p style="margin: 0; font-size: 12px; opacity: 0.8;">Generate a 100% local KML obstacle file for ForeFlight.</p>
+            <span class="version-subtitle" onclick="openVersionModal()">v1.8.1 - Click for version history</span>
+            <a href="https://github.com/cwmauze/KML-obstacle-tool" target="_blank" class="project-link">GitHub Project Home</a>
         </div>
         <button class="action-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 16px; padding: 6px 10px; height: auto;">☀️</button>
+    </div>
+
+    <div style="font-size: 13px; color: #90949c; margin-bottom: 25px; line-height: 1.5; max-width: 1400px; border-left: 2px solid var(--border); padding-left: 15px;">
+        This tool generates custom KML obstacle overlays for use in ForeFlight, Google Earth, or any EFB/mapping platform that supports KML imports. The backend automatically synchronizes with the FAA's latest 56-Day Digital Obstacle File (DOF) and 28-Day NASR databases. Simply set your centerpoint via FAA Identifier or Lat/Lon, define your search radius and altitude thresholds, customize your visual styling, and export your overlay.
     </div>
 
     <div class="session-status-card">
@@ -179,10 +197,13 @@
         <div class="grid-2">
             
             <div>
-                <div class="checkbox-group" style="margin-bottom: 8px;">
-                    <input type="checkbox" id="enableBoundary" checked>
-                    <label for="enableBoundary" style="font-weight: bold; color: var(--primary);">Search Boundary Ring</label>
+                <div style="display: flex; align-items: center; height: 26px; margin-bottom: 8px;">
+                    <div class="checkbox-group" style="padding: 0; margin: 0;">
+                        <input type="checkbox" id="enableBoundary" checked>
+                        <label for="enableBoundary" style="font-weight: bold; color: var(--primary); font-size: 12px;">Search Boundary Ring</label>
+                    </div>
                 </div>
+                
                 <div class="inline-control">
                     <label>Line color</label>
                     <input type="color" id="boundaryColor" value="#ff0000">
@@ -194,7 +215,10 @@
             </div>
             
             <div>
-                <div style="font-weight: bold; color: var(--primary); font-size: 12px; margin-bottom: 8px; padding-top: 3px;">Obstacle Rings</div>
+                <div style="display: flex; align-items: center; height: 26px; margin-bottom: 8px;">
+                    <div style="font-weight: bold; color: var(--primary); font-size: 12px; margin-left: 2px;">Obstacle Rings</div>
+                </div>
+                
                 <div class="inline-control">
                     <label>Line color</label>
                     <input type="color" id="outlineColor" value="#ff0000">
@@ -203,6 +227,7 @@
                     <label>Line thickness (px)</label>
                     <input type="number" id="ringWidth" value="2" min="1" max="10" style="width: 60px; height: 26px; padding: 2px 6px; margin: 0; background: var(--card);">
                 </div>
+                
                 <div class="checkbox-group" style="margin-top: 10px; margin-bottom: 4px;">
                     <input type="checkbox" id="enableFill" checked onchange="toggleOpacitySlider()">
                     <label for="enableFill">Enable polygon fill shading</label>
@@ -223,6 +248,10 @@
         <button class="action btn-preview" onclick="showMapPreview()">Preview .KML <span>STREET / SAT / AVIATION</span></button>
         <button class="action btn-download" onclick="generateKML()">Download .KML</button>
     </div>
+
+    <footer class="app-footer">
+        <span class="disclaimer-bold">DISCLAIMER:</span> This tool is for utility purposes only and is not a substitute for a qualified pilot or common sense. While the database is meticulously parsed, cumulus granite and steel towers remain strictly unforgiving. Generating a colorful KML file does not grant you invincibility. Cross-reference official charts and don't hit stuff.
+    </footer>
 </div>
 
 <div id="versionModal" class="modal">
@@ -230,6 +259,7 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
+        <li><strong>v1.8.1:</strong> Added expanded introductory text, GitHub repository link, UI alignment fixes, light mode contrast adjustments, and snarky footer disclaimer.</li>
         <li><strong>v1.8:</strong> Fixed layout grouping in Overlay Options. Added line thickness controls for boundary and rings. Default colors unified to red.</li>
         <li><strong>v1.7:</strong> UI Optimization. Migrated to responsive 2-column card grid and compact inline color pickers to eliminate dead space.</li>
         <li><strong>v1.6:</strong> Title update, dynamic filename and layer naming, and NASR effective date display.</li>
@@ -401,7 +431,7 @@ function generateCircleCoords(lat, lon, radiusNM) {
     return coords.join(" ");
 }
 
-// --- KML GENERATOR (v1.8 Width Logic) ---
+// --- KML GENERATOR ---
 async function generateKML() {
     const center = getCenterCoords();
     if (!center) return;
