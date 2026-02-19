@@ -33,13 +33,11 @@ def get_dof_zip_url():
     response = requests.get(DOF_URL, headers=HEADERS)
     response.raise_for_status()
     
-    # 1. Try standard HTML parsing
     soup = BeautifulSoup(response.text, 'html.parser')
     for link in soup.find_all('a', href=True):
         if 'dof' in link['href'].lower() and link['href'].lower().endswith('.zip'):
             return link['href'] if link['href'].startswith('http') else f"https://www.faa.gov{link['href']}"
             
-    # 2. Aggressive Regex (Catches links hidden in Vue.js or JSON elements)
     match = re.search(r'["\']([^"\']*dof[^"\']*\.zip)["\']', response.text, re.IGNORECASE)
     if match:
         url = match.group(1)
@@ -85,7 +83,9 @@ def process_data():
         
         r_dof = requests.get(dof_zip_url, headers=HEADERS)
         with zipfile.ZipFile(io.BytesIO(r_dof.content)) as z:
-            dat_filename = next(name for name in z.namelist() if name.upper().endswith('.DAT'))
+            # THE FIX: Require the filename to explicitly end in "DOF.DAT" 
+            # This rejects DOFA.DAT, DOFC.DAT, and DOFD.DAT
+            dat_filename = next(name for name in z.namelist() if name.upper().endswith('DOF.DAT'))
             with z.open(dat_filename) as f:
                 for line_bytes in f:
                     line = line_bytes.decode('utf-8', errors='ignore')
@@ -154,7 +154,6 @@ def process_data():
     # --- 3. SAVE WITH FAILSAFE ---
     print("\n[-] Compiling outputs...")
     
-    # FAILSAFE: Only overwrite if we actually caught obstacles
     if len(obstacles) > 0:
         with open("obstacles.json", 'w') as f:
             json.dump(obstacles, f, separators=(',', ':'))
@@ -162,7 +161,6 @@ def process_data():
         print(f"[-] Saved {len(obstacles)} obstacles.")
     else:
         print("[!] WARNING: No obstacles parsed. Skipping overwrite to protect existing data.")
-        # Attempt to read existing file to keep UI metadata accurate
         if os.path.exists("obstacles.json"):
             try:
                 with open("obstacles.json", 'r') as f:
