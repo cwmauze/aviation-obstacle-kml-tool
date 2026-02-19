@@ -10,11 +10,11 @@ from bs4 import BeautifulSoup
 # --- CONFIGURATION ---
 DOF_URL = "https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/dof/"
 
-# Exact FAA APT.txt Column Slices (0-indexed) based on Genesys Baseline
+# Exact FAA APT.txt Column Slices (0-indexed)
 APT_COLS = {
     'id': (27, 31),
-    'lat': (523, 538), # 15 chars (e.g., 35-52-39.6000N)
-    'lon': (550, 565)  # 15 chars (e.g., 078-47-15.2000W)
+    'lat': (523, 538), 
+    'lon': (550, 565)  
 }
 
 HEADERS = {
@@ -22,26 +22,32 @@ HEADERS = {
 }
 
 def get_current_airac_cycle():
-    """Calculates the current FAA AIRAC cycle effective date."""
-    base_date = datetime.date(2026, 1, 22) # Cycle 2601 start
+    base_date = datetime.date(2026, 1, 22) 
     today = datetime.date.today()
     delta = (today - base_date).days
     cycles_passed = delta // 28
     return base_date + datetime.timedelta(days=cycles_passed*28)
 
 def get_dof_zip_url():
-    """Scrapes the FAA page to find the most current 56-Day DOF ZIP."""
+    """Aggressively scrapes the FAA page to bypass dynamic loading."""
     response = requests.get(DOF_URL, headers=HEADERS)
     response.raise_for_status()
+    
+    # 1. Try standard HTML parsing
     soup = BeautifulSoup(response.text, 'html.parser')
     for link in soup.find_all('a', href=True):
-        href = link['href']
-        if 'dof' in href.lower() and href.endswith('.zip'):
-            return href if href.startswith('http') else f"https://www.faa.gov{href}"
+        if 'dof' in link['href'].lower() and link['href'].lower().endswith('.zip'):
+            return link['href'] if link['href'].startswith('http') else f"https://www.faa.gov{link['href']}"
+            
+    # 2. Aggressive Regex (Catches links hidden in Vue.js or JSON elements)
+    match = re.search(r'["\']([^"\']*dof[^"\']*\.zip)["\']', response.text, re.IGNORECASE)
+    if match:
+        url = match.group(1)
+        return url if url.startswith('http') else f"https://www.faa.gov{url}"
+        
     raise Exception("Could not find a valid DOF ZIP link.")
 
 def faa_to_decimal(s):
-    """Converts FAA formatted coordinate string to Decimal Degrees."""
     if not s or s.strip() == "": return 0.0
     s = s.strip().upper()
     mult = -1 if ('S' in s or 'W' in s) else 1
@@ -57,7 +63,6 @@ def faa_to_decimal(s):
         return 0.0
 
 def parse_dof_dms(dms_str):
-    """Parses space-separated DOF format."""
     dms_str = dms_str.strip()
     if not dms_str: return 0.0
     direction = dms_str[-1]
@@ -93,7 +98,6 @@ def process_data():
                     try:
                         agl_str = line[83:88].strip()
                         if not agl_str.isdigit(): continue
-                        
                         agl = int(agl_str)
                         if agl < 200: continue
                         
@@ -105,9 +109,7 @@ def process_data():
                         obstacles.append({"id": oas, "city": city, "lat": lat, "lon": lon, "agl": agl})
                     except:
                         continue
-                        
-        metadata["obs_count"] = len(obstacles)
-        print(f"    > Processed {len(obstacles)} Obstacles.")
+        print(f"    > Parsed {len(obstacles)} Obstacles.")
     except Exception as e:
         print(f"[!] DOF Process failed: {e}")
 
@@ -116,7 +118,6 @@ def process_data():
     cycle_date = get_current_airac_cycle()
     date_str = cycle_date.strftime("%Y-%m-%d")
     landing_url = f"https://www.faa.gov/air_traffic/flight_info/aeronav/aero_data/NASR_Subscription/{date_str}"
-    print(f"[-] Accessing Cycle Page: {landing_url}")
     
     try:
         page_resp = requests.get(landing_url, headers=HEADERS, timeout=15)
@@ -131,41 +132,53 @@ def process_data():
             r_nasr = requests.get(zip_url, headers=HEADERS, stream=True)
             
             with zipfile.ZipFile(io.BytesIO(r_nasr.content)) as z:
-                # FAA sometimes nests files, so we iterate through infolist
                 apt_file_info = next(f for f in z.infolist() if f.filename.endswith('APT.txt'))
                 with z.open(apt_file_info) as f:
                     for line_bytes in f:
                         line = line_bytes.decode('latin-1', errors='ignore')
-                        
                         if line.startswith("APT"):
                             loc_id = line[APT_COLS['id'][0]:APT_COLS['id'][1]].strip()
                             lat_str = line[APT_COLS['lat'][0]:APT_COLS['lat'][1]].strip()
                             lon_str = line[APT_COLS['lon'][0]:APT_COLS['lon'][1]].strip()
-                            
                             if loc_id and lat_str and lon_str:
                                 lat = faa_to_decimal(lat_str)
                                 lon = faa_to_decimal(lon_str)
-                                
                                 if lat != 0.0 and lon != 0.0:
                                     airports[loc_id] = {"lat": lat, "lon": lon}
-                                    
-            metadata["apt_count"] = len(airports)
-            print(f"    > Processed {len(airports)} Airports/Heliports.")
+            print(f"    > Parsed {len(airports)} Airports/Heliports.")
         else:
             print("[!] Could not find NASR ZIP link.")
     except Exception as e:
         print(f"[!] NASR Process failed: {e}")
 
-    # --- 3. SAVE JSON FILES ---
+    # --- 3. SAVE WITH FAILSAFE ---
     print("\n[-] Compiling outputs...")
-    with open("obstacles.json", 'w') as f:
-        json.dump(obstacles, f, separators=(',', ':'))
-    with open("airports.json", 'w') as f:
-        json.dump(airports, f, separators=(',', ':'))
+    
+    # FAILSAFE: Only overwrite if we actually caught obstacles
+    if len(obstacles) > 0:
+        with open("obstacles.json", 'w') as f:
+            json.dump(obstacles, f, separators=(',', ':'))
+        metadata["obs_count"] = len(obstacles)
+        print(f"[-] Saved {len(obstacles)} obstacles.")
+    else:
+        print("[!] WARNING: No obstacles parsed. Skipping overwrite to protect existing data.")
+        # Attempt to read existing file to keep UI metadata accurate
+        if os.path.exists("obstacles.json"):
+            try:
+                with open("obstacles.json", 'r') as f:
+                    metadata["obs_count"] = len(json.load(f))
+            except: pass
+            
+    if len(airports) > 0:
+        with open("airports.json", 'w') as f:
+            json.dump(airports, f, separators=(',', ':'))
+        metadata["apt_count"] = len(airports)
+        print(f"[-] Saved {len(airports)} airports.")
+        
     with open("metadata.json", 'w') as f:
         json.dump(metadata, f)
         
-    print("[-] Success. All databases updated.")
+    print("[-] Success. Database update complete.")
 
 if __name__ == "__main__":
     process_data()
