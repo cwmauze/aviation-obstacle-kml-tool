@@ -3,30 +3,58 @@ import json
 import zipfile
 import io
 import requests
+import datetime
 import re
 from bs4 import BeautifulSoup
 
-# --- CONSTANTS ---
+# --- CONFIGURATION ---
 DOF_URL = "https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/dof/"
-NASR_URL = "https://www.faa.gov/air_traffic/flight_info/aeronav/aero_data/NASR_Subscription/"
+
+# Exact FAA APT.txt Column Slices (0-indexed) based on Genesys Baseline
+APT_COLS = {
+    'id': (27, 31),
+    'lat': (523, 538), # 15 chars (e.g., 35-52-39.6000N)
+    'lon': (550, 565)  # 15 chars (e.g., 078-47-15.2000W)
+}
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 }
 
-def get_latest_zip_url(base_url, keyword):
-    """Scrapes the FAA page to find the most current ZIP file link."""
-    response = requests.get(base_url, headers=HEADERS)
+def get_current_airac_cycle():
+    """Calculates the current FAA AIRAC cycle effective date."""
+    base_date = datetime.date(2026, 1, 22) # Cycle 2601 start
+    today = datetime.date.today()
+    delta = (today - base_date).days
+    cycles_passed = delta // 28
+    return base_date + datetime.timedelta(days=cycles_passed*28)
+
+def get_dof_zip_url():
+    """Scrapes the FAA page to find the most current 56-Day DOF ZIP."""
+    response = requests.get(DOF_URL, headers=HEADERS)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, 'html.parser')
-    
     for link in soup.find_all('a', href=True):
         href = link['href']
-        if keyword.lower() in href.lower() and href.endswith('.zip'):
-            if href.startswith('http'):
-                return href
-            return f"https://www.faa.gov{href}"
-    raise Exception(f"Could not find a valid {keyword} ZIP link on {base_url}")
+        if 'dof' in href.lower() and href.endswith('.zip'):
+            return href if href.startswith('http') else f"https://www.faa.gov{href}"
+    raise Exception("Could not find a valid DOF ZIP link.")
+
+def faa_to_decimal(s):
+    """Converts FAA formatted coordinate string to Decimal Degrees."""
+    if not s or s.strip() == "": return 0.0
+    s = s.strip().upper()
+    mult = -1 if ('S' in s or 'W' in s) else 1
+    clean = s.replace('N','').replace('S','').replace('E','').replace('W','')
+    parts = clean.split('-')
+    try:
+        if len(parts) >= 3:
+            dd = float(parts[0]) + float(parts[1])/60 + float(parts[2])/3600
+        else:
+            dd = float(clean)
+        return round(dd * mult, 6)
+    except: 
+        return 0.0
 
 def parse_dof_dms(dms_str):
     """Parses space-separated DOF format."""
@@ -39,88 +67,97 @@ def parse_dof_dms(dms_str):
     if direction in ['S', 'W']: decimal = -decimal
     return decimal
 
-def parse_regex_dms(dms_str):
-    """Parses dash-separated NASR format."""
-    dms_str = dms_str.strip()
-    direction = dms_str[-1]
-    parts = dms_str[:-1].split('-')
-    decimal = float(parts[0]) + (float(parts[1]) / 60.0) + (float(parts[2]) / 3600.0)
-    if direction in ['S', 'W']: decimal = -decimal
-    return decimal
-
 def process_data():
     obstacles = []
     airports = {}
     metadata = {"dof_date": "Unknown", "apt_count": 0, "obs_count": 0}
 
-    # --- 1. DOWNLOAD & PARSE DOF ---
-    print("Fetching latest DOF ZIP...")
-    dof_zip_url = get_latest_zip_url(DOF_URL, "dof")
-    print(f"Downloading: {dof_zip_url}")
-    
-    r_dof = requests.get(dof_zip_url, headers=HEADERS)
-    with zipfile.ZipFile(io.BytesIO(r_dof.content)) as z:
-        dat_filename = next(name for name in z.namelist() if name.upper().endswith('.DAT'))
-        with z.open(dat_filename) as f:
-            for line_bytes in f:
-                line = line_bytes.decode('utf-8', errors='ignore')
-                
-                if line.startswith("  CURRENCY DATE ="):
-                    metadata["dof_date"] = line.split("=")[1].strip()
+    # --- 1. DOWNLOAD & PARSE DOF (56-Day Cycle) ---
+    print("[-] Fetching latest DOF ZIP...")
+    try:
+        dof_zip_url = get_dof_zip_url()
+        print(f"[-] Downloading: {dof_zip_url}")
+        
+        r_dof = requests.get(dof_zip_url, headers=HEADERS)
+        with zipfile.ZipFile(io.BytesIO(r_dof.content)) as z:
+            dat_filename = next(name for name in z.namelist() if name.upper().endswith('.DAT'))
+            with z.open(dat_filename) as f:
+                for line_bytes in f:
+                    line = line_bytes.decode('utf-8', errors='ignore')
                     
-                if len(line) < 100 or line.startswith("CUR") or line.startswith("-") or line.startswith("OAS") or line.startswith(" "):
-                    continue
-                try:
-                    agl_str = line[83:88].strip()
-                    if not agl_str.isdigit(): continue
-                    
-                    agl = int(agl_str)
-                    if agl < 200: continue
-                    
-                    lat = parse_dof_dms(line[35:47])
-                    lon = parse_dof_dms(line[48:61])
-                    city = line[18:34].strip()
-                    oas = line[0:9].strip()
-                    
-                    obstacles.append({"id": oas, "city": city, "lat": lat, "lon": lon, "agl": agl})
-                except:
-                    continue
-                    
-    metadata["obs_count"] = len(obstacles)
-    print(f"Parsed {len(obstacles)} obstacles.")
+                    if line.startswith("  CURRENCY DATE ="):
+                        metadata["dof_date"] = line.split("=")[1].strip()
+                        
+                    if len(line) < 100 or line.startswith("CUR") or line.startswith("-") or line.startswith("OAS") or line.startswith(" "):
+                        continue
+                    try:
+                        agl_str = line[83:88].strip()
+                        if not agl_str.isdigit(): continue
+                        
+                        agl = int(agl_str)
+                        if agl < 200: continue
+                        
+                        lat = parse_dof_dms(line[35:47])
+                        lon = parse_dof_dms(line[48:61])
+                        city = line[18:34].strip()
+                        oas = line[0:9].strip()
+                        
+                        obstacles.append({"id": oas, "city": city, "lat": lat, "lon": lon, "agl": agl})
+                    except:
+                        continue
+                        
+        metadata["obs_count"] = len(obstacles)
+        print(f"    > Processed {len(obstacles)} Obstacles.")
+    except Exception as e:
+        print(f"[!] DOF Process failed: {e}")
 
-    # --- 2. DOWNLOAD & PARSE NASR APT ---
-    print("\nFetching latest NASR APT ZIP...")
-    nasr_zip_url = get_latest_zip_url(NASR_URL, "28DaySubscription")
-    print(f"Downloading: {nasr_zip_url}")
+    # --- 2. DOWNLOAD & PARSE NASR APT (28-Day Cycle) ---
+    print("\n[-] Fetching latest NASR APT ZIP...")
+    cycle_date = get_current_airac_cycle()
+    date_str = cycle_date.strftime("%Y-%m-%d")
+    landing_url = f"https://www.faa.gov/air_traffic/flight_info/aeronav/aero_data/NASR_Subscription/{date_str}"
+    print(f"[-] Accessing Cycle Page: {landing_url}")
     
-    # RegEx patterns for exact coordinate matching
-    lat_pattern = re.compile(r'([0-9]{1,2}-[0-9]{2}-[0-9]{2}\.[0-9]{4}[NS])')
-    lon_pattern = re.compile(r'([0-9]{1,3}-[0-9]{2}-[0-9]{2}\.[0-9]{4}[EW])')
-
-    r_nasr = requests.get(nasr_zip_url, headers=HEADERS)
-    with zipfile.ZipFile(io.BytesIO(r_nasr.content)) as z:
-        with z.open('APT.txt') as f:
-            for line_bytes in f:
-                line = line_bytes.decode('utf-8', errors='ignore')
-                
-                if line.startswith("APT"):
-                    loc_id = line[27:31].strip()
-                    lat_match = lat_pattern.search(line)
-                    lon_match = lon_pattern.search(line)
-                    
-                    if loc_id and lat_match and lon_match:
-                        try:
-                            lat = parse_regex_dms(lat_match.group(1))
-                            lon = parse_regex_dms(lon_match.group(1))
-                            airports[loc_id] = {"lat": lat, "lon": lon}
-                        except:
-                            continue
+    try:
+        page_resp = requests.get(landing_url, headers=HEADERS, timeout=15)
+        match = re.search(r'href=["\']([^"\']+\.zip)["\']', page_resp.text)
+        if not match: match = re.search(r'href=["\'](https://[^"\']+\.zip)["\']', page_resp.text)
+        
+        if match:
+            zip_url = match.group(1)
+            if not zip_url.startswith("http"): zip_url = "https://www.faa.gov" + zip_url
+            
+            print(f"[-] Downloading: {zip_url}")
+            r_nasr = requests.get(zip_url, headers=HEADERS, stream=True)
+            
+            with zipfile.ZipFile(io.BytesIO(r_nasr.content)) as z:
+                # FAA sometimes nests files, so we iterate through infolist
+                apt_file_info = next(f for f in z.infolist() if f.filename.endswith('APT.txt'))
+                with z.open(apt_file_info) as f:
+                    for line_bytes in f:
+                        line = line_bytes.decode('latin-1', errors='ignore')
+                        
+                        if line.startswith("APT"):
+                            loc_id = line[APT_COLS['id'][0]:APT_COLS['id'][1]].strip()
+                            lat_str = line[APT_COLS['lat'][0]:APT_COLS['lat'][1]].strip()
+                            lon_str = line[APT_COLS['lon'][0]:APT_COLS['lon'][1]].strip()
                             
-    metadata["apt_count"] = len(airports)
-    print(f"Parsed {len(airports)} airports/heliports.")
+                            if loc_id and lat_str and lon_str:
+                                lat = faa_to_decimal(lat_str)
+                                lon = faa_to_decimal(lon_str)
+                                
+                                if lat != 0.0 and lon != 0.0:
+                                    airports[loc_id] = {"lat": lat, "lon": lon}
+                                    
+            metadata["apt_count"] = len(airports)
+            print(f"    > Processed {len(airports)} Airports/Heliports.")
+        else:
+            print("[!] Could not find NASR ZIP link.")
+    except Exception as e:
+        print(f"[!] NASR Process failed: {e}")
 
     # --- 3. SAVE JSON FILES ---
+    print("\n[-] Compiling outputs...")
     with open("obstacles.json", 'w') as f:
         json.dump(obstacles, f, separators=(',', ':'))
     with open("airports.json", 'w') as f:
@@ -128,7 +165,7 @@ def process_data():
     with open("metadata.json", 'w') as f:
         json.dump(metadata, f)
         
-    print("\nSuccess! Saved JSON files.")
+    print("[-] Success. All databases updated.")
 
 if __name__ == "__main__":
     process_data()
