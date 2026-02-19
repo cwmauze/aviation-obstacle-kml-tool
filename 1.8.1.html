@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviation Obstacle .KML Overlay Generator</title>
+    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        :root {
+            --bg: #18191a; --card: #242526; --text: #e4e6eb; --border: #3e4042;
+            --primary: #478df5; --secondary: #3a3b3c; --danger: #fb6161;
+            --success: #28a745; --earth: #2d81ff; --link: #a3c7ff; --dispatch: #f39c12;
+            --header-sep: rgba(255, 255, 255, 0.1);
+            --glass: rgba(30, 31, 32, 0.98);
+            --section-bg: rgba(0,0,0,0.15);
+            --input-bg: #3a3b3c;
+        }
+        [data-theme="light"] {
+            --bg: #f0f2f5; --card: #ffffff; --text: #1c1e21; --border: #dadde1;
+            --primary: #1a73e8; --secondary: #e4e6eb; --danger: #fa3e3e;
+            --link: #1a73e8; --dispatch: #f39c12;
+            --header-sep: rgba(0, 0, 0, 0.1);
+            --glass: rgba(255, 255, 255, 0.95);
+            --section-bg: #f7f8fa; 
+            --input-bg: #ffffff; 
+        }
+
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 20px; background: var(--bg); color: var(--text); transition: background 0.3s; }
+        .container { max-width: 700px; margin: auto; background: var(--card); padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); position: relative; }
+        
+        /* Headers & Links */
+        .version-subtitle { font-size: 11px; color: var(--link); margin-top: 4px; margin-bottom: 20px; display: inline-block; font-weight: normal; cursor: pointer; text-decoration: underline; }
+        .project-link { font-size: 11px; color: #90949c; margin-left: 15px; text-decoration: underline; cursor: pointer; transition: color 0.2s; }
+        .project-link:hover { color: var(--link); }
+        .header-row { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid var(--border); padding-bottom: 10px; margin-bottom: 20px; }
+        h2 { margin: 0; color: var(--primary); line-height: 1; font-size: 22px; }
+        
+        /* Status Card */
+        .session-status-card { background: var(--secondary); padding: 12px 15px; border-radius: 8px; border: 1px solid var(--border); font-size: 12px; margin-bottom: 20px; }
+        .status-line { margin-top: 6px; display: flex; justify-content: space-between; align-items: center; }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #555; display: inline-block; flex-shrink: 0; }
+        .status-dot.loading { background: var(--dispatch); animation: dbPulse 1s infinite; }
+        .status-dot.ready { background: var(--success); }
+        .status-dot.error { background: var(--danger); }
+        @keyframes dbPulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+        /* UI Grouping & Grid */
+        .section-card { border: 1px solid var(--border); border-radius: 8px; padding: 15px 20px; margin-bottom: 15px; background: var(--section-bg); }
+        .section-title { font-weight: bold; color: var(--primary); margin-bottom: 12px; text-transform: uppercase; font-size: 10px; letter-spacing: 0.5px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 500px) { .grid-2 { grid-template-columns: 1fr; gap: 10px; } }
+
+        label { display: block; font-weight: bold; color: var(--text); font-size: 12px; opacity: 0.9; margin-bottom: 4px; }
+        input[type="number"], input[type="text"] { width: 100%; padding: 8px 10px; background: var(--input-bg); color: var(--text); border: 1px solid var(--border); border-radius: 5px; box-sizing: border-box; font-size: 13px; }
+        input[type="range"] { flex: 1; margin: 0 10px; cursor: pointer; }
+        
+        /* Compact Inline Controls */
+        .inline-control { display: flex; align-items: center; justify-content: space-between; background: var(--input-bg); padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border); margin-bottom: 8px; min-height: 28px;}
+        .inline-control label { margin: 0; font-weight: normal; }
+        .inline-control input[type="color"] { width: 35px; height: 24px; padding: 0; border: 1px solid var(--border); background: none; cursor: pointer; border-radius: 4px; flex-shrink: 0; }
+        
+        .checkbox-group { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
+        .checkbox-group input { width: auto; margin: 0; cursor: pointer; transform: scale(1.1); }
+        .checkbox-group label { margin: 0; font-weight: normal; cursor: pointer; }
+        
+        #facilityName { font-size: 11px; font-weight: bold; margin-top: 6px; min-height: 14px; text-transform: uppercase; }
+
+        .btn-group { display: flex; gap: 15px; margin-top: 25px; }
+        button.action { flex: 1; padding: 14px; color: white; border: none; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        button.action span { display: block; font-size: 9px; font-weight: normal; opacity: 0.8; margin-top: 3px; }
+        .btn-preview { background-color: var(--earth); }
+        .btn-preview:hover { background-color: #1a60d4; }
+        .btn-download { background-color: var(--success); display: flex; align-items: center; justify-content: center; font-size: 15px;}
+        .btn-download:hover { background-color: #218838; }
+        
+        /* Modal Styles */
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); }
+        .modal-content { background-color: var(--card); margin: 15% auto; padding: 25px; border: 1px solid var(--border); width: 80%; max-width: 500px; border-radius: 10px; color: var(--text); position: relative; }
+        .close { position: absolute; top: 10px; right: 15px; color: var(--text); font-size: 28px; font-weight: bold; cursor: pointer; opacity: 0.6;}
+        .close:hover { opacity: 1; }
+
+        /* Footer */
+        .app-footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 11px; color: #90949c; line-height: 1.6; text-align: left; }
+        .disclaimer-bold { font-weight: bold; color: var(--text); }
+
+        /* Map UI */
+        #mapOverlay { 
+            display: none; position: fixed; top: 5%; left: 5%; width: 90%; height: 80%; 
+            background: var(--card); z-index: 3000; border: 2px solid var(--primary); 
+            border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+        }
+        #mapOverlay.maximized { width: 100vw; height: 100vh; top: 0; left: 0; border: none; border-radius: 0; }
+        #map { width: 100%; height: 100%; background: #222; }
+
+        .map-command-bar {
+            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+            width: auto; background: var(--glass); border: 1px solid var(--border); border-radius: 12px;
+            padding: 10px 20px; display: flex; align-items: center; gap: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6); backdrop-filter: blur(12px); z-index: 9999 !important;
+        }
+        .cmd-group { display: flex; align-items: center; gap: 8px; position: relative; }
+        .cmd-divider { width: 1px; height: 24px; background: var(--border); margin: 0 4px; }
+        .layer-switch { display: flex; background: rgba(0,0,0,0.4); border-radius: 6px; padding: 2px; border: 1px solid var(--border); }
+        .layer-btn { background: transparent; border: none; color: #888; padding: 8px 12px; font-size: 11px; font-weight: 600; cursor: pointer; border-radius: 4px; transition: 0.2s; white-space: nowrap; height: 32px; display: flex; align-items: center; }
+        .layer-btn.active { background: var(--primary); color: white; }
+        .action-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 8px 12px; font-size: 11px; border-radius: 6px; cursor: pointer; height: 32px; display: flex; align-items: center; gap: 6px; }
+        .close-btn { background: var(--danger); border-color: var(--danger); color: white; }
+        #loader { position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.8); color: white; padding: 8px 15px; border-radius: 20px; font-size: 11px; display: none; align-items: center; gap: 10px; z-index: 10001; border: 1px solid var(--border); }
+    </style>
+</head>
+<body data-theme="dark">
+
+<div id="loader">FETCHING DATA...</div>
+
+<div class="container">
+    <div class="header-row">
+        <div>
+            <h2>Aviation Obstacle .KML Overlay Generator</h2>
+            <span class="version-subtitle" onclick="openVersionModal()">v1.8.1 - Click for version history</span>
+            <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub Project Home</a>
+        </div>
+        <button class="action-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 16px; padding: 6px 10px; height: auto;">☀️</button>
+    </div>
+
+    <div style="font-size: 13px; color: #90949c; margin-bottom: 25px; line-height: 1.5; max-width: 1400px; border-left: 2px solid var(--border); padding-left: 15px;">
+        This tool generates visual overlays around obstacles to make them easier to see and avoid when using ForeFlight, Google Earth, or any EFB/mapping platform that supports KML imports. The backend automatically synchronizes with the FAA's latest 56-Day Digital Obstacle File (DOF) and 28-Day NASR databases. Simply set your centerpoint via FAA Identifier or Lat/Lon, define your search radius and altitude thresholds, customize your visual styling, and export your overlay.
+    </div>
+
+    <div class="session-status-card">
+        <div style="font-weight: bold; color: var(--primary); text-transform: uppercase; font-size: 10px;">Database Status</div>
+        <div class="status-line">
+            <span>Obstacle data (DOF):</span>
+            <div style="display:flex; align-items:center; gap:8px;">
+                <span id="dof-status">Checking...</span>
+                <div class="status-dot loading" id="dof-dot"></div>
+            </div>
+        </div>
+        <div class="status-line">
+            <span>Airport/Heliport data (NASR):</span>
+            <div style="display:flex; align-items:center; gap:8px;">
+                <span id="apt-status">Checking...</span>
+                <div class="status-dot loading" id="apt-dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">1. Search Centerpoint</div>
+        <div style="display: flex; gap: 20px; margin-bottom: 12px;">
+            <label style="display: flex; align-items: center; gap: 5px; font-weight: normal; cursor: pointer; margin: 0;">
+                <input type="radio" name="centerMode" id="faaMode" value="faa" checked onchange="toggleCenterInput()"> FAA Identifier
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px; font-weight: normal; cursor: pointer; margin: 0;">
+                <input type="radio" name="centerMode" id="coordMode" value="coord" onchange="toggleCenterInput()"> Custom Lat/Lon
+            </label>
+        </div>
+
+        <div id="faaInputGroup">
+            <input type="text" id="faaId" placeholder="e.g. RDU, KABQ" style="text-transform: uppercase;" oninput="updateFacilityName()">
+            <div id="facilityName"></div>
+        </div>
+
+        <div id="coordInputGroup" class="grid-2" style="display: none;">
+            <div>
+                <label>Latitude (decimal)</label>
+                <input type="number" id="lat" step="any" value="36.0066" placeholder="e.g. 36.0066">
+            </div>
+            <div>
+                <label>Longitude (decimal)</label>
+                <input type="number" id="lon" step="any" value="-78.9391" placeholder="e.g. -78.9391">
+            </div>
+        </div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">2. Filtering & Coverage</div>
+        <div class="grid-2">
+            <div>
+                <label>Search radius (NM)</label>
+                <input type="number" id="radiusNM" value="150">
+            </div>
+            <div>
+                <label>Minimum obstacle height (ft AGL)</label>
+                <input type="number" id="minAGL" value="1000">
+            </div>
+            <div>
+                <label>Ring radius around obstacles (NM)</label>
+                <input type="number" id="ringNM" value="2.0" step="0.1">
+            </div>
+        </div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">3. Overlay Options</div>
+        <div class="grid-2">
+            
+            <div>
+                <div style="display: flex; align-items: center; height: 26px; margin-bottom: 8px;">
+                    <div class="checkbox-group" style="padding: 0; margin: 0;">
+                        <input type="checkbox" id="enableBoundary" checked>
+                        <label for="enableBoundary" style="font-weight: bold; color: var(--primary); font-size: 12px;">Search Boundary Ring</label>
+                    </div>
+                </div>
+                
+                <div class="inline-control">
+                    <label>Line color</label>
+                    <input type="color" id="boundaryColor" value="#ff0000">
+                </div>
+                <div class="inline-control">
+                    <label>Line thickness (px)</label>
+                    <input type="number" id="boundaryWidth" value="2" min="1" max="10" style="width: 60px; height: 26px; padding: 2px 6px; margin: 0; background: var(--card);">
+                </div>
+            </div>
+            
+            <div>
+                <div style="display: flex; align-items: center; height: 26px; margin-bottom: 8px;">
+                    <div style="font-weight: bold; color: var(--primary); font-size: 12px; margin-left: 2px;">Obstacle Rings</div>
+                </div>
+                
+                <div class="inline-control">
+                    <label>Line color</label>
+                    <input type="color" id="outlineColor" value="#ff0000">
+                </div>
+                <div class="inline-control">
+                    <label>Line thickness (px)</label>
+                    <input type="number" id="ringWidth" value="2" min="1" max="10" style="width: 60px; height: 26px; padding: 2px 6px; margin: 0; background: var(--card);">
+                </div>
+                
+                <div class="checkbox-group" style="margin-top: 10px; margin-bottom: 4px;">
+                    <input type="checkbox" id="enableFill" checked onchange="toggleOpacitySlider()">
+                    <label for="enableFill">Enable polygon fill shading</label>
+                </div>
+                <div class="inline-control" id="opacityGroup">
+                    <label style="display:flex; align-items:center; width:100%;">
+                        <span style="font-size: 11px; min-width: 50px;">Opac (<span id="opacityValue" style="color:var(--primary);">50%</span>)</span>
+                        <input type="range" id="fillOpacity" min="1" max="100" value="50" oninput="updateOpacityLabel()">
+                    </label>
+                    <input type="color" id="fillColor" value="#ff0000">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <button class="action btn-preview" onclick="showMapPreview()">Preview .KML <span>STREET / SAT / AVIATION</span></button>
+        <button class="action btn-download" onclick="generateKML()">Download .KML</button>
+    </div>
+
+    <footer class="app-footer">
+        <span class="disclaimer-bold">DISCLAIMER:</span> This tool is for utility purposes only and is not a substitute for a qualified pilot or common sense. While the database is meticulously parsed, cumulus granite and steel towers remain strictly unforgiving. Generating a colorful KML file does not grant you invincibility. Cross-reference official charts and don't hit stuff.
+    </footer>
+</div>
+
+<div id="versionModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeVersionModal()">&times;</span>
+    <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
+    <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
+        <li><strong>v1.8.1:</strong> Added expanded introductory text, GitHub repository link, UI alignment fixes, light mode contrast adjustments, and snarky footer disclaimer.</li>
+        <li><strong>v1.8:</strong> Fixed layout grouping in Overlay Options. Added line thickness controls for boundary and rings. Default colors unified to red.</li>
+        <li><strong>v1.7:</strong> UI Optimization. Migrated to responsive 2-column card grid and compact inline color pickers to eliminate dead space.</li>
+        <li><strong>v1.6:</strong> Title update, dynamic filename and layer naming, and NASR effective date display.</li>
+        <li><strong>v1.5:</strong> Updated UI feedback for centerpoint facility validation.</li>
+        <li><strong>v1.4:</strong> Smart K-identifier lookup, facility name auto-population, and simplified direct map layer controls.</li>
+        <li><strong>v1.3:</strong> Integrated NASR FAA Airport database lookup and live DB validity status card.</li>
+        <li><strong>v1.2:</strong> UI upgrade to Genesys styling. Added full visual Map Preview capability with Leaflet integration and FAA sectional charts.</li>
+        <li><strong>v1.1:</strong> Added search boundary ring, customizable boundary colors, dark mode UI fixes, and single-file consolidation.</li>
+        <li><strong>v1.0:</strong> Initial release. Added custom coordinate selection, height filtering, nautical mile conversion, and obstacle opacity settings.</li>
+    </ul>
+  </div>
+</div>
+
+<div id="mapOverlay">
+    <div class="map-command-bar">
+        <div class="cmd-group">
+            <div class="layer-switch">
+                <button class="layer-btn active" id="b-street" onclick="setBaseView('street')">Map Light</button>
+                <button class="layer-btn" id="b-dark" onclick="setBaseView('dark')">Map Dark</button>
+                <button class="layer-btn" id="b-sat" onclick="setBaseView('sat')">Satellite</button>
+                <button class="layer-btn" id="b-vfr" onclick="setBaseView('vfr')">VFR Sectional</button>
+            </div>
+        </div>
+        
+        <div class="cmd-divider"></div>
+        
+        <div class="cmd-group" style="margin-left:auto;">
+            <button class="action-btn" onclick="toggleMaximize()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg>
+            </button>
+            <button class="action-btn close-btn" onclick="hideMap()">Close</button>
+        </div>
+    </div>
+    <div id="map"></div>
+</div> 
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+// --- GLOBAL DB INITIALIZATION ---
+let globalAirports = {};
+
+window.onload = async () => {
+    try {
+        const metaRes = await fetch('metadata.json');
+        const meta = await metaRes.json();
+        
+        const obsCount = meta.obs_count || 0;
+        document.getElementById('dof-status').innerText = `Verified (Eff. ${meta.dof_date} | ${obsCount} Obstacles)`;
+        document.getElementById('dof-dot').className = obsCount > 0 ? 'status-dot ready' : 'status-dot error';
+        
+        const aptRes = await fetch('airports.json');
+        globalAirports = await aptRes.json();
+        
+        const aptCount = meta.apt_count || Object.keys(globalAirports).length;
+        const aptDate = meta.apt_date || meta.dof_date || "Unknown";
+        document.getElementById('apt-status').innerText = `Verified (Eff. ${aptDate} | ${aptCount} airports/heliports found)`;
+        document.getElementById('apt-dot').className = aptCount > 0 ? 'status-dot ready' : 'status-dot error';
+        
+    } catch(e) {
+        console.error("Database fetch failed: ", e);
+        document.getElementById('dof-status').innerText = "Offline (Local mode only)";
+        document.getElementById('dof-dot').className = 'status-dot error';
+        document.getElementById('apt-status').innerText = "Offline";
+        document.getElementById('apt-dot').className = 'status-dot error';
+        document.getElementById('coordMode').click(); 
+    }
+};
+
+// --- CORE UI CONTROLS ---
+function toggleTheme() {
+    const body = document.body;
+    const btn = document.getElementById('themeBtn');
+    const isNowLight = body.getAttribute('data-theme') !== 'light';
+    body.setAttribute('data-theme', isNowLight ? 'light' : 'dark');
+    btn.innerText = isNowLight ? '🌙' : '☀️';
+}
+
+function toggleCenterInput() {
+    const isFaa = document.getElementById('faaMode').checked;
+    document.getElementById('faaInputGroup').style.display = isFaa ? 'block' : 'none';
+    document.getElementById('coordInputGroup').style.display = isFaa ? 'none' : 'grid';
+    if(isFaa) updateFacilityName();
+}
+
+function openVersionModal() { document.getElementById('versionModal').style.display = 'block'; }
+function closeVersionModal() { document.getElementById('versionModal').style.display = 'none'; }
+window.onclick = function(event) { if (event.target === document.getElementById('versionModal')) closeVersionModal(); }
+
+function updateOpacityLabel() { document.getElementById('opacityValue').textContent = document.getElementById('fillOpacity').value + '%'; }
+function toggleOpacitySlider() { document.getElementById('opacityGroup').style.display = document.getElementById('enableFill').checked ? 'flex' : 'none'; }
+
+// --- SMART LOOKUP LOGIC ---
+function getResolvedAirport(id) {
+    if (!id) return null;
+    if (globalAirports[id]) return globalAirports[id];
+    if (id.length === 4 && id.startsWith('K') && globalAirports[id.substring(1)]) {
+        return globalAirports[id.substring(1)];
+    }
+    return null;
+}
+
+function updateFacilityName() {
+    const id = document.getElementById('faaId').value.trim().toUpperCase();
+    const apt = getResolvedAirport(id);
+    const nameDiv = document.getElementById('facilityName');
+    
+    if (apt) {
+        nameDiv.innerText = `Centerpoint set to ${apt.name || "Facility Located"}`;
+        nameDiv.style.color = "var(--success)";
+    } else if (id.length > 0) {
+        nameDiv.innerText = "Identifier not found.";
+        nameDiv.style.color = "var(--danger)";
+    } else {
+        nameDiv.innerText = "";
+    }
+}
+
+// --- MATH & COORDINATE RESOLUTION ---
+function getCenterCoords() {
+    if (document.getElementById('faaMode').checked) {
+        const id = document.getElementById('faaId').value.trim().toUpperCase();
+        const apt = getResolvedAirport(id);
+        if (!apt) {
+            alert(`FAA Identifier '${id}' not found in the database. Please check the ID or switch to Custom Lat/Lon.`);
+            return null;
+        }
+        return { lat: apt.lat, lon: apt.lon };
+    } else {
+        return { 
+            lat: parseFloat(document.getElementById('lat').value), 
+            lon: parseFloat(document.getElementById('lon').value) 
+        };
+    }
+}
+
+function hexToKmlColor(hex, opacityHex) {
+    hex = hex.replace('#', '');
+    const r = hex.substring(0, 2);
+    const g = hex.substring(2, 4);
+    const b = hex.substring(4, 6);
+    return `${opacityHex}${b}${g}${r}`; 
+}
+
+function haversineNM(lat1, lon1, lat2, lon2) {
+    const R = 3440.065; 
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+              Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    return R * c;
+}
+
+function generateCircleCoords(lat, lon, radiusNM) {
+    const coords = [];
+    const earthRadiusNM = 3440.065; 
+    const dRad = radiusNM / earthRadiusNM;
+    const latRad = lat * Math.PI / 180;
+    const lonRad = lon * Math.PI / 180;
+
+    for (let i = 0; i <= 36; i++) {
+        const angle = (i === 36 ? 0 : i) / 36.0 * 2 * Math.PI;
+        const newLatRad = Math.asin(Math.sin(latRad) * Math.cos(dRad) + Math.cos(latRad) * Math.sin(dRad) * Math.cos(angle));
+        const newLonRad = lonRad + Math.atan2(Math.sin(angle) * Math.sin(dRad) * Math.cos(latRad), Math.cos(dRad) - Math.sin(latRad) * Math.sin(newLatRad));
+        coords.push(`${newLonRad * 180 / Math.PI},${newLatRad * 180 / Math.PI},0`);
+    }
+    return coords.join(" ");
+}
+
+// --- KML GENERATOR ---
+async function generateKML() {
+    const center = getCenterCoords();
+    if (!center) return;
+    const centerLat = center.lat;
+    const centerLon = center.lon;
+    
+    const searchRadiusNM = parseFloat(document.getElementById('radiusNM').value);
+    const minAGL = parseInt(document.getElementById('minAGL').value);
+    const ringRadiusNM = parseFloat(document.getElementById('ringNM').value); 
+    
+    const isFilled = document.getElementById('enableFill').checked;
+    const opacityPercent = isFilled ? parseInt(document.getElementById('fillOpacity').value) : 0;
+    let opacityHex = Math.round((opacityPercent / 100) * 255).toString(16).padStart(2, '0');
+
+    // Fetch Colors and Widths
+    const boundaryWidth = document.getElementById('boundaryWidth').value;
+    const ringWidth = document.getElementById('ringWidth').value;
+    const outlineColor = hexToKmlColor(document.getElementById('outlineColor').value, 'ff');
+    const fillColor = hexToKmlColor(document.getElementById('fillColor').value, opacityHex);
+    const enableFill = isFilled ? '1' : '0';
+    const enableBoundary = document.getElementById('enableBoundary').checked;
+    const boundaryColorHex = hexToKmlColor(document.getElementById('boundaryColor').value, 'ff');
+
+    try {
+        const response = await fetch('obstacles.json');
+        const obstacles = await response.json();
+
+        let centerLabel = "CustomCoords";
+        if (document.getElementById('faaMode').checked) {
+            centerLabel = document.getElementById('faaId').value.trim().toUpperCase() || "UNKNOWN";
+        } else {
+            const latLabel = parseFloat(document.getElementById('lat').value).toFixed(2);
+            const lonLabel = parseFloat(document.getElementById('lon').value).toFixed(2);
+            centerLabel = `${latLabel}_${lonLabel}`;
+        }
+        
+        let kml = `<?xml version="1.0" encoding="UTF-8"?>\n<kml xmlns="http://www.opengis.net/kml/2.2">\n<Document>\n`;
+        kml += `\t<name>${centerLabel} obstacles > ${minAGL} AGL within ${searchRadiusNM}NM</name>\n`;
+        
+        if (enableBoundary) {
+            const boundaryCoords = generateCircleCoords(centerLat, centerLon, searchRadiusNM);
+            kml += `\t<Style id="boundaryStyle">\n\t\t<LineStyle>\n\t\t\t<color>${boundaryColorHex}</color>\n\t\t\t<width>${boundaryWidth}</width>\n\t\t</LineStyle>\n\t\t<PolyStyle>\n\t\t\t<fill>0</fill>\n\t\t</PolyStyle>\n\t</Style>\n`;
+            kml += `\t<Placemark>\n\t\t<name>Search Area Boundary (${searchRadiusNM} NM)</name>\n\t\t<styleUrl>#boundaryStyle</styleUrl>\n`;
+            kml += `\t\t<Polygon>\n\t\t\t<outerBoundaryIs>\n\t\t\t\t<LinearRing>\n\t\t\t\t\t<coordinates>\n\t\t\t\t\t\t${boundaryCoords}\n\t\t\t\t\t</coordinates>\n\t\t\t\t</LinearRing>\n\t\t\t</outerBoundaryIs>\n\t\t</Polygon>\n\t</Placemark>\n`;
+        }
+        
+        kml += `\t<Style id="customCircle">\n\t\t<LineStyle>\n\t\t\t<color>${outlineColor}</color>\n\t\t\t<width>${ringWidth}</width>\n\t\t</LineStyle>\n`;
+        kml += `\t\t<PolyStyle>\n\t\t\t<color>${fillColor}</color>\n\t\t\t<fill>${enableFill}</fill>\n\t\t</PolyStyle>\n\t</Style>\n`;
+
+        let count = 0;
+
+        obstacles.forEach(obs => {
+            if (obs.agl > minAGL) {
+                const dist = haversineNM(centerLat, centerLon, obs.lat, obs.lon);
+                if (dist <= searchRadiusNM) {
+                    const circleCoords = generateCircleCoords(obs.lat, obs.lon, ringRadiusNM);
+                    kml += `\t<Placemark>\n\t\t<name>${obs.city} (${obs.id}) - ${obs.agl} AGL</name>\n\t\t<styleUrl>#customCircle</styleUrl>\n`;
+                    kml += `\t\t<Polygon>\n\t\t\t<outerBoundaryIs>\n\t\t\t\t<LinearRing>\n\t\t\t\t\t<coordinates>\n\t\t\t\t\t\t${circleCoords}\n\t\t\t\t\t</coordinates>\n\t\t\t\t</LinearRing>\n\t\t\t</outerBoundaryIs>\n\t\t</Polygon>\n\t</Placemark>\n`;
+                    count++;
+                }
+            }
+        });
+
+        kml += `</Document>\n</kml>`;
+        
+        const now = new Date();
+        const dtStr = now.getFullYear() + 
+                      String(now.getMonth() + 1).padStart(2, '0') + 
+                      String(now.getDate()).padStart(2, '0') + "-" + 
+                      String(now.getHours()).padStart(2, '0') + 
+                      String(now.getMinutes()).padStart(2, '0');
+
+        const blob = new Blob([kml], { type: 'application/vnd.google-earth.kml+xml' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Obstacles-${centerLabel}-${minAGL}AGL-${searchRadiusNM}NM-${dtStr}.kml`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+    } catch (error) {
+        console.error("Error generating KML:", error);
+        alert("Make sure you are running this on a web server so it can load the obstacles.json file!");
+    }
+}
+
+// --- MAP PREVIEW INTEGRATION ---
+let leafletMap = null, previewLayerGroup = null;
+let layers = {}, activeBase = 'street';
+
+async function showMapPreview() {
+    const center = getCenterCoords();
+    if (!center) return;
+    const centerLat = center.lat;
+    const centerLon = center.lon;
+
+    document.getElementById('mapOverlay').style.display = 'block';
+    const loader = document.getElementById('loader');
+    
+    if (!leafletMap) {
+        leafletMap = L.map('map', { zoomControl: false, attributionControl: false }).setView([39.8, -98.5], 4);
+        
+        layers = {
+            dark: L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom: 20 }),
+            street: L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(leafletMap),
+            sat: L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'),
+            vfr: L.tileLayer('https://tiles.arcgis.com/tiles/ssFJjBXIUyZDrSYZ/arcgis/rest/services/VFR_Sectional/MapServer/tile/{z}/{y}/{x}', {maxZoom: 12})
+        };
+
+        previewLayerGroup = L.layerGroup().addTo(leafletMap);
+    }
+    
+    leafletMap.invalidateSize(); 
+    previewLayerGroup.clearLayers();
+    loader.style.display = 'flex';
+
+    const radiusNM = parseFloat(document.getElementById('radiusNM').value);
+    const minAGL = parseInt(document.getElementById('minAGL').value);
+    const ringNM = parseFloat(document.getElementById('ringNM').value);
+
+    // Fetch Colors and Widths for Preview
+    const boundaryWidth = parseInt(document.getElementById('boundaryWidth').value) || 2;
+    const ringWidth = parseInt(document.getElementById('ringWidth').value) || 2;
+    
+    const isFilled = document.getElementById('enableFill').checked;
+    const fillOpacFloat = isFilled ? (parseInt(document.getElementById('fillOpacity').value) / 100) : 0;
+    const outlineColor = document.getElementById('outlineColor').value;
+    const fillColor = document.getElementById('fillColor').value;
+    const enableBoundary = document.getElementById('enableBoundary').checked;
+    const boundaryColor = document.getElementById('boundaryColor').value;
+
+    if (enableBoundary) {
+        L.circle([centerLat, centerLon], {
+            radius: radiusNM * 1852,
+            color: boundaryColor,
+            fill: false,
+            weight: boundaryWidth,
+            dashArray: '5, 10'
+        }).addTo(previewLayerGroup);
+    }
+
+    try {
+        const response = await fetch('obstacles.json');
+        const obstacles = await response.json();
+
+        obstacles.forEach(obs => {
+            if (obs.agl > minAGL) {
+                const dist = haversineNM(centerLat, centerLon, obs.lat, obs.lon);
+                if (dist <= radiusNM) {
+                    L.circle([obs.lat, obs.lon], {
+                        radius: ringNM * 1852,
+                        color: outlineColor,
+                        fillColor: fillColor,
+                        fillOpacity: fillOpacFloat,
+                        weight: ringWidth
+                    }).bindPopup(`<b>${obs.city} (${obs.id})</b><br>${obs.agl} ft AGL`)
+                      .addTo(previewLayerGroup);
+                }
+            }
+        });
+
+        leafletMap.setView([centerLat, centerLon], 8);
+        loader.style.display = 'none';
+
+    } catch (error) {
+        loader.style.display = 'none';
+        alert("Map Preview Error: Could not load obstacles.json.");
+    }
+}
+
+function hideMap() { document.getElementById('mapOverlay').style.display = 'none'; }
+function toggleMaximize() { document.getElementById('mapOverlay').classList.toggle('maximized'); setTimeout(() => leafletMap.invalidateSize(), 400); }
+
+function setBaseView(type) {
+    if (layers[activeBase]) leafletMap.removeLayer(layers[activeBase]);
+    layers[type].addTo(leafletMap).bringToBack();
+    activeBase = type;
+
+    document.querySelectorAll('.layer-switch .layer-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('b-' + type).classList.add('active');
+}
+</script>
+</body>
+</html>
