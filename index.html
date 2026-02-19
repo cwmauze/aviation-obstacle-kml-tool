@@ -118,7 +118,7 @@
     <div class="header-row">
         <div>
             <h2>KML Obstacle Overlay Generator</h2>
-            <span class="version-subtitle" onclick="openVersionModal()">v1.9 - Click for version history</span>
+            <span class="version-subtitle" onclick="openVersionModal()">v1.9.1 - Click for version history</span>
             <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub Project Home</a>
         </div>
         <button class="action-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 16px; padding: 6px 10px; height: auto;">☀️</button>
@@ -268,6 +268,7 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
+        <li><strong>v1.9.1:</strong> Added Cache-Buster logic to ensure browsers automatically download the latest database after a GitHub Action runs. Added memory caching to massively improve map preview speed.</li>
         <li><strong>v1.9:</strong> Major Update. Added advanced Multi-Radii search support and entire State/Territory filtering mode for comprehensive route planning. Map preview logic updated to dynamically bound to generated coordinates.</li>
         <li><strong>v1.8.3:</strong> Added strict data validation guardrails to prevent mathematical errors and browser crashes from invalid inputs.</li>
         <li><strong>v1.8.2:</strong> Added dynamic safety warning for obstacle heights below 200 ft AGL and updated project repository URL.</li>
@@ -313,17 +314,23 @@
 <script>
 // --- GLOBAL DB INITIALIZATION ---
 let globalAirports = {};
+let globalObstacles = null; // Memory Cache 
+let dbVersion = new Date().getTime(); // Cache Buster
 
 window.onload = async () => {
     try {
-        const metaRes = await fetch('metadata.json');
+        // Bypass cache to get fresh metadata
+        const metaRes = await fetch('metadata.json?nocache=' + new Date().getTime());
         const meta = await metaRes.json();
+        
+        // Build a unique version string based on the FAA cycle
+        dbVersion = encodeURIComponent((meta.dof_date || '') + (meta.obs_count || ''));
         
         const obsCount = meta.obs_count || 0;
         document.getElementById('dof-status').innerText = `Verified (Eff. ${meta.dof_date} | ${obsCount} Obstacles)`;
         document.getElementById('dof-dot').className = obsCount > 0 ? 'status-dot ready' : 'status-dot error';
         
-        const aptRes = await fetch('airports.json');
+        const aptRes = await fetch(`airports.json?v=${dbVersion}`);
         globalAirports = await aptRes.json();
         
         const aptCount = meta.apt_count || Object.keys(globalAirports).length;
@@ -340,6 +347,15 @@ window.onload = async () => {
         document.getElementById('coordMode').click(); 
     }
 };
+
+// --- EFFICIENT MEMORY LOADER ---
+async function getObstacles() {
+    if (!globalObstacles) {
+        const response = await fetch(`obstacles.json?v=${dbVersion}`);
+        globalObstacles = await response.json();
+    }
+    return globalObstacles;
+}
 
 // --- CORE UI CONTROLS ---
 function toggleTheme() {
@@ -556,8 +572,7 @@ async function generateKML() {
     const boundaryColorHex = hexToKmlColor(document.getElementById('boundaryColor').value, 'ff');
 
     try {
-        const response = await fetch('obstacles.json');
-        const obstacles = await response.json();
+        const obstacles = await getObstacles();
 
         let centerLabel = "CustomCoords";
         if (mode === 'state') {
@@ -707,8 +722,7 @@ async function showMapPreview() {
     }
 
     try {
-        const response = await fetch('obstacles.json');
-        const obstacles = await response.json();
+        const obstacles = await getObstacles();
 
         obstacles.forEach(obs => {
             if (obs.agl > minAGL) {
