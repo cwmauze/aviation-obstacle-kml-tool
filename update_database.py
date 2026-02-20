@@ -134,18 +134,21 @@ def harvest_notams():
             total_fetched += len(notam_list)
             offset += len(notam_list)
             
-            # 3. Regex Patterns
-            keywords = ["OBST TOWER LGT", "OUT OF SERVICE", "U/S", "LGT OUT", "UNLIT"]
-            coord_pattern = r"(\d{2,3})(\d{2})(\d{2})([NS])\s?(\d{2,3})(\d{2})(\d{2})([EW])"
-            agl_pattern = r"(\d+)\s?FT\s?AGL"
+         # 3. Regex Patterns (SIMPLIFIED & TARGETED)
+            coord_pattern = r"(\d{2,3})(\d{2})(\d{2}(?:\.\d+)?)([NS])\s?(\d{2,3})(\d{2})(\d{2}(?:\.\d+)?)([EW])"
+            agl_pattern = r"(\d+)\s?(?:FT)?\s?AGL"
 
             for item in notam_list:
                 # Check 'traditionalMessage' first, fallback to 'icaoMessage'
                 raw_text = item.get('traditionalMessage') or item.get('icaoMessage') or ''
                 text = raw_text.upper()
                 
-                # Filter for specific outage keywords
-                if any(key in text for key in keywords):
+                # THE NEW STRICT FILTER: Must contain OBST, must contain LGT/LIGHT, and must have an outage word.
+                # This catches "OBST TOWER LGT", "OBST CRANE LGT", "OBST WIND TURBINE LGT", etc.
+                outage_words = ["OUT", "U/S", "UNMON", "UNLIT", "OBSCURED"]
+                is_unlit_obstacle = ("OBST" in text) and ("LGT" in text or "LIGHT" in text) and any(w in text for w in outage_words)
+                
+                if is_unlit_obstacle:
                     coords = re.search(coord_pattern, text)
                     agl = re.search(agl_pattern, text)
                     
