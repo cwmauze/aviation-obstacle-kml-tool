@@ -115,11 +115,10 @@ def harvest_notams():
             notam_list = [{'icaoMessage': cell.get_text()} for cell in soup.find_all('td')]
             
         # --- DIAGNOSTIC PRINT ---
-		print(f"    > DIAGNOSTIC: FAA returned {len(notam_list)} total NOTAMs in this radius.")
+        print(f"    > DIAGNOSTIC: FAA returned {len(notam_list)} total NOTAMs in this radius.")
         if len(notam_list) > 0:
             print("    > PEEK AT FIRST NOTAM DATA:")
-            # This prints the raw JSON of the first NOTAM so we can see the exact keys and format
-            print(json.dumps(notam_list[0], indent=2))         
+            print(json.dumps(notam_list[0], indent=2))
             
         # 3. Regex Patterns
         keywords = ["OBST TOWER LGT", "OUT OF SERVICE", "U/S"]
