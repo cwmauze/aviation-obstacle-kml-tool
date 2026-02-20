@@ -119,7 +119,7 @@ def harvest_notams():
         if len(notam_list) > 0:
             print("    > PEEK AT FIRST NOTAM DATA:")
             # This prints the raw JSON of the first NOTAM so we can see the exact keys and format
-            print(json.dumps(notam_list[0], indent=2))          
+            print(json.dumps(notam_list[0], indent=2))         
             
         # 3. Regex Patterns
         keywords = ["OBST TOWER LGT", "OUT OF SERVICE", "U/S"]
