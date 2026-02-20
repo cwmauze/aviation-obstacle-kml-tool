@@ -86,7 +86,7 @@ def harvest_notams():
     
     # --- AUTOMATED GEOGRAPHY SEARCH CONFIG ---
     # Set your centerpoint identifier and search radius in Nautical Miles
-    center_id = "RDU" 
+    center_id = "KRDU" 
     search_radius = "150" 
     
     # Payload mimicking a web form "Geography Search"
@@ -113,6 +113,9 @@ def harvest_notams():
             from bs4 import BeautifulSoup
             soup = BeautifulSoup(response.text, 'html.parser')
             notam_list = [{'icaoMessage': cell.get_text()} for cell in soup.find_all('td')]
+            
+        # --- DIAGNOSTIC PRINT ---
+        print(f"    > DIAGNOSTIC: FAA returned {len(notam_list)} total NOTAMs in this radius.")
             
         # 3. Regex Patterns
         keywords = ["OBST TOWER LGT", "OUT OF SERVICE", "U/S"]
