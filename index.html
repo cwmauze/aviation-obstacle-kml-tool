@@ -118,7 +118,7 @@
     <div class="header-row">
         <div>
             <h2>KML Obstacle Overlay Generator</h2>
-            <span class="version-subtitle" onclick="openVersionModal()">v2.1.0 - Click for version history</span>
+            <span class="version-subtitle" onclick="openVersionModal()">v2.1.1 - Click for version history</span>
             <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub project home</a>
         </div>
         <button class="action-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 16px; padding: 6px 10px; height: auto;">☀️</button>
@@ -157,16 +157,16 @@
         <div class="section-title">1. Search Area Selection</div>
         <div style="display: flex; gap: 20px; margin-bottom: 12px; flex-wrap: wrap;">
             <label style="display: flex; align-items: center; gap: 5px; font-weight: normal; cursor: pointer; margin: 0;">
-                <input type="radio" name="centerMode" id="faaMode" value="faa" checked onchange="toggleCenterInput()"> Point(s) / Identifiers
+                <input type="radio" name="centerMode" id="faaMode" value="faa" checked onchange="toggleCenterInput()"> Point(s) / identifiers
             </label>
             <label style="display: flex; align-items: center; gap: 5px; font-weight: normal; cursor: pointer; margin: 0;">
-                <input type="radio" name="centerMode" id="routeMode" value="route" onchange="toggleCenterInput()"> Route Search
+                <input type="radio" name="centerMode" id="routeMode" value="route" onchange="toggleCenterInput()"> Route search
             </label>
             <label style="display: flex; align-items: center; gap: 5px; font-weight: normal; cursor: pointer; margin: 0;">
-                <input type="radio" name="centerMode" id="coordMode" value="coord" onchange="toggleCenterInput()"> Custom Lat/Lon
+                <input type="radio" name="centerMode" id="coordMode" value="coord" onchange="toggleCenterInput()"> Lat/Lon
             </label>
             <label style="display: flex; align-items: center; gap: 5px; font-weight: normal; cursor: pointer; margin: 0;">
-                <input type="radio" name="centerMode" id="stateMode" value="state" onchange="toggleCenterInput()"> Entire State(s)
+                <input type="radio" name="centerMode" id="stateMode" value="state" onchange="toggleCenterInput()"> Entire US state(s)
             </label>
         </div>
 
@@ -332,6 +332,7 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
+    	<li><strong>v2.1.1:</strong> Minor UI update.</li>
     	<li><strong>v2.1.0:</strong> Integrated official FAA NMS-API. Up-scoped NOTAM logic to process nationwide datasets with geospatial cross-referencing for state-mode bounding. Removed experimental tags.</li>
         <li><strong>v2.0.4 (beta):</strong> Updated NOTAM Javascript regex parsing logic to correctly handle decimal formats and unblock the altitude filter.</li>
         <li><strong>v2.0.3 (beta):</strong> Complete AGL Parsing overhaul to catch messy FAA NOTAM formats. Implemented independent live counter for NOTAM outages in Section 4.</li>
@@ -398,7 +399,7 @@ window.onload = async () => {
         dbVersion = encodeURIComponent((meta.dof_date || '') + (meta.obs_count || ''));
         
         const obsCount = meta.obs_count || 0;
-        document.getElementById('dof-status').innerText = `Verified (Eff. ${meta.dof_date} | ${obsCount} Obstacles)`;
+        document.getElementById('dof-status').innerText = `Verified (Eff. ${meta.dof_date} | ${obsCount} obstacles)`;
         document.getElementById('dof-dot').className = obsCount > 0 ? 'status-dot ready' : 'status-dot error';
         
         const aptRes = await fetch(`airports.json?v=${dbVersion}`);
@@ -415,7 +416,7 @@ window.onload = async () => {
             // NOTAMs change constantly, so we bypass the browser cache using a live timestamp
             const notamRes = await fetch(`notams.json?nocache=${new Date().getTime()}`);
             globalNotams = await notamRes.json();
-            document.getElementById('notam-status').innerText = `Loaded (${globalNotams.length} Active outages)`;
+            document.getElementById('notam-status').innerText = `Loaded (${globalNotams.length} active outages)`;
             document.getElementById('notam-dot').className = globalNotams.length > 0 ? 'status-dot ready' : 'status-dot error';
         } catch(e) {
             console.warn("NOTAM fetch failed or file missing.");
@@ -581,7 +582,7 @@ async function runLiveCounter() {
             notamCounterEl.innerText = "Layer Disabled";
             notamCounterEl.style.color = "var(--text)";
         } else {
-            notamCounterEl.innerText = `${notamCount} Active Outage${notamCount !== 1 ? 's' : ''}`;
+            notamCounterEl.innerText = `${notamCount} active outage${notamCount !== 1 ? 's' : ''}`;
             notamCounterEl.style.color = notamCount > 0 ? "var(--dispatch)" : "var(--text)";
         }
     }
