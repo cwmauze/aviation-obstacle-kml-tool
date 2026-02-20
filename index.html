@@ -118,7 +118,7 @@
     <div class="header-row">
         <div>
             <h2>KML Obstacle Overlay Generator</h2>
-            <span class="version-subtitle" onclick="openVersionModal()">v2.0.2 (Beta) - Click for version history</span>
+            <span class="version-subtitle" onclick="openVersionModal()">v2.0.3 (Beta) - Click for version history</span>
             <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub Project Home</a>
         </div>
         <button class="action-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 16px; padding: 6px 10px; height: auto;">☀️</button>
@@ -266,12 +266,15 @@
     </div>
 
     <div class="section-card">
-        <div class="section-title">4. Unlit Towers (Experimental)</div>
+        <div class="section-title">
+            <span>4. Unlit Towers (Experimental)</span>
+            <span id="notamLiveCounter" style="color: var(--text); font-weight: normal; text-transform: none;">0 Active Outages</span>
+        </div>
         <div class="grid-2">
             <div>
                 <div style="display: flex; align-items: center; height: 26px; margin-bottom: 8px;">
                     <div class="checkbox-group" style="padding: 0; margin: 0;">
-                        <input type="checkbox" id="notamInclude" checked>
+                        <input type="checkbox" id="notamInclude" checked onchange="triggerCounterUpdate()">
                         <label for="notamInclude" style="font-weight: bold; color: var(--dispatch); font-size: 12px;">Include Active Light Outage NOTAMs</label>
                     </div>
                 </div>
@@ -281,7 +284,7 @@
                 </div>
                 <div class="inline-control">
                     <label>Minimum height (ft AGL)</label>
-                    <input type="number" id="notamMinAGL" value="200" style="width: 60px; height: 26px; padding: 2px 6px; margin: 0; background: var(--card);">
+                    <input type="number" id="notamMinAGL" value="200" style="width: 60px; height: 26px; padding: 2px 6px; margin: 0; background: var(--card);" oninput="triggerCounterUpdate()">
                 </div>
             </div>
             <div>
@@ -326,24 +329,11 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
-        <li><strong>v2.0.2 (Beta):</strong> Added dedicated altitude filter for unlit NOTAM obstacles and implemented JS override logic to fix FAA text formatting bugs that caused incorrect AGL popups.</li>
-        <li><strong>v2.0.1 (Beta):</strong> Added Experimental Section 4 for scraping and rendering active FAA NOTAM light outages as high-visibility hazards.</li>
+        <li><strong>v2.0.3 (Beta):</strong> Complete AGL Parsing overhaul to catch messy FAA NOTAM formats. Implemented independent live counter for NOTAM outages in Section 4.</li>
+        <li><strong>v2.0.2 (Beta):</strong> Added dedicated altitude filter for unlit NOTAM obstacles.</li>
+        <li><strong>v2.0.1 (Beta):</strong> Added Experimental Section 4 for scraping and rendering active FAA NOTAM light outages.</li>
         <li><strong>v1.9.3:</strong> Added Real-Time Obstacle Counter, background RAM pre-loading, US State/Territory code validation guardrails, and unified ring radius styling options.</li>
-        <li><strong>v1.9.2:</strong> Fixed Leaflet bounds crash that caused false 'Could not load JSON' errors when auto-zooming Map Preview.</li>
-        <li><strong>v1.9.1:</strong> Added Cache-Buster logic to ensure browsers automatically download the latest database after a GitHub Action runs. Added memory caching to massively improve map preview speed.</li>
         <li><strong>v1.9:</strong> Major Update. Added advanced Multi-Radii search support and entire State/Territory filtering mode for comprehensive route planning. Map preview logic updated to dynamically bound to generated coordinates.</li>
-        <li><strong>v1.8.3:</strong> Added strict data validation guardrails to prevent mathematical errors and browser crashes from invalid inputs.</li>
-        <li><strong>v1.8.2:</strong> Added dynamic safety warning for obstacle heights below 200 ft AGL and updated project repository URL.</li>
-        <li><strong>v1.8.1:</strong> Added expanded introductory text, GitHub repository link, UI alignment fixes, light mode contrast adjustments, and snarky footer disclaimer.</li>
-        <li><strong>v1.8:</strong> Fixed layout grouping in Overlay Options. Added line thickness controls for boundary and rings. Default colors unified to red.</li>
-        <li><strong>v1.7:</strong> UI Optimization. Migrated to responsive 2-column card grid and compact inline color pickers to eliminate dead space.</li>
-        <li><strong>v1.6:</strong> Title update, dynamic filename and layer naming, and NASR effective date display.</li>
-        <li><strong>v1.5:</strong> Updated UI feedback for centerpoint facility validation.</li>
-        <li><strong>v1.4:</strong> Smart K-identifier lookup, facility name auto-population, and simplified direct map layer controls.</li>
-        <li><strong>v1.3:</strong> Integrated NASR FAA Airport database lookup and live DB validity status card.</li>
-        <li><strong>v1.2:</strong> UI upgrade to Genesys styling. Added full visual Map Preview capability with Leaflet integration and FAA sectional charts.</li>
-        <li><strong>v1.1:</strong> Added search boundary ring, customizable boundary colors, dark mode UI fixes, and single-file consolidation.</li>
-        <li><strong>v1.0:</strong> Initial release. Added custom coordinate selection, height filtering, nautical mile conversion, and obstacle opacity settings.</li>
     </ul>
   </div>
 </div>
@@ -384,11 +374,9 @@ const validStates = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA',
 
 window.onload = async () => {
     try {
-        // Bypass cache to get fresh metadata
         const metaRes = await fetch('metadata.json?nocache=' + new Date().getTime());
         const meta = await metaRes.json();
         
-        // Build a unique version string based on the FAA cycle
         dbVersion = encodeURIComponent((meta.dof_date || '') + (meta.obs_count || ''));
         
         const obsCount = meta.obs_count || 0;
@@ -403,10 +391,8 @@ window.onload = async () => {
         document.getElementById('apt-status').innerText = `Verified (Eff. ${aptDate} | ${aptCount} airports/heliports found)`;
         document.getElementById('apt-dot').className = aptCount > 0 ? 'status-dot ready' : 'status-dot error';
         
-        // Preload massive JSON into RAM silently and trigger counter
         getObstacles().then(() => triggerCounterUpdate());
 
-        // Fetch Experimental NOTAMs
         try {
             const notamRes = await fetch(`notams.json?v=${dbVersion}`);
             globalNotams = await notamRes.json();
@@ -437,6 +423,23 @@ async function getObstacles() {
     return globalObstacles;
 }
 
+// --- NOTAM AGL PARSER (SMART OVERRIDE) ---
+function parseNotamAGL(text, fallback) {
+    if (!text) return (fallback === "1" || fallback === "Unknown") ? "Unknown" : fallback;
+    
+    // Pattern 1: Captures 250 AGL, 250FT AGL, 250 FT AGL
+    const aglMatch = text.match(/(\d+)\s*(?:FT)?\s*AGL/i);
+    if (aglMatch) return aglMatch[1];
+    
+    // Pattern 2: Fallback for MSL enclosures like 1049 MSL ( 250 )
+    const backupMatch = text.match(/MSL\s*\(\s*(\d+)\s*(?:FT)?\s*\)/i);
+    if (backupMatch) return backupMatch[1];
+    
+    // If we have a valid fallback from Python, use it
+    if (fallback && fallback !== "1" && fallback !== "Unknown") return fallback;
+    return "Unknown";
+}
+
 // --- REAL-TIME COUNTER (DEBOUNCED) ---
 let counterTimeout;
 function triggerCounterUpdate() {
@@ -446,56 +449,98 @@ function triggerCounterUpdate() {
 
 async function runLiveCounter() {
     if (!globalObstacles) return;
+    
+    // UI Loading States
     const counterEl = document.getElementById('liveCounter');
     counterEl.innerText = "Calculating...";
     counterEl.style.color = "var(--dispatch)";
 
-    const mode = document.querySelector('input[name="centerMode"]:checked').value;
-    const minAGL = parseInt(document.getElementById('minAGL').value);
-    
-    // Fail quietly if AGL input is empty while typing
-    if (isNaN(minAGL)) {
-        counterEl.innerText = "0 Obstacles";
-        counterEl.style.color = "var(--text)";
-        return;
+    const notamCounterEl = document.getElementById('notamLiveCounter');
+    if (notamCounterEl) {
+        notamCounterEl.innerText = "Calculating...";
+        notamCounterEl.style.color = "var(--dispatch)";
     }
 
+    const mode = document.querySelector('input[name="centerMode"]:checked').value;
+    const minAGL = parseInt(document.getElementById('minAGL').value);
+    const searchRadiusNM = parseFloat(document.getElementById('radiusNM').value);
+    const centers = getCenterCoords();
+    
     let count = 0;
-    if (mode === 'state') {
-        const rawStates = document.getElementById('stateIds').value;
-        const targetStates = rawStates.split(',').map(s => s.trim().toUpperCase()).filter(s => s.length === 2);
-        if (targetStates.length === 0) {
-            counterEl.innerText = "0 Obstacles";
-            counterEl.style.color = "var(--text)";
-            return;
-        }
-        for (let i = 0; i < globalObstacles.length; i++) {
-            const obs = globalObstacles[i];
-            if (obs.agl > minAGL && targetStates.includes(obs.state)) count++;
-        }
-    } else {
-        const searchRadiusNM = parseFloat(document.getElementById('radiusNM').value);
-        const centers = getCenterCoords();
-        if (!centers || centers.length === 0 || isNaN(searchRadiusNM)) {
-            counterEl.innerText = "0 Obstacles";
-            counterEl.style.color = "var(--text)";
-            return;
-        }
-        for (let i = 0; i < globalObstacles.length; i++) {
-            const obs = globalObstacles[i];
-            if (obs.agl > minAGL) {
-                for (let j = 0; j < centers.length; j++) {
-                    if (haversineNM(centers[j].lat, centers[j].lon, obs.lat, obs.lon) <= searchRadiusNM) {
-                        count++;
-                        break;
+    let notamCount = 0;
+
+    // 1. Process Standard Obstacles
+    if (!isNaN(minAGL)) {
+        if (mode === 'state') {
+            const rawStates = document.getElementById('stateIds').value;
+            const targetStates = rawStates.split(',').map(s => s.trim().toUpperCase()).filter(s => s.length === 2);
+            if (targetStates.length > 0) {
+                for (let i = 0; i < globalObstacles.length; i++) {
+                    const obs = globalObstacles[i];
+                    if (obs.agl > minAGL && targetStates.includes(obs.state)) count++;
+                }
+            }
+        } else if (centers && centers.length > 0 && !isNaN(searchRadiusNM)) {
+            for (let i = 0; i < globalObstacles.length; i++) {
+                const obs = globalObstacles[i];
+                if (obs.agl > minAGL) {
+                    for (let j = 0; j < centers.length; j++) {
+                        if (haversineNM(centers[j].lat, centers[j].lon, obs.lat, obs.lon) <= searchRadiusNM) {
+                            count++;
+                            break;
+                        }
                     }
                 }
             }
         }
     }
 
+    // 2. Process Experimental NOTAMs
+    const incNotam = document.getElementById('notamInclude').checked;
+    const notamMinAGL = parseInt(document.getElementById('notamMinAGL').value) || 0;
+
+    if (incNotam && globalNotams) {
+        for (let i = 0; i < globalNotams.length; i++) {
+            const notam = globalNotams[i];
+            let keep = false;
+
+            if (mode === 'state') {
+                keep = true; // State Mode MVP
+            } else if (centers && !isNaN(searchRadiusNM)) {
+                for (let j = 0; j < centers.length; j++) {
+                    if (haversineNM(centers[j].lat, centers[j].lon, notam.lat, notam.lon) <= searchRadiusNM) {
+                        keep = true;
+                        break;
+                    }
+                }
+            }
+
+            if (keep) {
+                let finalAgl = parseNotamAGL(notam.text, notam.agl);
+                let aglNum = parseInt(finalAgl);
+                // Apply strict altitude filter if the number was successfully parsed
+                if (!isNaN(aglNum) && aglNum < notamMinAGL) {
+                    keep = false;
+                }
+            }
+
+            if (keep) notamCount++;
+        }
+    }
+
+    // Update UI Counters
     counterEl.innerText = `${count} Obstacle${count !== 1 ? 's' : ''}`;
     counterEl.style.color = count > 0 ? "var(--success)" : "var(--text)";
+
+    if (notamCounterEl) {
+        if (!incNotam) {
+            notamCounterEl.innerText = "Layer Disabled";
+            notamCounterEl.style.color = "var(--text)";
+        } else {
+            notamCounterEl.innerText = `${notamCount} Active Outage${notamCount !== 1 ? 's' : ''}`;
+            notamCounterEl.style.color = notamCount > 0 ? "var(--dispatch)" : "var(--text)";
+        }
+    }
 }
 
 // --- CORE UI CONTROLS ---
@@ -526,8 +571,6 @@ window.onclick = function(event) { if (event.target === document.getElementById(
 
 function updateOpacityLabel() { document.getElementById('opacityValue').textContent = document.getElementById('fillOpacity').value + '%'; }
 function toggleOpacitySlider() { document.getElementById('opacityGroup').style.display = document.getElementById('enableFill').checked ? 'flex' : 'none'; }
-
-// NOTAM Specific Sliders
 function updateNotamOpacityLabel() { document.getElementById('notamOpacityValue').textContent = document.getElementById('notamFillOpacity').value + '%'; }
 function toggleNotamOpacitySlider() { document.getElementById('notamOpacityGroup').style.display = document.getElementById('notamEnableFill').checked ? 'flex' : 'none'; }
 
@@ -585,20 +628,6 @@ function validateInputs() {
     const ringNM = parseFloat(document.getElementById('ringNM').value);
     if (isNaN(ringNM) || ringNM < 0.1 || ringNM > 10.0) {
         alert("Ring radius around obstacles must be between 0.1 and 10.0 NM.");
-        return false;
-    }
-
-    if (mode !== 'state') {
-        const boundaryWidth = parseInt(document.getElementById('boundaryWidth').value);
-        if (isNaN(boundaryWidth) || boundaryWidth < 1 || boundaryWidth > 10) {
-            alert("Search boundary line thickness must be between 1 and 10 px.");
-            return false;
-        }
-    }
-
-    const ringWidth = parseInt(document.getElementById('ringWidth').value);
-    if (isNaN(ringWidth) || ringWidth < 1 || ringWidth > 10) {
-        alert("Obstacle ring line thickness must be between 1 and 10 px.");
         return false;
     }
 
@@ -780,8 +809,6 @@ async function generateKML() {
             kml += `\t\t<PolyStyle>\n\t\t\t<color>${notamFillColor}</color>\n\t\t\t<fill>${notamEnableFill}</fill>\n\t\t</PolyStyle>\n\t</Style>\n`;
         }
 
-        let count = 0;
-
         obstacles.forEach(obs => {
             if (obs.agl > minAGL) {
                 let keep = false;
@@ -801,7 +828,6 @@ async function generateKML() {
                     const circleCoords = generateCircleCoords(obs.lat, obs.lon, ringRadiusNM);
                     kml += `\t<Placemark>\n\t\t<name>${obs.city} (${obs.id}) - ${obs.agl} AGL</name>\n\t\t<styleUrl>#customCircle</styleUrl>\n`;
                     kml += `\t\t<Polygon>\n\t\t\t<outerBoundaryIs>\n\t\t\t\t<LinearRing>\n\t\t\t\t\t<coordinates>\n\t\t\t\t\t\t${circleCoords}\n\t\t\t\t\t</coordinates>\n\t\t\t\t</LinearRing>\n\t\t\t</outerBoundaryIs>\n\t\t</Polygon>\n\t</Placemark>\n`;
-                    count++;
                 }
             }
         });
@@ -810,7 +836,7 @@ async function generateKML() {
             globalNotams.forEach(notam => {
                 let keep = false;
                 if (mode === 'state') {
-                    keep = true; // Include all scraped NOTAMs for MVP state view
+                    keep = true;
                 } else {
                     for (const c of centers) {
                         if (haversineNM(c.lat, c.lon, notam.lat, notam.lon) <= searchRadiusNM) {
@@ -821,32 +847,19 @@ async function generateKML() {
                 }
 
                 if (keep) {
-                    let finalAgl = notam.agl;
-                    // JS Override to fix the '1 ft AGL' bug
-                    const aglMatch = notam.text.match(/(\d{2,4})\s?(?:FT)?\s*AGL/i);
-                    if (aglMatch) {
-                        finalAgl = aglMatch[1];
-                    } else if (finalAgl === "1" || finalAgl === "Unknown") {
-                        finalAgl = "Unknown";
-                    }
-                    
+                    let finalAgl = parseNotamAGL(notam.text, notam.agl);
                     let aglNum = parseInt(finalAgl);
                     if (!isNaN(aglNum) && aglNum < notamMinAGL) {
                         keep = false;
                     }
-                }
 
-                if (keep) {
-                    let finalAgl = notam.agl;
-                    const aglMatch = notam.text.match(/(\d{2,4})\s?(?:FT)?\s*AGL/i);
-                    if (aglMatch) finalAgl = aglMatch[1];
-                    else if (finalAgl === "1" || finalAgl === "Unknown") finalAgl = "Unknown";
-
-                    const circleCoords = generateCircleCoords(notam.lat, notam.lon, notamRingNM);
-                    kml += `\t<Placemark>\n\t\t<name>UNLIT TOWER - ${finalAgl} ft AGL</name>\n`;
-                    kml += `\t\t<description><![CDATA[${notam.text}]]></description>\n`;
-                    kml += `\t\t<styleUrl>#notamCircle</styleUrl>\n`;
-                    kml += `\t\t<Polygon>\n\t\t\t<outerBoundaryIs>\n\t\t\t\t<LinearRing>\n\t\t\t\t\t<coordinates>\n\t\t\t\t\t\t${circleCoords}\n\t\t\t\t\t</coordinates>\n\t\t\t\t</LinearRing>\n\t\t\t</outerBoundaryIs>\n\t\t</Polygon>\n\t</Placemark>\n`;
+                    if (keep) {
+                        const circleCoords = generateCircleCoords(notam.lat, notam.lon, notamRingNM);
+                        kml += `\t<Placemark>\n\t\t<name>UNLIT TOWER - ${finalAgl} ft AGL</name>\n`;
+                        kml += `\t\t<description><![CDATA[${notam.text}]]></description>\n`;
+                        kml += `\t\t<styleUrl>#notamCircle</styleUrl>\n`;
+                        kml += `\t\t<Polygon>\n\t\t\t<outerBoundaryIs>\n\t\t\t\t<LinearRing>\n\t\t\t\t\t<coordinates>\n\t\t\t\t\t\t${circleCoords}\n\t\t\t\t\t</coordinates>\n\t\t\t\t</LinearRing>\n\t\t\t</outerBoundaryIs>\n\t\t</Polygon>\n\t</Placemark>\n`;
+                    }
                 }
             });
         }
@@ -918,7 +931,6 @@ async function showMapPreview() {
     const searchRadiusNM = mode !== 'state' ? parseFloat(document.getElementById('radiusNM').value) : 0;
     const minAGL = parseInt(document.getElementById('minAGL').value);
     
-    // Standard Obstacle setup
     const ringNM = parseFloat(document.getElementById('ringNM').value);
     const ringWidth = parseInt(document.getElementById('ringWidth').value) || 2;
     const isFilled = document.getElementById('enableFill').checked;
@@ -926,7 +938,6 @@ async function showMapPreview() {
     const outlineColor = document.getElementById('outlineColor').value;
     const fillColor = document.getElementById('fillColor').value;
     
-    // NOTAM setup
     const incNotam = document.getElementById('notamInclude').checked;
     const notamMinAGL = parseInt(document.getElementById('notamMinAGL').value) || 0;
     const notamRingNM = parseFloat(document.getElementById('notamRingNM').value);
@@ -998,40 +1009,26 @@ async function showMapPreview() {
                 }
 
                 if (keep) {
-                    let finalAgl = notam.agl;
-                    // JS Override to fix the '1 ft AGL' bug
-                    const aglMatch = notam.text.match(/(\d{2,4})\s?(?:FT)?\s*AGL/i);
-                    if (aglMatch) {
-                        finalAgl = aglMatch[1];
-                    } else if (finalAgl === "1" || finalAgl === "Unknown") {
-                        finalAgl = "Unknown";
-                    }
-                    
+                    let finalAgl = parseNotamAGL(notam.text, notam.agl);
                     let aglNum = parseInt(finalAgl);
                     if (!isNaN(aglNum) && aglNum < notamMinAGL) {
                         keep = false;
                     }
-                }
 
-                if (keep) {
-                    let finalAgl = notam.agl;
-                    const aglMatch = notam.text.match(/(\d{2,4})\s?(?:FT)?\s*AGL/i);
-                    if (aglMatch) finalAgl = aglMatch[1];
-                    else if (finalAgl === "1" || finalAgl === "Unknown") finalAgl = "Unknown";
-
-                    L.circle([notam.lat, notam.lon], {
-                        radius: notamRingNM * 1852,
-                        color: notamOutlineColor,
-                        fillColor: notamFillColor,
-                        fillOpacity: notamOpacFloat,
-                        weight: notamWidth
-                    }).bindPopup(`<b>UNLIT TOWER - ${finalAgl} ft AGL</b><br><span style="color:var(--danger); font-size:10px;">${notam.text}</span>`)
-                      .addTo(previewLayerGroup);
+                    if (keep) {
+                        L.circle([notam.lat, notam.lon], {
+                            radius: notamRingNM * 1852,
+                            color: notamOutlineColor,
+                            fillColor: notamFillColor,
+                            fillOpacity: notamOpacFloat,
+                            weight: notamWidth
+                        }).bindPopup(`<b>UNLIT TOWER - ${finalAgl} ft AGL</b><br><span style="color:var(--danger); font-size:10px;">${notam.text}</span>`)
+                          .addTo(previewLayerGroup);
+                    }
                 }
             });
         }
 
-        // Smart Map Framing
         if (previewLayerGroup.getLayers().length > 0) {
             leafletMap.fitBounds(previewLayerGroup.getBounds(), {padding: [20, 20], maxZoom: 10});
         } else if (centers && centers.length > 0) {
