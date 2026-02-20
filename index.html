@@ -118,7 +118,7 @@
     <div class="header-row">
         <div>
             <h2>KML Obstacle Overlay Generator</h2>
-            <span class="version-subtitle" onclick="openVersionModal()">v2.0.3 (Beta) - Click for version history</span>
+            <span class="version-subtitle" onclick="openVersionModal()">v2.0.4 (Beta) - Click for version history</span>
             <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub Project Home</a>
         </div>
         <button class="action-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 16px; padding: 6px 10px; height: auto;">☀️</button>
@@ -329,6 +329,7 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
+        <li><strong>v2.0.4 (Beta):</strong> Updated NOTAM Javascript regex parsing logic to correctly handle decimal formats and unblock the altitude filter.</li>
         <li><strong>v2.0.3 (Beta):</strong> Complete AGL Parsing overhaul to catch messy FAA NOTAM formats. Implemented independent live counter for NOTAM outages in Section 4.</li>
         <li><strong>v2.0.2 (Beta):</strong> Added dedicated altitude filter for unlit NOTAM obstacles.</li>
         <li><strong>v2.0.1 (Beta):</strong> Added Experimental Section 4 for scraping and rendering active FAA NOTAM light outages.</li>
@@ -427,15 +428,14 @@ async function getObstacles() {
 function parseNotamAGL(text, fallback) {
     if (!text) return (fallback === "1" || fallback === "Unknown") ? "Unknown" : fallback;
     
-    // Pattern 1: Captures 250 AGL, 250FT AGL, 250 FT AGL
-    const aglMatch = text.match(/(\d+)\s*(?:FT)?\s*AGL/i);
+    // Pattern 1: Captures decimals as well! (e.g., 250 AGL, 1017.4FT AGL, 250 FT AGL)
+    const aglMatch = text.match(/(\d+(?:\.\d+)?)\s*(?:FT)?\s*AGL/i);
     if (aglMatch) return aglMatch[1];
     
     // Pattern 2: Fallback for MSL enclosures like 1049 MSL ( 250 )
-    const backupMatch = text.match(/MSL\s*\(\s*(\d+)\s*(?:FT)?\s*\)/i);
+    const backupMatch = text.match(/MSL\s*\(\s*(\d+(?:\.\d+)?)\s*(?:FT)?\s*\)/i);
     if (backupMatch) return backupMatch[1];
     
-    // If we have a valid fallback from Python, use it
     if (fallback && fallback !== "1" && fallback !== "Unknown") return fallback;
     return "Unknown";
 }
@@ -517,7 +517,7 @@ async function runLiveCounter() {
 
             if (keep) {
                 let finalAgl = parseNotamAGL(notam.text, notam.agl);
-                let aglNum = parseInt(finalAgl);
+                let aglNum = parseFloat(finalAgl); // FIX: parseFloat to retain decimals!
                 // Apply strict altitude filter if the number was successfully parsed
                 if (!isNaN(aglNum) && aglNum < notamMinAGL) {
                     keep = false;
@@ -628,6 +628,20 @@ function validateInputs() {
     const ringNM = parseFloat(document.getElementById('ringNM').value);
     if (isNaN(ringNM) || ringNM < 0.1 || ringNM > 10.0) {
         alert("Ring radius around obstacles must be between 0.1 and 10.0 NM.");
+        return false;
+    }
+
+    if (mode !== 'state') {
+        const boundaryWidth = parseInt(document.getElementById('boundaryWidth').value);
+        if (isNaN(boundaryWidth) || boundaryWidth < 1 || boundaryWidth > 10) {
+            alert("Search boundary line thickness must be between 1 and 10 px.");
+            return false;
+        }
+    }
+
+    const ringWidth = parseInt(document.getElementById('ringWidth').value);
+    if (isNaN(ringWidth) || ringWidth < 1 || ringWidth > 10) {
+        alert("Obstacle ring line thickness must be between 1 and 10 px.");
         return false;
     }
 
@@ -848,7 +862,7 @@ async function generateKML() {
 
                 if (keep) {
                     let finalAgl = parseNotamAGL(notam.text, notam.agl);
-                    let aglNum = parseInt(finalAgl);
+                    let aglNum = parseFloat(finalAgl); // FIX: parseFloat to retain decimals!
                     if (!isNaN(aglNum) && aglNum < notamMinAGL) {
                         keep = false;
                     }
@@ -1010,7 +1024,7 @@ async function showMapPreview() {
 
                 if (keep) {
                     let finalAgl = parseNotamAGL(notam.text, notam.agl);
-                    let aglNum = parseInt(finalAgl);
+                    let aglNum = parseFloat(finalAgl); // FIX: parseFloat to retain decimals!
                     if (!isNaN(aglNum) && aglNum < notamMinAGL) {
                         keep = false;
                     }
