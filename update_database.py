@@ -122,7 +122,7 @@ def harvest_notams():
         agl_pattern = r"(\d+)\s?FT\s?AGL"
 
         for item in notam_list:
-            # FIX: Check 'traditionalMessage' first, fallback to 'icaoMessage'
+            # Check 'traditionalMessage' first, fallback to 'icaoMessage'
             raw_text = item.get('traditionalMessage') or item.get('icaoMessage') or ''
             text = raw_text.upper()
             
@@ -148,7 +148,55 @@ def harvest_notams():
         
     except Exception as e:
         print(f"[!] NOTAM Scraper failed: {e}")
+
+def dms_to_dd_notam(d, m, s, direction):
+    """Specific converter for NOTAM DMS format."""
+    dd = float(d) + float(m)/60 + float(s)/3600
+    if direction in ['S', 'W']: dd *= -1
+    return round(dd, 6)
+
+def process_data():
+    obstacles = []
+    airports = {}
+    metadata = {"dof_date": "Unknown", "apt_count": 0, "obs_count": 0}
+
+    # --- 1. DOWNLOAD & PARSE DOF (56-Day Cycle) ---
+    print("[-] Fetching latest DOF ZIP...")
+    try:
+        dof_zip_url = get_dof_zip_url()
+        print(f"[-] Downloading: {dof_zip_url}")
         
+        r_dof = requests.get(dof_zip_url, headers=HEADERS)
+        with zipfile.ZipFile(io.BytesIO(r_dof.content)) as z:
+            dat_filename = next(name for name in z.namelist() if name.upper().endswith('DOF.DAT'))
+            with z.open(dat_filename) as f:
+                for line_bytes in f:
+                    line = line_bytes.decode('utf-8', errors='ignore')
+                    
+                    if line.startswith("  CURRENCY DATE ="):
+                        metadata["dof_date"] = line.split("=")[1].strip()
+                        
+                    if len(line) < 100 or line.startswith("CUR") or line.startswith("-") or line.startswith("OAS") or line.startswith(" "):
+                        continue
+                    try:
+                        agl_str = line[83:88].strip()
+                        if not agl_str.isdigit(): continue
+                        agl = int(agl_str)
+                        if agl < 200: continue
+                        
+                        lat = parse_dof_dms(line[35:47])
+                        lon = parse_dof_dms(line[48:61])
+                        city = line[18:34].strip()
+                        state = line[15:17].strip().upper() # ADDED: 2-Letter State Code
+                        oas = line[0:9].strip()
+                        
+                        obstacles.append({"id": oas, "state": state, "city": city, "lat": lat, "lon": lon, "agl": agl})
+                    except:
+                        continue
+        print(f"    > Parsed {len(obstacles)} Obstacles.")
+    except Exception as e:
+        print(f"[!] DOF Process failed: {e}")
+
     # --- 2. DOWNLOAD & PARSE NASR APT (28-Day Cycle) ---
     print("\n[-] Fetching latest NASR APT ZIP...")
     cycle_date = get_current_airac_cycle()
