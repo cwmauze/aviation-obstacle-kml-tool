@@ -70,12 +70,12 @@ def parse_dof_dms(dms_str):
     if direction in ['S', 'W']: decimal = -decimal
     return decimal
 
-# --- NEW: NOTAM HARVESTER LOGIC (Version 2.0 MVP - Geography Search) ---
+# --- NEW: NOTAM HARVESTER LOGIC (Version 2.0 MVP - Paginated) ---
 
 def harvest_notams():
     """
     MVP Scraper version of the NOTAM Harvester using Geography Search.
-    Automated for headless servers (GitHub Actions) - No interactive prompts.
+    Automated for headless servers (GitHub Actions) - Includes Pagination!
     """
     SEARCH_URL = "https://notams.aim.faa.gov/notamSearch/search"
     
@@ -85,12 +85,12 @@ def harvest_notams():
     }
     
     # --- AUTOMATED GEOGRAPHY SEARCH CONFIG ---
-    # Set your centerpoint identifier and search radius in Nautical Miles
+    # Edit these two variables to change your search area!
     center_id = "NC91" 
     search_radius = "100" 
     
-    # Payload mimicking a web form "Geography Search"
-    payload = (
+    # Base Payload mimicking a web form "Geography Search"
+    base_payload = (
         f"searchType=3"
         f"&radiusSearchOnDesignator=true"
         f"&radiusSearchDesignator={center_id}"
@@ -101,46 +101,69 @@ def harvest_notams():
     print(f"[-] Scraping public NOTAMs for light outages within {search_radius}NM of {center_id}...")
     
     try:
-        # 1. Fetch the data
-        response = requests.post(SEARCH_URL, headers=HEADERS_NOTAM, data=payload, timeout=30)
-        response.raise_for_status()
+        offset = 0
+        total_fetched = 0
+        expected_total = 1 # Initialize to 1 to enter the loop
         
-        # 2. Extract JSON or fallback to HTML table parsing
-        notam_list = []
-        try:
-            notam_list = response.json().get('notamList', [])
-        except ValueError:
-            from bs4 import BeautifulSoup
-            soup = BeautifulSoup(response.text, 'html.parser')
-            notam_list = [{'traditionalMessage': cell.get_text()} for cell in soup.find_all('td')]
+        while total_fetched < expected_total:
+            # Inject the current offset to grab the next "page" of results
+            payload = f"{base_payload}&offset={offset}"
+            response = requests.post(SEARCH_URL, headers=HEADERS_NOTAM, data=payload, timeout=30)
+            response.raise_for_status()
             
-        print(f"    > DIAGNOSTIC: FAA returned {len(notam_list)} total NOTAMs in this radius.")
-            
-        # 3. Regex Patterns
-        keywords = ["OBST TOWER LGT", "OUT OF SERVICE", "U/S", "LGT OUT"]
-        coord_pattern = r"(\d{2,3})(\d{2})(\d{2})([NS])\s?(\d{2,3})(\d{2})(\d{2})([EW])"
-        agl_pattern = r"(\d+)\s?FT\s?AGL"
-
-        for item in notam_list:
-            # Check 'traditionalMessage' first, fallback to 'icaoMessage'
-            raw_text = item.get('traditionalMessage') or item.get('icaoMessage') or ''
-            text = raw_text.upper()
-            
-            # Filter for specific outage keywords
-            if any(key in text for key in keywords):
-                coords = re.search(coord_pattern, text)
-                agl = re.search(agl_pattern, text)
+            notam_list = []
+            try:
+                data = response.json()
+                notam_list = data.get('notamList', [])
                 
-                if coords:
-                    lat = dms_to_dd_notam(coords.group(1), coords.group(2), coords.group(3), coords.group(4))
-                    lon = dms_to_dd_notam(coords.group(5), coords.group(6), coords.group(7), coords.group(8))
+                # On the first loop, grab the actual total number of NOTAMs the FAA has
+                if offset == 0:
+                    expected_total = data.get('totalNotamCount', len(notam_list))
+                    print(f"    > DIAGNOSTIC: FAA reports {expected_total} total NOTAMs in this radius.")
+            except ValueError:
+                # Fallback if FAA returns HTML instead of JSON
+                from bs4 import BeautifulSoup
+                soup = BeautifulSoup(response.text, 'html.parser')
+                notam_list = [{'traditionalMessage': cell.get_text()} for cell in soup.find_all('td')]
+                expected_total = len(notam_list)
+            
+            # Break the loop if the server stops sending data
+            if not notam_list:
+                break
+                
+            total_fetched += len(notam_list)
+            offset += len(notam_list)
+            
+            # 3. Regex Patterns
+            keywords = ["OBST TOWER LGT", "OUT OF SERVICE", "U/S", "LGT OUT", "UNLIT"]
+            coord_pattern = r"(\d{2,3})(\d{2})(\d{2})([NS])\s?(\d{2,3})(\d{2})(\d{2})([EW])"
+            agl_pattern = r"(\d+)\s?FT\s?AGL"
+
+            for item in notam_list:
+                # Check 'traditionalMessage' first, fallback to 'icaoMessage'
+                raw_text = item.get('traditionalMessage') or item.get('icaoMessage') or ''
+                text = raw_text.upper()
+                
+                # Filter for specific outage keywords
+                if any(key in text for key in keywords):
+                    coords = re.search(coord_pattern, text)
+                    agl = re.search(agl_pattern, text)
                     
-                    processed_notams.append({
-                        "lat": lat,
-                        "lon": lon,
-                        "agl": agl.group(1) if agl else "Unknown",
-                        "text": text
-                    })
+                    if coords:
+                        lat = dms_to_dd_notam(coords.group(1), coords.group(2), coords.group(3), coords.group(4))
+                        lon = dms_to_dd_notam(coords.group(5), coords.group(6), coords.group(7), coords.group(8))
+                        
+                        processed_notams.append({
+                            "lat": lat,
+                            "lon": lon,
+                            "agl": agl.group(1) if agl else "Unknown",
+                            "text": text
+                        })
+            
+            # Failsafe to prevent infinite loops in automated environments
+            if offset > 5000:
+                print("    > [!] API limit reached (5000 NOTAMs). Breaking to prevent infinite loop.")
+                break
         
         with open("notams.json", 'w') as f:
             json.dump(processed_notams, f, indent=2)
