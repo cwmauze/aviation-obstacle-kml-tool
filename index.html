@@ -129,7 +129,7 @@
         .layer-btn { background: transparent; border: none; color: #888; padding: 8px 12px; font-size: 11px; font-weight: 600; cursor: pointer; border-radius: 4px; transition: 0.2s; white-space: nowrap; height: 32px; display: flex; align-items: center; }
         .layer-btn.active { background: var(--primary); color: white; }
         .action-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 8px 12px; font-size: 11px; border-radius: 6px; cursor: pointer; height: 32px; display: flex; align-items: center; gap: 6px; }
-        .close { 
+		.close { 
             position: sticky; 
             top: 0; 
             float: right; 
@@ -141,7 +141,8 @@
             z-index: 101; /* Ensure it stays above the list items */
             margin-top: -10px; /* Adjust alignment with header */
             margin-right: -5px;
-        }-btn { background: var(--danger); border-color: var(--danger); color: white; }
+        }
+        .close-btn { background: var(--danger); border-color: var(--danger); color: white; }        
         #loader { position: absolute; top: 20px; right: 20px; background: rgba(0,0,0,0.8); color: white; padding: 8px 15px; border-radius: 20px; font-size: 11px; display: none; align-items: center; gap: 10px; z-index: 10001; border: 1px solid var(--border); }
     </style>
 </head>
@@ -387,7 +388,6 @@
         <li><strong>v1.1:</strong> Added search boundary ring, customizable boundary colors, dark mode UI fixes, and single-file consolidation.</li>
         <li><strong>v1.0:</strong> Initial release. Added custom coordinate selection, height filtering, nautical mile conversion, and obstacle opacity settings.</li>
     </ul>
-    </ul>
   </div>
 </div>
 
@@ -539,7 +539,7 @@ async function runLiveCounter() {
                     if (obs.agl > minAGL && targetStates.includes(obs.state)) count++;
                 }
             }
-		} else if (centers && centers.length > 0 && !isNaN(searchRadiusNM)) {
+        } else if (centers && centers.length > 0 && !isNaN(searchRadiusNM)) {
             for (let i = 0; i < globalObstacles.length; i++) {
                 const obs = globalObstacles[i];
                 if (obs.agl > minAGL) {
@@ -557,15 +557,21 @@ async function runLiveCounter() {
                             }
                         }
                     }
-                    	if (inArea) count++;
-                	}	
-            	}
-        	}
-		}
+                    if (inArea) count++;
+                }	
+            }
+        }
+    }
 
     // 2. Process NOTAMs (with Geospatial State Hack)
     const incNotam = document.getElementById('notamInclude').checked;
     const notamMinAGL = parseInt(document.getElementById('notamMinAGL').value) || 0;
+
+    // OPTIMIZATION: Pre-filter state obstacles to prevent a 2.8 Billion iteration loop
+    let stateObstacles = [];
+    if (mode === 'state' && targetStates.length > 0) {
+        stateObstacles = globalObstacles.filter(o => targetStates.includes(o.state));
+    }
 
     if (incNotam && globalNotams) {
         for (let i = 0; i < globalNotams.length; i++) {
@@ -573,14 +579,18 @@ async function runLiveCounter() {
             let keep = false;
 
             if (mode === 'state') {
-                // Spatial join: Keep if within 1NM of any obstacle in the target state
-                for (let k = 0; k < globalObstacles.length; k++) {
-                    if (targetStates.includes(globalObstacles[k].state) && haversineNM(globalObstacles[k].lat, globalObstacles[k].lon, notam.lat, notam.lon) <= 1.0) {
-                        keep = true;
-                        break;
+                if (targetStates.length > 0) {
+                    for (let k = 0; k < stateObstacles.length; k++) {
+                        // Quick bounding box check (~1.2 NM) before expensive trig math
+                        if (Math.abs(stateObstacles[k].lat - notam.lat) < 0.02 && Math.abs(stateObstacles[k].lon - notam.lon) < 0.02) {
+                            if (haversineNM(stateObstacles[k].lat, stateObstacles[k].lon, notam.lat, notam.lon) <= 1.0) {
+                                keep = true;
+                                break;
+                            }
+                        }
                     }
                 }
-			} else if (centers && !isNaN(searchRadiusNM)) {
+            } else if (centers && !isNaN(searchRadiusNM)) {
                 if (mode === 'route' && centers.length > 1) {
                     for (let j = 0; j < centers.length - 1; j++) {
                         if (pointToSegmentDistanceNM(notam.lat, notam.lon, centers[j].lat, centers[j].lon, centers[j+1].lat, centers[j+1].lon) <= searchRadiusNM) {
@@ -608,7 +618,7 @@ async function runLiveCounter() {
         }
     }
 
-    // Update UI Counters
+// Update UI Counters
     counterEl.innerText = `${count} Obstacle${count !== 1 ? 's' : ''}`;
     counterEl.style.color = count > 0 ? "var(--success)" : "var(--text)";
 
@@ -617,12 +627,11 @@ async function runLiveCounter() {
             notamCounterEl.innerText = "Layer Disabled";
             notamCounterEl.style.color = "var(--text)";
         } else {
-            notamCounterEl.innerText = `${notamCount} active outage${notamCount !== 1 ? 's' : ''}`;
+            notamCounterEl.innerText = `${notamCount} Active Outage${notamCount !== 1 ? 's' : ''}`;
             notamCounterEl.style.color = notamCount > 0 ? "var(--dispatch)" : "var(--text)";
         }
     }
 }
-
   
 // --- CORE UI CONTROLS ---
 function toggleTheme() {
@@ -966,7 +975,7 @@ async function generateKML() {
             kml += `\t<name>${centerLabel} obstacles > ${minAGL} AGL within ${searchRadiusNM}NM</name>\n`;
         }
         
-		if (enableBoundary && mode !== 'state') {
+        if (enableBoundary && mode !== 'state') {
             kml += `\t<Style id="boundaryStyle">\n\t\t<LineStyle>\n\t\t\t<color>${boundaryColorHex}</color>\n\t\t\t<width>${boundaryWidth}</width>\n\t\t</LineStyle>\n\t\t<PolyStyle>\n\t\t\t<fill>0</fill>\n\t\t</PolyStyle>\n\t</Style>\n`;
             
             // Draw circles at all waypoints (caps/joints)
@@ -988,7 +997,7 @@ async function generateKML() {
         kml += `\t<Style id="customCircle">\n\t\t<LineStyle>\n\t\t\t<color>${outlineColor}</color>\n\t\t\t<width>${ringWidth}</width>\n\t\t</LineStyle>\n`;
         kml += `\t\t<PolyStyle>\n\t\t\t<color>${fillColor}</color>\n\t\t\t<fill>${enableFill}</fill>\n\t\t</PolyStyle>\n\t</Style>\n`;
 
-		if (incNotam) {
+        if (incNotam) {
             kml += `\t<Style id="notamCircle">\n\t\t<LineStyle>\n\t\t\t<color>${notamOutlineColor}</color>\n\t\t\t<width>${notamWidth}</width>\n\t\t</LineStyle>\n`;
             kml += `\t\t<PolyStyle>\n\t\t\t<color>${notamFillColor}</color>\n\t\t\t<fill>${notamEnableFill}</fill>\n\t\t</PolyStyle>\n\t</Style>\n`;
         }
@@ -1023,14 +1032,24 @@ async function generateKML() {
             }
         });
 
+        // OPTIMIZATION: Pre-filter state obstacles for KML generation
+        let stateObstacles = [];
+        if (mode === 'state' && targetStates.length > 0) {
+            stateObstacles = obstacles.filter(o => targetStates.includes(o.state));
+        }
+
         if (incNotam && globalNotams) {
             globalNotams.forEach(notam => {
             let keep = false;
                 if (mode === 'state') {
-                    for (let k = 0; k < globalObstacles.length; k++) {
-                        if (targetStates.includes(globalObstacles[k].state) && haversineNM(globalObstacles[k].lat, globalObstacles[k].lon, notam.lat, notam.lon) <= 1.0) {
-                            keep = true;
-                            break;
+                    if (targetStates.length > 0) {
+                        for (let k = 0; k < stateObstacles.length; k++) {
+                            if (Math.abs(stateObstacles[k].lat - notam.lat) < 0.02 && Math.abs(stateObstacles[k].lon - notam.lon) < 0.02) {
+                                if (haversineNM(stateObstacles[k].lat, stateObstacles[k].lon, notam.lat, notam.lon) <= 1.0) {
+                                    keep = true;
+                                    break;
+                                }
+                            }
                         }
                     }
                 } else if (mode === 'route' && centers.length > 1) {
@@ -1234,14 +1253,24 @@ async function showMapPreview() {
             }
         });
 
+	// OPTIMIZATION: Pre-filter state obstacles for Map Preview
+        let stateObstacles = [];
+        if (mode === 'state' && targetStates.length > 0) {
+            stateObstacles = obstacles.filter(o => targetStates.includes(o.state));
+        }
+
         if (incNotam && globalNotams) {
             globalNotams.forEach(notam => {
             let keep = false;
                 if (mode === 'state') {
-                    for (let k = 0; k < globalObstacles.length; k++) {
-                        if (targetStates.includes(globalObstacles[k].state) && haversineNM(globalObstacles[k].lat, globalObstacles[k].lon, notam.lat, notam.lon) <= 1.0) {
-                            keep = true;
-                            break;
+                    if (targetStates.length > 0) {
+                        for (let k = 0; k < stateObstacles.length; k++) {
+                            if (Math.abs(stateObstacles[k].lat - notam.lat) < 0.02 && Math.abs(stateObstacles[k].lon - notam.lon) < 0.02) {
+                                if (haversineNM(stateObstacles[k].lat, stateObstacles[k].lon, notam.lat, notam.lon) <= 1.0) {
+                                    keep = true;
+                                    break;
+                                }
+                            }
                         }
                     }
                 } else if (mode === 'route' && centers.length > 1) {
