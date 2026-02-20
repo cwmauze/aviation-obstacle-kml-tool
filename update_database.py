@@ -159,7 +159,7 @@ def harvest_notams():
                         "text": text
                     })
                     
-except Exception as e:
+    except Exception as e:
         print(f"    > [!] API request or parsing failed: {e}")
         return
          
@@ -272,7 +272,7 @@ def process_data():
                     metadata["obs_count"] = len(json.load(f))
             except: pass
             
-if len(airports) > 0:
+    if len(airports) > 0:
         with open("airports.json", 'w') as f:
             json.dump(airports, f, separators=(',', ':'))
         metadata["apt_count"] = len(airports)
