@@ -70,116 +70,125 @@ def parse_dof_dms(dms_str):
     if direction in ['S', 'W']: decimal = -decimal
     return decimal
 
-# --- NEW: NOTAM HARVESTER LOGIC (Version 2.0 MVP - Paginated) ---
-
 def harvest_notams():
     """
-    MVP Scraper version of the NOTAM Harvester using Geography Search.
-    Automated for headless servers (GitHub Actions) - Includes Pagination!
+    Official NMS-API version of the NOTAM Harvester.
+    Replaces the old web scraper and utilizes GeoJSON for coordinate mapping.
     """
-    SEARCH_URL = "https://notams.aim.faa.gov/notamSearch/search"
+    # --- NMS-API CONFIG ---
+    # Securely load API credentials from environment variables 
+    CLIENT_ID = os.environ.get("FAA_CLIENT_ID")
+    CLIENT_SECRET = os.environ.get("FAA_CLIENT_SECRET")
     
-    HEADERS_NOTAM = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-        "Content-Type": "application/x-www-form-urlencoded"
-    }
+    if not CLIENT_ID or not CLIENT_SECRET:
+        print("[!] NMS-API Credentials missing in environment. Skipping NOTAM harvest.")
+        return
     
+    # Using the Pre-Prod/Staging environment endpoints
+    AUTH_URL = "https://api-staging.cgifederal-aim.com/v1/auth/token"
+    NOTAM_URL = "https://api-staging.cgifederal-aim.com/nmsapi/v1/notams"
+
     # --- AUTOMATED GEOGRAPHY SEARCH CONFIG ---
-    # Edit these two variables to change your search area!
     center_id = "NC91" 
     search_radius = "100" 
     
-    # Base Payload mimicking a web form "Geography Search"
-    base_payload = (
-        f"searchType=3"
-        f"&radiusSearchOnDesignator=true"
-        f"&radiusSearchDesignator={center_id}"
-        f"&radius={search_radius}"
-    )
-    
+    print(f"[-] Fetching public NOTAMs via NMS-API within {search_radius}NM of {center_id}...")
     processed_notams = []
-    print(f"[-] Scraping public NOTAMs for light outages within {search_radius}NM of {center_id}...")
+
+    # ... (The rest of your function from Step 1 "Resolve Center Coordinates" downwards remains exactly the same!) ...
+
+    # 1. Resolve Center Coordinates
+    # We load the airports.json file generated earlier in the script to find the lat/lon
+    try:
+        with open("airports.json", "r") as f:
+            airports = json.load(f)
+        if center_id not in airports:
+            print(f"    > [!] Center ID '{center_id}' not found in airports.json. Cannot perform geographic search.")
+            return
+        center_lat = airports[center_id]["lat"]
+        center_lon = airports[center_id]["lon"]
+    except Exception as e:
+        print(f"    > [!] Could not load airports.json to resolve coordinates: {e}")
+        return
+
+    # 2. Authenticate with NMS-API
+    try:
+        auth_response = requests.post(
+            AUTH_URL,
+            data={"grant_type": "client_credentials"},
+            auth=(CLIENT_ID, CLIENT_SECRET),
+            headers={"Content-Type": "application/x-www-form-urlencoded"},
+            timeout=15
+        )
+        auth_response.raise_for_status()
+        token = auth_response.json().get("access_token")
+    except Exception as e:
+        print(f"    > [!] NMS-API Authentication failed: {e}")
+        return
+
+    # 3. Request NOTAMs Data
+    # Requesting GEOJSON format simplifies coordinate extraction
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "nmsResponseFormat": "GEOJSON"
+    }
+    params = {
+        "latitude": center_lat,
+        "longitude": center_lon,
+        "radius": search_radius
+    }
     
     try:
-        offset = 0
-        total_fetched = 0
-        expected_total = 1 # Initialize to 1 to enter the loop
+        data_response = requests.get(NOTAM_URL, headers=headers, params=params, timeout=30)
+        data_response.raise_for_status()
+        data = data_response.json()
         
-        while total_fetched < expected_total:
-            # Inject the current offset to grab the next "page" of results
-            payload = f"{base_payload}&offset={offset}"
-            response = requests.post(SEARCH_URL, headers=HEADERS_NOTAM, data=payload, timeout=30)
-            response.raise_for_status()
+        # Extract the GeoJSON features array
+        features = data.get("data", {}).get("geojson", [])
+        print(f"    > DIAGNOSTIC: NMS-API returned {len(features)} total NOTAMs in this radius.")
+        
+        # Original regex and outage terminology logic (Locked Baseline)
+        agl_pattern = r"(\d+)\s?(?:FT)?\s?AGL"
+        outage_words = ["OUT", "U/S", "UNMON", "UNLIT", "OBSCURED"]
+        
+        for feature in features:
+            props = feature.get("properties", {}).get("coreNOTAMData", {}).get("notam", {})
+            text = props.get("text", "").upper()
             
-            notam_list = []
-            try:
-                data = response.json()
-                notam_list = data.get('notamList', [])
-                
-                # On the first loop, grab the actual total number of NOTAMs the FAA has
-                if offset == 0:
-                    expected_total = data.get('totalNotamCount', len(notam_list))
-                    print(f"    > DIAGNOSTIC: FAA reports {expected_total} total NOTAMs in this radius.")
-            except ValueError:
-                # Fallback if FAA returns HTML instead of JSON
-                from bs4 import BeautifulSoup
-                soup = BeautifulSoup(response.text, 'html.parser')
-                notam_list = [{'traditionalMessage': cell.get_text()} for cell in soup.find_all('td')]
-                expected_total = len(notam_list)
+            # THE NEW STRICT FILTER: Must contain OBST, must contain LGT/LIGHT, and must have an outage word.
+            is_unlit_obstacle = ("OBST" in text) and ("LGT" in text or "LIGHT" in text) and any(w in text for w in outage_words)
             
-            # Break the loop if the server stops sending data
-            if not notam_list:
-                break
+            if is_unlit_obstacle:
+                # GeoJSON stores coordinates as [Longitude, Latitude]
+                geom_list = feature.get("geometry", {}).get("geometries", [])
+                point_geom = next((g for g in geom_list if g.get("type") == "Point"), None)
                 
-            total_fetched += len(notam_list)
-            offset += len(notam_list)
-            
-         # 3. Regex Patterns (SIMPLIFIED & TARGETED)
-            coord_pattern = r"(\d{2,3})(\d{2})(\d{2}(?:\.\d+)?)([NS])\s?(\d{2,3})(\d{2})(\d{2}(?:\.\d+)?)([EW])"
-            agl_pattern = r"(\d+)\s?(?:FT)?\s?AGL"
-
-            for item in notam_list:
-                # Check 'traditionalMessage' first, fallback to 'icaoMessage'
-                raw_text = item.get('traditionalMessage') or item.get('icaoMessage') or ''
-                text = raw_text.upper()
-                
-                # THE NEW STRICT FILTER: Must contain OBST, must contain LGT/LIGHT, and must have an outage word.
-                # This catches "OBST TOWER LGT", "OBST CRANE LGT", "OBST WIND TURBINE LGT", etc.
-                outage_words = ["OUT", "U/S", "UNMON", "UNLIT", "OBSCURED"]
-                is_unlit_obstacle = ("OBST" in text) and ("LGT" in text or "LIGHT" in text) and any(w in text for w in outage_words)
-                
-                if is_unlit_obstacle:
-                    coords = re.search(coord_pattern, text)
-                    agl = re.search(agl_pattern, text)
+                if point_geom:
+                    coords = point_geom.get("coordinates", [0.0, 0.0])
+                    lon_val = round(coords[0], 6)
+                    lat_val = round(coords[1], 6)
                     
-                    if coords:
-                        lat = dms_to_dd_notam(coords.group(1), coords.group(2), coords.group(3), coords.group(4))
-                        lon = dms_to_dd_notam(coords.group(5), coords.group(6), coords.group(7), coords.group(8))
-                        
-                        processed_notams.append({
-                            "lat": lat,
-                            "lon": lon,
-                            "agl": agl.group(1) if agl else "Unknown",
-                            "text": text
-                        })
-            
-            # Failsafe to prevent infinite loops in automated environments
-            if offset > 5000:
-                print("    > [!] API limit reached (5000 NOTAMs). Breaking to prevent infinite loop.")
-                break
-        
+                    agl_match = re.search(agl_pattern, text)
+                    agl_val = agl_match.group(1) if agl_match else "Unknown"
+                    
+                    processed_notams.append({
+                        "lat": lat_val,
+                        "lon": lon_val,
+                        "agl": agl_val,
+                        "text": text
+                    })
+                    
+    except Exception as e:
+         print(f"    > [!] API request or parsing failed: {e}")
+         return
+         
+    # 4. Save to Disk
+    try:
         with open("notams.json", 'w') as f:
             json.dump(processed_notams, f, indent=2)
         print(f"    > Scraped and saved {len(processed_notams)} NOTAM obstacles to notams.json.")
-        
     except Exception as e:
-        print(f"[!] NOTAM Scraper failed: {e}")
-
-def dms_to_dd_notam(d, m, s, direction):
-    """Specific converter for NOTAM DMS format."""
-    dd = float(d) + float(m)/60 + float(s)/3600
-    if direction in ['S', 'W']: dd *= -1
-    return round(dd, 6)
+        print(f"    > [!] Failed to save notams.json: {e}")
 
 def process_data():
     obstacles = []
