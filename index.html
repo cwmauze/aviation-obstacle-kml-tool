@@ -451,7 +451,7 @@ window.onload = async () => {
             const notamRes = await fetch(`notams.json?nocache=${new Date().getTime()}`);
             globalNotams = await notamRes.json();
             const notamDate = meta.notam_date || "Unknown";
-            document.getElementById('notam-status').innerText = `Verified (Eff. ${notamDate} | ${globalNotams.length} Active outages)`;
+            document.getElementById('notam-status').innerText = `Verified (Eff. ${notamDate} | ${globalNotams.length} active outages)`;
             document.getElementById('notam-dot').className = globalNotams.length > 0 ? 'status-dot ready' : 'status-dot error';
         } catch(e) {
             console.warn("NOTAM fetch failed or file missing.");
