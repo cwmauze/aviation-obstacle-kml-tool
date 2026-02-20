@@ -1303,7 +1303,7 @@ async function showMapPreview() {
                             fillColor: notamFillColor,
                             fillOpacity: notamOpacFloat,
                             weight: notamWidth
-                        }).bindPopup(`<b>UNLIT TOWER - ${finalAgl} ft AGL</b><br><span style="color:var(--danger); font-size:10px;">${notam.text}</span>`)
+                        }).bindPopup(`<b>UNLIT TOWER - ${finalAgl} ft AGL</b><br><span style="color:var(--danger); font-size:10px; font-weight:bold;">${notam.text}</span>`)}).bindPopup(`<b>UNLIT TOWER - ${finalAgl} ft AGL</b><br><span style="color:var(--danger); font-size:10px;">${notam.text}</span>`)
                           .addTo(previewLayerGroup);
                     }
                 }
