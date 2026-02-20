@@ -153,11 +153,14 @@
         </div>
     </div>
 
-    <div class="section-card">
+	<div class="section-card">
         <div class="section-title">1. Search Area Selection</div>
         <div style="display: flex; gap: 20px; margin-bottom: 12px; flex-wrap: wrap;">
             <label style="display: flex; align-items: center; gap: 5px; font-weight: normal; cursor: pointer; margin: 0;">
-                <input type="radio" name="centerMode" id="faaMode" value="faa" checked onchange="toggleCenterInput()"> Route / Multiple Identifiers
+                <input type="radio" name="centerMode" id="faaMode" value="faa" checked onchange="toggleCenterInput()"> Point(s) / Identifiers
+            </label>
+            <label style="display: flex; align-items: center; gap: 5px; font-weight: normal; cursor: pointer; margin: 0;">
+                <input type="radio" name="centerMode" id="routeMode" value="route" onchange="toggleCenterInput()"> Route Search
             </label>
             <label style="display: flex; align-items: center; gap: 5px; font-weight: normal; cursor: pointer; margin: 0;">
                 <input type="radio" name="centerMode" id="coordMode" value="coord" onchange="toggleCenterInput()"> Custom Lat/Lon
@@ -500,20 +503,28 @@ async function runLiveCounter() {
                     if (obs.agl > minAGL && targetStates.includes(obs.state)) count++;
                 }
             }
-        } else if (centers && centers.length > 0 && !isNaN(searchRadiusNM)) {
+		} else if (centers && centers.length > 0 && !isNaN(searchRadiusNM)) {
             for (let i = 0; i < globalObstacles.length; i++) {
                 const obs = globalObstacles[i];
                 if (obs.agl > minAGL) {
-                    for (let j = 0; j < centers.length; j++) {
-                        if (haversineNM(centers[j].lat, centers[j].lon, obs.lat, obs.lon) <= searchRadiusNM) {
-                            count++;
-                            break;
+                    let inArea = false;
+                    if (mode === 'route' && centers.length > 1) {
+                        for (let j = 0; j < centers.length - 1; j++) {
+                            if (pointToSegmentDistanceNM(obs.lat, obs.lon, centers[j].lat, centers[j].lon, centers[j+1].lat, centers[j+1].lon) <= searchRadiusNM) {
+                                inArea = true; break;
+                            }
+                        }
+                    } else {
+                        for (let j = 0; j < centers.length; j++) {
+                            if (haversineNM(centers[j].lat, centers[j].lon, obs.lat, obs.lon) <= searchRadiusNM) {
+                                inArea = true; break;
+                            }
                         }
                     }
+                    if (inArea) count++;
                 }
             }
         }
-    }
 
     // 2. Process NOTAMs (with Geospatial State Hack)
     const incNotam = document.getElementById('notamInclude').checked;
@@ -532,11 +543,18 @@ async function runLiveCounter() {
                         break;
                     }
                 }
-            } else if (centers && !isNaN(searchRadiusNM)) {
-                for (let j = 0; j < centers.length; j++) {
-                    if (haversineNM(centers[j].lat, centers[j].lon, notam.lat, notam.lon) <= searchRadiusNM) {
-                        keep = true;
-                        break;
+			} else if (centers && !isNaN(searchRadiusNM)) {
+                if (mode === 'route' && centers.length > 1) {
+                    for (let j = 0; j < centers.length - 1; j++) {
+                        if (pointToSegmentDistanceNM(notam.lat, notam.lon, centers[j].lat, centers[j].lon, centers[j+1].lat, centers[j+1].lon) <= searchRadiusNM) {
+                            keep = true; break;
+                        }
+                    }
+                } else {
+                    for (let j = 0; j < centers.length; j++) {
+                        if (haversineNM(centers[j].lat, centers[j].lon, notam.lat, notam.lon) <= searchRadiusNM) {
+                            keep = true; break;
+                        }
                     }
                 }
             }
@@ -580,14 +598,22 @@ function toggleTheme() {
 
 function toggleCenterInput() {
     const mode = document.querySelector('input[name="centerMode"]:checked').value;
-    document.getElementById('faaInputGroup').style.display = mode === 'faa' ? 'block' : 'none';
+    
+    // Show the identifier input box for both standard points and route search
+    document.getElementById('faaInputGroup').style.display = (mode === 'faa' || mode === 'route') ? 'block' : 'none';
     document.getElementById('coordInputGroup').style.display = mode === 'coord' ? 'grid' : 'none';
     document.getElementById('stateInputGroup').style.display = mode === 'state' ? 'block' : 'none';
     
     document.getElementById('radiusWrap').style.display = mode === 'state' ? 'none' : 'block';
     document.getElementById('boundaryWrap').style.visibility = mode === 'state' ? 'hidden' : 'visible';
 
-    if(mode === 'faa') updateFacilityName();
+    // Dynamically update the radius label without altering the base HTML
+    const radiusLabel = document.querySelector('#radiusWrap label');
+    if (radiusLabel) {
+        radiusLabel.innerText = mode === 'route' ? 'Corridor half-width (NM)' : 'Search radius (NM)';
+    }
+
+    if(mode === 'faa' || mode === 'route') updateFacilityName();
     triggerCounterUpdate();
 }
 
@@ -613,7 +639,15 @@ function validateInputs() {
     if (mode !== 'state') {
         const radiusNM = parseFloat(document.getElementById('radiusNM').value);
         if (isNaN(radiusNM) || radiusNM < 1 || radiusNM > 500) {
-            alert("Search radius must be between 1 and 500 NM.");
+            alert("Search radius/width must be between 1 and 500 NM.");
+            return false;
+        }
+    }
+    
+    if (mode === 'route') {
+        const apts = getResolvedAirports(document.getElementById('faaId').value);
+        if (apts.length < 2) {
+            alert("Route search requires at least two valid identifiers (e.g., KABQ, KSAF).");
             return false;
         }
     }
@@ -719,7 +753,7 @@ function getCenterCoords() {
     const mode = document.querySelector('input[name="centerMode"]:checked').value;
     if (mode === 'state') return [];
 
-    if (mode === 'faa') {
+    if (mode === 'faa' || mode === 'route') {
         const apts = getResolvedAirports(document.getElementById('faaId').value);
         if (apts.length === 0) return null;
         return apts.map(a => ({ lat: a.lat, lon: a.lon, id: a.requestedId }));
@@ -751,6 +785,39 @@ function haversineNM(lat1, lon1, lat2, lon2) {
     return R * c;
 }
 
+function bearing(lat1, lon1, lat2, lon2) {
+    const lat1Rad = lat1 * Math.PI / 180;
+    const lat2Rad = lat2 * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const y = Math.sin(dLon) * Math.cos(lat2Rad);
+    const x = Math.cos(lat1Rad) * Math.sin(lat2Rad) - Math.sin(lat1Rad) * Math.cos(lat2Rad) * Math.cos(dLon);
+    return Math.atan2(y, x);
+}
+
+function pointToSegmentDistanceNM(lat, lon, lat1, lon1, lat2, lon2) {
+    const R = 3440.065; 
+    const d13 = haversineNM(lat1, lon1, lat, lon) / R; // Start to Obstacle
+    const d12 = haversineNM(lat1, lon1, lat2, lon2) / R; // Start to End
+    const d23 = haversineNM(lat2, lon2, lat, lon) / R; // End to Obstacle
+
+    if (d12 === 0) return d13 * R;
+
+    const theta13 = bearing(lat1, lon1, lat, lon);
+    const theta12 = bearing(lat1, lon1, lat2, lon2);
+    const theta23 = bearing(lat2, lon2, lat, lon);
+    const theta21 = bearing(lat2, lon2, lat1, lon1);
+
+    // If the angle is obtuse, the obstacle is "behind" the start point
+    if (Math.cos(theta13 - theta12) < 0) return d13 * R;
+    
+    // If the angle is obtuse, the obstacle is "ahead" of the end point
+    if (Math.cos(theta23 - theta21) < 0) return d23 * R;
+
+    // Otherwise, calculate perpendicular cross-track distance
+    const dxt = Math.asin(Math.sin(d13) * Math.sin(theta13 - theta12));
+    return Math.abs(dxt) * R;
+}
+
 function generateCircleCoords(lat, lon, radiusNM) {
     const coords = [];
     const earthRadiusNM = 3440.065; 
@@ -765,6 +832,33 @@ function generateCircleCoords(lat, lon, radiusNM) {
         coords.push(`${newLonRad * 180 / Math.PI},${newLatRad * 180 / Math.PI},0`);
     }
     return coords.join(" ");
+}
+
+function destPointNM(lat, lon, brngRad, dNM) {
+    const R = 3440.065;
+    const dRad = dNM / R;
+    const latRad = lat * Math.PI / 180;
+    const lonRad = lon * Math.PI / 180;
+
+    const newLatRad = Math.asin(Math.sin(latRad)*Math.cos(dRad) + Math.cos(latRad)*Math.sin(dRad)*Math.cos(brngRad));
+    const newLonRad = lonRad + Math.atan2(Math.sin(brngRad)*Math.sin(dRad)*Math.cos(latRad), Math.cos(dRad)-Math.sin(latRad)*Math.sin(newLatRad));
+    
+    return { lat: newLatRad * 180 / Math.PI, lon: newLonRad * 180 / Math.PI };
+}
+
+function generateSegmentPolygon(lat1, lon1, lat2, lon2, radiusNM) {
+    const brng = bearing(lat1, lon1, lat2, lon2);
+    // Perpendicular offsets (+/- 90 degrees)
+    const leftAngle = brng - Math.PI/2;
+    const rightAngle = brng + Math.PI/2;
+
+    const p1 = destPointNM(lat1, lon1, leftAngle, radiusNM);
+    const p2 = destPointNM(lat2, lon2, leftAngle, radiusNM);
+    const p3 = destPointNM(lat2, lon2, rightAngle, radiusNM);
+    const p4 = destPointNM(lat1, lon1, rightAngle, radiusNM);
+
+    // Return closed polygon ring coordinates for KML
+    return `${p1.lon},${p1.lat},0 ${p2.lon},${p2.lat},0 ${p3.lon},${p3.lat},0 ${p4.lon},${p4.lat},0 ${p1.lon},${p1.lat},0`;
 }
 
 // --- KML GENERATOR ---
@@ -832,15 +926,25 @@ async function generateKML() {
             kml += `\t<name>${centerLabel} obstacles > ${minAGL} AGL within ${searchRadiusNM}NM</name>\n`;
         }
         
-        if (enableBoundary && mode !== 'state') {
+		if (enableBoundary && mode !== 'state') {
             kml += `\t<Style id="boundaryStyle">\n\t\t<LineStyle>\n\t\t\t<color>${boundaryColorHex}</color>\n\t\t\t<width>${boundaryWidth}</width>\n\t\t</LineStyle>\n\t\t<PolyStyle>\n\t\t\t<fill>0</fill>\n\t\t</PolyStyle>\n\t</Style>\n`;
+            
+            // Draw circles at all waypoints (caps/joints)
             centers.forEach(c => {
                 const boundaryCoords = generateCircleCoords(c.lat, c.lon, searchRadiusNM);
                 kml += `\t<Placemark>\n\t\t<name>Search Area Boundary (${c.id} - ${searchRadiusNM} NM)</name>\n\t\t<styleUrl>#boundaryStyle</styleUrl>\n`;
                 kml += `\t\t<Polygon>\n\t\t\t<outerBoundaryIs>\n\t\t\t\t<LinearRing>\n\t\t\t\t\t<coordinates>\n\t\t\t\t\t\t${boundaryCoords}\n\t\t\t\t\t</coordinates>\n\t\t\t\t</LinearRing>\n\t\t\t</outerBoundaryIs>\n\t\t</Polygon>\n\t</Placemark>\n`;
             });
-        }
-        
+
+            // Draw connecting corridor segments
+            if (mode === 'route' && centers.length > 1) {
+                for (let j = 0; j < centers.length - 1; j++) {
+                    const segCoords = generateSegmentPolygon(centers[j].lat, centers[j].lon, centers[j+1].lat, centers[j+1].lon, searchRadiusNM);
+                    kml += `\t<Placemark>\n\t\t<name>Corridor Segment (${centers[j].id} to ${centers[j+1].id})</name>\n\t\t<styleUrl>#boundaryStyle</styleUrl>\n`;
+                    kml += `\t\t<Polygon>\n\t\t\t<outerBoundaryIs>\n\t\t\t\t<LinearRing>\n\t\t\t\t\t<coordinates>\n\t\t\t\t\t\t${segCoords}\n\t\t\t\t\t</coordinates>\n\t\t\t\t</LinearRing>\n\t\t\t</outerBoundaryIs>\n\t\t</Polygon>\n\t</Placemark>\n`;
+                }
+            }
+        }        
         kml += `\t<Style id="customCircle">\n\t\t<LineStyle>\n\t\t\t<color>${outlineColor}</color>\n\t\t\t<width>${ringWidth}</width>\n\t\t</LineStyle>\n`;
         kml += `\t\t<PolyStyle>\n\t\t\t<color>${fillColor}</color>\n\t\t\t<fill>${enableFill}</fill>\n\t\t</PolyStyle>\n\t</Style>\n`;
 
@@ -849,12 +953,15 @@ async function generateKML() {
             kml += `\t\t<PolyStyle>\n\t\t\t<color>${notamFillColor}</color>\n\t\t\t<fill>${notamEnableFill}</fill>\n\t\t</PolyStyle>\n\t</Style>\n`;
         }
 
-        obstacles.forEach(obs => {
-            if (obs.agl > minAGL) {
-                let keep = false;
-                
-                if (mode === 'state') {
+		if (mode === 'state') {
                     if (obs.state && targetStates.includes(obs.state)) keep = true;
+                } else if (mode === 'route' && centers.length > 1) {
+                    for (let j = 0; j < centers.length - 1; j++) {
+                        if (pointToSegmentDistanceNM(obs.lat, obs.lon, centers[j].lat, centers[j].lon, centers[j+1].lat, centers[j+1].lon) <= searchRadiusNM) {
+                            keep = true;
+                            break;
+                        }
+                    }
                 } else {
                     for (const c of centers) {
                         if (haversineNM(c.lat, c.lon, obs.lat, obs.lon) <= searchRadiusNM) {
@@ -878,6 +985,13 @@ async function generateKML() {
                 if (mode === 'state') {
                     for (let k = 0; k < globalObstacles.length; k++) {
                         if (targetStates.includes(globalObstacles[k].state) && haversineNM(globalObstacles[k].lat, globalObstacles[k].lon, notam.lat, notam.lon) <= 1.0) {
+                            keep = true;
+                            break;
+                        }
+                    }
+                } else if (mode === 'route' && centers.length > 1) {
+                    for (let j = 0; j < centers.length - 1; j++) {
+                        if (pointToSegmentDistanceNM(notam.lat, notam.lon, centers[j].lat, centers[j].lon, centers[j+1].lat, centers[j+1].lon) <= searchRadiusNM) {
                             keep = true;
                             break;
                         }
@@ -997,6 +1111,7 @@ async function showMapPreview() {
     const boundaryColor = document.getElementById('boundaryColor').value;
 
     if (enableBoundary && mode !== 'state') {
+        // Draw circles at all waypoints
         centers.forEach(c => {
             L.circle([c.lat, c.lon], {
                 radius: searchRadiusNM * 1852,
@@ -1006,6 +1121,35 @@ async function showMapPreview() {
                 dashArray: '5, 10'
             }).addTo(previewLayerGroup);
         });
+
+        // Draw connecting corridor segments for Route Mode
+        if (mode === 'route' && centers.length > 1) {
+            for (let j = 0; j < centers.length - 1; j++) {
+                const lat1 = centers[j].lat, lon1 = centers[j].lon;
+                const lat2 = centers[j+1].lat, lon2 = centers[j+1].lon;
+                
+                const brng = bearing(lat1, lon1, lat2, lon2);
+                const leftAngle = brng - Math.PI/2;
+                const rightAngle = brng + Math.PI/2;
+                
+                const p1 = destPointNM(lat1, lon1, leftAngle, searchRadiusNM);
+                const p2 = destPointNM(lat2, lon2, leftAngle, searchRadiusNM);
+                const p3 = destPointNM(lat2, lon2, rightAngle, searchRadiusNM);
+                const p4 = destPointNM(lat1, lon1, rightAngle, searchRadiusNM);
+
+                L.polygon([
+                    [p1.lat, p1.lon],
+                    [p2.lat, p2.lon],
+                    [p3.lat, p3.lon],
+                    [p4.lat, p4.lon]
+                ], {
+                    color: boundaryColor,
+                    fill: false,
+                    weight: boundaryWidth,
+                    dashArray: '5, 10'
+                }).addTo(previewLayerGroup);
+            }
+        }
     }
 
     try {
@@ -1017,6 +1161,13 @@ async function showMapPreview() {
                 
                 if (mode === 'state') {
                     if (obs.state && targetStates.includes(obs.state)) keep = true;
+                } else if (mode === 'route' && centers.length > 1) {
+                    for (let j = 0; j < centers.length - 1; j++) {
+                        if (pointToSegmentDistanceNM(obs.lat, obs.lon, centers[j].lat, centers[j].lon, centers[j+1].lat, centers[j+1].lon) <= searchRadiusNM) {
+                            keep = true;
+                            break;
+                        }
+                    }
                 } else {
                     for (const c of centers) {
                         if (haversineNM(c.lat, c.lon, obs.lat, obs.lon) <= searchRadiusNM) {
@@ -1045,6 +1196,13 @@ async function showMapPreview() {
                 if (mode === 'state') {
                     for (let k = 0; k < globalObstacles.length; k++) {
                         if (targetStates.includes(globalObstacles[k].state) && haversineNM(globalObstacles[k].lat, globalObstacles[k].lon, notam.lat, notam.lon) <= 1.0) {
+                            keep = true;
+                            break;
+                        }
+                    }
+                } else if (mode === 'route' && centers.length > 1) {
+                    for (let j = 0; j < centers.length - 1; j++) {
+                        if (pointToSegmentDistanceNM(notam.lat, notam.lon, centers[j].lat, centers[j].lon, centers[j+1].lat, centers[j+1].lon) <= searchRadiusNM) {
                             keep = true;
                             break;
                         }
