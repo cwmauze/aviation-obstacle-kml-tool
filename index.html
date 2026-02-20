@@ -119,13 +119,13 @@
         <div>
             <h2>KML Obstacle Overlay Generator</h2>
             <span class="version-subtitle" onclick="openVersionModal()">v2.1.0 - Click for version history</span>
-            <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub Project Home</a>
+            <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub project home</a>
         </div>
         <button class="action-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 16px; padding: 6px 10px; height: auto;">☀️</button>
     </div>
 
     <div style="font-size: 13px; color: #90949c; margin-bottom: 25px; line-height: 1.5; max-width: 1400px; border-left: 2px solid var(--border); padding-left: 15px;">
-        This tool generates custom KML obstacle overlays for use in ForeFlight, Google Earth, or any EFB/mapping platform that supports KML imports. The backend automatically synchronizes with the FAA's latest 56-Day Digital Obstacle File (DOF) and 28-Day NASR databases. Simply set your centerpoint via FAA Identifier or Lat/Lon, define your search radius and altitude thresholds, customize your visual styling, and export your overlay.
+        This tool generates custom KML obstacle overlays for use in ForeFlight, Google Earth, or any EFB/mapping platform that supports KML imports. The backend automatically synchronizes with the FAA's latest 56-Day Digital Obstacle File (DOF) and 28-Day NASR databases. NOTAM data for unlit obstacles is updated every 24 hours using the official FAA NMS-API. Simply set your centerpoint via FAA Identifier or Lat/Lon, define your search radius and altitude thresholds, customize your visual styling, and export your overlay.
     </div>
 
     <div class="session-status-card">
@@ -138,14 +138,14 @@
             </div>
         </div>
         <div class="status-line">
-            <span>Airport/Heliport data (NASR):</span>
+            <span>Airport/heliport data (NASR):</span>
             <div style="display:flex; align-items:center; gap:8px;">
                 <span id="apt-status">Checking...</span>
                 <div class="status-dot loading" id="apt-dot"></div>
             </div>
         </div>
         <div class="status-line">
-            <span>NOTAM Scrape:</span>
+            <span>NOTAM data:</span>
             <div style="display:flex; align-items:center; gap:8px;">
                 <span id="notam-status">Checking...</span>
                 <div class="status-dot loading" id="notam-dot"></div>
@@ -193,7 +193,7 @@
     <div class="section-card">
         <div class="section-title">
             <span>2. Filtering & Coverage</span>
-            <span id="liveCounter" style="color: var(--text); font-weight: normal; text-transform: none;">0 Obstacles</span>
+            <span id="liveCounter" style="color: var(--text); font-weight: normal; text-transform: none;">0 obstacles</span>
         </div>
         <div class="grid-2">
             <div id="radiusWrap">
@@ -216,7 +216,7 @@
                 <div style="display: flex; align-items: center; height: 26px; margin-bottom: 8px;">
                     <div class="checkbox-group" style="padding: 0; margin: 0;">
                         <input type="checkbox" id="enableBoundary" checked>
-                        <label for="enableBoundary" style="font-weight: bold; color: var(--primary); font-size: 12px;">Search Boundary Ring(s)</label>
+                        <label for="enableBoundary" style="font-weight: bold; color: var(--primary); font-size: 12px;">Search boundary ring(s)</label>
                     </div>
                 </div>
                 
@@ -232,7 +232,7 @@
             
             <div>
                 <div style="display: flex; align-items: center; height: 26px; margin-bottom: 8px;">
-                    <div style="font-weight: bold; color: var(--primary); font-size: 12px; margin-left: 2px;">Obstacle Rings</div>
+                    <div style="font-weight: bold; color: var(--primary); font-size: 12px; margin-left: 2px;">Obstacle rings</div>
                 </div>
 
                 <div class="inline-control">
@@ -267,15 +267,15 @@
 
     <div class="section-card">
         <div class="section-title">
-            <span>4. Unlit Obstacles</span>
-            <span id="notamLiveCounter" style="color: var(--text); font-weight: normal; text-transform: none;">0 Active Outages</span>
+            <span>4. Unlit obstacles</span>
+            <span id="notamLiveCounter" style="color: var(--text); font-weight: normal; text-transform: none;">0 active lighting outages</span>
         </div>
         <div class="grid-2">
             <div>
                 <div style="display: flex; align-items: center; height: 26px; margin-bottom: 8px;">
                     <div class="checkbox-group" style="padding: 0; margin: 0;">
                         <input type="checkbox" id="notamInclude" checked onchange="triggerCounterUpdate()">
-                        <label for="notamInclude" style="font-weight: bold; color: var(--dispatch); font-size: 12px;">Include Active Light Outage NOTAMs</label>
+                        <label for="notamInclude" style="font-weight: bold; color: var(--dispatch); font-size: 12px;">Include active light outage NOTAMs</label>
                     </div>
                 </div>
                 <div class="inline-control">
@@ -289,7 +289,7 @@
             </div>
             <div>
                 <div style="display: flex; align-items: center; height: 26px; margin-bottom: 8px;">
-                    <div style="font-weight: bold; color: var(--dispatch); font-size: 12px; margin-left: 2px;">Hazard Styling</div>
+                    <div style="font-weight: bold; color: var(--dispatch); font-size: 12px; margin-left: 2px;">Hazard styling</div>
                 </div>
                 <div class="inline-control">
                     <label>Line color</label>
@@ -320,7 +320,7 @@
     </div>
 
     <footer class="app-footer">
-        <span class="disclaimer-bold">DISCLAIMER:</span> This tool is for utility purposes only and is not a substitute for a qualified pilot or common sense. While the database is meticulously parsed, cumulus granite and steel towers remain strictly unforgiving. Generating a colorful KML file does not grant you invincibility. Cross-reference official charts and don't hit stuff.
+        <span class="disclaimer-bold">DISCLAIMER:</span> This tool is for utility purposes only and is not a substitute for aggressive scanning or an up-to-date TAWS. While the database is meticulously parsed, cumulo-granite and steel towers+guy wires remain strictly unforgiving. Generating a colorful KML file does not grant you invincibility. Cross-reference official charts and don't hit stuff.
     </footer>
 </div>
 
@@ -330,12 +330,25 @@
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
     	<li><strong>v2.1.0:</strong> Integrated official FAA NMS-API. Up-scoped NOTAM logic to process nationwide datasets with geospatial cross-referencing for state-mode bounding. Removed experimental tags.</li>
-        <li><strong>v2.0.4 (Beta):</strong> Updated NOTAM Javascript regex parsing logic to correctly handle decimal formats and unblock the altitude filter.</li>
-        <li><strong>v2.0.3 (Beta):</strong> Complete AGL Parsing overhaul to catch messy FAA NOTAM formats. Implemented independent live counter for NOTAM outages in Section 4.</li>
-        <li><strong>v2.0.2 (Beta):</strong> Added dedicated altitude filter for unlit NOTAM obstacles.</li>
-        <li><strong>v2.0.1 (Beta):</strong> Added Experimental Section 4 for scraping and rendering active FAA NOTAM light outages.</li>
+        <li><strong>v2.0.4 (beta):</strong> Updated NOTAM Javascript regex parsing logic to correctly handle decimal formats and unblock the altitude filter.</li>
+        <li><strong>v2.0.3 (beta):</strong> Complete AGL Parsing overhaul to catch messy FAA NOTAM formats. Implemented independent live counter for NOTAM outages in Section 4.</li>
+        <li><strong>v2.0.2 (beta):</strong> Added dedicated altitude filter for unlit NOTAM obstacles.</li>
+        <li><strong>v2.0.1 (beta):</strong> Added Experimental Section 4 for scraping and rendering active FAA NOTAM light outages.</li>
         <li><strong>v1.9.3:</strong> Added Real-Time Obstacle Counter, background RAM pre-loading, US State/Territory code validation guardrails, and unified ring radius styling options.</li>
         <li><strong>v1.9:</strong> Major Update. Added advanced Multi-Radii search support and entire State/Territory filtering mode for comprehensive route planning. Map preview logic updated to dynamically bound to generated coordinates.</li>
+        <li><strong>v1.8.3:</strong> Added strict data validation guardrails to prevent mathematical errors and browser crashes from invalid inputs.</li>
+        <li><strong>v1.8.2:</strong> Added dynamic safety warning for obstacle heights below 200 ft AGL and updated project repository URL.</li>
+        <li><strong>v1.8.1:</strong> Added expanded introductory text, GitHub repository link, UI alignment fixes, light mode contrast adjustments, and snarky footer disclaimer.</li>
+        <li><strong>v1.8:</strong> Fixed layout grouping in Overlay Options. Added line thickness controls for boundary and rings. Default colors unified to red.</li>
+        <li><strong>v1.7:</strong> UI Optimization. Migrated to responsive 2-column card grid and compact inline color pickers to eliminate dead space.</li>
+        <li><strong>v1.6:</strong> Title update, dynamic filename and layer naming, and NASR effective date display.</li>
+        <li><strong>v1.5:</strong> Updated UI feedback for centerpoint facility validation.</li>
+        <li><strong>v1.4:</strong> Smart K-identifier lookup, facility name auto-population, and simplified direct map layer controls.</li>
+        <li><strong>v1.3:</strong> Integrated NASR FAA Airport database lookup and live DB validity status card.</li>
+        <li><strong>v1.2:</strong> UI upgrade to Genesys styling. Added full visual Map Preview capability with Leaflet integration and FAA sectional charts.</li>
+        <li><strong>v1.1:</strong> Added search boundary ring, customizable boundary colors, dark mode UI fixes, and single-file consolidation.</li>
+        <li><strong>v1.0:</strong> Initial release. Added custom coordinate selection, height filtering, nautical mile conversion, and obstacle opacity settings.</li>
+    </ul>
     </ul>
   </div>
 </div>
@@ -395,10 +408,11 @@ window.onload = async () => {
         
         getObstacles().then(() => triggerCounterUpdate());
 
-        try {
-            const notamRes = await fetch(`notams.json?v=${dbVersion}`);
+    	try {
+            // NOTAMs change constantly, so we bypass the browser cache using a live timestamp
+            const notamRes = await fetch(`notams.json?nocache=${new Date().getTime()}`);
             globalNotams = await notamRes.json();
-            document.getElementById('notam-status').innerText = `Loaded (${globalNotams.length} Active Outages)`;
+            document.getElementById('notam-status').innerText = `Loaded (${globalNotams.length} Active outages)`;
             document.getElementById('notam-dot').className = globalNotams.length > 0 ? 'status-dot ready' : 'status-dot error';
         } catch(e) {
             console.warn("NOTAM fetch failed or file missing.");
