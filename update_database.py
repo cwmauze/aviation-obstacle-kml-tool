@@ -163,13 +163,15 @@ def harvest_notams():
          print(f"    > [!] API request or parsing failed: {e}")
          return
          
-    # 3. Save to Disk
+	# 3. Save to Disk
     try:
         with open("notams.json", 'w') as f:
             json.dump(processed_notams, f, indent=2)
         print(f"    > Scraped and saved {len(processed_notams)} nationwide NOTAM obstacles to notams.json.")
+        return len(processed_notams)
     except Exception as e:
         print(f"    > [!] Failed to save notams.json: {e}")
+        return 0
         
 def process_data():
     obstacles = []
@@ -270,17 +272,21 @@ def process_data():
                     metadata["obs_count"] = len(json.load(f))
             except: pass
             
-    if len(airports) > 0:
+if len(airports) > 0:
         with open("airports.json", 'w') as f:
             json.dump(airports, f, separators=(',', ':'))
         metadata["apt_count"] = len(airports)
         print(f"[-] Saved {len(airports)} airports.")
         
+    # --- 4. NEW: NOTAM HARVEST (Version 2.0 MVP) ---
+    notam_count = harvest_notams()
+    
+    # Generate an effective date string (e.g., "2026-02-20 17:30Z")
+    metadata["notam_date"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%MZ")
+    metadata["notam_count"] = notam_count if notam_count else 0
+        
     with open("metadata.json", 'w') as f:
         json.dump(metadata, f)
-        
-    # --- 4. NEW: NOTAM HARVEST (Version 2.0 MVP) ---
-    harvest_notams()
         
     print("[-] Success. Database update complete.")
 
