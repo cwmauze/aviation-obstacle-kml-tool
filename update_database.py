@@ -86,8 +86,8 @@ def harvest_notams():
     
     # --- AUTOMATED GEOGRAPHY SEARCH CONFIG ---
     # Set your centerpoint identifier and search radius in Nautical Miles
-    center_id = "KRDU" 
-    search_radius = "150" 
+    center_id = "NC91" 
+    search_radius = "100" 
     
     # Payload mimicking a web form "Geography Search"
     payload = (
