@@ -73,7 +73,7 @@ def parse_dof_dms(dms_str):
 def harvest_notams():
     """
     Official NMS-API version of the NOTAM Harvester.
-    Replaces the old web scraper and utilizes GeoJSON for coordinate mapping.
+    Nationwide Pull: Uses DOMESTIC classification and OBST feature.
     """
     # --- NMS-API CONFIG ---
     # Securely load API credentials from environment variables 
@@ -88,30 +88,10 @@ def harvest_notams():
     AUTH_URL = "https://api-staging.cgifederal-aim.com/v1/auth/token"
     NOTAM_URL = "https://api-staging.cgifederal-aim.com/nmsapi/v1/notams"
 
-    # --- AUTOMATED GEOGRAPHY SEARCH CONFIG ---
-    center_id = "NC91" 
-    search_radius = "100" 
-    
-    print(f"[-] Fetching public NOTAMs via NMS-API within {search_radius}NM of {center_id}...")
+    print("[-] Fetching nationwide public NOTAMs via NMS-API...")
     processed_notams = []
 
-    # ... (The rest of your function from Step 1 "Resolve Center Coordinates" downwards remains exactly the same!) ...
-
-    # 1. Resolve Center Coordinates
-    # We load the airports.json file generated earlier in the script to find the lat/lon
-    try:
-        with open("airports.json", "r") as f:
-            airports = json.load(f)
-        if center_id not in airports:
-            print(f"    > [!] Center ID '{center_id}' not found in airports.json. Cannot perform geographic search.")
-            return
-        center_lat = airports[center_id]["lat"]
-        center_lon = airports[center_id]["lon"]
-    except Exception as e:
-        print(f"    > [!] Could not load airports.json to resolve coordinates: {e}")
-        return
-
-    # 2. Authenticate with NMS-API
+    # 1. Authenticate with NMS-API
     try:
         auth_response = requests.post(
             AUTH_URL,
@@ -126,26 +106,27 @@ def harvest_notams():
         print(f"    > [!] NMS-API Authentication failed: {e}")
         return
 
-    # 3. Request NOTAMs Data
+    # 2. Request Nationwide NOTAMs Data
     # Requesting GEOJSON format simplifies coordinate extraction
     headers = {
         "Authorization": f"Bearer {token}",
         "nmsResponseFormat": "GEOJSON"
     }
+    # Using classification=DOMESTIC and feature=OBST to pull all domestic obstacles
     params = {
-        "latitude": center_lat,
-        "longitude": center_lon,
-        "radius": search_radius
+        "classification": "DOMESTIC",
+        "feature": "OBST"
     }
     
     try:
-        data_response = requests.get(NOTAM_URL, headers=headers, params=params, timeout=30)
+        # Increased timeout to 60s for the larger nationwide payload
+        data_response = requests.get(NOTAM_URL, headers=headers, params=params, timeout=60)
         data_response.raise_for_status()
         data = data_response.json()
         
         # Extract the GeoJSON features array
         features = data.get("data", {}).get("geojson", [])
-        print(f"    > DIAGNOSTIC: NMS-API returned {len(features)} total NOTAMs in this radius.")
+        print(f"    > DIAGNOSTIC: NMS-API returned {len(features)} total nationwide OBST NOTAMs.")
         
         # Original regex and outage terminology logic (Locked Baseline)
         agl_pattern = r"(\d+)\s?(?:FT)?\s?AGL"
@@ -182,14 +163,14 @@ def harvest_notams():
          print(f"    > [!] API request or parsing failed: {e}")
          return
          
-    # 4. Save to Disk
+    # 3. Save to Disk
     try:
         with open("notams.json", 'w') as f:
             json.dump(processed_notams, f, indent=2)
-        print(f"    > Scraped and saved {len(processed_notams)} NOTAM obstacles to notams.json.")
+        print(f"    > Scraped and saved {len(processed_notams)} nationwide NOTAM obstacles to notams.json.")
     except Exception as e:
         print(f"    > [!] Failed to save notams.json: {e}")
-
+        
 def process_data():
     obstacles = []
     airports = {}
