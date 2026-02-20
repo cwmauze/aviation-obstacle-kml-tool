@@ -521,10 +521,11 @@ async function runLiveCounter() {
                             }
                         }
                     }
-                    if (inArea) count++;
-                }
-            }
-        }
+                    	if (inArea) count++;
+                	}	
+            	}
+        	}
+		}
 
     // 2. Process NOTAMs (with Geospatial State Hack)
     const incNotam = document.getElementById('notamInclude').checked;
@@ -948,12 +949,16 @@ async function generateKML() {
         kml += `\t<Style id="customCircle">\n\t\t<LineStyle>\n\t\t\t<color>${outlineColor}</color>\n\t\t\t<width>${ringWidth}</width>\n\t\t</LineStyle>\n`;
         kml += `\t\t<PolyStyle>\n\t\t\t<color>${fillColor}</color>\n\t\t\t<fill>${enableFill}</fill>\n\t\t</PolyStyle>\n\t</Style>\n`;
 
-        if (incNotam) {
+		if (incNotam) {
             kml += `\t<Style id="notamCircle">\n\t\t<LineStyle>\n\t\t\t<color>${notamOutlineColor}</color>\n\t\t\t<width>${notamWidth}</width>\n\t\t</LineStyle>\n`;
             kml += `\t\t<PolyStyle>\n\t\t\t<color>${notamFillColor}</color>\n\t\t\t<fill>${notamEnableFill}</fill>\n\t\t</PolyStyle>\n\t</Style>\n`;
         }
 
-		if (mode === 'state') {
+        obstacles.forEach(obs => {
+            if (obs.agl > minAGL) {
+                let keep = false;
+                
+                if (mode === 'state') {
                     if (obs.state && targetStates.includes(obs.state)) keep = true;
                 } else if (mode === 'route' && centers.length > 1) {
                     for (let j = 0; j < centers.length - 1; j++) {
