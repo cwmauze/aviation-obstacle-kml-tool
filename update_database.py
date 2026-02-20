@@ -159,11 +159,11 @@ def harvest_notams():
                         "text": text
                     })
                     
-    except Exception as e:
-         print(f"    > [!] API request or parsing failed: {e}")
-         return
+except Exception as e:
+        print(f"    > [!] API request or parsing failed: {e}")
+        return
          
-	# 3. Save to Disk
+    # 3. Save to Disk
     try:
         with open("notams.json", 'w') as f:
             json.dump(processed_notams, f, indent=2)
@@ -178,7 +178,7 @@ def process_data():
     airports = {}
     metadata = {"dof_date": "Unknown", "apt_count": 0, "obs_count": 0}
 
-    # --- 1. DOWNLOAD & PARSE DOF (56-Day Cycle) ---
+# --- 1. DOWNLOAD & PARSE DOF (56-Day Cycle) ---
     print("[-] Fetching latest DOF ZIP...")
     try:
         dof_zip_url = get_dof_zip_url()
