@@ -205,9 +205,9 @@
             </label>
         </div>
 
-        <div id="faaInputGroup">
+    	<div id="faaInputGroup">
             <input type="text" id="faaId" placeholder="e.g. KRDU, W40, NC91" style="text-transform: uppercase;" oninput="updateFacilityName()">
-            <div style="font-size: 10px; color: #90949c; margin-top: 5px;">Enter a single ID (e.g. KABQ) or a comma-separated list for a multi-point search.</div>
+            <div id="faaHelperText" style="font-size: 10px; color: #90949c; margin-top: 5px;">Enter a single ID (e.g. KABQ) or a comma-separated list for a multi-point search.</div>
             <div id="facilityName"></div>
         </div>
 
@@ -220,6 +220,7 @@
                 <label>Longitude (decimal)</label>
                 <input type="number" id="lon" step="any" value="-78.9391" placeholder="e.g. -78.9391" oninput="triggerCounterUpdate()">
             </div>
+            <div style="grid-column: span 2; font-size: 10px; color: #90949c; margin-top: -10px;">Enter coordinates in decimal degrees (e.g. 36.0066, -78.9391). Negative values for South/West.</div>
         </div>
 
         <div id="stateInputGroup" style="display: none;">
@@ -653,10 +654,19 @@ function toggleCenterInput() {
     document.getElementById('radiusWrap').style.display = mode === 'state' ? 'none' : 'block';
     document.getElementById('boundaryWrap').style.visibility = mode === 'state' ? 'hidden' : 'visible';
 
-    // Dynamically update the radius label without altering the base HTML
+    // Dynamically update the radius label, helper text, and default values
     const radiusLabel = document.querySelector('#radiusWrap label');
-    if (radiusLabel) {
-        radiusLabel.innerText = mode === 'route' ? 'Corridor half-width (NM)' : 'Search radius (NM)';
+    const radiusInput = document.getElementById('radiusNM');
+    const faaHelper = document.getElementById('faaHelperText');
+
+    if (mode === 'route') {
+        if (radiusLabel) radiusLabel.innerText = 'Corridor half-width (NM)';
+        if (faaHelper) faaHelper.innerText = 'Enter at least two comma-separated IDs to define your route (e.g. KABQ, KSAF, KDEN).';
+        if (radiusInput && radiusInput.value === "150") radiusInput.value = "4"; // Smart default swap
+    } else {
+        if (radiusLabel) radiusLabel.innerText = 'Search radius (NM)';
+        if (faaHelper) faaHelper.innerText = 'Enter a single ID (e.g. KABQ) or a comma-separated list for a multi-point search.';
+        if (mode === 'faa' && radiusInput && radiusInput.value === "4") radiusInput.value = "150"; // Smart default swap back
     }
 
     if(mode === 'faa' || mode === 'route') updateFacilityName();
