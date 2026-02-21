@@ -198,7 +198,7 @@
                 <input type="radio" name="centerMode" id="routeMode" value="route" onchange="toggleCenterInput()"> Route search
             </label>
             <label style="display: flex; align-items: center; gap: 5px; font-weight: normal; cursor: pointer; margin: 0;">
-                <input type="radio" name="centerMode" id="coordMode" value="coord" onchange="toggleCenterInput()"> Lat/Lon
+                <input type="radio" name="centerMode" id="coordMode" value="coord" onchange="toggleCenterInput()"> Coordinate
             </label>
             <label style="display: flex; align-items: center; gap: 5px; font-weight: normal; cursor: pointer; margin: 0;">
                 <input type="radio" name="centerMode" id="stateMode" value="state" onchange="toggleCenterInput()"> Entire US state(s)
@@ -213,14 +213,14 @@
 
         <div id="coordInputGroup" class="grid-2" style="display: none;">
             <div>
-                <label>Latitude (decimal)</label>
-                <input type="number" id="lat" step="any" value="36.0066" placeholder="e.g. 36.0066" oninput="triggerCounterUpdate()">
+                <label>Latitude</label>
+                <input type="text" id="lat" placeholder="e.g. 36.0066 or 36 00.396 N" oninput="triggerCounterUpdate()">
             </div>
             <div>
-                <label>Longitude (decimal)</label>
-                <input type="number" id="lon" step="any" value="-78.9391" placeholder="e.g. -78.9391" oninput="triggerCounterUpdate()">
+                <label>Longitude</label>
+                <input type="text" id="lon" placeholder="e.g. -78.9391 or 78 56.346 W" oninput="triggerCounterUpdate()">
             </div>
-            <div style="grid-column: span 2; font-size: 10px; color: #90949c; margin-top: -10px;">Enter coordinates in decimal degrees (e.g. 36.0066, -78.9391). Negative values for South/West.</div>
+            <div style="grid-column: span 2; font-size: 10px; color: #90949c; margin-top: -10px;">Accepts decimal, DDM, or DMS formats. Use negative numbers or S/W for South/West.</div>
         </div>
 
         <div id="stateInputGroup" style="display: none;">
