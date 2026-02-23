@@ -369,8 +369,8 @@
             <div>
                 <label>Filename Format</label>
                 <select id="fileNameFormat" style="width: 100%; padding: 8px 10px; background: var(--input-bg); color: var(--text); border: 1px solid var(--border); border-radius: 5px; box-sizing: border-box; font-size: 13px; cursor: pointer;">
-                    <option value="verbose">Verbose (Name-1000AGL-150NM-Date)</option>
-                    <option value="standard">Standard (Name_1000AGL)</option>
+                    <option value="verbose">Verbose (Name-[Height]AGL-[Radius]-Date)</option>
+                    <option value="standard">Standard (Name_[Height]AGL)</option>
                     <option value="short">Short (Name Only)</option>
                 </select>
             </div>
@@ -656,16 +656,25 @@ async function runLiveCounter() {
     }
 
     if (notamCounterEl) {
-        if (!incNotam) {
-            notamCounterEl.innerText = "Layer Disabled";
-            notamCounterEl.style.color = "var(--text)";
-        } else {
-            notamCounterEl.innerText = `${notamCount} Active Outage${notamCount !== 1 ? 's' : ''}`;
-            notamCounterEl.style.color = notamCount > 0 ? "var(--dispatch)" : "var(--text)";
+            if (!incNotam) {
+                notamCounterEl.innerText = "Layer Disabled";
+                notamCounterEl.style.color = "var(--text)";
+            } else {
+                notamCounterEl.innerText = `${notamCount} Active Outage${notamCount !== 1 ? 's' : ''}`;
+                notamCounterEl.style.color = notamCount > 0 ? "var(--dispatch)" : "var(--text)";
+            }
+        }
+
+        // Live-update the Filename Format dropdown options
+        const formatDropdown = document.getElementById('fileNameFormat');
+        if (formatDropdown) {
+            const aglStr = isNaN(minAGL) ? "[Height]" : minAGL;
+            const radStr = mode === 'state' ? "STATE" : (isNaN(searchRadiusNM) ? "[Radius]" : searchRadiusNM + "NM");
+            formatDropdown.options[0].text = `Verbose (Name-${aglStr}AGL-${radStr}-Date)`;
+            formatDropdown.options[1].text = `Standard (Name_${aglStr}AGL)`;
         }
     }
-}
-  
+
 // --- CORE UI CONTROLS ---
 function toggleTheme() {
     const body = document.body;
