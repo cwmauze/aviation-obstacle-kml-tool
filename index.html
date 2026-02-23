@@ -154,7 +154,7 @@
     <div class="header-row">
         <div>
             <h2>Aviation obstacle .KML overlay generator</h2>
-            <span class="version-subtitle" onclick="openVersionModal()">v2.2 - Click for version history</span>
+            <span class="version-subtitle" onclick="openVersionModal()">v2.1.1 - Click for version history</span>
             <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub project home</a>
         </div>
         <button class="action-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 16px; padding: 6px 10px; height: auto;">☀️</button>
@@ -233,12 +233,6 @@
         <div class="section-title">
             <span>2. Filtering & Coverage</span>
             <span id="liveCounter" style="color: var(--text); font-weight: normal; text-transform: none;">0 obstacles</span>
-        </div>
-        <div style="display: flex; align-items: center; height: 26px; margin-bottom: 12px;">
-            <div class="checkbox-group" style="padding: 0; margin: 0;">
-                <input type="checkbox" id="stdInclude" checked onchange="triggerCounterUpdate()">
-                <label for="stdInclude" style="font-weight: bold; color: var(--primary); font-size: 12px;">Include standard obstacles (DOF)</label>
-            </div>
         </div>
         <div class="grid-2">
             <div id="radiusWrap">
@@ -359,24 +353,6 @@
         </div>
     </div>
 
-    <div class="section-card" style="margin-bottom: 0;">
-        <div class="section-title">5. Export Settings</div>
-        <div class="grid-2">
-            <div>
-                <label>Custom Route/File Name (Optional)</label>
-                <input type="text" id="customFileName" placeholder="e.g. Night Route Alpha">
-            </div>
-            <div>
-                <label>Filename Format</label>
-                <select id="fileNameFormat" style="width: 100%; padding: 8px 10px; background: var(--input-bg); color: var(--text); border: 1px solid var(--border); border-radius: 5px; box-sizing: border-box; font-size: 13px; cursor: pointer;">
-                    <option value="verbose">Verbose (Name-[Height]AGL-[Radius]-Date)</option>
-                    <option value="standard">Standard (Name_[Height]AGL)</option>
-                    <option value="short">Short (Name Only)</option>
-                </select>
-            </div>
-        </div>
-    </div>
-
     <div class="btn-group">
         <button class="action btn-preview" onclick="showMapPreview()">Preview .KML <span>STREET / SAT / AVIATION</span></button>
         <button class="action btn-download" onclick="generateKML()">Download .KML</button>
@@ -392,7 +368,6 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
-    	<li><strong>v2.2:</strong> Added standard obstacle toggle and custom filename options.</li>
     	<li><strong>v2.1.1:</strong> Minor UI update.</li>
     	<li><strong>v2.1.0:</strong> Integrated official FAA NMS-API. Up-scoped NOTAM logic to process nationwide datasets with geospatial cross-referencing for state-mode bounding. Removed experimental tags.</li>
         <li><strong>v2.0.4 (beta):</strong> Updated NOTAM Javascript regex parsing logic to correctly handle decimal formats and unblock the altitude filter.</li>
@@ -557,9 +532,7 @@ async function runLiveCounter() {
     let notamCount = 0;
 
     // 1. Process Standard Obstacles
-    const incStd = document.getElementById('stdInclude').checked;
-    
-    if (incStd && !isNaN(minAGL)) {
+    if (!isNaN(minAGL)) {
         if (mode === 'state') {
             if (targetStates.length > 0) {
                 for (let i = 0; i < globalObstacles.length; i++) {
@@ -647,34 +620,20 @@ async function runLiveCounter() {
     }
 
 // Update UI Counters
-    if (!incStd) {
-        counterEl.innerText = "Layer Disabled";
-        counterEl.style.color = "var(--text)";
-    } else {
-        counterEl.innerText = `${count} Obstacle${count !== 1 ? 's' : ''}`;
-        counterEl.style.color = count > 0 ? "var(--success)" : "var(--text)";
-    }
+    counterEl.innerText = `${count} Obstacle${count !== 1 ? 's' : ''}`;
+    counterEl.style.color = count > 0 ? "var(--success)" : "var(--text)";
 
     if (notamCounterEl) {
-            if (!incNotam) {
-                notamCounterEl.innerText = "Layer Disabled";
-                notamCounterEl.style.color = "var(--text)";
-            } else {
-                notamCounterEl.innerText = `${notamCount} Active Outage${notamCount !== 1 ? 's' : ''}`;
-                notamCounterEl.style.color = notamCount > 0 ? "var(--dispatch)" : "var(--text)";
-            }
-        }
-
-        // Live-update the Filename Format dropdown options
-        const formatDropdown = document.getElementById('fileNameFormat');
-        if (formatDropdown) {
-            const aglStr = isNaN(minAGL) ? "[Height]" : minAGL;
-            const radStr = mode === 'state' ? "STATE" : (isNaN(searchRadiusNM) ? "[Radius]" : searchRadiusNM + "NM");
-            formatDropdown.options[0].text = `Verbose (Name-${aglStr}AGL-${radStr}-Date)`;
-            formatDropdown.options[1].text = `Standard (Name_${aglStr}AGL)`;
+        if (!incNotam) {
+            notamCounterEl.innerText = "Layer Disabled";
+            notamCounterEl.style.color = "var(--text)";
+        } else {
+            notamCounterEl.innerText = `${notamCount} Active Outage${notamCount !== 1 ? 's' : ''}`;
+            notamCounterEl.style.color = notamCount > 0 ? "var(--dispatch)" : "var(--text)";
         }
     }
-
+}
+  
 // --- CORE UI CONTROLS ---
 function toggleTheme() {
     const body = document.body;
@@ -1053,34 +1012,84 @@ async function generateKML() {
             kml += `\t\t<PolyStyle>\n\t\t\t<color>${notamFillColor}</color>\n\t\t\t<fill>${notamEnableFill}</fill>\n\t\t</PolyStyle>\n\t</Style>\n`;
         }
 
-        const incStd = document.getElementById('stdInclude').checked;
-        
-        if (incStd) {
-            obstacles.forEach(obs => {
-                if (obs.agl > minAGL) {
-                    let keep = false;
-                    
-                    if (mode === 'state') {
-                        if (obs.state && targetStates.includes(obs.state)) keep = true;
-                    } else if (mode === 'route' && centers.length > 1) {
-                        for (let j = 0; j < centers.length - 1; j++) {
-                            if (pointToSegmentDistanceNM(obs.lat, obs.lon, centers[j].lat, centers[j].lon, centers[j+1].lat, centers[j+1].lon) <= searchRadiusNM) {
-                                keep = true;
-                                break;
-                            }
+        obstacles.forEach(obs => {
+            if (obs.agl > minAGL) {
+                let keep = false;
+                
+                if (mode === 'state') {
+                    if (obs.state && targetStates.includes(obs.state)) keep = true;
+                } else if (mode === 'route' && centers.length > 1) {
+                    for (let j = 0; j < centers.length - 1; j++) {
+                        if (pointToSegmentDistanceNM(obs.lat, obs.lon, centers[j].lat, centers[j].lon, centers[j+1].lat, centers[j+1].lon) <= searchRadiusNM) {
+                            keep = true;
+                            break;
                         }
-                    } else {
-                        for (const c of centers) {
-                            if (haversineNM(c.lat, c.lon, obs.lat, obs.lon) <= searchRadiusNM) {
-                                keep = true;
-                                break;
+                    }
+                } else {
+                    for (const c of centers) {
+                        if (haversineNM(c.lat, c.lon, obs.lat, obs.lon) <= searchRadiusNM) {
+                            keep = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (keep) {
+                    const circleCoords = generateCircleCoords(obs.lat, obs.lon, ringRadiusNM);
+                    kml += `\t<Placemark>\n\t\t<name>${obs.city} (${obs.id}) - ${obs.agl} AGL</name>\n\t\t<styleUrl>#customCircle</styleUrl>\n`;
+                    kml += `\t\t<Polygon>\n\t\t\t<outerBoundaryIs>\n\t\t\t\t<LinearRing>\n\t\t\t\t\t<coordinates>\n\t\t\t\t\t\t${circleCoords}\n\t\t\t\t\t</coordinates>\n\t\t\t\t</LinearRing>\n\t\t\t</outerBoundaryIs>\n\t\t</Polygon>\n\t</Placemark>\n`;
+                }
+            }
+        });
+
+        // OPTIMIZATION: Pre-filter state obstacles for KML generation
+        let stateObstacles = [];
+        if (mode === 'state' && targetStates.length > 0) {
+            stateObstacles = obstacles.filter(o => targetStates.includes(o.state));
+        }
+
+        if (incNotam && globalNotams) {
+            globalNotams.forEach(notam => {
+            let keep = false;
+                if (mode === 'state') {
+                    if (targetStates.length > 0) {
+                        for (let k = 0; k < stateObstacles.length; k++) {
+                            if (Math.abs(stateObstacles[k].lat - notam.lat) < 0.02 && Math.abs(stateObstacles[k].lon - notam.lon) < 0.02) {
+                                if (haversineNM(stateObstacles[k].lat, stateObstacles[k].lon, notam.lat, notam.lon) <= 1.0) {
+                                    keep = true;
+                                    break;
+                                }
                             }
                         }
                     }
+                } else if (mode === 'route' && centers.length > 1) {
+                    for (let j = 0; j < centers.length - 1; j++) {
+                        if (pointToSegmentDistanceNM(notam.lat, notam.lon, centers[j].lat, centers[j].lon, centers[j+1].lat, centers[j+1].lon) <= searchRadiusNM) {
+                            keep = true;
+                            break;
+                        }
+                    }
+                } else {
+                    for (const c of centers) {
+                        if (haversineNM(c.lat, c.lon, notam.lat, notam.lon) <= searchRadiusNM) {
+                            keep = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (keep) {
+                    let finalAgl = parseNotamAGL(notam.text, notam.agl);
+                    let aglNum = parseFloat(finalAgl); // FIX: parseFloat to retain decimals!
+                    if (!isNaN(aglNum) && aglNum < notamMinAGL) {
+                        keep = false;
+                    }
 
                     if (keep) {
-                        const circleCoords = generateCircleCoords(obs.lat, obs.lon, ringRadiusNM);
-                        kml += `\t<Placemark>\n\t\t<name>${obs.city} (${obs.id}) - ${obs.agl} AGL</name>\n\t\t<styleUrl>#customCircle</styleUrl>\n`;
+                        const circleCoords = generateCircleCoords(notam.lat, notam.lon, notamRingNM);
+                        kml += `\t<Placemark>\n\t\t<name>UNLIT TOWER - ${finalAgl} ft AGL</name>\n`;
+                        kml += `\t\t<description><![CDATA[${notam.text}]]></description>\n`;
+                        kml += `\t\t<styleUrl>#notamCircle</styleUrl>\n`;
                         kml += `\t\t<Polygon>\n\t\t\t<outerBoundaryIs>\n\t\t\t\t<LinearRing>\n\t\t\t\t\t<coordinates>\n\t\t\t\t\t\t${circleCoords}\n\t\t\t\t\t</coordinates>\n\t\t\t\t</LinearRing>\n\t\t\t</outerBoundaryIs>\n\t\t</Polygon>\n\t</Placemark>\n`;
                     }
                 }
@@ -1097,25 +1106,12 @@ async function generateKML() {
                       String(now.getMinutes()).padStart(2, '0');
 
         const radiusStr = mode === 'state' ? "STATE" : `${searchRadiusNM}NM`;
-        
-        const rawCustomName = document.getElementById('customFileName').value.trim();
-        // Clean out characters that are illegal in standard OS filenames
-        const customName = rawCustomName.replace(/[<>:"/\\|?*]/g, ''); 
-        const formatStyle = document.getElementById('fileNameFormat').value;
-        const baseName = customName || `Obstacles-${centerLabel}`;
-        
-        let finalFilename = `${baseName}.kml`;
-        if (formatStyle === 'standard') {
-            finalFilename = `${baseName}_${minAGL}AGL.kml`;
-        } else if (formatStyle === 'verbose') {
-            finalFilename = `${baseName}-${minAGL}AGL-${radiusStr}-${dtStr}.kml`;
-        }
 
         const blob = new Blob([kml], { type: 'application/vnd.google-earth.kml+xml' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = finalFilename;
+        a.download = `Obstacles-${centerLabel}-${minAGL}AGL-${radiusStr}-${dtStr}.kml`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
@@ -1232,44 +1228,40 @@ async function showMapPreview() {
     try {
         const obstacles = await getObstacles();
 
-        const incStd = document.getElementById('stdInclude').checked;
-        
-        if (incStd) {
-            obstacles.forEach(obs => {
-                if (obs.agl > minAGL) {
-                    let keep = false;
-                    
-                    if (mode === 'state') {
-                        if (obs.state && targetStates.includes(obs.state)) keep = true;
-                    } else if (mode === 'route' && centers.length > 1) {
-                        for (let j = 0; j < centers.length - 1; j++) {
-                            if (pointToSegmentDistanceNM(obs.lat, obs.lon, centers[j].lat, centers[j].lon, centers[j+1].lat, centers[j+1].lon) <= searchRadiusNM) {
-                                keep = true;
-                                break;
-                            }
-                        }
-                    } else {
-                        for (const c of centers) {
-                            if (haversineNM(c.lat, c.lon, obs.lat, obs.lon) <= searchRadiusNM) {
-                                keep = true;
-                                break;
-                            }
+        obstacles.forEach(obs => {
+            if (obs.agl > minAGL) {
+                let keep = false;
+                
+                if (mode === 'state') {
+                    if (obs.state && targetStates.includes(obs.state)) keep = true;
+                } else if (mode === 'route' && centers.length > 1) {
+                    for (let j = 0; j < centers.length - 1; j++) {
+                        if (pointToSegmentDistanceNM(obs.lat, obs.lon, centers[j].lat, centers[j].lon, centers[j+1].lat, centers[j+1].lon) <= searchRadiusNM) {
+                            keep = true;
+                            break;
                         }
                     }
-
-                    if (keep) {
-                        L.circle([obs.lat, obs.lon], {
-                            radius: ringNM * 1852,
-                            color: outlineColor,
-                            fillColor: fillColor,
-                            fillOpacity: fillOpacFloat,
-                            weight: ringWidth
-                        }).bindPopup(`<b>${obs.city} (${obs.id})</b><br>${obs.agl} ft AGL`)
-                          .addTo(previewLayerGroup);
+                } else {
+                    for (const c of centers) {
+                        if (haversineNM(c.lat, c.lon, obs.lat, obs.lon) <= searchRadiusNM) {
+                            keep = true;
+                            break;
+                        }
                     }
                 }
-            });
-        }
+
+                if (keep) {
+                    L.circle([obs.lat, obs.lon], {
+                        radius: ringNM * 1852,
+                        color: outlineColor,
+                        fillColor: fillColor,
+                        fillOpacity: fillOpacFloat,
+                        weight: ringWidth
+                    }).bindPopup(`<b>${obs.city} (${obs.id})</b><br>${obs.agl} ft AGL`)
+                      .addTo(previewLayerGroup);
+                }
+            }
+        });
 
 	// OPTIMIZATION: Pre-filter state obstacles for Map Preview
         let stateObstacles = [];
