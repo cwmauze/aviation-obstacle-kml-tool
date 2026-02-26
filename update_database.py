@@ -1,3 +1,4 @@
+import sys
 import os
 import json
 import zipfile
@@ -84,9 +85,9 @@ def harvest_notams():
         print("[!] NMS-API Credentials missing in environment. Skipping NOTAM harvest.")
         return
     
-    # Using the Pre-Prod/Staging environment endpoints
-    AUTH_URL = "https://api-staging.cgifederal-aim.com/v1/auth/token"
-    NOTAM_URL = "https://api-staging.cgifederal-aim.com/nmsapi/v1/notams"
+    # Using the Production environment endpoints
+    AUTH_URL = "https://api.cgifederal-aim.com/v1/auth/token"
+    NOTAM_URL = "https://api.cgifederal-aim.com/nmsapi/v1/notams"
 
     print("[-] Fetching nationwide public NOTAMs via NMS-API...")
     processed_notams = []
@@ -104,7 +105,7 @@ def harvest_notams():
         token = auth_response.json().get("access_token")
     except Exception as e:
         print(f"    > [!] NMS-API Authentication failed: {e}")
-        return
+        sys.exit(1)
 
     # 2. Request Nationwide NOTAMs Data
     # Requesting GEOJSON format simplifies coordinate extraction
@@ -161,7 +162,7 @@ def harvest_notams():
                     
     except Exception as e:
         print(f"    > [!] API request or parsing failed: {e}")
-        return
+        sys.exit(1)
          
     # 3. Save to Disk
     try:
@@ -281,9 +282,19 @@ def process_data():
     # --- 4. NEW: NOTAM HARVEST (Version 2.0 MVP) ---
     notam_count = harvest_notams()
     
-    # Generate an effective date string (e.g., "2026-02-20 17:30Z")
-    metadata["notam_date"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%MZ")
-    metadata["notam_count"] = notam_count if notam_count else 0
+    if notam_count is not None:
+        metadata["notam_date"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%MZ")
+        metadata["notam_count"] = notam_count
+    else:
+        print("[!] NOTAM harvest skipped or failed. Preserving previous NOTAM metadata.")
+        if os.path.exists("metadata.json"):
+            try:
+                with open("metadata.json", 'r') as f:
+                    old_meta = json.load(f)
+                    metadata["notam_date"] = old_meta.get("notam_date", "Unknown")
+                    metadata["notam_count"] = old_meta.get("notam_count", 0)
+            except:
+                pass
         
     with open("metadata.json", 'w') as f:
         json.dump(metadata, f)
