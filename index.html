@@ -76,11 +76,13 @@
         .btn-download:hover { background-color: #218838; }
         
 /* Segmented Control */
-        .segmented-control { display: flex; background: var(--section-bg); border-radius: 8px; padding: 4px; margin-bottom: 15px; border: 1px solid var(--border); gap: 2px; }
+        .segmented-control { display: flex; align-items: stretch; background: var(--section-bg); border-radius: 8px; padding: 4px; margin-bottom: 15px; border: 1px solid var(--border); gap: 2px; }
         .segmented-control input[type="radio"] { display: none; }
-        .segmented-control label { flex: 1; text-align: center; padding: 12px 6px; margin: 0; font-size: 12px; font-weight: bold; color: var(--text); cursor: pointer; border-radius: 6px; transition: 0.2s; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.5px;}
-        .segmented-control input[type="radio"]:checked + label { background: var(--card); color: var(--primary); opacity: 1; box-shadow: 0 2px 6px rgba(0,0,0,0.3); border: 1px solid var(--border); padding: 11px 5px; }
-        @media (max-width: 500px) { .segmented-control { flex-wrap: wrap; } .segmented-control label { flex: 1 1 40%; } }
+        .segmented-control label { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 10px 4px; margin: 0; font-size: 11px; font-weight: bold; color: var(--text); cursor: pointer; border-radius: 6px; transition: 0.2s; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.5px; box-sizing: border-box; border: 1px solid transparent; position: relative; }
+        .segmented-control label:not(:last-of-type)::after { content: ""; position: absolute; right: -2px; top: 15%; height: 70%; width: 1px; background: rgba(128, 128, 128, 0.4); z-index: 0; }
+        .segmented-control input[type="radio"]:checked + label { background: var(--card); color: var(--primary); opacity: 1; box-shadow: 0 2px 6px rgba(0,0,0,0.3); border: 1px solid var(--border); z-index: 1; }
+        .segmented-control input[type="radio"]:checked + label::after { display: none; }
+        @media (max-width: 500px) { .segmented-control { flex-wrap: wrap; } .segmented-control label { flex: 1 1 40%; } .segmented-control label::after { display: none; } }
 
 /* Modal Styles */
         .modal { 
@@ -161,7 +163,7 @@
     <div class="header-row">
         <div>
             <h2>Aviation obstacle .KML overlay generator</h2>
-            <span class="version-subtitle" onclick="openVersionModal()">v2.4.1 - Click for version history</span>
+            <span class="version-subtitle" onclick="openVersionModal()">v2.4.1</span>
             <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub project home</a>
             <a href="mailto:cistern_fob3m@icloud.com" class="project-link">Contact / Feedback</a>
         </div>
