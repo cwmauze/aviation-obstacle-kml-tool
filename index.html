@@ -75,6 +75,13 @@
         .btn-download { background-color: var(--success); display: flex; align-items: center; justify-content: center; font-size: 15px;}
         .btn-download:hover { background-color: #218838; }
         
+/* Segmented Control */
+        .segmented-control { display: flex; background: var(--section-bg); border-radius: 8px; padding: 4px; margin-bottom: 15px; border: 1px solid var(--border); gap: 2px; }
+        .segmented-control input[type="radio"] { display: none; }
+        .segmented-control label { flex: 1; text-align: center; padding: 8px 4px; margin: 0; font-size: 11px; font-weight: bold; color: var(--text); cursor: pointer; border-radius: 6px; transition: 0.2s; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.5px;}
+        .segmented-control input[type="radio"]:checked + label { background: var(--card); color: var(--primary); opacity: 1; box-shadow: 0 2px 6px rgba(0,0,0,0.3); border: 1px solid var(--border); padding: 7px 3px; }
+        @media (max-width: 500px) { .segmented-control { flex-wrap: wrap; } .segmented-control label { flex: 1 1 40%; } }
+
 /* Modal Styles */
         .modal { 
             display: none; 
@@ -154,7 +161,7 @@
     <div class="header-row">
         <div>
             <h2>Aviation obstacle .KML overlay generator</h2>
-            <span class="version-subtitle" onclick="openVersionModal()">v2.2.1 - Click for version history</span>
+            <span class="version-subtitle" onclick="openVersionModal()">v2.3 - Click for version history</span>
             <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub project home</a>
         </div>
         <button class="action-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 16px; padding: 6px 10px; height: auto;">☀️</button>
@@ -190,19 +197,18 @@
 
 	<div class="section-card">
         <div class="section-title">1. Search Area Selection</div>
-        <div style="display: flex; gap: 20px; margin-bottom: 12px; flex-wrap: wrap;">
-            <label style="display: flex; align-items: center; gap: 5px; font-weight: normal; cursor: pointer; margin: 0;">
-                <input type="radio" name="centerMode" id="faaMode" value="faa" checked onchange="toggleCenterInput()"> Point(s) / identifiers
-            </label>
-            <label style="display: flex; align-items: center; gap: 5px; font-weight: normal; cursor: pointer; margin: 0;">
-                <input type="radio" name="centerMode" id="routeMode" value="route" onchange="toggleCenterInput()"> Route search
-            </label>
-            <label style="display: flex; align-items: center; gap: 5px; font-weight: normal; cursor: pointer; margin: 0;">
-                <input type="radio" name="centerMode" id="coordMode" value="coord" onchange="toggleCenterInput()"> Coordinate
-            </label>
-            <label style="display: flex; align-items: center; gap: 5px; font-weight: normal; cursor: pointer; margin: 0;">
-                <input type="radio" name="centerMode" id="stateMode" value="state" onchange="toggleCenterInput()"> Entire US state(s)
-            </label>
+        <div class="segmented-control">
+            <input type="radio" name="centerMode" id="faaMode" value="faa" checked onchange="toggleCenterInput()">
+            <label for="faaMode">Point(s) / Identifiers</label>
+
+            <input type="radio" name="centerMode" id="routeMode" value="route" onchange="toggleCenterInput()">
+            <label for="routeMode">Route Search</label>
+
+            <input type="radio" name="centerMode" id="coordMode" value="coord" onchange="toggleCenterInput()">
+            <label for="coordMode">Coordinate</label>
+
+            <input type="radio" name="centerMode" id="stateMode" value="state" onchange="toggleCenterInput()">
+            <label for="stateMode">Entire US State(s)</label>
         </div>
 
     	<div id="faaInputGroup">
@@ -232,12 +238,12 @@
     <div class="section-card">
         <div class="section-title">
             <span>2. Filtering & Coverage</span>
-            <span id="liveCounter" style="color: var(--text); font-weight: normal; text-transform: none;">0 obstacles</span>
+            <span id="liveCounter" style="background: var(--bg); color: var(--text); padding: 4px 10px; border-radius: 12px; font-weight: 600; font-size: 11px; border: 1px solid var(--border); text-transform: none; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);">0 obstacles</span>
         </div>
-        <div style="display: flex; align-items: center; height: 26px; margin-bottom: 12px;">
+        <div style="display: flex; align-items: center; margin-bottom: 15px; background: var(--bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border);">
             <div class="checkbox-group" style="padding: 0; margin: 0;">
                 <input type="checkbox" id="stdInclude" checked onchange="triggerCounterUpdate()">
-                <label for="stdInclude" style="font-weight: bold; color: var(--primary); font-size: 12px;">Include standard obstacles (DOF)</label>
+                <label for="stdInclude" style="font-weight: bold; color: var(--primary); font-size: 13px; letter-spacing: 0.3px;">Include standard obstacles (DOF)</label>
             </div>
         </div>
         <div class="grid-2">
@@ -313,14 +319,14 @@
     <div class="section-card">
         <div class="section-title">
             <span>4. Unlit obstacles</span>
-            <span id="notamLiveCounter" style="color: var(--text); font-weight: normal; text-transform: none;">0 active lighting outages</span>
+            <span id="notamLiveCounter" style="background: var(--bg); color: var(--text); padding: 4px 10px; border-radius: 12px; font-weight: 600; font-size: 11px; border: 1px solid var(--border); text-transform: none; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);">0 active lighting outages</span>
         </div>
         <div class="grid-2">
             <div>
-                <div style="display: flex; align-items: center; height: 26px; margin-bottom: 8px;">
+                <div style="display: flex; align-items: center; margin-bottom: 12px; background: var(--bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border);">
                     <div class="checkbox-group" style="padding: 0; margin: 0;">
                         <input type="checkbox" id="notamInclude" checked onchange="triggerCounterUpdate()">
-                        <label for="notamInclude" style="font-weight: bold; color: var(--dispatch); font-size: 12px;">Include active light outage NOTAMs</label>
+                        <label for="notamInclude" style="font-weight: bold; color: var(--dispatch); font-size: 13px; letter-spacing: 0.3px;">Include active light outage NOTAMs</label>
                     </div>
                 </div>
                 <div class="inline-control">
@@ -378,7 +384,7 @@
     </div>
 
     <div class="btn-group">
-        <button class="action btn-preview" onclick="showMapPreview()">Preview .KML <span>STREET / SAT / AVIATION</span></button>
+        <button class="action btn-preview" onclick="showMapPreview()">Interactive Map Preview <span>STREET • SAT • VFR SECTIONAL</span></button>x
         <button class="action btn-download" onclick="generateKML()">Download .KML</button>
     </div>
 
@@ -392,6 +398,7 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
+    	<li><strong>v2.3:</strong> Added slider style selectors and tweaked UI for readabilty.</li>
     	<li><strong>v2.2.1:</strong> Fixed export issue with new UI / filename options.</li>
     	<li><strong>v2.2:</strong> Added standard obstacle toggle and custom filename options.</li>
     	<li><strong>v2.1.1:</strong> Minor UI update.</li>
