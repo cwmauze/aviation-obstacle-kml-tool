@@ -163,7 +163,7 @@
     <div class="header-row">
         <div>
             <h2>Aviation obstacle .KML overlay generator</h2>
-            <span class="version-subtitle" onclick="openVersionModal()">v2.4.1</span>
+            <span class="version-subtitle" onclick="openVersionModal()">v2.5</span>
             <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub project home</a>
             <a href="mailto:cistern_fob3m@icloud.com" class="project-link">Contact / Feedback</a>
         </div>
@@ -199,16 +199,22 @@
     </div>
 
 	<div class="section-card">
-        <div class="section-title">1. Search Area Selection</div>
+        <div class="section-title">
+            <span>1. Search Area & Filtering</span>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <span id="liveCounter" style="background: var(--bg); color: var(--text); padding: 4px 10px; border-radius: 12px; font-weight: 600; font-size: 11px; border: 1px solid var(--border); text-transform: none; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);">0 obstacles</span>
+                <span id="notamLiveCounter" style="background: var(--bg); color: var(--text); padding: 4px 10px; border-radius: 12px; font-weight: 600; font-size: 11px; border: 1px solid var(--border); text-transform: none; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);">0 active lighting outages</span>
+            </div>
+        </div>
         <div class="segmented-control">
             <input type="radio" name="centerMode" id="faaMode" value="faa" checked onchange="toggleCenterInput()">
-            <label for="faaMode">Point(s) / Identifiers</label>
+            <label for="faaMode">FAA Identifier(s)</label>
+
+            <input type="radio" name="centerMode" id="coordMode" value="coord" onchange="toggleCenterInput()">
+            <label for="coordMode">Coordinates</label>
 
             <input type="radio" name="centerMode" id="routeMode" value="route" onchange="toggleCenterInput()">
             <label for="routeMode">Route Search</label>
-
-            <input type="radio" name="centerMode" id="coordMode" value="coord" onchange="toggleCenterInput()">
-            <label for="coordMode">Coordinate</label>
 
             <input type="radio" name="centerMode" id="stateMode" value="state" onchange="toggleCenterInput()">
             <label for="stateMode">Entire US State(s)</label>
@@ -220,7 +226,7 @@
             <div id="facilityName"></div>
         </div>
 
-        <div id="coordInputGroup" class="grid-2" style="display: none;">
+        <div id="coordInputGroup" class="grid-2" style="display: none; margin-bottom: 15px;">
             <div>
                 <label>Latitude</label>
                 <input type="text" id="lat" placeholder="e.g. 36.0066 or 36 00.396 N" oninput="triggerCounterUpdate()">
@@ -232,81 +238,114 @@
             <div style="grid-column: span 2; font-size: 10px; color: #90949c; margin-top: -10px;">Accepts decimal, DDM, or DMS formats. Use negative numbers or S/W for South/West.</div>
         </div>
 
-        <div id="stateInputGroup" style="display: none;">
+        <div id="stateInputGroup" style="display: none; margin-bottom: 15px;">
             <input type="text" id="stateIds" placeholder="e.g. NC, VA, SC" style="text-transform: uppercase;" oninput="triggerCounterUpdate()">
             <div style="font-size: 10px; color: #90949c; margin-top: 5px;">Enter comma-separated 2-letter state codes.</div>
         </div>
-    </div>
 
-    <div class="section-card">
-        <div class="section-title">
-            <span>2. Filtering & Coverage</span>
-            <span id="liveCounter" style="background: var(--bg); color: var(--text); padding: 4px 10px; border-radius: 12px; font-weight: 600; font-size: 11px; border: 1px solid var(--border); text-transform: none; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);">0 obstacles</span>
+        <div id="radiusWrap" style="margin-top: 15px;">
+            <label style="margin-bottom: 4px;">Search radius (NM)</label>
+            <input type="number" id="radiusNM" value="150" oninput="triggerCounterUpdate()">
         </div>
-        <div style="display: flex; align-items: center; margin-bottom: 15px; background: var(--bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border);">
-            <div class="checkbox-group" style="padding: 0; margin: 0;">
-                <input type="checkbox" id="stdInclude" checked onchange="triggerCounterUpdate()">
-                <label for="stdInclude" style="font-weight: bold; color: var(--primary); font-size: 13px; letter-spacing: 0.3px;">Include standard obstacles (DOF)</label>
-            </div>
-        </div>
+
+        <div style="height: 1px; background: var(--border); margin: 20px 0 15px 0;"></div>
+
         <div class="grid-2">
-            <div id="radiusWrap">
-                <label>Search radius (NM)</label>
-                <input type="number" id="radiusNM" value="150" oninput="triggerCounterUpdate()">
-            </div>
             <div>
-                <label>Minimum obstacle height (ft AGL)</label>
-                <input type="number" id="minAGL" value="1000" oninput="checkAGLWarning()">
-                <div id="aglWarning" style="display: none; color: var(--danger); font-size: 10px; margin-top: 5px; font-weight: bold;">FAA database excludes obstacles under 200 AGL.</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="section-card">
-        <div class="section-title">3. Overlay Options</div>
-        <div class="grid-2">
-            
-            <div id="boundaryWrap">
-                <div style="display: flex; align-items: center; height: 26px; margin-bottom: 8px;">
+                <div style="display: flex; align-items: center; margin-bottom: 12px; background: var(--bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border);">
                     <div class="checkbox-group" style="padding: 0; margin: 0;">
-                        <input type="checkbox" id="enableBoundary" checked>
-                        <label for="enableBoundary" style="font-weight: bold; color: var(--primary); font-size: 12px;">Include search boundaries</label>
+                        <input type="checkbox" id="stdInclude" checked onchange="triggerCounterUpdate()">
+                        <label for="stdInclude" style="font-weight: bold; color: var(--primary); font-size: 13px; letter-spacing: 0.3px;">Include standard obstacles (DOF)</label>
                     </div>
                 </div>
-                
-                <div class="inline-control">
-                    <label>Line color</label>
-                    <input type="color" id="boundaryColor" value="#ff0000">
-                </div>
-                <div class="inline-control">
-                    <label>Line thickness (px)</label>
-                    <input type="number" id="boundaryWidth" value="2" min="1" max="10" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
+                <div>
+                    <label>Minimum obstacle height (ft AGL)</label>
+                    <input type="number" id="minAGL" value="1000" oninput="checkAGLWarning()">
+                    <div id="aglWarning" style="display: none; color: var(--danger); font-size: 10px; margin-top: 5px; font-weight: bold;">FAA database excludes obstacles under 200 AGL.</div>
                 </div>
             </div>
-            
+            <div>
+                <div style="display: flex; align-items: center; margin-bottom: 12px; background: var(--bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border);">
+                    <div class="checkbox-group" style="padding: 0; margin: 0;">
+                        <input type="checkbox" id="notamInclude" checked onchange="triggerCounterUpdate()">
+                        <label for="notamInclude" style="font-weight: bold; color: var(--dispatch); font-size: 13px; letter-spacing: 0.3px;">Include active light outage NOTAMs</label>
+                    </div>
+                </div>
+                <div>
+                    <label>Minimum height (ft AGL)</label>
+                    <input type="number" id="notamMinAGL" value="200" oninput="triggerCounterUpdate()">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-card" id="boundaryWrap">
+        <div class="section-title">2. Search Boundary Styling</div>
+        <div style="display: flex; align-items: center; margin-bottom: 12px; background: var(--bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border);">
+            <div class="checkbox-group" style="padding: 0; margin: 0;">
+                <input type="checkbox" id="enableBoundary" checked onchange="toggleBoundaryOpacitySlider()">
+                <label for="enableBoundary" style="font-weight: bold; color: var(--primary); font-size: 13px; letter-spacing: 0.3px;">Include search boundaries in KML overlay</label>
+            </div>
+        </div>
+        
+        <div class="grid-2">
+            <div class="inline-control">
+                <label>Line color</label>
+                <input type="color" id="boundaryColor" value="#ff0000">
+            </div>
+            <div class="inline-control">
+                <label>Line thickness (px)</label>
+                <input type="number" id="boundaryWidth" value="2" min="1" max="10" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
+            </div>
+            <div class="inline-control" id="boundaryOpacityGroup" style="grid-column: span 2;">
+                <label style="display:flex; align-items:center; width:100%;">
+                    <span style="font-size: 13px; font-weight: bold; min-width: 65px;">Opac (<span id="boundaryOpacityValue" style="color:var(--primary);">100%</span>)</span>
+                    <input type="range" id="boundaryLineOpacity" min="0" max="100" value="100" oninput="updateBoundaryOpacityLabel()" style="height: 36px;">
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-card">
+        <div class="section-title">3. Standard Obstacle Styling</div>
+        
+        <div class="inline-control" id="stdMasterWrap" style="margin-bottom: 15px; border-color: #ff0000;">
+            <label id="stdMasterLabel" style="font-weight: bold; color: #ff0000;">Ring radius (NM)</label>
+            <input type="number" id="ringNM" value="2.0" step="0.1" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
+        </div>
+
+        <div class="grid-2">
             <div>
                 <div style="display: flex; align-items: center; height: 26px; margin-bottom: 8px;">
-                    <div style="font-weight: bold; color: var(--primary); font-size: 12px; margin-left: 2px;">Obstacle rings</div>
-                </div>
-
-                <div class="inline-control">
-                    <label>Ring radius (NM)</label>
-                    <input type="number" id="ringNM" value="2.0" step="0.1" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
+                    <div style="font-weight: bold; color: var(--text); font-size: 12px; margin-left: 2px; opacity: 0.8;">Obstacle ring outline</div>
                 </div>
                 
                 <div class="inline-control">
                     <label>Line color</label>
-                    <input type="color" id="outlineColor" value="#ff0000">
+                    <input type="color" id="outlineColor" value="#ff0000" oninput="updateStdRingColor()">
                 </div>
                 <div class="inline-control">
                     <label>Line thickness (px)</label>
                     <input type="number" id="ringWidth" value="2" min="1" max="10" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
                 </div>
-                
-                <div class="checkbox-group" style="margin-top: 10px; margin-bottom: 4px;">
+                <div class="inline-control">
+                    <label style="display:flex; align-items:center; width:100%;">
+                        <span style="font-size: 13px; font-weight: bold; min-width: 65px;">Opac (<span id="outlineOpacityValue" style="color:var(--primary);">100%</span>)</span>
+                        <input type="range" id="outlineOpacity" min="0" max="100" value="100" oninput="updateOutlineOpacityLabel()" style="height: 36px;">
+                    </label>
+                </div>
+            </div>
+            
+            <div>
+                <div style="display: flex; align-items: center; height: 26px; margin-bottom: 8px;">
+                    <div style="font-weight: bold; color: var(--text); font-size: 12px; margin-left: 2px; opacity: 0.8;">Obstacle ring fill</div>
+                </div>
+
+                <div class="checkbox-group" style="margin-bottom: 12px;">
                     <input type="checkbox" id="enableFill" checked onchange="toggleOpacitySlider()">
                     <label for="enableFill">Enable shading for obstacle rings</label>
                 </div>
+                
                 <div class="inline-control" id="opacityGroup">
                     <label style="display:flex; align-items:center; width:100%;">
                         <span style="font-size: 13px; font-weight: bold; min-width: 65px;">Opac (<span id="opacityValue" style="color:var(--primary);">50%</span>)</span>
@@ -320,43 +359,45 @@
     </div>
 
     <div class="section-card">
-        <div class="section-title">
-            <span>4. Unlit obstacles</span>
-            <span id="notamLiveCounter" style="background: var(--bg); color: var(--text); padding: 4px 10px; border-radius: 12px; font-weight: 600; font-size: 11px; border: 1px solid var(--border); text-transform: none; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);">0 active lighting outages</span>
+        <div class="section-title">4. Unlit Obstacle Styling</div>
+        
+        <div class="inline-control" id="notamMasterWrap" style="margin-bottom: 15px; border-color: #ff9900;">
+            <label id="notamMasterLabel" style="font-weight: bold; color: #ff9900;">Ring radius (NM)</label>
+            <input type="number" id="notamRingNM" value="3.0" step="0.1" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
         </div>
+
         <div class="grid-2">
             <div>
-                <div style="display: flex; align-items: center; margin-bottom: 12px; background: var(--bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border);">
-                    <div class="checkbox-group" style="padding: 0; margin: 0;">
-                        <input type="checkbox" id="notamInclude" checked onchange="triggerCounterUpdate()">
-                        <label for="notamInclude" style="font-weight: bold; color: var(--dispatch); font-size: 13px; letter-spacing: 0.3px;">Include active light outage NOTAMs</label>
-                    </div>
-                </div>
-                <div class="inline-control">
-                    <label>Ring radius (NM)</label>
-                    <input type="number" id="notamRingNM" value="3.0" step="0.1" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
-                </div>
-                <div class="inline-control">
-                    <label>Minimum height (ft AGL)</label>
-                    <input type="number" id="notamMinAGL" value="200" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;" oninput="triggerCounterUpdate()">
-                </div>
-            </div>
-            <div>
                 <div style="display: flex; align-items: center; height: 26px; margin-bottom: 8px;">
-                    <div style="font-weight: bold; color: var(--dispatch); font-size: 12px; margin-left: 2px;">Hazard styling</div>
+                    <div style="font-weight: bold; color: var(--text); font-size: 12px; margin-left: 2px; opacity: 0.8;">Hazard ring outline</div>
                 </div>
+                
                 <div class="inline-control">
                     <label>Line color</label>
-                    <input type="color" id="notamOutlineColor" value="#ff9900">
+                    <input type="color" id="notamOutlineColor" value="#ff9900" oninput="updateNotamRingColor()">
                 </div>
                 <div class="inline-control">
                     <label>Line thickness (px)</label>
                     <input type="number" id="notamRingWidth" value="3" min="1" max="10" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
                 </div>
-                <div class="checkbox-group" style="margin-top: 10px; margin-bottom: 4px;">
+                <div class="inline-control">
+                    <label style="display:flex; align-items:center; width:100%;">
+                        <span style="font-size: 13px; font-weight: bold; min-width: 65px;">Opac (<span id="notamOutlineOpacityValue" style="color:var(--primary);">100%</span>)</span>
+                        <input type="range" id="notamOutlineOpacity" min="0" max="100" value="100" oninput="updateNotamOutlineOpacityLabel()" style="height: 36px;">
+                    </label>
+                </div>
+            </div>
+            
+            <div>
+                <div style="display: flex; align-items: center; height: 26px; margin-bottom: 8px;">
+                    <div style="font-weight: bold; color: var(--text); font-size: 12px; margin-left: 2px; opacity: 0.8;">Hazard ring fill</div>
+                </div>
+
+                <div class="checkbox-group" style="margin-bottom: 12px;">
                     <input type="checkbox" id="notamEnableFill" checked onchange="toggleNotamOpacitySlider()">
                     <label for="notamEnableFill">Enable shading for unlit obstacle rings</label>
                 </div>
+                
                 <div class="inline-control" id="notamOpacityGroup">
                     <label style="display:flex; align-items:center; width:100%;">
                         <span style="font-size: 13px; font-weight: bold; min-width: 65px;">Opac (<span id="notamOpacityValue" style="color:var(--primary);">60%</span>)</span>
@@ -401,6 +442,8 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
+    	<li><strong>v2.5:</strong> Major restyle - reorganized options into search area.</li>
+    	<li><strong>v2.4.2:</strong> Added opacity options for obstacle/NOTAM rings.</li>
     	<li><strong>v2.4.1:</strong> UI tweak, added contact email.</li>
     	<li><strong>v2.4:</strong> Fixed NOTAM update frequency in update_database.</li>
     	<li><strong>v2.3:</strong> Added slider style selectors and tweaked UI for readabilty.</li>
@@ -739,6 +782,24 @@ function toggleOpacitySlider() { document.getElementById('opacityGroup').style.d
 function updateNotamOpacityLabel() { document.getElementById('notamOpacityValue').textContent = document.getElementById('notamFillOpacity').value + '%'; }
 function toggleNotamOpacitySlider() { document.getElementById('notamOpacityGroup').style.display = document.getElementById('notamEnableFill').checked ? 'flex' : 'none'; }
 
+// New Outline/Boundary Opacity Handlers
+function updateOutlineOpacityLabel() { document.getElementById('outlineOpacityValue').textContent = document.getElementById('outlineOpacity').value + '%'; }
+function updateNotamOutlineOpacityLabel() { document.getElementById('notamOutlineOpacityValue').textContent = document.getElementById('notamOutlineOpacity').value + '%'; }
+function updateBoundaryOpacityLabel() { document.getElementById('boundaryOpacityValue').textContent = document.getElementById('boundaryLineOpacity').value + '%'; }
+function toggleBoundaryOpacitySlider() { document.getElementById('boundaryOpacityGroup').style.display = document.getElementById('enableBoundary').checked ? 'flex' : 'none'; }
+
+// Dynamic Ring Radius UI Highlight Handlers
+function updateStdRingColor() {
+    const color = document.getElementById('outlineColor').value;
+    document.getElementById('stdMasterWrap').style.borderColor = color;
+    document.getElementById('stdMasterLabel').style.color = color;
+}
+function updateNotamRingColor() {
+    const color = document.getElementById('notamOutlineColor').value;
+    document.getElementById('notamMasterWrap').style.borderColor = color;
+    document.getElementById('notamMasterLabel').style.color = color;
+}
+
 function checkAGLWarning() {
     const agl = parseInt(document.getElementById('minAGL').value) || 0;
     document.getElementById('aglWarning').style.display = agl < 200 ? 'block' : 'none';
@@ -995,9 +1056,11 @@ async function generateKML() {
     const ringRadiusNM = parseFloat(document.getElementById('ringNM').value); 
     const isFilled = document.getElementById('enableFill').checked;
     const opacityPercent = isFilled ? parseInt(document.getElementById('fillOpacity').value) : 0;
-    let opacityHex = Math.round((opacityPercent / 100) * 255).toString(16).padStart(2, '0');
+    const opacityHex = Math.round((opacityPercent / 100) * 255).toString(16).padStart(2, '0');
+    const outlineOpacityPercent = parseInt(document.getElementById('outlineOpacity').value);
+    const outlineOpacityHex = Math.round((outlineOpacityPercent / 100) * 255).toString(16).padStart(2, '0');
     const ringWidth = document.getElementById('ringWidth').value;
-    const outlineColor = hexToKmlColor(document.getElementById('outlineColor').value, 'ff');
+    const outlineColor = hexToKmlColor(document.getElementById('outlineColor').value, outlineOpacityHex);
     const fillColor = hexToKmlColor(document.getElementById('fillColor').value, opacityHex);
     const enableFill = isFilled ? '1' : '0';
 
@@ -1006,7 +1069,9 @@ async function generateKML() {
     const notamMinAGL = parseInt(document.getElementById('notamMinAGL').value) || 0;
     const notamRingNM = parseFloat(document.getElementById('notamRingNM').value);
     const notamWidth = document.getElementById('notamRingWidth').value;
-    const notamOutlineColor = hexToKmlColor(document.getElementById('notamOutlineColor').value, 'ff');
+    const notamOutlineOpacityPercent = parseInt(document.getElementById('notamOutlineOpacity').value);
+    const notamOutlineOpacityHex = Math.round((notamOutlineOpacityPercent / 100) * 255).toString(16).padStart(2, '0');
+    const notamOutlineColor = hexToKmlColor(document.getElementById('notamOutlineColor').value, notamOutlineOpacityHex);
     const notamEnableFillRaw = document.getElementById('notamEnableFill').checked;
     const notamOpacPercent = notamEnableFillRaw ? parseInt(document.getElementById('notamFillOpacity').value) : 0;
     const notamOpacityHex = Math.round((notamOpacPercent / 100) * 255).toString(16).padStart(2, '0');
@@ -1015,7 +1080,9 @@ async function generateKML() {
 
     const boundaryWidth = mode !== 'state' ? document.getElementById('boundaryWidth').value : 2;
     const enableBoundary = document.getElementById('enableBoundary').checked;
-    const boundaryColorHex = hexToKmlColor(document.getElementById('boundaryColor').value, 'ff');
+    const boundaryOpacityPercent = parseInt(document.getElementById('boundaryLineOpacity').value);
+    const boundaryOpacityHex = Math.round((boundaryOpacityPercent / 100) * 255).toString(16).padStart(2, '0');
+    const boundaryColorHex = hexToKmlColor(document.getElementById('boundaryColor').value, boundaryOpacityHex);
 
     try {
         const obstacles = await getObstacles();
@@ -1238,6 +1305,7 @@ async function showMapPreview() {
     const ringWidth = parseInt(document.getElementById('ringWidth').value) || 2;
     const isFilled = document.getElementById('enableFill').checked;
     const fillOpacFloat = isFilled ? (parseInt(document.getElementById('fillOpacity').value) / 100) : 0;
+    const outlineOpacFloat = parseInt(document.getElementById('outlineOpacity').value) / 100;
     const outlineColor = document.getElementById('outlineColor').value;
     const fillColor = document.getElementById('fillColor').value;
     
@@ -1247,12 +1315,14 @@ async function showMapPreview() {
     const notamWidth = parseInt(document.getElementById('notamRingWidth').value) || 3;
     const notamFilled = document.getElementById('notamEnableFill').checked;
     const notamOpacFloat = notamFilled ? (parseInt(document.getElementById('notamFillOpacity').value) / 100) : 0;
+    const notamOutlineOpacFloat = parseInt(document.getElementById('notamOutlineOpacity').value) / 100;
     const notamOutlineColor = document.getElementById('notamOutlineColor').value;
     const notamFillColor = document.getElementById('notamFillColor').value;
 
     const boundaryWidth = mode !== 'state' ? (parseInt(document.getElementById('boundaryWidth').value) || 2) : 2;
     const enableBoundary = document.getElementById('enableBoundary').checked;
     const boundaryColor = document.getElementById('boundaryColor').value;
+    const boundaryOpacFloat = parseInt(document.getElementById('boundaryLineOpacity').value) / 100;
 
     if (enableBoundary && mode !== 'state') {
         // Draw circles at all waypoints
@@ -1260,6 +1330,7 @@ async function showMapPreview() {
             L.circle([c.lat, c.lon], {
                 radius: searchRadiusNM * 1852,
                 color: boundaryColor,
+                opacity: boundaryOpacFloat,
                 fill: false,
                 weight: boundaryWidth,
                 dashArray: '5, 10'
@@ -1288,6 +1359,7 @@ async function showMapPreview() {
                     [p4.lat, p4.lon]
                 ], {
                     color: boundaryColor,
+                    opacity: boundaryOpacFloat,
                     fill: false,
                     weight: boundaryWidth,
                     dashArray: '5, 10'
@@ -1328,6 +1400,7 @@ async function showMapPreview() {
                         L.circle([obs.lat, obs.lon], {
                             radius: ringNM * 1852,
                             color: outlineColor,
+                            opacity: outlineOpacFloat,
                             fillColor: fillColor,
                             fillOpacity: fillOpacFloat,
                             weight: ringWidth
@@ -1385,6 +1458,7 @@ async function showMapPreview() {
                         L.circle([notam.lat, notam.lon], {
                             radius: notamRingNM * 1852,
                             color: notamOutlineColor,
+                            opacity: notamOutlineOpacFloat,
                             fillColor: notamFillColor,
                             fillOpacity: notamOpacFloat,
                             weight: notamWidth
