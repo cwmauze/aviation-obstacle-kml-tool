@@ -56,14 +56,14 @@
         input[type="number"], input[type="text"] { width: 100%; padding: 8px 10px; background: var(--input-bg); color: var(--text); border: 1px solid var(--border); border-radius: 5px; box-sizing: border-box; font-size: 13px; }
         input[type="range"] { flex: 1; margin: 0 10px; cursor: pointer; }
         
-        /* Compact Inline Controls */
-        .inline-control { display: flex; align-items: center; justify-content: space-between; background: var(--input-bg); padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border); margin-bottom: 8px; min-height: 28px;}
-        .inline-control label { margin: 0; font-weight: normal; }
-        .inline-control input[type="color"] { width: 35px; height: 24px; padding: 0; border: 1px solid var(--border); background: none; cursor: pointer; border-radius: 4px; flex-shrink: 0; }
+        /* EFB Optimized Inline Controls */
+        .inline-control { display: flex; align-items: center; justify-content: space-between; background: var(--input-bg); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 12px; min-height: 40px;}
+        .inline-control label { margin: 0; font-weight: normal; font-size: 13px; }
+        .inline-control input[type="color"] { width: 44px; height: 32px; padding: 0; border: 1px solid var(--border); background: none; cursor: pointer; border-radius: 6px; flex-shrink: 0; }
         
-        .checkbox-group { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
-        .checkbox-group input { width: auto; margin: 0; cursor: pointer; transform: scale(1.1); }
-        .checkbox-group label { margin: 0; font-weight: normal; cursor: pointer; }
+        .checkbox-group { display: flex; align-items: center; gap: 12px; padding: 8px 0; cursor: pointer; }
+        .checkbox-group input { width: 22px; height: 22px; margin: 0; cursor: pointer; accent-color: var(--primary); }
+        .checkbox-group label { margin: 0; font-weight: bold; font-size: 13px; cursor: pointer; }
         
         #facilityName { font-size: 11px; font-weight: bold; margin-top: 6px; min-height: 14px; text-transform: uppercase; }
 
@@ -161,7 +161,7 @@
     <div class="header-row">
         <div>
             <h2>Aviation obstacle .KML overlay generator</h2>
-            <span class="version-subtitle" onclick="openVersionModal()">v2.3 - Click for version history</span>
+            <span class="version-subtitle" onclick="openVersionModal()">v2.4 - Click for version history</span>
             <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub project home</a>
         </div>
         <button class="action-btn" onclick="toggleTheme()" id="themeBtn" style="font-size: 16px; padding: 6px 10px; height: auto;">☀️</button>
@@ -277,7 +277,7 @@
                 </div>
                 <div class="inline-control">
                     <label>Line thickness (px)</label>
-                    <input type="number" id="boundaryWidth" value="2" min="1" max="10" style="width: 60px; height: 26px; padding: 2px 6px; margin: 0; background: var(--card);">
+                    <input type="number" id="boundaryWidth" value="2" min="1" max="10" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
                 </div>
             </div>
             
@@ -288,7 +288,7 @@
 
                 <div class="inline-control">
                     <label>Ring radius (NM)</label>
-                    <input type="number" id="ringNM" value="2.0" step="0.1" style="width: 60px; height: 26px; padding: 2px 6px; margin: 0; background: var(--card);">
+                    <input type="number" id="ringNM" value="2.0" step="0.1" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
                 </div>
                 
                 <div class="inline-control">
@@ -297,7 +297,7 @@
                 </div>
                 <div class="inline-control">
                     <label>Line thickness (px)</label>
-                    <input type="number" id="ringWidth" value="2" min="1" max="10" style="width: 60px; height: 26px; padding: 2px 6px; margin: 0; background: var(--card);">
+                    <input type="number" id="ringWidth" value="2" min="1" max="10" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
                 </div>
                 
                 <div class="checkbox-group" style="margin-top: 10px; margin-bottom: 4px;">
@@ -331,11 +331,11 @@
                 </div>
                 <div class="inline-control">
                     <label>Ring radius (NM)</label>
-                    <input type="number" id="notamRingNM" value="3.0" step="0.1" style="width: 60px; height: 26px; padding: 2px 6px; margin: 0; background: var(--card);">
+                    <input type="number" id="notamRingNM" value="3.0" step="0.1" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
                 </div>
                 <div class="inline-control">
                     <label>Minimum height (ft AGL)</label>
-                    <input type="number" id="notamMinAGL" value="200" style="width: 60px; height: 26px; padding: 2px 6px; margin: 0; background: var(--card);" oninput="triggerCounterUpdate()">
+                    <input type="number" id="notamMinAGL" value="200" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;" oninput="triggerCounterUpdate()">
                 </div>
             </div>
             <div>
@@ -348,7 +348,7 @@
                 </div>
                 <div class="inline-control">
                     <label>Line thickness (px)</label>
-                    <input type="number" id="notamRingWidth" value="3" min="1" max="10" style="width: 60px; height: 26px; padding: 2px 6px; margin: 0; background: var(--card);">
+                    <input type="number" id="notamRingWidth" value="3" min="1" max="10" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
                 </div>
                 <div class="checkbox-group" style="margin-top: 10px; margin-bottom: 4px;">
                     <input type="checkbox" id="notamEnableFill" checked onchange="toggleNotamOpacitySlider()">
@@ -398,6 +398,7 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
+    	<li><strong>v2.4:</strong> Fixed NOTAM update frequency in update_database.</li>
     	<li><strong>v2.3:</strong> Added slider style selectors and tweaked UI for readabilty.</li>
     	<li><strong>v2.2.1:</strong> Fixed export issue with new UI / filename options.</li>
     	<li><strong>v2.2:</strong> Added standard obstacle toggle and custom filename options.</li>
@@ -485,7 +486,7 @@ window.onload = async () => {
             const notamRes = await fetch(`notams.json?nocache=${new Date().getTime()}`);
             globalNotams = await notamRes.json();
             const notamDate = meta.notam_date || "Unknown";
-            document.getElementById('notam-status').innerText = `Verified (Eff. ${notamDate} | ${globalNotams.length} active outages)`;
+            document.getElementById('notam-status').innerText = `Verified (Updated: ${notamDate} | ${globalNotams.length} active outages)`;
             document.getElementById('notam-dot').className = globalNotams.length > 0 ? 'status-dot ready' : 'status-dot error';
         } catch(e) {
             console.warn("NOTAM fetch failed or file missing.");
