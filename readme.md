@@ -18,7 +18,7 @@ The frontend application is entirely client-side. The HTML/JS interface reads fr
 The heavy lifting is handled by a backend Python script (`update_database.py`) that runs automatically via GitHub Actions. It navigates the FAA Aeronav portals, extracts the massive `.DAT` and `.txt` files directly into memory, crunches the coordinates using regular expressions, updates the local JSON files, and silently pushes the updates to the live site. 
 
 ## Usage
-1. Open the [live GitHub Pages link](https://cwmauze.github.io/KML-obstacle-tool/).
+1. Open the [live GitHub Pages link](https://cwmauze.github.io/aviation-obstacle-kml-tool).
 2. Verify the Database Status card shows the data is current and verified.
 3. Enter your centerpoint (FAA ID or coordinates) and desired radius.
 4. Set your minimum AGL (e.g., if you are flying at 1,500' AGL, you might only care about obstacles > 1,000' AGL).
