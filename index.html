@@ -1087,6 +1087,60 @@ async function generateKML() {
             });
         }
 
+        // OPTIMIZATION: Pre-filter state obstacles for KML generation
+        let stateObstacles = [];
+        if (mode === 'state' && targetStates.length > 0) {
+            stateObstacles = obstacles.filter(o => targetStates.includes(o.state));
+        }
+
+        if (incNotam && globalNotams) {
+            globalNotams.forEach(notam => {
+            let keep = false;
+                if (mode === 'state') {
+                    if (targetStates.length > 0) {
+                        for (let k = 0; k < stateObstacles.length; k++) {
+                            if (Math.abs(stateObstacles[k].lat - notam.lat) < 0.02 && Math.abs(stateObstacles[k].lon - notam.lon) < 0.02) {
+                                if (haversineNM(stateObstacles[k].lat, stateObstacles[k].lon, notam.lat, notam.lon) <= 1.0) {
+                                    keep = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                } else if (mode === 'route' && centers.length > 1) {
+                    for (let j = 0; j < centers.length - 1; j++) {
+                        if (pointToSegmentDistanceNM(notam.lat, notam.lon, centers[j].lat, centers[j].lon, centers[j+1].lat, centers[j+1].lon) <= searchRadiusNM) {
+                            keep = true;
+                            break;
+                        }
+                    }
+                } else {
+                    for (const c of centers) {
+                        if (haversineNM(c.lat, c.lon, notam.lat, notam.lon) <= searchRadiusNM) {
+                            keep = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (keep) {
+                    let finalAgl = parseNotamAGL(notam.text, notam.agl);
+                    let aglNum = parseFloat(finalAgl); 
+                    if (!isNaN(aglNum) && aglNum < notamMinAGL) {
+                        keep = false;
+                    }
+
+                    if (keep) {
+                        const circleCoords = generateCircleCoords(notam.lat, notam.lon, notamRingNM);
+                        kml += `\t<Placemark>\n\t\t<name>UNLIT TOWER - ${finalAgl} ft AGL</name>\n`;
+                        kml += `\t\t<description><![CDATA[${notam.text}]]></description>\n`;
+                        kml += `\t\t<styleUrl>#notamCircle</styleUrl>\n`;
+                        kml += `\t\t<Polygon>\n\t\t\t<outerBoundaryIs>\n\t\t\t\t<LinearRing>\n\t\t\t\t\t<coordinates>\n\t\t\t\t\t\t${circleCoords}\n\t\t\t\t\t</coordinates>\n\t\t\t\t</LinearRing>\n\t\t\t</outerBoundaryIs>\n\t\t</Polygon>\n\t</Placemark>\n`;
+                    }
+                }
+            });
+        }
+
         kml += `</Document>\n</kml>`;
         
         const now = new Date();
