@@ -78,8 +78,8 @@
 /* Segmented Control */
         .segmented-control { display: flex; background: var(--section-bg); border-radius: 8px; padding: 4px; margin-bottom: 15px; border: 1px solid var(--border); gap: 2px; }
         .segmented-control input[type="radio"] { display: none; }
-        .segmented-control label { flex: 1; text-align: center; padding: 8px 4px; margin: 0; font-size: 11px; font-weight: bold; color: var(--text); cursor: pointer; border-radius: 6px; transition: 0.2s; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.5px;}
-        .segmented-control input[type="radio"]:checked + label { background: var(--card); color: var(--primary); opacity: 1; box-shadow: 0 2px 6px rgba(0,0,0,0.3); border: 1px solid var(--border); padding: 7px 3px; }
+        .segmented-control label { flex: 1; text-align: center; padding: 12px 6px; margin: 0; font-size: 12px; font-weight: bold; color: var(--text); cursor: pointer; border-radius: 6px; transition: 0.2s; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.5px;}
+        .segmented-control input[type="radio"]:checked + label { background: var(--card); color: var(--primary); opacity: 1; box-shadow: 0 2px 6px rgba(0,0,0,0.3); border: 1px solid var(--border); padding: 11px 5px; }
         @media (max-width: 500px) { .segmented-control { flex-wrap: wrap; } .segmented-control label { flex: 1 1 40%; } }
 
 /* Modal Styles */
@@ -133,9 +133,9 @@
         .cmd-group { display: flex; align-items: center; gap: 8px; position: relative; }
         .cmd-divider { width: 1px; height: 24px; background: var(--border); margin: 0 4px; }
         .layer-switch { display: flex; background: rgba(0,0,0,0.4); border-radius: 6px; padding: 2px; border: 1px solid var(--border); }
-        .layer-btn { background: transparent; border: none; color: #888; padding: 8px 12px; font-size: 11px; font-weight: 600; cursor: pointer; border-radius: 4px; transition: 0.2s; white-space: nowrap; height: 32px; display: flex; align-items: center; }
+        .layer-btn { background: transparent; border: none; color: #888; padding: 10px 16px; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 4px; transition: 0.2s; white-space: nowrap; height: 44px; display: flex; align-items: center; }
         .layer-btn.active { background: var(--primary); color: white; }
-        .action-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 8px 12px; font-size: 11px; border-radius: 6px; cursor: pointer; height: 32px; display: flex; align-items: center; gap: 6px; }
+        .action-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 10px 16px; font-size: 13px; border-radius: 6px; cursor: pointer; height: 44px; display: flex; align-items: center; gap: 6px; }
 		.close { 
             position: sticky; 
             top: 0; 
@@ -306,8 +306,8 @@
                 </div>
                 <div class="inline-control" id="opacityGroup">
                     <label style="display:flex; align-items:center; width:100%;">
-                        <span style="font-size: 11px; min-width: 50px;">Opac (<span id="opacityValue" style="color:var(--primary);">50%</span>)</span>
-                        <input type="range" id="fillOpacity" min="1" max="100" value="50" oninput="updateOpacityLabel()">
+                        <span style="font-size: 13px; font-weight: bold; min-width: 65px;">Opac (<span id="opacityValue" style="color:var(--primary);">50%</span>)</span>
+                        <input type="range" id="fillOpacity" min="1" max="100" value="50" oninput="updateOpacityLabel()" style="height: 36px;">
                     </label>
                     <input type="color" id="fillColor" value="#ff0000">
                 </div>
@@ -356,8 +356,8 @@
                 </div>
                 <div class="inline-control" id="notamOpacityGroup">
                     <label style="display:flex; align-items:center; width:100%;">
-                        <span style="font-size: 11px; min-width: 50px;">Opac (<span id="notamOpacityValue" style="color:var(--primary);">60%</span>)</span>
-                        <input type="range" id="notamFillOpacity" min="1" max="100" value="60" oninput="updateNotamOpacityLabel()">
+                        <span style="font-size: 13px; font-weight: bold; min-width: 65px;">Opac (<span id="notamOpacityValue" style="color:var(--primary);">60%</span>)</span>
+                        <input type="range" id="notamFillOpacity" min="1" max="100" value="60" oninput="updateNotamOpacityLabel()" style="height: 36px;">
                     </label>
                     <input type="color" id="notamFillColor" value="#ff9900">
                 </div>
