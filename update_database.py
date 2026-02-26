@@ -85,9 +85,9 @@ def harvest_notams():
         print("[!] NMS-API Credentials missing in environment. Skipping NOTAM harvest.")
         return
     
-    # Using the Production environment endpoints
-    AUTH_URL = "https://api.cgifederal-aim.com/v1/auth/token"
-    NOTAM_URL = "https://api.cgifederal-aim.com/nmsapi/v1/notams"
+    # Using the Pre-Prod/Staging environment endpoints
+    AUTH_URL = "https://api-staging.cgifederal-aim.com/v1/auth/token"
+    NOTAM_URL = "https://api-staging.cgifederal-aim.com/nmsapi/v1/notams"
 
     print("[-] Fetching nationwide public NOTAMs via NMS-API...")
     processed_notams = []
