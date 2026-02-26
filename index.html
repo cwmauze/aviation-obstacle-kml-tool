@@ -1215,7 +1215,7 @@ async function showMapPreview() {
     const loader = document.getElementById('loader');
     
     if (!leafletMap) {
-        leafletMap = L.map('map', { zoomControl: false, attributionControl: false }).setView([39.8, -98.5], 4);
+        leafletMap = L.map('map', { zoomControl: false, attributionControl: false, preferCanvas: true }).setView([39.8, -98.5], 4);
         
         layers = {
             dark: L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', { maxZoom: 20 }),
