@@ -86,8 +86,8 @@ def harvest_notams():
         return
     
     # Using the Production environment endpoints
-    AUTH_URL = "https://api.cgifederal-aim.com/v1/auth/token"
-    NOTAM_URL = "https://api.cgifederal-aim.com/nmsapi/v1/notams"
+    AUTH_URL = "https://api-nms.aim.faa.gov/v1/auth/token"
+    NOTAM_URL = "https://api-nms.aim.faa.gov/nmsapi/v1/notams"
 
     print("[-] Fetching nationwide public NOTAMs via NMS-API...")
     processed_notams = []
