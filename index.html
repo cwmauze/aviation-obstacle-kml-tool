@@ -9,6 +9,7 @@
     
     <style>
         :root {
+            color-scheme: dark;
             --bg: #18191a; --card: #242526; --text: #e4e6eb; --border: #3e4042;
             --primary: #478df5; --secondary: #3a3b3c; --danger: #fb6161;
             --success: #28a745; --earth: #2d81ff; --link: #a3c7ff; --dispatch: #f39c12;
@@ -18,6 +19,7 @@
             --input-bg: #3a3b3c;
         }
         [data-theme="light"] {
+            color-scheme: light;
             --bg: #f0f2f5; --card: #ffffff; --text: #1c1e21; --border: #dadde1;
             --primary: #1a73e8; --secondary: #e4e6eb; --danger: #fa3e3e;
             --link: #1a73e8; --dispatch: #f39c12;
@@ -56,8 +58,8 @@
         @media (max-width: 500px) { .col-divider { border-right: none; padding-right: 0; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 5px; } }
 
         label { display: block; font-weight: bold; color: var(--text); font-size: 12px; opacity: 0.9; margin-bottom: 4px; }
-        input[type="number"], input[type="text"] { width: 100%; padding: 8px 10px; background: var(--input-bg); color: var(--text); border: 1px solid var(--border); border-radius: 5px; box-sizing: border-box; font-size: 13px; }
-        input[type="range"] { flex: 1; margin: 0 10px; cursor: pointer; }
+        input[type="number"], input[type="text"], select { width: 100%; height: 36px; padding: 8px 10px; background: var(--input-bg); color: var(--text); border: 1px solid var(--border); border-radius: 5px; box-sizing: border-box; font-size: 13px; font-family: inherit; }
+        input[type="range"] { flex: 1; margin: 0 10px; cursor: pointer; background: transparent; }
         
         /* EFB Optimized Inline Controls */
         .inline-control { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--input-bg); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 12px; min-height: 40px; }
@@ -89,6 +91,16 @@
         .btn-slate { background-color: #5c6e7a; }
         .btn-red { background-color: #cc544b; }
 
+        .top-action-bar { display: flex; gap: 12px; margin-bottom: 20px; }
+        .btn-flat { flex: 1; background: var(--secondary); border: 1px solid var(--border); color: var(--text); padding: 14px 10px; border-radius: 8px; font-size: 13px; font-weight: bold; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 6px rgba(0,0,0,0.15); }
+        .btn-flat:hover { filter: brightness(1.15); transform: translateY(-1px); }
+        .btn-flat svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .btn-flat.primary { color: var(--primary); border-color: rgba(71, 141, 245, 0.4); background: rgba(71, 141, 245, 0.08); }
+        .btn-flat.primary:hover { background: rgba(71, 141, 245, 0.15); }
+        
+        .btn-flat.danger { color: var(--danger); border-color: rgba(251, 97, 97, 0.4); background: rgba(251, 97, 97, 0.08); }
+        .btn-flat.danger:hover { background: rgba(251, 97, 97, 0.15); }
+
         .bracket-grid { display: grid; grid-template-columns: 1fr 3fr 1fr; gap: 12px; align-items: stretch; margin-top: 15px; }
         .bracket-center { display: flex; flex-direction: column; gap: 4px; justify-content: center; }
         @media (max-width: 600px) { 
@@ -106,6 +118,8 @@
         .segmented-control label:not(:last-of-type)::after { content: ""; position: absolute; right: -2px; top: 15%; height: 70%; width: 1px; background: rgba(128, 128, 128, 0.4); z-index: 0; }
         .segmented-control input[type="radio"]:checked + label { background: var(--card); color: var(--primary); opacity: 1; box-shadow: 0 2px 6px rgba(0,0,0,0.3); border: 1px solid var(--border); z-index: 1; }
         .segmented-control input[type="radio"]:checked + label::after { display: none; }
+        .segmented-control label:hover { opacity: 1; background: rgba(128, 128, 128, 0.1); }
+        .segmented-control input[type="radio"]:checked + label:hover { background: var(--card); } /* Keeps the active tab looking solid */
         @media (max-width: 500px) { .segmented-control { flex-wrap: wrap; } .segmented-control label { flex: 1 1 40%; } .segmented-control label::after { display: none; } }
 
 /* Modal Styles */
@@ -222,6 +236,19 @@
         </div>
     </div>
 
+    <div class="top-action-bar">
+        <button class="btn-flat primary" onclick="document.getElementById('profileLoader').click()">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            Load Setup Template
+        </button>
+        <input type="file" id="profileLoader" accept=".json" style="display: none;" onchange="loadProfile(event)">
+        
+        <button class="btn-flat danger" onclick="resetToDefaults()">
+            <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+            Clear All Data
+        </button>
+    </div>
+
 	<div class="section-card">
         <div class="section-title">
             <span>Search Area & Filtering</span>
@@ -230,6 +257,7 @@
                 <span id="notamLiveCounter" style="background: var(--bg); color: var(--text); padding: 4px 10px; border-radius: 12px; font-weight: 600; font-size: 11px; border: 1px solid var(--border); text-transform: none; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);">0 active lighting outages</span>
             </div>
         </div>
+
         <div class="segmented-control">
             <input type="radio" name="centerMode" id="faaMode" value="faa" checked onchange="toggleCenterInput()">
             <label for="faaMode">FAA Identifier(s)</label>
@@ -244,48 +272,36 @@
             <label for="stateMode">Entire US State(s)</label>
         </div>
 
-        <div class="bracket-grid">
-            <button class="btn-stacked btn-slate" onclick="document.getElementById('profileLoader').click()">
-                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                <div class="btn-title">Load Setup</div>
-                <div class="btn-sub">JSON TEMPLATE</div>
-            </button>
-            <input type="file" id="profileLoader" accept=".json" style="display: none;" onchange="loadProfile(event)">
+        <div id="faaInputGroup">
+            <input type="text" id="faaId" placeholder="e.g. KRDU, W40, NC91" style="text-transform: uppercase;" oninput="updateFacilityName()">
+        </div>
 
-            <div class="bracket-center">
-                <div id="faaInputGroup">
-                    <input type="text" id="faaId" placeholder="e.g. KRDU, W40, NC91" style="text-transform: uppercase;" oninput="updateFacilityName()">
-                    <div id="facilityName"></div>
-                </div>
-
-                <div id="coordInputGroup" class="grid-2" style="display: none; margin-bottom: 0px;">
-                    <div>
-                        <label>Latitude</label>
-                        <input type="text" id="lat" placeholder="e.g. 36.0066 or 36 00.396 N" oninput="triggerCounterUpdate()">
-                    </div>
-                    <div>
-                        <label>Longitude</label>
-                        <input type="text" id="lon" placeholder="e.g. -78.9391 or 78 56.346 W" oninput="triggerCounterUpdate()">
-                    </div>
-                </div>
-
-                <div id="stateInputGroup" style="display: none; margin-bottom: 0px;">
-                    <input type="text" id="stateIds" placeholder="e.g. NC, VA, SC" style="text-transform: uppercase;" oninput="triggerCounterUpdate()">
-                </div>
-
-                <div id="radiusWrap" class="inline-control" style="margin-top: 0px; margin-bottom: 0px; padding: 6px 14px; min-height: auto;">
-                    <label style="margin-bottom: 0; font-weight: bold;">Search radius (NM)</label>
-                    <input type="number" id="radiusNM" value="150" oninput="triggerCounterUpdate()" style="width: 70px; height: 32px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 14px; font-weight: bold; text-align: center;">
-                </div>
-
-                <div id="sharedHelperText" style="font-size: 10px; color: #90949c; margin-top: 2px;">Enter a single ID (e.g. KABQ) or a comma-separated list for a multi-point search.</div>
+        <div id="coordInputGroup" class="grid-2" style="display: none; margin-bottom: 0px;">
+            <div>
+                <label>Latitude</label>
+                <input type="text" id="lat" placeholder="e.g. 36.0066 or 36 00.396 N" oninput="triggerCounterUpdate()">
             </div>
+            <div>
+                <label>Longitude</label>
+                <input type="text" id="lon" placeholder="e.g. -78.9391 or 78 56.346 W" oninput="triggerCounterUpdate()">
+            </div>
+        </div>
 
-            <button class="btn-stacked btn-red" onclick="resetToDefaults()">
-                <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                <div class="btn-title">CLEAR</div>
-                <div class="btn-sub">ALL DATA</div>
-            </button>
+        <div id="stateInputGroup" style="display: none; margin-bottom: 0px;">
+            <input type="text" id="stateIds" placeholder="e.g. NC, VA, SC" style="text-transform: uppercase;" oninput="triggerCounterUpdate()">
+        </div>
+
+        <div id="sharedHelperText" style="font-size: 11px; color: #90949c; margin-top: 6px; margin-left: 4px;">Enter a single ID (e.g. KABQ) or a comma-separated list for a multi-point search.</div>
+        
+        <div id="facilityName"></div>
+
+        <div id="radiusWrap" class="inline-control" style="margin-top: 15px; margin-bottom: 0px; border-color: var(--primary);">
+            <label style="margin-bottom: 0; font-weight: bold; color: var(--primary);">Search radius</label>
+            <input type="range" id="searchNMSlider" min="5" max="500" step="5" value="150" oninput="document.getElementById('radiusNM').value = this.value; triggerCounterUpdate();">
+            <div style="display: flex; align-items: center; gap: 6px;">
+                <input type="number" id="radiusNM" value="150" oninput="document.getElementById('searchNMSlider').value = this.value; triggerCounterUpdate();" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
+                <span style="font-size: 12px; font-weight: bold; color: var(--text); opacity: 0.8;">NM</span>
+            </div>
         </div>
 
         <div style="height: 1px; background: var(--border); margin: 20px 0 15px 0;"></div>
@@ -332,9 +348,10 @@
                 <input type="number" id="boundaryWidth" value="2" min="1" max="10" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
             </div>
             <div class="inline-control" id="boundaryOpacityGroup" style="grid-column: span 2;">
-                <label style="display:flex; align-items:center; width:100%;">
-                    <span style="font-size: 13px; font-weight: bold; min-width: 65px;">Opac (<span id="boundaryOpacityValue" style="color:var(--primary);">100%</span>)</span>
-                    <input type="range" id="boundaryLineOpacity" min="0" max="100" value="100" oninput="updateBoundaryOpacityLabel()" style="height: 36px;">
+                <label style="display:flex; align-items:center; width:100%; gap: 8px;">
+                    <span style="font-size: 13px; font-weight: bold; min-width: 60px;">Opacity</span>
+                    <input type="range" id="boundaryLineOpacity" min="0" max="100" step="5" value="100" oninput="updateBoundaryOpacityLabel()" style="height: 36px; flex: 1;">
+                    <span id="boundaryOpacityValue" style="color:var(--primary); font-size: 13px; font-weight: bold; min-width: 40px; text-align: right;">100%</span>
                 </label>
             </div>
         </div>
@@ -370,9 +387,10 @@
                     </div>
                 </div>
                 <div class="inline-control">
-                    <label style="display:flex; align-items:center; width:100%;">
-                        <span style="font-size: 13px; font-weight: bold; min-width: 65px;">Opac (<span id="outlineOpacityValue" style="color:var(--primary);">100%</span>)</span>
-                        <input type="range" id="outlineOpacity" min="0" max="100" value="100" oninput="updateOutlineOpacityLabel()" style="height: 36px;">
+                    <label style="display:flex; align-items:center; width:100%; gap: 8px;">
+                        <span style="font-size: 13px; font-weight: bold; min-width: 60px;">Opacity</span>
+                        <input type="range" id="outlineOpacity" min="0" max="100" step="5" value="100" oninput="updateOutlineOpacityLabel()" style="height: 36px; flex: 1;">
+                        <span id="outlineOpacityValue" style="color:var(--primary); font-size: 13px; font-weight: bold; min-width: 40px; text-align: right;">100%</span>
                     </label>
                 </div>
             </div>
@@ -388,9 +406,10 @@
                 </div>
                 
                 <div class="inline-control" id="opacityGroup">
-                    <label style="display:flex; align-items:center; width:100%;">
-                        <span style="font-size: 13px; font-weight: bold; min-width: 65px;">Opac (<span id="opacityValue" style="color:var(--primary);">50%</span>)</span>
-                        <input type="range" id="fillOpacity" min="1" max="100" value="50" oninput="updateOpacityLabel()" style="height: 36px;">
+                    <label style="display:flex; align-items:center; width:100%; gap: 8px;">
+                        <span style="font-size: 13px; font-weight: bold; min-width: 60px;">Opacity</span>
+                        <input type="range" id="fillOpacity" min="0" max="100" step="5" value="50" oninput="updateOpacityLabel()" style="height: 36px; flex: 1;">
+                        <span id="opacityValue" style="color:var(--primary); font-size: 13px; font-weight: bold; min-width: 40px; text-align: right;">50%</span>
                     </label>
                     <input type="color" id="fillColor" value="#ff0000">
                 </div>
@@ -429,9 +448,10 @@
                     </div>
                 </div>
                 <div class="inline-control">
-                    <label style="display:flex; align-items:center; width:100%;">
-                        <span style="font-size: 13px; font-weight: bold; min-width: 65px;">Opac (<span id="notamOutlineOpacityValue" style="color:var(--primary);">100%</span>)</span>
-                        <input type="range" id="notamOutlineOpacity" min="0" max="100" value="100" oninput="updateNotamOutlineOpacityLabel()" style="height: 36px;">
+                    <label style="display:flex; align-items:center; width:100%; gap: 8px;">
+                        <span style="font-size: 13px; font-weight: bold; min-width: 60px;">Opacity</span>
+                        <input type="range" id="notamOutlineOpacity" min="0" max="100" step="5" value="100" oninput="updateNotamOutlineOpacityLabel()" style="height: 36px; flex: 1;">
+                        <span id="notamOutlineOpacityValue" style="color:var(--primary); font-size: 13px; font-weight: bold; min-width: 40px; text-align: right;">100%</span>
                     </label>
                 </div>
             </div>
@@ -447,9 +467,10 @@
                 </div>
                 
                 <div class="inline-control" id="notamOpacityGroup">
-                    <label style="display:flex; align-items:center; width:100%;">
-                        <span style="font-size: 13px; font-weight: bold; min-width: 65px;">Opac (<span id="notamOpacityValue" style="color:var(--primary);">60%</span>)</span>
-                        <input type="range" id="notamFillOpacity" min="1" max="100" value="60" oninput="updateNotamOpacityLabel()" style="height: 36px;">
+                    <label style="display:flex; align-items:center; width:100%; gap: 8px;">
+                        <span style="font-size: 13px; font-weight: bold; min-width: 60px;">Opacity</span>
+                        <input type="range" id="notamFillOpacity" min="0" max="100" step="5" value="60" oninput="updateNotamOpacityLabel()" style="height: 36px; flex: 1;">
+                        <span id="notamOpacityValue" style="color:var(--primary); font-size: 13px; font-weight: bold; min-width: 40px; text-align: right;">60%</span>
                     </label>
                     <input type="color" id="notamFillColor" value="#ff9900">
                 </div>
@@ -466,7 +487,7 @@
             </div>
             <div>
                 <label>Filename Format</label>
-                <select id="fileNameFormat" style="width: 100%; padding: 8px 10px; background: var(--input-bg); color: var(--text); border: 1px solid var(--border); border-radius: 5px; box-sizing: border-box; font-size: 13px; cursor: pointer;">
+                <select id="fileNameFormat" style="cursor: pointer;">
                     <option value="verbose">Verbose (Name-[Height]AGL-[Radius]-Date)</option>
                     <option value="standard">Standard (Name_[Height]AGL)</option>
                     <option value="short">Short (Name Only)</option>
@@ -484,14 +505,14 @@
 
         <button class="btn-stacked btn-slate" onclick="saveProfile()" style="flex: 1;">
             <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
-            <div class="btn-title">Save Setup</div>
+            <div class="btn-title">Save setup as template</div>
             <div class="btn-sub">JSON TEMPLATE</div>
         </button>
 
         <button class="btn-stacked btn-download" onclick="generateKML()" style="flex: 1;">
             <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             <div class="btn-title">Download .KML</div>
-            <div class="btn-sub">FOREFLIGHT EXPORT</div>
+            <div class="btn-sub">FOREFLIGHT/GOOGLE EARTH</div>
         </button>
     </div>
 
@@ -822,23 +843,38 @@ function toggleCenterInput(isProfileLoad = false) {
     const radiusInput = document.getElementById('radiusNM');
     const sharedHelper = document.getElementById('sharedHelperText');
 
+    const searchNMSlider = document.getElementById('searchNMSlider');
+    
     if (mode === 'route') {
         if (radiusLabel) radiusLabel.innerText = 'Corridor half-width (NM)';
         if (sharedHelper) sharedHelper.innerText = 'Enter at least two comma-separated IDs to define your route (e.g. KABQ, KSAF, KDEN).';
-        if (!isProfileLoad && radiusInput && radiusInput.value === "150") radiusInput.value = "4"; // Smart default swap bypassed on load
+        if (searchNMSlider) { searchNMSlider.max = "10"; searchNMSlider.min = "1"; searchNMSlider.step = "1"; }
+        if (radiusInput) { radiusInput.max = "10"; radiusInput.min = "1"; }
+        if (!isProfileLoad && radiusInput && radiusInput.value === "150") { radiusInput.value = "4"; if(searchNMSlider) searchNMSlider.value = "4"; } // Smart default swap bypassed on load
     } else if (mode === 'coord') {
         if (radiusLabel) radiusLabel.innerText = 'Search radius (NM)';
         if (sharedHelper) sharedHelper.innerText = 'Accepts decimal, DDM, or DMS formats. Use negative numbers or S/W for South/West.';
-        if (!isProfileLoad && radiusInput && radiusInput.value === "4") radiusInput.value = "150";
+        if (searchNMSlider) { searchNMSlider.max = "500"; searchNMSlider.min = "5"; searchNMSlider.step = "5"; }
+        if (radiusInput) { radiusInput.max = "500"; radiusInput.min = "5"; }
+        if (!isProfileLoad && radiusInput && radiusInput.value === "4") { radiusInput.value = "150"; if(searchNMSlider) searchNMSlider.value = "150"; }
     } else if (mode === 'state') {
         if (sharedHelper) sharedHelper.innerText = 'Enter comma-separated 2-letter state codes.';
     } else { // 'faa' mode
         if (radiusLabel) radiusLabel.innerText = 'Search radius (NM)';
         if (sharedHelper) sharedHelper.innerText = 'Enter a single ID (e.g. KABQ) or a comma-separated list for a multi-point search.';
-        if (!isProfileLoad && radiusInput && radiusInput.value === "4") radiusInput.value = "150"; // Smart default swap bypassed on load
+        if (searchNMSlider) { searchNMSlider.max = "500"; searchNMSlider.min = "5"; searchNMSlider.step = "5"; }
+        if (radiusInput) { radiusInput.max = "500"; radiusInput.min = "5"; }
+        if (!isProfileLoad && radiusInput && radiusInput.value === "4") { radiusInput.value = "150"; if(searchNMSlider) searchNMSlider.value = "150"; } // Smart default swap bypassed on load
     }
 
-    if(mode === 'faa' || mode === 'route') updateFacilityName();
+    const facName = document.getElementById('facilityName');
+    if (mode === 'faa' || mode === 'route') {
+        if (facName) facName.style.display = 'block';
+        updateFacilityName();
+    } else {
+        if (facName) facName.style.display = 'none';
+    }
+    
     triggerCounterUpdate();
 }
 
@@ -899,8 +935,10 @@ function validateInputs() {
 
     if (mode !== 'state') {
         const radiusNM = parseFloat(document.getElementById('radiusNM').value);
-        if (isNaN(radiusNM) || radiusNM < 1 || radiusNM > 500) {
-            alert("Search radius/width must be between 1 and 500 NM.");
+        const maxRadius = mode === 'route' ? 10 : 500;
+        const minRadius = mode === 'route' ? 1 : 5;
+        if (isNaN(radiusNM) || radiusNM < minRadius || radiusNM > maxRadius) {
+            alert(`Search radius/width must be between ${minRadius} and ${maxRadius} NM.`);
             return false;
         }
     }
@@ -1625,6 +1663,7 @@ function applyProfileState(profile) {
     }
     
     // Sync the new range sliders with the loaded text box values
+    if (document.getElementById('searchNMSlider')) document.getElementById('searchNMSlider').value = document.getElementById('radiusNM').value;
     if (document.getElementById('ringNMSlider')) document.getElementById('ringNMSlider').value = document.getElementById('ringNM').value;
     if (document.getElementById('notamRingNMSlider')) document.getElementById('notamRingNMSlider').value = document.getElementById('notamRingNM').value;
 
