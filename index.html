@@ -48,18 +48,22 @@
 
         /* UI Grouping & Grid */
         .section-card { border: 1px solid var(--border); border-radius: 8px; padding: 15px 20px; margin-bottom: 15px; background: var(--section-bg); }
-        .section-title { font-weight: bold; color: var(--primary); margin-bottom: 12px; text-transform: uppercase; font-size: 10px; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center; }
+        .section-title { font-weight: 800; color: var(--primary); margin-bottom: 14px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.8px; display: flex; justify-content: space-between; align-items: center; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         @media (max-width: 500px) { .grid-2 { grid-template-columns: 1fr; gap: 10px; } }
+        
+        .col-divider { border-right: 1px solid var(--border); padding-right: 20px; }
+        @media (max-width: 500px) { .col-divider { border-right: none; padding-right: 0; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 5px; } }
 
         label { display: block; font-weight: bold; color: var(--text); font-size: 12px; opacity: 0.9; margin-bottom: 4px; }
         input[type="number"], input[type="text"] { width: 100%; padding: 8px 10px; background: var(--input-bg); color: var(--text); border: 1px solid var(--border); border-radius: 5px; box-sizing: border-box; font-size: 13px; }
         input[type="range"] { flex: 1; margin: 0 10px; cursor: pointer; }
         
         /* EFB Optimized Inline Controls */
-        .inline-control { display: flex; align-items: center; justify-content: space-between; background: var(--input-bg); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 12px; min-height: 40px;}
+        .inline-control { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--input-bg); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 12px; min-height: 40px; }
         .inline-control label { margin: 0; font-weight: normal; font-size: 13px; }
         .inline-control input[type="color"] { width: 44px; height: 32px; padding: 0; border: 1px solid var(--border); background: none; cursor: pointer; border-radius: 6px; flex-shrink: 0; }
+        .inline-control input[type="number"] { flex-shrink: 0; }
         
         .checkbox-group { display: flex; align-items: center; gap: 12px; padding: 8px 0; cursor: pointer; }
         .checkbox-group input { width: 22px; height: 22px; margin: 0; cursor: pointer; accent-color: var(--primary); }
@@ -67,25 +71,25 @@
         
         #facilityName { font-size: 11px; font-weight: bold; margin-top: 6px; min-height: 14px; text-transform: uppercase; }
 
-        .btn-group { display: flex; gap: 15px; margin-top: 25px; }
+        .btn-group { display: flex; gap: 12px; margin-top: 20px; }
         button.action { flex: 1; padding: 14px; color: white; border: none; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.2s; }
         button.action span { display: block; font-size: 9px; font-weight: normal; opacity: 0.8; margin-top: 3px; }
         .btn-preview { background-color: #4a7ae6; }
         .btn-preview:hover { background-color: #3b66c4; }
-        .btn-download { background-color: #4cae64; display: flex; align-items: center; justify-content: center; font-size: 15px;}
+        .btn-download { background-color: #4cae64; }
         .btn-download:hover { background-color: #3e9151; }
         
         /* New Stacked Button Styles & Grid */
-        .btn-stacked { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 14px 8px; color: white; border: none; border-radius: 8px; cursor: pointer; transition: filter 0.2s; text-align: center; font-family: inherit; }
+        .btn-stacked { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 12px 8px; color: white; border: none; border-radius: 8px; cursor: pointer; transition: filter 0.2s; text-align: center; font-family: inherit; }
         .btn-stacked:hover { filter: brightness(0.9); }
-        .btn-stacked svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .btn-stacked svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
         .btn-stacked .btn-title { font-size: 15px; font-weight: bold; line-height: 1.2; margin-top: 2px; }
         .btn-stacked .btn-sub { font-size: 10px; font-weight: normal; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; }
         
         .btn-slate { background-color: #5c6e7a; }
         .btn-red { background-color: #cc544b; }
 
-        .bracket-grid { display: grid; grid-template-columns: 1fr 3fr 1fr; gap: 15px; align-items: center; margin-top: 15px; }
+        .bracket-grid { display: grid; grid-template-columns: 1fr 3fr 1fr; gap: 12px; align-items: stretch; margin-top: 15px; }
         .bracket-center { display: flex; flex-direction: column; gap: 4px; justify-content: center; }
         @media (max-width: 600px) { 
             .bracket-grid { grid-template-columns: 1fr; gap: 10px; } 
@@ -98,7 +102,7 @@
 /* Segmented Control */
         .segmented-control { display: flex; align-items: stretch; background: var(--section-bg); border-radius: 8px; padding: 4px; margin-bottom: 15px; border: 1px solid var(--border); gap: 2px; }
         .segmented-control input[type="radio"] { display: none; }
-        .segmented-control label { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 10px 4px; margin: 0; font-size: 11px; font-weight: bold; color: var(--text); cursor: pointer; border-radius: 6px; transition: 0.2s; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.5px; box-sizing: border-box; border: 1px solid transparent; position: relative; }
+        .segmented-control label { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px 4px; margin: 0; font-size: 11px; font-weight: bold; color: var(--text); cursor: pointer; border-radius: 6px; transition: 0.2s; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; box-sizing: border-box; border: 1px solid transparent; position: relative; }
         .segmented-control label:not(:last-of-type)::after { content: ""; position: absolute; right: -2px; top: 15%; height: 70%; width: 1px; background: rgba(128, 128, 128, 0.4); z-index: 0; }
         .segmented-control input[type="radio"]:checked + label { background: var(--card); color: var(--primary); opacity: 1; box-shadow: 0 2px 6px rgba(0,0,0,0.3); border: 1px solid var(--border); z-index: 1; }
         .segmented-control input[type="radio"]:checked + label::after { display: none; }
@@ -287,27 +291,23 @@
         <div style="height: 1px; background: var(--border); margin: 20px 0 15px 0;"></div>
 
         <div class="grid-2">
-            <div>
-                <div style="display: flex; align-items: center; margin-bottom: 12px; background: var(--bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border);">
-                    <div class="checkbox-group" style="padding: 0; margin: 0;">
-                        <input type="checkbox" id="stdInclude" checked onchange="triggerCounterUpdate()">
-                        <label for="stdInclude" style="font-weight: bold; color: var(--primary); font-size: 13px; letter-spacing: 0.3px;">Include standard obstacles (DOF)</label>
-                    </div>
+            <div class="col-divider">
+                <div class="checkbox-group" style="margin-bottom: 12px;">
+                    <input type="checkbox" id="stdInclude" checked onchange="triggerCounterUpdate(); toggleLayerOptions()">
+                    <label for="stdInclude" style="font-weight: bold; color: var(--primary); font-size: 13px; letter-spacing: 0.3px;">Include standard obstacles (DOF)</label>
                 </div>
-                <div>
+                <div id="stdOptionsGroup">
                     <label>Minimum obstacle height (ft AGL)</label>
                     <input type="number" id="minAGL" value="1000" oninput="checkAGLWarning()">
                     <div id="aglWarning" style="display: none; color: var(--danger); font-size: 10px; margin-top: 5px; font-weight: bold;">FAA database excludes obstacles under 200 AGL.</div>
                 </div>
             </div>
             <div>
-                <div style="display: flex; align-items: center; margin-bottom: 12px; background: var(--bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border);">
-                    <div class="checkbox-group" style="padding: 0; margin: 0;">
-                        <input type="checkbox" id="notamInclude" checked onchange="triggerCounterUpdate()">
-                        <label for="notamInclude" style="font-weight: bold; color: var(--dispatch); font-size: 13px; letter-spacing: 0.3px;">Include active light outage NOTAMs</label>
-                    </div>
+                <div class="checkbox-group" style="margin-bottom: 12px;">
+                    <input type="checkbox" id="notamInclude" checked style="accent-color: var(--dispatch);" onchange="triggerCounterUpdate(); toggleLayerOptions()">
+                    <label for="notamInclude" style="font-weight: bold; color: var(--dispatch); font-size: 13px; letter-spacing: 0.3px;">Include active light outage NOTAMs</label>
                 </div>
-                <div>
+                <div id="notamOptionsGroup">
                     <label>Minimum height (ft AGL)</label>
                     <input type="number" id="notamMinAGL" value="200" oninput="triggerCounterUpdate()">
                 </div>
@@ -317,14 +317,12 @@
 
     <div class="section-card" id="boundaryWrap">
         <div class="section-title">Search Boundary Styling</div>
-        <div style="display: flex; align-items: center; margin-bottom: 12px; background: var(--bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border);">
-            <div class="checkbox-group" style="padding: 0; margin: 0;">
-                <input type="checkbox" id="enableBoundary" checked onchange="toggleBoundaryOpacitySlider()">
-                <label for="enableBoundary" style="font-weight: bold; color: var(--primary); font-size: 13px; letter-spacing: 0.3px;">Include search boundaries in KML overlay</label>
-            </div>
+        <div class="checkbox-group" style="margin-bottom: 12px;">
+            <input type="checkbox" id="enableBoundary" checked onchange="toggleBoundaryOpacitySlider()">
+            <label for="enableBoundary" style="font-weight: bold; color: var(--primary); font-size: 13px; letter-spacing: 0.3px;">Include search boundaries in KML overlay</label>
         </div>
         
-        <div class="grid-2">
+        <div class="grid-2" id="boundarySettingsGrid">
             <div class="inline-control">
                 <label>Line color</label>
                 <input type="color" id="boundaryColor" value="#ff0000">
@@ -342,11 +340,11 @@
         </div>
     </div>
 
-    <div class="section-card">
+    <div class="section-card" id="stdStylingCard">
         <div class="section-title">Standard Obstacle Styling</div>
         
-        <div class="inline-control" id="stdMasterWrap" style="margin-bottom: 15px; border-color: #ff0000;">
-            <label id="stdMasterLabel" style="font-weight: bold; color: #ff0000; white-space: nowrap;">Ring radius</label>
+        <div class="inline-control" id="stdMasterWrap" style="margin-bottom: 15px; border-color: var(--danger);">
+            <label id="stdMasterLabel" style="font-weight: bold; color: var(--danger); white-space: nowrap;">Ring radius</label>
             <input type="range" id="ringNMSlider" min="0.1" max="10.0" step="0.1" value="2.0" oninput="document.getElementById('ringNM').value = this.value">
             <div style="display: flex; align-items: center; gap: 6px;">
                 <input type="number" id="ringNM" value="2.0" step="0.1" min="0.1" max="10.0" oninput="document.getElementById('ringNMSlider').value = this.value" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
@@ -401,11 +399,11 @@
         </div>
     </div>
 
-    <div class="section-card">
+    <div class="section-card" id="notamStylingCard">
         <div class="section-title">Unlit Obstacle Styling</div>
         
-        <div class="inline-control" id="notamMasterWrap" style="margin-bottom: 15px; border-color: #ff9900;">
-            <label id="notamMasterLabel" style="font-weight: bold; color: #ff9900; white-space: nowrap;">Ring radius</label>
+        <div class="inline-control" id="notamMasterWrap" style="margin-bottom: 15px; border-color: var(--dispatch);">
+            <label id="notamMasterLabel" style="font-weight: bold; color: var(--dispatch); white-space: nowrap;">Ring radius</label>
             <input type="range" id="notamRingNMSlider" min="0.1" max="10.0" step="0.1" value="3.0" oninput="document.getElementById('notamRingNM').value = this.value">
             <div style="display: flex; align-items: center; gap: 6px;">
                 <input type="number" id="notamRingNM" value="3.0" step="0.1" min="0.1" max="10.0" oninput="document.getElementById('notamRingNMSlider').value = this.value" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
@@ -860,7 +858,22 @@ function toggleNotamOpacitySlider() { document.getElementById('notamOpacityGroup
 function updateOutlineOpacityLabel() { document.getElementById('outlineOpacityValue').textContent = document.getElementById('outlineOpacity').value + '%'; }
 function updateNotamOutlineOpacityLabel() { document.getElementById('notamOutlineOpacityValue').textContent = document.getElementById('notamOutlineOpacity').value + '%'; }
 function updateBoundaryOpacityLabel() { document.getElementById('boundaryOpacityValue').textContent = document.getElementById('boundaryLineOpacity').value + '%'; }
-function toggleBoundaryOpacitySlider() { document.getElementById('boundaryOpacityGroup').style.display = document.getElementById('enableBoundary').checked ? 'flex' : 'none'; }
+function toggleBoundaryOpacitySlider() { document.getElementById('boundarySettingsGrid').style.display = document.getElementById('enableBoundary').checked ? 'grid' : 'none'; }
+
+function toggleLayerOptions() {
+    const stdChecked = document.getElementById('stdInclude').checked;
+    const notamChecked = document.getElementById('notamInclude').checked;
+    
+    const stdGroup = document.getElementById('stdOptionsGroup');
+    const stdCard = document.getElementById('stdStylingCard');
+    if (stdGroup) stdGroup.style.display = stdChecked ? 'block' : 'none';
+    if (stdCard) stdCard.style.display = stdChecked ? 'block' : 'none';
+    
+    const notamGroup = document.getElementById('notamOptionsGroup');
+    const notamCard = document.getElementById('notamStylingCard');
+    if (notamGroup) notamGroup.style.display = notamChecked ? 'block' : 'none';
+    if (notamCard) notamCard.style.display = notamChecked ? 'block' : 'none';
+}
 
 // Dynamic Ring Radius UI Highlight Handlers
 function updateStdRingColor() {
@@ -1628,6 +1641,7 @@ function applyProfileState(profile) {
     updateStdRingColor();
     updateNotamRingColor();
     checkAGLWarning();
+    toggleLayerOptions();
 }
 
 function loadProfile(event) {
