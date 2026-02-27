@@ -130,7 +130,6 @@ def harvest_notams():
         print(f"    > DIAGNOSTIC: NMS-API returned {len(features)} total nationwide OBST NOTAMs.")
         
         # Original regex and outage terminology logic (Locked Baseline)
-        agl_pattern = r"(\d+)\s?(?:FT)?\s?AGL"
         lighting_words = ["LGT", "LIGHT", "UNLGTD", "UNLIT"]
         outage_words = ["OUT", "U/S", "UNMON", "UNLIT", "OBSCURED", "OTS", "O/S", "INOP", "UNLGTD"]
         
@@ -155,8 +154,14 @@ def harvest_notams():
                     lon_val = round(coords[0], 6)
                     lat_val = round(coords[1], 6)
                     
-                    agl_match = re.search(agl_pattern, text)
-                    agl_val = agl_match.group(1) if agl_match else "Unknown"
+                    # Primary check: Decimals and AGL
+                    agl_match = re.search(r"(\d+(?:\.\d+)?)\s*(?:FT)?\s*AGL", text)
+                    if agl_match:
+                        agl_val = agl_match.group(1)
+                    else:
+                        # Backup check: MSL enclosures like 1049 MSL ( 250 )
+                        backup_match = re.search(r"MSL\s*\(\s*(\d+(?:\.\d+)?)\s*(?:FT)?\s*\)", text)
+                        agl_val = backup_match.group(1) if backup_match else "Unknown"
                     
                     processed_notams.append({
                         "lat": lat_val,
