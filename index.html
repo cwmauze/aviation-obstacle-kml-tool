@@ -344,8 +344,11 @@
                 <input type="color" id="boundaryColor" value="#ff0000">
             </div>
             <div class="inline-control">
-                <label>Line thickness (px)</label>
-                <input type="number" id="boundaryWidth" value="2" min="1" max="10" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
+                <label>Line thickness</label>
+                <div style="display: flex; align-items: center; gap: 6px;">
+                    <input type="number" id="boundaryWidth" value="2" min="1" max="10" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
+                    <span style="font-size: 12px; font-weight: bold; color: var(--text); opacity: 0.8;">px</span>
+                </div>
             </div>
             <div class="inline-control" id="boundaryOpacityGroup" style="grid-column: span 2;">
                 <label style="display:flex; align-items:center; width:100%; gap: 8px;">
