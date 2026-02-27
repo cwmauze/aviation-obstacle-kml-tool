@@ -1641,10 +1641,34 @@ function saveProfile() {
     
     const now = new Date();
     const dtStr = now.getFullYear() + String(now.getMonth() + 1).padStart(2, '0') + String(now.getDate()).padStart(2, '0');
-    const customName = document.getElementById('customFileName').value.trim().replace(/[<>:"/\\|?*]/g, '') || "Profile";
+    
+    // Dynamically build a descriptive filename based on search parameters
+    const mode = document.querySelector('input[name="centerMode"]:checked').value;
+    let centerLabel = "Template";
+    
+    if (mode === 'faa' || mode === 'route') {
+        const rawId = document.getElementById('faaId').value.trim().replace(/[^a-zA-Z0-9,]/g, '');
+        centerLabel = rawId ? rawId.replace(/,/g, '-') : "FAA";
+    } else if (mode === 'state') {
+        const rawState = document.getElementById('stateIds').value.trim().replace(/[^a-zA-Z,]/g, '');
+        centerLabel = rawState ? rawState.replace(/,/g, '-') : "State";
+    } else if (mode === 'coord') {
+        const lat = parseFloat(document.getElementById('lat').value) || 0;
+        const lon = parseFloat(document.getElementById('lon').value) || 0;
+        centerLabel = `${lat.toFixed(2)}_${lon.toFixed(2)}`;
+    }
+    
+    if (centerLabel.length > 20) centerLabel = centerLabel.substring(0, 20); // Keep filename manageable
+    
+    const minAGL = document.getElementById('minAGL').value;
+    const radius = mode === 'state' ? 'STATE' : `${document.getElementById('radiusNM').value}NM`;
+    
+    // Allow the Custom File Name input to override the auto-generation
+    const customName = document.getElementById('customFileName').value.trim().replace(/[<>:"/\\|?*]/g, '');
+    const baseName = customName || `Setup_${centerLabel}_${minAGL}AGL_${radius}`;
     
     dlAnchorElem.setAttribute("href", dataStr);
-    dlAnchorElem.setAttribute("download", `KML_Settings_${customName}_${dtStr}.json`);
+    dlAnchorElem.setAttribute("download", `${baseName}_${dtStr}.json`);
     document.body.appendChild(dlAnchorElem);
     dlAnchorElem.click();
     document.body.removeChild(dlAnchorElem);
