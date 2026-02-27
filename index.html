@@ -70,11 +70,31 @@
         .btn-group { display: flex; gap: 15px; margin-top: 25px; }
         button.action { flex: 1; padding: 14px; color: white; border: none; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.2s; }
         button.action span { display: block; font-size: 9px; font-weight: normal; opacity: 0.8; margin-top: 3px; }
-        .btn-preview { background-color: var(--earth); }
-        .btn-preview:hover { background-color: #1a60d4; }
-        .btn-download { background-color: var(--success); display: flex; align-items: center; justify-content: center; font-size: 15px;}
-        .btn-download:hover { background-color: #218838; }
+        .btn-preview { background-color: #4a7ae6; }
+        .btn-preview:hover { background-color: #3b66c4; }
+        .btn-download { background-color: #4cae64; display: flex; align-items: center; justify-content: center; font-size: 15px;}
+        .btn-download:hover { background-color: #3e9151; }
         
+        /* New Stacked Button Styles & Grid */
+        .btn-stacked { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 14px 8px; color: white; border: none; border-radius: 8px; cursor: pointer; transition: filter 0.2s; text-align: center; font-family: inherit; }
+        .btn-stacked:hover { filter: brightness(0.9); }
+        .btn-stacked svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .btn-stacked .btn-title { font-size: 15px; font-weight: bold; line-height: 1.2; margin-top: 2px; }
+        .btn-stacked .btn-sub { font-size: 10px; font-weight: normal; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .btn-slate { background-color: #5c6e7a; }
+        .btn-red { background-color: #cc544b; }
+
+        .bracket-grid { display: grid; grid-template-columns: 1fr 3fr 1fr; gap: 15px; align-items: center; margin-top: 15px; }
+        .bracket-center { display: flex; flex-direction: column; gap: 4px; justify-content: center; }
+        @media (max-width: 600px) { 
+            .bracket-grid { grid-template-columns: 1fr; gap: 10px; } 
+            .bracket-grid .btn-stacked { padding: 12px; flex-direction: row; gap: 12px; } 
+            .bracket-grid .btn-stacked svg { width: 20px; height: 20px; } 
+            .bracket-grid .btn-stacked .btn-sub { display: none; } 
+            .bracket-grid .btn-stacked .btn-title { margin-top: 0; }
+        }
+
 /* Segmented Control */
         .segmented-control { display: flex; align-items: stretch; background: var(--section-bg); border-radius: 8px; padding: 4px; margin-bottom: 15px; border: 1px solid var(--border); gap: 2px; }
         .segmented-control input[type="radio"] { display: none; }
@@ -163,7 +183,7 @@
     <div class="header-row">
         <div>
             <h2>Aviation obstacle .KML overlay generator</h2>
-            <span class="version-subtitle" onclick="openVersionModal()">v2.5</span>
+            <span class="version-subtitle" onclick="openVersionModal()">v2.6.1</span>
             <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub project home</a>
             <a href="mailto:cistern_fob3m@icloud.com" class="project-link">Contact / Feedback</a>
         </div>
@@ -200,7 +220,7 @@
 
 	<div class="section-card">
         <div class="section-title">
-            <span>1. Search Area & Filtering</span>
+            <span>Search Area & Filtering</span>
             <div style="display: flex; gap: 8px; flex-wrap: wrap;">
                 <span id="liveCounter" style="background: var(--bg); color: var(--text); padding: 4px 10px; border-radius: 12px; font-weight: 600; font-size: 11px; border: 1px solid var(--border); text-transform: none; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);">0 obstacles</span>
                 <span id="notamLiveCounter" style="background: var(--bg); color: var(--text); padding: 4px 10px; border-radius: 12px; font-weight: 600; font-size: 11px; border: 1px solid var(--border); text-transform: none; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);">0 active lighting outages</span>
@@ -220,32 +240,48 @@
             <label for="stateMode">Entire US State(s)</label>
         </div>
 
-    	<div id="faaInputGroup">
-            <input type="text" id="faaId" placeholder="e.g. KRDU, W40, NC91" style="text-transform: uppercase;" oninput="updateFacilityName()">
-            <div id="faaHelperText" style="font-size: 10px; color: #90949c; margin-top: 5px;">Enter a single ID (e.g. KABQ) or a comma-separated list for a multi-point search.</div>
-            <div id="facilityName"></div>
-        </div>
+        <div class="bracket-grid">
+            <button class="btn-stacked btn-slate" onclick="document.getElementById('profileLoader').click()">
+                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                <div class="btn-title">Load Setup</div>
+                <div class="btn-sub">JSON TEMPLATE</div>
+            </button>
+            <input type="file" id="profileLoader" accept=".json" style="display: none;" onchange="loadProfile(event)">
 
-        <div id="coordInputGroup" class="grid-2" style="display: none; margin-bottom: 15px;">
-            <div>
-                <label>Latitude</label>
-                <input type="text" id="lat" placeholder="e.g. 36.0066 or 36 00.396 N" oninput="triggerCounterUpdate()">
+            <div class="bracket-center">
+                <div id="faaInputGroup">
+                    <input type="text" id="faaId" placeholder="e.g. KRDU, W40, NC91" style="text-transform: uppercase;" oninput="updateFacilityName()">
+                    <div id="facilityName"></div>
+                </div>
+
+                <div id="coordInputGroup" class="grid-2" style="display: none; margin-bottom: 0px;">
+                    <div>
+                        <label>Latitude</label>
+                        <input type="text" id="lat" placeholder="e.g. 36.0066 or 36 00.396 N" oninput="triggerCounterUpdate()">
+                    </div>
+                    <div>
+                        <label>Longitude</label>
+                        <input type="text" id="lon" placeholder="e.g. -78.9391 or 78 56.346 W" oninput="triggerCounterUpdate()">
+                    </div>
+                </div>
+
+                <div id="stateInputGroup" style="display: none; margin-bottom: 0px;">
+                    <input type="text" id="stateIds" placeholder="e.g. NC, VA, SC" style="text-transform: uppercase;" oninput="triggerCounterUpdate()">
+                </div>
+
+                <div id="radiusWrap" class="inline-control" style="margin-top: 0px; margin-bottom: 0px; padding: 6px 14px; min-height: auto;">
+                    <label style="margin-bottom: 0; font-weight: bold;">Search radius (NM)</label>
+                    <input type="number" id="radiusNM" value="150" oninput="triggerCounterUpdate()" style="width: 70px; height: 32px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 14px; font-weight: bold; text-align: center;">
+                </div>
+
+                <div id="sharedHelperText" style="font-size: 10px; color: #90949c; margin-top: 2px;">Enter a single ID (e.g. KABQ) or a comma-separated list for a multi-point search.</div>
             </div>
-            <div>
-                <label>Longitude</label>
-                <input type="text" id="lon" placeholder="e.g. -78.9391 or 78 56.346 W" oninput="triggerCounterUpdate()">
-            </div>
-            <div style="grid-column: span 2; font-size: 10px; color: #90949c; margin-top: -10px;">Accepts decimal, DDM, or DMS formats. Use negative numbers or S/W for South/West.</div>
-        </div>
 
-        <div id="stateInputGroup" style="display: none; margin-bottom: 15px;">
-            <input type="text" id="stateIds" placeholder="e.g. NC, VA, SC" style="text-transform: uppercase;" oninput="triggerCounterUpdate()">
-            <div style="font-size: 10px; color: #90949c; margin-top: 5px;">Enter comma-separated 2-letter state codes.</div>
-        </div>
-
-        <div id="radiusWrap" style="margin-top: 15px;">
-            <label style="margin-bottom: 4px;">Search radius (NM)</label>
-            <input type="number" id="radiusNM" value="150" oninput="triggerCounterUpdate()">
+            <button class="btn-stacked btn-red" onclick="resetToDefaults()">
+                <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                <div class="btn-title">CLEAR</div>
+                <div class="btn-sub">ALL DATA</div>
+            </button>
         </div>
 
         <div style="height: 1px; background: var(--border); margin: 20px 0 15px 0;"></div>
@@ -280,7 +316,7 @@
     </div>
 
     <div class="section-card" id="boundaryWrap">
-        <div class="section-title">2. Search Boundary Styling</div>
+        <div class="section-title">Search Boundary Styling</div>
         <div style="display: flex; align-items: center; margin-bottom: 12px; background: var(--bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border);">
             <div class="checkbox-group" style="padding: 0; margin: 0;">
                 <input type="checkbox" id="enableBoundary" checked onchange="toggleBoundaryOpacitySlider()">
@@ -307,11 +343,15 @@
     </div>
 
     <div class="section-card">
-        <div class="section-title">3. Standard Obstacle Styling</div>
+        <div class="section-title">Standard Obstacle Styling</div>
         
         <div class="inline-control" id="stdMasterWrap" style="margin-bottom: 15px; border-color: #ff0000;">
-            <label id="stdMasterLabel" style="font-weight: bold; color: #ff0000;">Ring radius (NM)</label>
-            <input type="number" id="ringNM" value="2.0" step="0.1" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
+            <label id="stdMasterLabel" style="font-weight: bold; color: #ff0000; white-space: nowrap;">Ring radius</label>
+            <input type="range" id="ringNMSlider" min="0.1" max="10.0" step="0.1" value="2.0" oninput="document.getElementById('ringNM').value = this.value">
+            <div style="display: flex; align-items: center; gap: 6px;">
+                <input type="number" id="ringNM" value="2.0" step="0.1" min="0.1" max="10.0" oninput="document.getElementById('ringNMSlider').value = this.value" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
+                <span style="font-size: 12px; font-weight: bold; color: var(--text); opacity: 0.8;">NM</span>
+            </div>
         </div>
 
         <div class="grid-2">
@@ -325,8 +365,11 @@
                     <input type="color" id="outlineColor" value="#ff0000" oninput="updateStdRingColor()">
                 </div>
                 <div class="inline-control">
-                    <label>Line thickness (px)</label>
-                    <input type="number" id="ringWidth" value="2" min="1" max="10" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
+                    <label>Line thickness</label>
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <input type="number" id="ringWidth" value="2" min="1" max="10" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
+                        <span style="font-size: 12px; font-weight: bold; color: var(--text); opacity: 0.8;">px</span>
+                    </div>
                 </div>
                 <div class="inline-control">
                     <label style="display:flex; align-items:center; width:100%;">
@@ -359,11 +402,15 @@
     </div>
 
     <div class="section-card">
-        <div class="section-title">4. Unlit Obstacle Styling</div>
+        <div class="section-title">Unlit Obstacle Styling</div>
         
         <div class="inline-control" id="notamMasterWrap" style="margin-bottom: 15px; border-color: #ff9900;">
-            <label id="notamMasterLabel" style="font-weight: bold; color: #ff9900;">Ring radius (NM)</label>
-            <input type="number" id="notamRingNM" value="3.0" step="0.1" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
+            <label id="notamMasterLabel" style="font-weight: bold; color: #ff9900; white-space: nowrap;">Ring radius</label>
+            <input type="range" id="notamRingNMSlider" min="0.1" max="10.0" step="0.1" value="3.0" oninput="document.getElementById('notamRingNM').value = this.value">
+            <div style="display: flex; align-items: center; gap: 6px;">
+                <input type="number" id="notamRingNM" value="3.0" step="0.1" min="0.1" max="10.0" oninput="document.getElementById('notamRingNMSlider').value = this.value" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
+                <span style="font-size: 12px; font-weight: bold; color: var(--text); opacity: 0.8;">NM</span>
+            </div>
         </div>
 
         <div class="grid-2">
@@ -377,8 +424,11 @@
                     <input type="color" id="notamOutlineColor" value="#ff9900" oninput="updateNotamRingColor()">
                 </div>
                 <div class="inline-control">
-                    <label>Line thickness (px)</label>
-                    <input type="number" id="notamRingWidth" value="3" min="1" max="10" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
+                    <label>Line thickness</label>
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <input type="number" id="notamRingWidth" value="3" min="1" max="10" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
+                        <span style="font-size: 12px; font-weight: bold; color: var(--text); opacity: 0.8;">px</span>
+                    </div>
                 </div>
                 <div class="inline-control">
                     <label style="display:flex; align-items:center; width:100%;">
@@ -410,7 +460,7 @@
     </div>
 
     <div class="section-card" style="margin-bottom: 0;">
-        <div class="section-title">5. Export Settings</div>
+        <div class="section-title">Export Settings</div>
         <div class="grid-2">
             <div>
                 <label>Custom Route/File Name (Optional)</label>
@@ -428,8 +478,23 @@
     </div>
 
     <div class="btn-group">
-        <button class="action btn-preview" onclick="showMapPreview()">Interactive Map Preview <span>STREET • SAT • VFR SECTIONAL</span></button>
-        <button class="action btn-download" onclick="generateKML()">Download .KML</button>
+        <button class="btn-stacked btn-preview" onclick="showMapPreview()" style="flex: 1;">
+            <svg viewBox="0 0 24 24"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>
+            <div class="btn-title">Preview on map</div>
+            <div class="btn-sub">STREET / SAT / VFR</div>
+        </button>
+
+        <button class="btn-stacked btn-slate" onclick="saveProfile()" style="flex: 1;">
+            <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
+            <div class="btn-title">Save Setup</div>
+            <div class="btn-sub">JSON TEMPLATE</div>
+        </button>
+
+        <button class="btn-stacked btn-download" onclick="generateKML()" style="flex: 1;">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            <div class="btn-title">Download .KML</div>
+            <div class="btn-sub">FOREFLIGHT EXPORT</div>
+        </button>
     </div>
 
     <footer class="app-footer">
@@ -442,6 +507,8 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
+    	<li><strong>v2.6.1:</strong> Tweaked UI, added more sliders.</li>
+    	<li><strong>v2.5:</strong> Implemented save/load profile functionality.</li>
     	<li><strong>v2.5:</strong> Major restyle - reorganized options into search area.</li>
     	<li><strong>v2.4.2:</strong> Added opacity options for obstacle/NOTAM rings.</li>
     	<li><strong>v2.4.1:</strong> UI tweak, added contact email.</li>
@@ -740,7 +807,7 @@ function toggleTheme() {
     btn.innerText = isNowLight ? '🌙' : '☀️';
 }
 
-function toggleCenterInput() {
+function toggleCenterInput(isProfileLoad = false) {
     const mode = document.querySelector('input[name="centerMode"]:checked').value;
     
     // Show the identifier input box for both standard points and route search
@@ -748,22 +815,29 @@ function toggleCenterInput() {
     document.getElementById('coordInputGroup').style.display = mode === 'coord' ? 'grid' : 'none';
     document.getElementById('stateInputGroup').style.display = mode === 'state' ? 'block' : 'none';
     
-    document.getElementById('radiusWrap').style.display = mode === 'state' ? 'none' : 'block';
-    document.getElementById('boundaryWrap').style.visibility = mode === 'state' ? 'hidden' : 'visible';
+    // Use 'flex' instead of 'block' to maintain the inline-control styling
+    document.getElementById('radiusWrap').style.display = mode === 'state' ? 'none' : 'flex';
+    document.getElementById('boundaryWrap').style.display = mode === 'state' ? 'none' : 'block';
 
     // Dynamically update the radius label, helper text, and default values
     const radiusLabel = document.querySelector('#radiusWrap label');
     const radiusInput = document.getElementById('radiusNM');
-    const faaHelper = document.getElementById('faaHelperText');
+    const sharedHelper = document.getElementById('sharedHelperText');
 
     if (mode === 'route') {
         if (radiusLabel) radiusLabel.innerText = 'Corridor half-width (NM)';
-        if (faaHelper) faaHelper.innerText = 'Enter at least two comma-separated IDs to define your route (e.g. KABQ, KSAF, KDEN).';
-        if (radiusInput && radiusInput.value === "150") radiusInput.value = "4"; // Smart default swap
-    } else {
+        if (sharedHelper) sharedHelper.innerText = 'Enter at least two comma-separated IDs to define your route (e.g. KABQ, KSAF, KDEN).';
+        if (!isProfileLoad && radiusInput && radiusInput.value === "150") radiusInput.value = "4"; // Smart default swap bypassed on load
+    } else if (mode === 'coord') {
         if (radiusLabel) radiusLabel.innerText = 'Search radius (NM)';
-        if (faaHelper) faaHelper.innerText = 'Enter a single ID (e.g. KABQ) or a comma-separated list for a multi-point search.';
-        if (mode === 'faa' && radiusInput && radiusInput.value === "4") radiusInput.value = "150"; // Smart default swap back
+        if (sharedHelper) sharedHelper.innerText = 'Accepts decimal, DDM, or DMS formats. Use negative numbers or S/W for South/West.';
+        if (!isProfileLoad && radiusInput && radiusInput.value === "4") radiusInput.value = "150";
+    } else if (mode === 'state') {
+        if (sharedHelper) sharedHelper.innerText = 'Enter comma-separated 2-letter state codes.';
+    } else { // 'faa' mode
+        if (radiusLabel) radiusLabel.innerText = 'Search radius (NM)';
+        if (sharedHelper) sharedHelper.innerText = 'Enter a single ID (e.g. KABQ) or a comma-separated list for a multi-point search.';
+        if (!isProfileLoad && radiusInput && radiusInput.value === "4") radiusInput.value = "150"; // Smart default swap bypassed on load
     }
 
     if(mode === 'faa' || mode === 'route') updateFacilityName();
@@ -1493,6 +1567,89 @@ function setBaseView(type) {
 
     document.querySelectorAll('.layer-switch .layer-btn').forEach(b => b.classList.remove('active'));
     document.getElementById('b-' + type).classList.add('active');
+}
+
+// --- PROFILE SAVE/LOAD & RESET LOGIC ---
+
+// Cache the initial default state of the page instantly on load
+const defaultProfileState = {};
+document.querySelectorAll('input[id], select[id]').forEach(el => {
+    if (el.type === 'file') return;
+    defaultProfileState[el.id] = el.type === 'checkbox' || el.type === 'radio' ? el.checked : el.value;
+});
+
+function saveProfile() {
+    const profile = {};
+    document.querySelectorAll('input[id], select[id]').forEach(el => {
+        if (el.type === 'file') return;
+        profile[el.id] = el.type === 'checkbox' || el.type === 'radio' ? el.checked : el.value;
+    });
+    
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(profile, null, 2));
+    const dlAnchorElem = document.createElement('a');
+    
+    const now = new Date();
+    const dtStr = now.getFullYear() + String(now.getMonth() + 1).padStart(2, '0') + String(now.getDate()).padStart(2, '0');
+    const customName = document.getElementById('customFileName').value.trim().replace(/[<>:"/\\|?*]/g, '') || "Profile";
+    
+    dlAnchorElem.setAttribute("href", dataStr);
+    dlAnchorElem.setAttribute("download", `KML_Settings_${customName}_${dtStr}.json`);
+    document.body.appendChild(dlAnchorElem);
+    dlAnchorElem.click();
+    document.body.removeChild(dlAnchorElem);
+}
+
+function applyProfileState(profile) {
+    for (const key in profile) {
+        const el = document.getElementById(key);
+        if (el && el.type !== 'file') {
+            if (el.type === 'checkbox' || el.type === 'radio') {
+                el.checked = profile[key];
+            } else {
+                el.value = profile[key];
+            }
+        }
+    }
+    
+    // Sync the new range sliders with the loaded text box values
+    if (document.getElementById('ringNMSlider')) document.getElementById('ringNMSlider').value = document.getElementById('ringNM').value;
+    if (document.getElementById('notamRingNMSlider')) document.getElementById('notamRingNMSlider').value = document.getElementById('notamRingNM').value;
+
+    // Programmatically trigger all UI update functions
+    toggleCenterInput(true);
+    updateOpacityLabel();
+    toggleOpacitySlider();
+    updateNotamOpacityLabel();
+    toggleNotamOpacitySlider();
+    updateOutlineOpacityLabel();
+    updateNotamOutlineOpacityLabel();
+    updateBoundaryOpacityLabel();
+    toggleBoundaryOpacitySlider();
+    updateStdRingColor();
+    updateNotamRingColor();
+    checkAGLWarning();
+}
+
+function loadProfile(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const profile = JSON.parse(e.target.result);
+            applyProfileState(profile);
+            event.target.value = ""; // Reset file input to allow reloading the same file
+        } catch (err) {
+            console.error("Profile Load Error:", err);
+            alert("Failed to load profile. Ensure the file is a valid JSON generated by this tool.");
+        }
+    };
+    reader.readAsText(file);
+}
+
+function resetToDefaults() {
+    applyProfileState(defaultProfileState);
 }
 </script>
 </body>
