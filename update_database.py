@@ -131,14 +131,19 @@ def harvest_notams():
         
         # Original regex and outage terminology logic (Locked Baseline)
         agl_pattern = r"(\d+)\s?(?:FT)?\s?AGL"
-        outage_words = ["OUT", "U/S", "UNMON", "UNLIT", "OBSCURED"]
+        lighting_words = ["LGT", "LIGHT", "UNLGTD", "UNLIT"]
+        outage_words = ["OUT", "U/S", "UNMON", "UNLIT", "OBSCURED", "OTS", "O/S", "INOP", "UNLGTD"]
         
         for feature in features:
             props = feature.get("properties", {}).get("coreNOTAMData", {}).get("notam", {})
             text = props.get("text", "").upper()
             
-            # THE NEW STRICT FILTER: Must contain OBST, must contain LGT/LIGHT, and must have an outage word.
-            is_unlit_obstacle = ("OBST" in text) and ("LGT" in text or "LIGHT" in text) and any(w in text for w in outage_words)
+            # Check for obstacle context, lighting keywords, AND outage keywords
+            has_obst = ("OBST" in text) or ("TWR" in text) or ("TOWER" in text)
+            has_lgt = any(w in text for w in lighting_words)
+            is_outage = any(w in text for w in outage_words)
+            
+            is_unlit_obstacle = has_obst and has_lgt and is_outage
             
             if is_unlit_obstacle:
                 # GeoJSON stores coordinates as [Longitude, Latitude]
