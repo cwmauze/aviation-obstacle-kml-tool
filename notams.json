@@ -24,12 +24,6 @@
     "text": "OBST TOWER LGT (ASR 1231477) 320926.50N0882917.10W (13.6NM ENE 23M) 1020.0FT (500.0FT AGL) U/S"
   },
   {
-    "lat": 37.177561,
-    "lon": -86.635731,
-    "agl": "320",
-    "text": "OBST TOWER LGT (ASN 2017-ASO-17137-OE) 371039N0863809W (16.4NM NW BWG) 937FT (320FT AGL) U/S"
-  },
-  {
     "lat": 32.136222,
     "lon": -84.689889,
     "agl": "308.4",
@@ -60,12 +54,6 @@
     "text": "OBST TOWER LGT (ASR 1036113) 323145.00N0850155.10W (4.8NM W CSG) 921.6FT (325.8FT AGL) U/S"
   },
   {
-    "lat": 45.184444,
-    "lon": -85.0925,
-    "agl": "399.9",
-    "text": "OBST TOWER LGT (ASR 1000383) 451104.00N0850533.00W (3.3NM NE Y94) 1391.7FT (399.9FT AGL) U/S"
-  },
-  {
     "lat": 31.052694,
     "lon": -90.264694,
     "agl": "315",
@@ -88,12 +76,6 @@
     "lon": -85.913889,
     "agl": "377.3",
     "text": "OBST TOWER LGT (ASR 1030368) 381025.00N0855450.00W (8.4NM W SDF) 1348.4FT (377.3FT AGL) U/S"
-  },
-  {
-    "lat": 31.61,
-    "lon": -91.056417,
-    "agl": "306.1",
-    "text": "OBST TOWER LGT (ASR 1255903) 313635.90N0910323.20W (12.4NM E HEZ) 758.9FT (306.1FT AGL) U/S"
   },
   {
     "lat": 32.192,
@@ -132,22 +114,10 @@
     "text": "OBST TOWER LGT (ASR 1218858) 332806.70N0814104.50W (10.9NM S AIK) 713.9FT (232.0FT AGL) U/S"
   },
   {
-    "lat": 43.991028,
-    "lon": -82.790611,
-    "agl": "340.9",
-    "text": "OBST TOWER LGT (ASR 1221760) 435927.70N0824726.20W (6.3NM ESE 29C) 1005.9FT (340.9FT AGL) U/S"
-  },
-  {
     "lat": 36.449361,
     "lon": -78.242417,
     "agl": "310.0",
     "text": "OBST TOWER LGT (ASR 1208097) 362657.70N0781432.70W (14.9NM ENE HNZ) 692.9FT (310.0FT AGL) U/S"
-  },
-  {
-    "lat": 31.497,
-    "lon": -81.453194,
-    "agl": "310.7",
-    "text": "OBST TOWER LGT (ASR 1043047) 312949.20N0812711.50W (14.3NM NE BQK) 329.7FT (310.7FT AGL) U/S"
   },
   {
     "lat": 32.117389,
@@ -234,12 +204,6 @@
     "text": "OBST TOWER LGT (ASN UNKNOWN) 412233N0732752W (0.3NM E APCH END RWY 26) \r\n 690FT (90FT AGL) U/S"
   },
   {
-    "lat": 36.257389,
-    "lon": -77.500028,
-    "agl": "311.0",
-    "text": "OBST TOWER LGT (ASR 1268574) 361526.60N0773000.10W (7.7NM ESE IXA) 371.7FT (311.0FT AGL) U/S"
-  },
-  {
     "lat": 38.656389,
     "lon": -77.287222,
     "agl": "314.0",
@@ -304,12 +268,6 @@
     "lon": -82.572944,
     "agl": "299.9",
     "text": "OBST TOWER LGT (ASR 1018024) 394155.20N0823422.60W (5.1NM SE LHQ) 1309.7FT (299.9FT AGL) U/S"
-  },
-  {
-    "lat": 41.775019,
-    "lon": -70.570631,
-    "agl": "215",
-    "text": "OBST TOWER LGT (ASR 1326560) 414630.07N0703414.27W (9.1NM NW 2B1) 359FT (215FT AGL) U/S"
   },
   {
     "lat": 43.328611,
@@ -1212,12 +1170,6 @@
     "text": "OBST TOWER LGT (ASR 1063706) 335241.00N0982649.00W (2.4NM ENE CWC) 1322.2FT (308.4FT AGL) U/S"
   },
   {
-    "lat": 39.554833,
-    "lon": -74.714028,
-    "agl": "299.9",
-    "text": "OBST TOWER LGT (ASR 1045048) 393317.40N0744250.50W (7.1NM SSE N81) 380.9FT (299.9FT AGL) U/S"
-  },
-  {
     "lat": 46.107786,
     "lon": -92.247147,
     "agl": "265",
@@ -1434,12 +1386,6 @@
     "text": "OBST TOWER LGT (ASR 1239885) 303322.60N1003209.70W (6.1NM ESE SOA) 2609.9FT (269.0FT AGL) U/S"
   },
   {
-    "lat": 39.479139,
-    "lon": -74.698278,
-    "agl": "209.0",
-    "text": "OBST TOWER LGT (ASR 1052978) 392844.90N0744153.80W (5.7NM WNW ACY) 277.9FT (209.0FT AGL) U/S"
-  },
-  {
     "lat": 34.015822,
     "lon": -118.451306,
     "agl": "170",
@@ -1530,12 +1476,6 @@
     "text": "OBST TOWER LGT (ASR 1050005) 293435.00N0953037.00W (4.5NM NNW AXH) 2048.9FT (1970.8FT AGL) U/S"
   },
   {
-    "lat": 40.37125,
-    "lon": -94.009139,
-    "agl": "255.9",
-    "text": "OBST TOWER LGT (ASR 1238754) 402216.50N0940032.90W (5.7NM N 75K) 1313.0FT (255.9FT AGL) U/S"
-  },
-  {
     "lat": 33.145347,
     "lon": -97.375936,
     "agl": "305",
@@ -1558,24 +1498,6 @@
     "lon": -87.374472,
     "agl": "310.0",
     "text": "OBST TOWER LGT (ASR 1249301) 345445.30N0872228.10W (15.3NM N 9A4) 1013.1FT (310.0FT AGL) U/S"
-  },
-  {
-    "lat": 42.105528,
-    "lon": -70.667861,
-    "agl": "65.9",
-    "text": "OBST TOWER LGT (ASR 1295040) 420619.90N0704004.30W (0.5NM NNE GHG) 70.9FT (65.9FT AGL) U/S"
-  },
-  {
-    "lat": 30.244889,
-    "lon": -92.071139,
-    "agl": "352.0",
-    "text": "OBST TOWER LGT (ASR 1041736) 301442.60N0920416.70W (5.0NM WNW LFT) 384.2FT (352.0FT AGL) U/S"
-  },
-  {
-    "lat": 41.310556,
-    "lon": -94.088611,
-    "agl": "415.0",
-    "text": "OBST TOWER LGT (ASR 1017087) 411838.00N0940519.00W (4.4NM SW 3Y3) 1564.0FT (415.0FT AGL) U/S"
   },
   {
     "lat": 34.173611,
@@ -1758,12 +1680,6 @@
     "text": "OBST TOWER LGT (ASR 1059310) 400942.70N0794458.30W (4.7NM SE FWQ) 1342.8FT (321.9FT AGL) U/S"
   },
   {
-    "lat": 40.358667,
-    "lon": -74.40525,
-    "agl": "280.8",
-    "text": "OBST TOWER LGT (ASR 1057749) 402131.20N0742418.90W (3.1NM WNW 3N6) 397.0FT (280.8FT AGL) U/S"
-  },
-  {
     "lat": 41.831944,
     "lon": -80.754278,
     "agl": "314.0",
@@ -1852,12 +1768,6 @@
     "lon": -92.247,
     "agl": "352.0",
     "text": "OBST TOWER LGT (ASR 1249415) 325412.10N0921449.20W (11.7NM NNE F87) 515.1FT (352.0FT AGL) U/S"
-  },
-  {
-    "lat": 32.61475,
-    "lon": -90.017028,
-    "agl": "494.8",
-    "text": "OBST TOWER LGT (ASR 1041397) 323653.10N0900101.30W (11.5NM NNE MBO) 744.8FT (494.8FT AGL) U/S"
   },
   {
     "lat": 33.95325,
@@ -1986,12 +1896,6 @@
     "text": "OBST TOWER LGT (ASN 2000-ASO-5531-OE) 362559N0855304W (9.8NM ESE 3M7) 1375FT (310FT AGL) U/S"
   },
   {
-    "lat": 41.550778,
-    "lon": -79.883306,
-    "agl": "258.9",
-    "text": "OBST TOWER LGT (ASR 1289379) 413302.80N0795259.90W (7.3NM WSW 6G1) 1792.7FT (258.9FT AGL) U/S"
-  },
-  {
     "lat": 34.215528,
     "lon": -82.652944,
     "agl": "250.0",
@@ -2014,12 +1918,6 @@
     "lon": -81.268139,
     "agl": "498.7",
     "text": "OBST TOWER LGT (ASR 1049484) 344730.90N0811605.30W (3.6NM W DCM) 1178.8FT (498.7FT AGL) U/S"
-  },
-  {
-    "lat": 41.176083,
-    "lon": -79.639528,
-    "agl": "403.2",
-    "text": "OBST TOWER LGT (ASR 1022966) 411033.90N0793822.30W (9.4NM WSW AXQ) 1883.2FT (403.2FT AGL) U/S"
   },
   {
     "lat": 33.512222,
@@ -2194,36 +2092,6 @@
     "lon": -85.405139,
     "agl": "319.9",
     "text": "OBST TOWER LGT (ASR 1208876) 352119.00N0852418.50W (19.9NM NNE APT) 1116.8FT (319.9FT AGL) U/S"
-  },
-  {
-    "lat": 29.579639,
-    "lon": -104.374333,
-    "agl": "199.1",
-    "text": "OBST TOWER LGT (ASR 1278546) 293446.70N1042227.60W (3.3NM SSW PRS) 2913.1FT (199.1FT AGL) U/S"
-  },
-  {
-    "lat": 29.600861,
-    "lon": -104.364306,
-    "agl": "157.2",
-    "text": "OBST TOWER LGT (ASR 1285223) 293603.10N1042151.50W (2.0NM S PRS) 2952.1FT (157.2FT AGL) U/S"
-  },
-  {
-    "lat": 29.879167,
-    "lon": -104.289528,
-    "agl": "265.1",
-    "text": "OBST TOWER LGT (ASR 1291046) 295245.00N1041722.30W (15.0NM NNE PRS) 4733.3FT (265.1FT AGL) U/S"
-  },
-  {
-    "lat": 30.693611,
-    "lon": -101.646944,
-    "agl": "460.0",
-    "text": "OBST TOWER LGT (ASR 1052415) 304137.00N1013849.00W (17.9NM SE 2F0) 3164.0FT (460.0FT AGL) U/S"
-  },
-  {
-    "lat": 35.890278,
-    "lon": -78.745556,
-    "agl": "179.1",
-    "text": "OBST TOWER LGT (ASR 1036564) 355325.00N0784444.00W (2.2NM ENE RDU) 631.2FT (179.1FT AGL) U/S"
   },
   {
     "lat": 36.1175,
@@ -2466,12 +2334,6 @@
     "text": "OBST TOWER LGT (ASR 1265913) 323403.20N0955240.80W (8.7NM SE 76F) 714.2FT (209.0FT AGL) U/S"
   },
   {
-    "lat": 34.904806,
-    "lon": -91.209417,
-    "agl": "304.8",
-    "text": "OBST TOWER LGT (ASR 1208263) 345417.30N0911233.90W (2.2NM NW M36) 495.7FT (304.8FT AGL) U/S"
-  },
-  {
     "lat": 44.031622,
     "lon": -95.239436,
     "agl": "300",
@@ -2658,12 +2520,6 @@
     "text": "OBST TOWER LGT (ASR 1017296) 370135.00N1013703.00W (12.7NM E EHA) 3555.1FT (205.1FT AGL) U/S"
   },
   {
-    "lat": 26.635583,
-    "lon": -80.228833,
-    "agl": "206.0",
-    "text": "OBST TOWER LGT (ASR 1239036) 263808.10N0801343.80W (7.9NM WSW PBI) 223.1FT (206.0FT AGL) U/S"
-  },
-  {
     "lat": 32.733056,
     "lon": -84.019722,
     "agl": "298.9",
@@ -2674,12 +2530,6 @@
     "lon": -86.308028,
     "agl": "388.8",
     "text": "OBST TOWER LGT (ASR 1212613) 340424.30N0861828.90W (7.2NM NNE 20A) 1495.7FT (388.8FT AGL) U/S"
-  },
-  {
-    "lat": 37.305,
-    "lon": -82.360167,
-    "agl": "303.1",
-    "text": "OBST TOWER LGT (ASR 1245611) 371817.90N0822136.60W (18.2NM SSE PBX) 1915.0FT (303.1FT AGL) U/S"
   },
   {
     "lat": 40.755833,
@@ -2722,12 +2572,6 @@
     "lon": -82.217972,
     "agl": "304.1",
     "text": "OBST TOWER LGT (ASR 1029174) 292051.40N0821304.70W (10.5NM NE OCF) 462.3FT (304.1FT AGL) U/S"
-  },
-  {
-    "lat": 44.623889,
-    "lon": -88.055,
-    "agl": "252.0",
-    "text": "OBST TOWER LGT (ASR 1020965) 443729.30N0880318.40W (6.9NM E 92C) 870.1FT (252.0FT AGL) U/S"
   },
   {
     "lat": 36.720203,
@@ -2916,12 +2760,6 @@
     "text": "OBST TOWER LGT (ASR 1004212) 385535.00N0914747.00W (11NM ENE FTT) 1268FT (452FT AGL) U/S"
   },
   {
-    "lat": 39.130306,
-    "lon": -81.431972,
-    "agl": "268.7",
-    "text": "OBST TOWER LGT (ASR 1245261) 390749.10N0812555.10W (12.9NM S PKB) 1214.6FT (268.7FT AGL) U/S"
-  },
-  {
     "lat": 40.875917,
     "lon": -95.672,
     "agl": "322.2",
@@ -2952,18 +2790,6 @@
     "text": "OBST TOWER LGT (ASR 1267684) 181730.10N0653838.90W (2.8NM N RVR) 513.8FT (191.9FT AGL) U/S"
   },
   {
-    "lat": 42.864861,
-    "lon": -90.688278,
-    "agl": "264.8",
-    "text": "OBST TOWER LGT (ASR 1059746) 425153.50N0904117.80W (5.0NM N 73C) 1397.6FT (264.8FT AGL) U/S"
-  },
-  {
-    "lat": 33.478556,
-    "lon": -94.374417,
-    "agl": "282",
-    "text": "OBST TOWER LGT (ASR 1309401) 332842.80N0942227.90W (19.3NM W TXK) 663FT (282FT AGL) U/S"
-  },
-  {
     "lat": 37.272028,
     "lon": -97.666139,
     "agl": "344.2",
@@ -2974,12 +2800,6 @@
     "lon": -98.048056,
     "agl": "345.1",
     "text": "OBST TOWER LGT (ASR 1059872) 333916.00N0980253.00W (14.0NM WNW 0F2) 1353.0FT (345.1FT AGL) U/S"
-  },
-  {
-    "lat": 39.996944,
-    "lon": -74.1725,
-    "agl": "309.7",
-    "text": "OBST TOWER LGT (ASR 1044747) 395949.00N0741021.00W (4.2NM S N12) 369.4FT (309.7FT AGL) U/S"
   },
   {
     "lat": 46.542778,
@@ -3046,12 +2866,6 @@
     "lon": -76.760278,
     "agl": "996.1",
     "text": "OBST TOWER LGT (ASR 1036304) 391715.00N0764537.00W (7.9NM NNW BWI) 1504.9FT (996.1FT AGL) U/S"
-  },
-  {
-    "lat": 41.510972,
-    "lon": -76.069972,
-    "agl": "290.0",
-    "text": "OBST TOWER LGT (ASR 1027983) 413039.50N0760411.90W (5.6NM W 76N) 2635.8FT (290.0FT AGL) U/S"
   },
   {
     "lat": 32.694111,
@@ -3354,12 +3168,6 @@
     "text": "OBST TOWER LGT (ASR 1004378) 402527.00N0930011.00W (7.0NM S K43) 1477.0FT (415.0FT AGL) U/S"
   },
   {
-    "lat": 46.358972,
-    "lon": -84.790861,
-    "agl": "402.9",
-    "text": "OBST TOWER LGT (ASR 1277488) 462132.30N0844727.10W (14.7NM WNW CIU) 1299.9FT (402.9FT AGL) U/S"
-  },
-  {
     "lat": 39.450167,
     "lon": -79.932917,
     "agl": "394.7",
@@ -3436,12 +3244,6 @@
     "lon": -86.482539,
     "agl": "420",
     "text": "OBST TOWER LGT (ASN 2018-ASO-4885-OE) 314746N0862857W (7.1NM ESE PRN) 781FT (420FT AGL) U/S"
-  },
-  {
-    "lat": 30.290139,
-    "lon": -94.532556,
-    "agl": "310.0",
-    "text": "OBST TOWER LGT (ASR 1265385) 301724.50N0943157.20W (14.7NM W 45R) 400.9FT (310.0FT AGL) U/S"
   },
   {
     "lat": 33.999972,
@@ -3648,12 +3450,6 @@
     "text": "OBST TOWER LGT (ASR 1028287) 364809.50N0764517.80W (9.5NM NE FKN) 1094.8FT (1008.9FT AGL) U/S"
   },
   {
-    "lat": 27.789319,
-    "lon": -81.983561,
-    "agl": "280",
-    "text": "OBST TOWER LGT (ASR 1311064) 274721.55N0815900.82W (9.1NM SSE X49) 406FT (280FT AGL) U/S"
-  },
-  {
     "lat": 33.458944,
     "lon": -87.818389,
     "agl": "419.9",
@@ -3682,12 +3478,6 @@
     "lon": -101.749333,
     "agl": "389.1",
     "text": "OBST TOWER LGT (ASR 1219800) 334414.30N1014457.60W (5.7NM NE LBB) 3649.0FT (389.1FT AGL) U/S"
-  },
-  {
-    "lat": 41.661239,
-    "lon": -84.670211,
-    "agl": "260",
-    "text": "OBST TOWER LGT (ASN 2023-AGL-21486-OE) 413940N0844013W (8.7NM ESE 57P) 1196FT (260FT AGL) U/S"
   },
   {
     "lat": 41.182833,
@@ -3804,12 +3594,6 @@
     "text": "OBST TOWER LGT (ASR 1239580) 423019.50N1134731.70W (2.4NM SSW BYI) 4354.7FT (140.7FT AGL) U/S"
   },
   {
-    "lat": 28.165028,
-    "lon": -81.262444,
-    "agl": "293.0",
-    "text": "OBST TOWER LGT (ASR 1029722) 280954.10N0811544.80W (6.6NM S 3FL) 363.8FT (293.0FT AGL) U/S"
-  },
-  {
     "lat": 41.250083,
     "lon": -81.600528,
     "agl": "296.9",
@@ -3820,12 +3604,6 @@
     "lon": -105.424083,
     "agl": "254.9",
     "text": "OBST TOWER LGT (ASR 1218628) 424536.10N1052526.70W (2.8NM SW DGW) 5186.7FT (254.9FT AGL) U/S"
-  },
-  {
-    "lat": 32.951819,
-    "lon": -88.231378,
-    "agl": "315",
-    "text": "OBST TOWER LGT (ASN 2018-ASO-25807-OE) 325707N0881353W (9.5NM S AIV) 458FT (315FT AGL) U/S"
   },
   {
     "lat": 30.423,
@@ -4038,12 +3816,6 @@
     "text": "OBST TOWER LGT (ASR 1250909) 420831.20N0770438.80W (3.0NM SE 7N1) 2480.3FT (800.5FT AGL) U/S"
   },
   {
-    "lat": 29.982361,
-    "lon": -98.757472,
-    "agl": "284.1",
-    "text": "OBST TOWER LGT (ASR 1260191) 295856.50N0984526.90W (15.8NM NNW 5C1) 1764.1FT (284.1FT AGL) U/S"
-  },
-  {
     "lat": 42.190333,
     "lon": -77.821083,
     "agl": "503.0",
@@ -4218,12 +3990,6 @@
     "text": "OBST TOWER LGT (ASR UNKNOWN) 331335.00N0981053.00W (1.2NM SW 21F) 1361FT (312FT AGL) U/S"
   },
   {
-    "lat": 35.654444,
-    "lon": -79.071472,
-    "agl": "326.8",
-    "text": "OBST TOWER LGT (ASR 1274948) 353916.00N0790417.30W (4.6NM NNE TTA) 632.5FT (326.8FT AGL) U/S"
-  },
-  {
     "lat": 37.988506,
     "lon": -122.090297,
     "agl": "146",
@@ -4368,18 +4134,6 @@
     "text": "OBST POLE LGT (ASN 2022-AWP-13539-OE) 364021N1213654W (0.7NM NNW SNS) 135FT (53FT AGL) U/S"
   },
   {
-    "lat": 44.303611,
-    "lon": -105.496944,
-    "agl": "201.1",
-    "text": "OBST TOWER LGT (ASR 1003547) 441813.00N1052949.00W (3.3NM SE GCC) 4721.8FT (201.1FT AGL) U/S"
-  },
-  {
-    "lat": 39.647861,
-    "lon": -82.809917,
-    "agl": "265.1",
-    "text": "OBST TOWER LGT (ASR 1203397) 393852.30N0824835.70W (9.6NM SW LHQ) 1339.2FT (265.1FT AGL) U/S"
-  },
-  {
     "lat": 33.199444,
     "lon": -91.260833,
     "agl": "322.8",
@@ -4446,22 +4200,10 @@
     "text": "OBST TOWER LGT (ASR 1311217) 410905.60N0940242.30W (12.68NM S 3Y3) 2181FT (995FT AGL) U/S"
   },
   {
-    "lat": 41.509028,
-    "lon": -83.552,
-    "agl": "306.1",
-    "text": "OBST TOWER LGT (ASR 1217969) 413032.50N0833307.20W (4.6NM SW TDZ) 946.9FT (306.1FT AGL) U/S"
-  },
-  {
     "lat": 35.881639,
     "lon": -78.070444,
     "agl": "499.0",
     "text": "OBST TOWER LGT (ASR 1290141) 355253.90N0780413.60W (8.2NM NW W03) 667.0FT (499.0FT AGL) U/S"
-  },
-  {
-    "lat": 31.905833,
-    "lon": -95.085,
-    "agl": "1586.0",
-    "text": "OBST TOWER LGT (ASR 1024425) 315421.00N0950506.00W (7.1NM ENE JSO) 1917.0FT (1586.0FT AGL) U/S"
   },
   {
     "lat": 33.755528,
@@ -4588,12 +4330,6 @@
     "lon": -98.224583,
     "agl": "83",
     "text": "OBST TOWER LGT (ASN 1999-ASW-4775-OE) 260939N0981329W (1.2NM SE MFE) 175FT (83FT AGL) U/S"
-  },
-  {
-    "lat": 35.981722,
-    "lon": -86.5825,
-    "agl": "217.8",
-    "text": "OBST TOWER LGT (ASR 1038217) 355854.20N0863457.00W (3.5NM WSW MQY) 1116.8FT (217.8FT AGL) U/S"
   },
   {
     "lat": 36.495972,
@@ -5028,12 +4764,6 @@
     "text": "OBST TOWER LGT (ASN 2010-AGL-6482-OE) 464954N0905048W (4.4NM NW 4R5) 1518FT (218FT AGL) U/S"
   },
   {
-    "lat": 32.874167,
-    "lon": -85.192056,
-    "agl": "253.0",
-    "text": "OBST TOWER LGT (ASR 1238113) 325227.00N0851131.40W (4.2NM NNE 7A3) 833.0FT (253.0FT AGL) U/S"
-  },
-  {
     "lat": 38.368508,
     "lon": -82.56036,
     "agl": "199.8",
@@ -5298,12 +5028,6 @@
     "text": "OBST TOWER LGT (ASR 1031790) 334551.70N0842141.70W (7.4NM SSW PDK) 2047.9FT (1074.8FT AGL) U/S"
   },
   {
-    "lat": 38.494806,
-    "lon": -82.200694,
-    "agl": "1059.7",
-    "text": "OBST TOWER LGT (ASR 1045615) 382941.30N0821202.50W (3.2NM NE 12V) 2000.0FT (1059.7FT AGL) U/S"
-  },
-  {
     "lat": 44.889092,
     "lon": -123.008192,
     "agl": "45",
@@ -5320,12 +5044,6 @@
     "lon": -122.351828,
     "agl": "207",
     "text": "OBST POWER LINE LGT (ASN 2021-AWP-16821-OE) 383004N1222107W (6.2NM SE 2O3) 556FT (207FT AGL) U/S"
-  },
-  {
-    "lat": 39.519806,
-    "lon": -79.301139,
-    "agl": "319.9",
-    "text": "OBST TOWER LGT (ASR 1035668) 393111.30N0791804.10W (4.0NM SSE 2G4) 3326.8FT (319.9FT AGL) U/S"
   },
   {
     "lat": 32.14415,
@@ -5520,12 +5238,6 @@
     "text": "OBST TOWER LGT (ASR 1040438) 310927.00N0870916.00W (7.7NM NW 12J) 609.9FT (308.1FT AGL) U/S"
   },
   {
-    "lat": 40.960306,
-    "lon": -78.108417,
-    "agl": "323.2",
-    "text": "OBST TOWER LGT (ASR 1208977) 405737.10N0780630.30W (4.7NM NNW PSB) 1825.5FT (323.2FT AGL) U/S"
-  },
-  {
     "lat": 30.207433,
     "lon": -95.091319,
     "agl": "901",
@@ -5604,12 +5316,6 @@
     "text": "OBST TOWER LGT (ASR 1040663) 365601.00N0872538.00W (4.8NM NNE HVC) 1055.8FT (295.9FT AGL) U/S"
   },
   {
-    "lat": 41.374561,
-    "lon": -80.523125,
-    "agl": "343",
-    "text": "OBST TOWER LGT (ASR 1308345) 412228.42N0803123.25W (7.4NM SW 4G1) 1614FT (343FT AGL) U/S"
-  },
-  {
     "lat": 38.2506,
     "lon": -122.243272,
     "agl": "82",
@@ -5650,12 +5356,6 @@
     "lon": -98.223333,
     "agl": "82",
     "text": "OBST TOWER LGT (ASN 1999-ASW-4774-OE) 260943N0981324W (1.2NM SE MFE) 170FT (82FT AGL) U/S"
-  },
-  {
-    "lat": 36.087278,
-    "lon": -87.400278,
-    "agl": "197.8",
-    "text": "OBST TOWER LGT (ASR 1038223) 360514.20N0872401.00W (2.8NM SSE M02) 1077.8FT (197.8FT AGL) U/S"
   },
   {
     "lat": 32.742194,
@@ -5740,12 +5440,6 @@
     "lon": -111.931367,
     "agl": "147",
     "text": "OBST POWER LINE LGT (ASN 2009-ANM-1364-OE) 405258N1115553W (0.8NM NNW BTF) 4373FT (147FT AGL) U/S"
-  },
-  {
-    "lat": 44.865806,
-    "lon": -91.48425,
-    "agl": "240",
-    "text": "OBST TOWER LGT (ASR 1324302) 445542.50N0912053.70W (6.9NM NE EAU) 1178FT (240FT AGL) U/S"
   },
   {
     "lat": 26.163528,
@@ -5898,22 +5592,10 @@
     "text": "OBST TOWER LGT (ASR 1037175) 293726.80N0953306.00W (5.5NM E SGR) 299.5FT (219.8FT AGL) U/S"
   },
   {
-    "lat": 40.808389,
-    "lon": -85.935278,
-    "agl": "395.0",
-    "text": "OBST TOWER LGT (ASR 1201280) 404830.20N0855607.00W (6.3NM N 43I) 1174.9FT (395.0FT AGL) U/S"
-  },
-  {
     "lat": 41.759444,
     "lon": -124.192222,
     "agl": "315.9",
     "text": "OBST TOWER LGT (ASR 1013617) 414534.00N1241132.00W (2.3NM ESE CEC) 324.8FT (315.9FT AGL) U/S"
-  },
-  {
-    "lat": 32.973583,
-    "lon": -96.560444,
-    "agl": "325.1",
-    "text": "OBST TOWER LGT (ASR 1298956) 325824.90N0963337.60W (6.8NM WNW F46) 837.3FT (325.1FT AGL) U/S"
   },
   {
     "lat": 25.100056,
@@ -5964,12 +5646,6 @@
     "text": "OBST TOWER LGT (ASR 1258762) 384602.50N0912839.10W (3.8NM NE 63M) 861.9FT (250.0FT AGL) U/S"
   },
   {
-    "lat": 40.33275,
-    "lon": -78.965111,
-    "agl": "255.9",
-    "text": "OBST TOWER LGT (ASR 1223759) 401957.90N0785754.40W (6.0NM W JST) 1922.9FT (255.9FT AGL) U/S"
-  },
-  {
     "lat": 36.8946,
     "lon": -76.2012,
     "agl": "94",
@@ -6018,12 +5694,6 @@
     "text": "OBST POWER LINE LGT (ASN 2024-AWP-14943-OE) 400234N1210455W (8.7NM NW 2O1) 4199FT (448FT AGL) U/S"
   },
   {
-    "lat": 40.364167,
-    "lon": -79.8125,
-    "agl": "310.0",
-    "text": "OBST TOWER LGT (ASR 1025884) 402151.00N0794845.00W (2.4NM NW 31D) 1509.8FT (310.0FT AGL) U/S"
-  },
-  {
     "lat": 33.764778,
     "lon": -81.767,
     "agl": "315.0",
@@ -6034,12 +5704,6 @@
     "lon": -97.511944,
     "agl": "1108.9",
     "text": "OBST TOWER LGT (ASR 1030089) 375623.00N0973043.00W (13.3NM WSW EWK) 2500.0FT (1108.9FT AGL) U/S"
-  },
-  {
-    "lat": 42.966311,
-    "lon": -92.632261,
-    "agl": "267",
-    "text": "OBST WIND TURBINE LGT (ASN 2024-WTE-2382-OE) 425759N0923756W (6.5NM S CCY) 1333FT (267FT AGL) U/S"
   },
   {
     "lat": 35.042411,
@@ -6072,12 +5736,6 @@
     "text": "OBST TOWER LGT (ASR 1061704) 272344.10N0802144.80W (6.1NM S FPR) 504.6FT (491.8FT AGL) U/S"
   },
   {
-    "lat": 33.942496,
-    "lon": -118.408049,
-    "agl": "72",
-    "text": "OBST BLDG LGT 335638N1182525W (0.77NM WNW LAX) 171FT (72FT AGL) U/S"
-  },
-  {
     "lat": 34.681462,
     "lon": -89.998324,
     "agl": "447",
@@ -6094,12 +5752,6 @@
     "lon": -98.226778,
     "agl": "83",
     "text": "OBST TOWER LGT (ASN 1999-ASW-4777-OE) 260932N0981336W (1.2NM SSE MFE) 174FT (83FT AGL) U/S"
-  },
-  {
-    "lat": 34.518556,
-    "lon": -109.37875,
-    "agl": "500",
-    "text": "OBST STACK LGT (ASN UNKNOWN) 343439.61N1091619.96W (6.35NM NE SJN) 6293FT (500FT AGL) U/S"
   },
   {
     "lat": 35.998944,
@@ -6184,12 +5836,6 @@
     "lon": -111.224722,
     "agl": "340.9",
     "text": "OBST TOWER LGT (ASR 1001293) 454615.00N1111329.00W (3.1NM W BZN) 4790.7FT (340.9FT AGL) U/S"
-  },
-  {
-    "lat": 38.739772,
-    "lon": -77.507692,
-    "agl": "128",
-    "text": "OBST POWER LINE LGT (ASN 2023-AEA-13070-OE) 384423N0773028W (1.2NM NNE HEF) 350FT (128FT AGL) U/S"
   },
   {
     "lat": 30.092167,
@@ -6366,22 +6012,10 @@
     "text": "OBST TOWER LGT (ASR 1329566) 363217.70N0915817.00W (12.87NM NW 7M9) 1258FT (260FT AGL) U/S"
   },
   {
-    "lat": 41.76075,
-    "lon": -87.721328,
-    "agl": "102",
-    "text": "OBST POWER LINE LGT (ASN 2017-AGL-1184-OE) 414539N0874317W (2.1NM SE MDW) 720FT (102FT AGL) U/S"
-  },
-  {
     "lat": 28.948833,
     "lon": -81.106278,
     "agl": "254.9",
     "text": "OBST TOWER LGT (ASR 1211583) 285655.80N0810622.60W (9.8NM W X50) 292.0FT (254.9FT AGL) U/S"
-  },
-  {
-    "lat": 35.219444,
-    "lon": -85.888333,
-    "agl": "180.4",
-    "text": "OBST TOWER LGT (ASR 1043928) 351310.00N0855318.00W (1.0NM NNE UOS) 2217.8FT (180.4FT AGL) U/S"
   },
   {
     "lat": 38.413083,
@@ -6492,12 +6126,6 @@
     "text": "OBST TOWER LGT (ASN 2025-AWP-9501-OE) 382907N1225721W (6.8NM WSW STS) 604FT (52FT AGL) U/S"
   },
   {
-    "lat": 39.1235,
-    "lon": -90.514944,
-    "agl": "257.9",
-    "text": "OBST TOWER LGT (ASR 1291696) 390724.60N0903053.80W (12.3NM NNW SET) 961.9FT (257.9FT AGL) U/S"
-  },
-  {
     "lat": 43.3436,
     "lon": -72.5173,
     "agl": "60",
@@ -6588,12 +6216,6 @@
     "text": "OBST TOWER LGT (ASN UNKNOWN) 430700N1055027W (24NM NE HAD) UNKNOWN (391FT AGL) U/S"
   },
   {
-    "lat": 33.232333,
-    "lon": -117.27075,
-    "agl": "255.9",
-    "text": "OBST TOWER LGT (ASR 1046152) 331356.40N1171614.70W (4.1NM ENE OKB) 533.8FT (255.9FT AGL) U/S"
-  },
-  {
     "lat": 42.721379,
     "lon": -82.596265,
     "agl": "320",
@@ -6676,12 +6298,6 @@
     "lon": -120.003806,
     "agl": "109.9",
     "text": "OBST TOWER LGT (ASR 1033914) 385152.60N1200013.70W (1.8NM SSW TVL) 6637.8FT (109.9FT AGL) U/S"
-  },
-  {
-    "lat": 36.705,
-    "lon": -93.062778,
-    "agl": "1098.1",
-    "text": "OBST TOWER LGT (ASR 1065749) 364218.00N0930346.00W (9.3NM ENE PLK) 2049.2FT (1098.1FT AGL) U/S"
   },
   {
     "lat": 36.696111,
@@ -6778,12 +6394,6 @@
     "lon": -75.087167,
     "agl": "399.9",
     "text": "OBST TOWER LGT (ASR 1257407) 383117.00N0750513.80W (12.9NM NE OXB) 410.1FT (399.9FT AGL) U/S"
-  },
-  {
-    "lat": 43.238139,
-    "lon": -123.375611,
-    "agl": "95.1",
-    "text": "OBST TOWER LGT (ASR 1272806) 431417.30N1232232.20W (0.9NM W RBG) 948.2FT (95.1FT AGL) U/S"
   },
   {
     "lat": 35.903056,
@@ -6928,24 +6538,6 @@
     "lon": -92.673583,
     "agl": "305.1",
     "text": "OBST TOWER LGT (ASR 1018313) 411731.70N0924024.90W (9.0NM WNW OOA) 1096.1FT (305.1FT AGL) U/S"
-  },
-  {
-    "lat": 40.971133,
-    "lon": -74.997504,
-    "agl": "195",
-    "text": "OBST TOWER LGT (ASR UNKNOWN) 410428.00N0750017.00W (5.7NM N 1N7) UNKNOWN (195FT AGL) U/S"
-  },
-  {
-    "lat": 30.92,
-    "lon": -85.741667,
-    "agl": "1900.9",
-    "text": "OBST TOWER LGT (ASR 1056648) 305512.00N0854430.00W (8.5NM WNW BCR) 2035.8FT (1900.9FT AGL) U/S"
-  },
-  {
-    "lat": 27.855,
-    "lon": -98.597222,
-    "agl": "315.0",
-    "text": "OBST TOWER LGT (ASR 1058335) 275118.00N0983550.00W (2.0NM S T19) 1044.9FT (315.0FT AGL) U/S"
   },
   {
     "lat": 39.402358,
@@ -7192,12 +6784,6 @@
     "lon": -96.975833,
     "agl": "1558.7",
     "text": "OBST TOWER LGT (ASR 1046223) 323454.00N0965833.00W (4.8NM NNW T56) 2348.8FT (1558.7FT AGL) U/S"
-  },
-  {
-    "lat": 30.321111,
-    "lon": -97.622778,
-    "agl": "249.3",
-    "text": "OBST TOWER LGT (ASR 1052838) 301916.00N0973722.00W (5.4NM SSW EDC) 892.7FT (249.3FT AGL) U/S"
   },
   {
     "lat": 36.788889,
@@ -7470,22 +7056,10 @@
     "text": "OBST TOWER LGT (ASN 2013-AWP-5443-OE) 323741N1161059W (1.2NM NW L78) 3058FT (141FT AGL) U/S"
   },
   {
-    "lat": 45.016667,
-    "lon": -91.563056,
-    "agl": "339.9",
-    "text": "OBST TOWER LGT (ASR 1034918) 450100.00N0913347.00W (9.7NM NNW EAU) 1579.7FT (339.9FT AGL) U/S"
-  },
-  {
     "lat": 28.013987,
     "lon": -82.345259,
     "agl": "201",
     "text": "OBST TOWER LGT (ASR 1312953) 275621.70N0821634.00W (5.78NM SE VDF) 267FT (201FT AGL) U/S"
-  },
-  {
-    "lat": 34.563611,
-    "lon": -83.640556,
-    "agl": "498.7",
-    "text": "OBST TOWER LGT (ASR 1020686) 343349.00N0833826.00W (5.6NM NW AJR) 1857.0FT (498.7FT AGL) U/S"
   },
   {
     "lat": 40.961194,
@@ -7516,12 +7090,6 @@
     "lon": -94.224917,
     "agl": "499.0",
     "text": "OBST TOWER LGT (ASR 1030141) 302105.80N0941329.70W (1.9NM ENE 45R) 543.0FT (499.0FT AGL) U/S"
-  },
-  {
-    "lat": 37.539722,
-    "lon": -120.064278,
-    "agl": "162",
-    "text": "OBST TOWER LGT (ASR 1301421) 373223.00N1200351.40W (2.1NM NW MPI) 4173FT (162FT AGL) U/S"
   },
   {
     "lat": 42.005556,
@@ -7704,12 +7272,6 @@
     "text": "OBST TOWER LGT (ASR 1274565) 463232.00N0883336.50W (6.3NM ENE 6Y9) 2041.7FT (419.9FT AGL) U/S"
   },
   {
-    "lat": 29.816944,
-    "lon": -98.741389,
-    "agl": "298.9",
-    "text": "OBST TOWER LGT (ASR 1200557) 294901.00N0984429.00W (6.1NM NNW 5C1) 1841.9FT (298.9FT AGL) U/S"
-  },
-  {
     "lat": 32.760278,
     "lon": -101.459722,
     "agl": "324.8",
@@ -7884,12 +7446,6 @@
     "text": "OBST TOWER LGT (ASR 1060468) 384628.00N0752032.00W (5.3NM NE GED) 479.3FT (448.2FT AGL) U/S"
   },
   {
-    "lat": 37.896222,
-    "lon": -80.988972,
-    "agl": "468.8",
-    "text": "OBST TOWER LGT (ASR 1035131) 375346.40N0805920.30W (9.2NM NE BKW) 3427.8FT (468.8FT AGL) U/S"
-  },
-  {
     "lat": 48.257639,
     "lon": -101.278028,
     "agl": "100",
@@ -7962,12 +7518,6 @@
     "text": "OBST TOWER LGT (ASR 1024124) 464315.00N0921037.00W (3.9NM WNW SUW) 913.1FT (308.1FT AGL) U/S"
   },
   {
-    "lat": 33.586806,
-    "lon": -80.763889,
-    "agl": "311.0",
-    "text": "OBST TOWER LGT (ASR 1241142) 333512.50N0804550.00W (9.3NM NNE OGB) 587.9FT (311.0FT AGL) U/S"
-  },
-  {
     "lat": 34.509306,
     "lon": -89.050028,
     "agl": "419.0",
@@ -8004,12 +7554,6 @@
     "text": "OBST TOWER LGT (ASR 1251063) 295914.20N0921026.90W (4.8NM W IYA) 358.9FT (350.1FT AGL) U/S"
   },
   {
-    "lat": 36.077917,
-    "lon": -87.026833,
-    "agl": "297.9",
-    "text": "OBST TOWER LGT (ASR 1038115) 360440.50N0870136.60W (9.3NM SW JWN) 1086.9FT (297.9FT AGL) U/S"
-  },
-  {
     "lat": 38.150169,
     "lon": -122.565958,
     "agl": "62",
@@ -8032,12 +7576,6 @@
     "lon": -75.647139,
     "agl": "268.7",
     "text": "OBST TOWER LGT (ASR 1044370) 404649.50N0753849.70W (2.1NM WNW 69N) 1797.6FT (268.7FT AGL) U/S"
-  },
-  {
-    "lat": 34.826111,
-    "lon": -92.205278,
-    "agl": "355.0",
-    "text": "OBST TOWER LGT (ASR 1237694) 344934.00N0921219.00W (2.4NM E ORK) 614.8FT (355.0FT AGL) U/S"
   },
   {
     "lat": 40.487725,
@@ -8430,18 +7968,6 @@
     "text": "OBST POLE LGT (ASN 2023-AWP-1516-OE) 395726N1205642W (0.8NM NE 2O1) 3863FT (57FT AGL) U/S"
   },
   {
-    "lat": 30.9555,
-    "lon": -87.773361,
-    "agl": "449.1",
-    "text": "OBST TOWER LGT (ASR 1037359) 305719.80N0874624.10W (5.7NM NNE 1R8) 727.0FT (449.1FT AGL) U/S"
-  },
-  {
-    "lat": 35.571111,
-    "lon": -77.38,
-    "agl": "375.0",
-    "text": "OBST TOWER LGT (ASR 1005865) 353416.00N0772248.00W (3.9NM S PGV) 444.9FT (375.0FT AGL) U/S"
-  },
-  {
     "lat": 29.067031,
     "lon": -81.283757,
     "agl": "389.1",
@@ -8458,12 +7984,6 @@
     "lon": -86.088694,
     "agl": "268.0",
     "text": "OBST TOWER LGT (ASR 1287637) 404749.40N0860519.30W (2.7NM ENE I76) 1050.2FT (268.0FT AGL) U/S"
-  },
-  {
-    "lat": 31.915833,
-    "lon": -106.391111,
-    "agl": "312.7",
-    "text": "OBST TOWER LGT (ASR 1059711) 315457.00N1062328.00W (6.5NM N ELP) 4230.6FT (312.7FT AGL) U/S"
   },
   {
     "lat": 30.693611,
@@ -8568,12 +8088,6 @@
     "text": "OBST TOWER LGT (ASR UNKNOWN) 425526.49N0822736.82W (3.5NM E PWKPHN) 872FT (275FT AGL) U/S"
   },
   {
-    "lat": 34.104836,
-    "lon": -82.853289,
-    "agl": "111",
-    "text": "OBST POWER LINE LGT (ASN 2016-ASO-9453-OE) 340617N0825112W (1.9NM WNW EBA) 803FT (111FT AGL) U/S"
-  },
-  {
     "lat": 46.173611,
     "lon": -119.066389,
     "agl": "299.9",
@@ -8602,12 +8116,6 @@
     "lon": -84.587944,
     "agl": "355.0",
     "text": "OBST TOWER LGT (ASR 1233230) 303310.20N0843516.60W (3.2NM SSW 2J9) 592.8FT (355.0FT AGL) U/S"
-  },
-  {
-    "lat": 47.096433,
-    "lon": -101.424022,
-    "agl": "260",
-    "text": "OBST TOWER LGT (ASN 2018-AGL-21647-OE) 470547N1012526W (13.3NM SSE HZE) 2521FT (260FT AGL) U/S"
   },
   {
     "lat": 26.15925,
@@ -8686,12 +8194,6 @@
     "lon": -95.900556,
     "agl": "355.0",
     "text": "OBST TOWER LGT (ASR 1058476) 350557.00N0955402.00W (14.2NM NNW MLC) 1146.0FT (355.0FT AGL) U/S"
-  },
-  {
-    "lat": 38.994361,
-    "lon": -95.701917,
-    "agl": "200.5",
-    "text": "OBST TOWER LGT (ASR 1034845) 385939.70N0954206.90W (3.2NM NW FOE) 1194.6FT (200.5FT AGL) U/S"
   },
   {
     "lat": 38.413333,
@@ -8862,12 +8364,6 @@
     "text": "OBST POWER LINE LGT (ASN 2021-ASO-16758-OE) 361840N0862924W (5.6NM SW XNX) 647FT (202FT AGL) U/S"
   },
   {
-    "lat": 41.526722,
-    "lon": -87.376583,
-    "agl": "258.9",
-    "text": "OBST TOWER LGT (ASR 1235737) 413136.20N0872235.70W (1.1NM ENE 05C) 899.9FT (258.9FT AGL) U/S"
-  },
-  {
     "lat": 40.773333,
     "lon": -76.354194,
     "agl": "348.1",
@@ -8946,12 +8442,6 @@
     "text": "OBST TOWER LGT (ASN 2009-ACE-1143-OE) 413219N0902658W (5.1NM NNE I04) 800FT (225FT AGL) U/S"
   },
   {
-    "lat": 44.223056,
-    "lon": -89.829444,
-    "agl": "374.0",
-    "text": "OBST TOWER LGT (ASR 1236572) 441323.00N0894946.00W (8.3NM S ISW) 1364.8FT (374.0FT AGL) U/S"
-  },
-  {
     "lat": 38.48027,
     "lon": -123.020366,
     "agl": "67",
@@ -8986,12 +8476,6 @@
     "lon": -95.776694,
     "agl": "311",
     "text": "OBST TOWER LGT (ASR 1305810) 395908.00N0955301.00W (6.88NM NW K83) 1630FT (311FT AGL) U/S"
-  },
-  {
-    "lat": 46.7875,
-    "lon": -92.122778,
-    "agl": "838.3",
-    "text": "OBST TOWER LGT (ASR 1031880) 464715.00N0920722.00W (4.4NM SE DLH) 2043.3FT (838.3FT AGL) U/S"
   },
   {
     "lat": 45.777236,
@@ -9096,12 +8580,6 @@
     "text": "OBST TOWER LGT (ASR 1042833) 320910.90N0810308.90W (7.8NM ENE SAV) 254.9FT (248.0FT AGL) U/S"
   },
   {
-    "lat": 28.814167,
-    "lon": -81.872639,
-    "agl": "309.1",
-    "text": "OBST TOWER LGT (ASR 1029744) 284851.00N0815221.50W (3.5NM W LEE) 380.9FT (309.1FT AGL) U/S"
-  },
-  {
     "lat": 37.525611,
     "lon": -85.961861,
     "agl": "297.9",
@@ -9184,12 +8662,6 @@
     "lon": -88.247056,
     "agl": "308.1",
     "text": "OBST TOWER LGT (ASR 1061046) 302621.10N0881449.40W (2.1NM WSW 5R7) 403.2FT (308.1FT AGL) U/S"
-  },
-  {
-    "lat": 32.267342,
-    "lon": -108.406367,
-    "agl": "279",
-    "text": "OBST WIND TURBINE LGT (ASN 2024-WTW-9361-OE) 321602N1082423W (15.1NM ESE LSB) 5012FT (279FT AGL) U/S"
   },
   {
     "lat": 41.023722,
@@ -9292,12 +8764,6 @@
     "lon": -79.038769,
     "agl": "420",
     "text": "OBST WIND TURBINE LGT (ASN 2009-WTE-12013-OE) 392609N0790220W (16.1NM ESE 2G4) 3036FT (420FT AGL) U/S"
-  },
-  {
-    "lat": 40.554003,
-    "lon": -89.688942,
-    "agl": "268",
-    "text": "OBST POWER LINE LGT (ASN 2016-AGL-13451-OE) 403314N0894120W (4.0NM N C15) 731FT (268FT AGL) U/S"
   },
   {
     "lat": 42.179722,
@@ -9528,12 +8994,6 @@
     "text": "OBST TOWER LGT (ASR 1014522) 335135.00N1182059.00W (3.4NM N TOA) 582.3FT (499.0FT AGL) U/S"
   },
   {
-    "lat": 28.011389,
-    "lon": -82.497778,
-    "agl": "232.6",
-    "text": "OBST TOWER LGT (ASR 1040049) 280041.00N0822952.00W (2.9NM NE TPA) 275.6FT (232.6FT AGL) U/S"
-  },
-  {
     "lat": 42.47,
     "lon": -71.289,
     "agl": "107",
@@ -9592,12 +9052,6 @@
     "lon": -90.294444,
     "agl": "1060.7",
     "text": "OBST TOWER LGT (ASR 1038230) 321642.00N0901740.00W (5.0NM SW HKS) 1506.9FT (1060.7FT AGL) U/S"
-  },
-  {
-    "lat": 47.381389,
-    "lon": -92.954444,
-    "agl": "511.2",
-    "text": "OBST TOWER LGT (ASR 1033720) 472253.00N0925716.00W (4.7NM W HIB) 2131.2FT (511.2FT AGL) U/S"
   },
   {
     "lat": 33.694,
@@ -9780,12 +9234,6 @@
     "text": "OBST TOWER LGT (ASR 1032513) 383510.00N0943714.00W (13.1NM W LRY) 1544.9FT (393.0FT AGL) U/S"
   },
   {
-    "lat": 36.780765,
-    "lon": -76.45128,
-    "agl": "187",
-    "text": "OBST POWER LINE LGT (ASN 2016-AEA-5452-OE) 365233N0763004W (6.2NM NNW PVG) 258FT (187FT AGL) U/S"
-  },
-  {
     "lat": 33.993767,
     "lon": -101.651606,
     "agl": "486",
@@ -9796,12 +9244,6 @@
     "lon": -90.931278,
     "agl": "257.9",
     "text": "OBST TOWER LGT (ASR 1261867) 394844.90N0905552.60W (11.9NM SSW I63) 993.8FT (257.9FT AGL) U/S"
-  },
-  {
-    "lat": 43.733661,
-    "lon": -103.619498,
-    "agl": "349",
-    "text": "OBST TOWER LGT (ASR 1314813) 434323.17N1035819.90W (15.38NM W CUT) 5440FT (349FT AGL) U/S"
   },
   {
     "lat": 43.680278,
@@ -9832,12 +9274,6 @@
     "lon": -122.567897,
     "agl": "72",
     "text": "OBST POWER LINE LGT (ASN 2025-AWP-9558-OE) 380920N1223404W (0.9NM NW DVO) 112FT (72FT AGL) U/S"
-  },
-  {
-    "lat": 27.071268,
-    "lon": -82.440033,
-    "agl": "164.7",
-    "text": "OBST TOWER LGT (ASR 1060040) 270457.00N0822629.00W (0.7NM N VNC) 182.7FT (164.7FT AGL) U/S"
   },
   {
     "lat": 32.363611,
@@ -9886,12 +9322,6 @@
     "lon": -89.998324,
     "agl": "247",
     "text": "OBST TOWER LGT (ASR UNKNOWN) 344243.50N0870854.58W (10.3NM WNW DCU) 805FT (247FT AGL) U/S"
-  },
-  {
-    "lat": 39.87,
-    "lon": -80.133306,
-    "agl": "304.1",
-    "text": "OBST TOWER LGT (ASR 1037803) 395212.00N0800759.90W (1.9NM S WAY) 1809.1FT (304.1FT AGL) U/S"
   },
   {
     "lat": 42.549167,
@@ -10060,12 +9490,6 @@
     "lon": -96.988333,
     "agl": "875.0",
     "text": "OBST TOWER LGT (ASR 1206577) 450617.00N0965918.00W (13.5NM NNE ATY) 2876.0FT (875.0FT AGL) U/S"
-  },
-  {
-    "lat": 34.099133,
-    "lon": -82.840558,
-    "agl": "88",
-    "text": "OBST POWER LINE LGT (ASN 2016-ASO-9477-OE) 340557N0825026W (1.2NM W EBA) 748FT (88FT AGL) U/S"
   },
   {
     "lat": 41.213667,
@@ -10458,12 +9882,6 @@
     "text": "OBST TOWER LGT (ASR 1062299) 343129.00N0851834.00W (9.9NM S 9A5) 932.4FT (250.0FT AGL) U/S"
   },
   {
-    "lat": 33.9665,
-    "lon": -117.157111,
-    "agl": "271.0",
-    "text": "OBST TOWER LGT (ASR 1280555) 335759.40N1170925.60W (7.1NM NE RIV) 2514.4FT (271.0FT AGL) U/S"
-  },
-  {
     "lat": 27.998972,
     "lon": -82.029111,
     "agl": "122.0",
@@ -10510,18 +9928,6 @@
     "lon": -80.232694,
     "agl": "282.2",
     "text": "OBST TOWER LGT (ASR 1025948) 403232.00N0795920.00W (11.4NM ENE PIT) 1341.9FT (282.2FT AGL) U/S"
-  },
-  {
-    "lat": 38.8849,
-    "lon": -102.257,
-    "agl": "266",
-    "text": "OBST WIND TURBINE LGT (ASN 2023-WTW-191-OE) 385306N1021525W (21.5NM S ITR) 4386FT (266FT AGL) U/S"
-  },
-  {
-    "lat": 39.16,
-    "lon": -87.542222,
-    "agl": "364.2",
-    "text": "OBST TOWER LGT (ASR 1060535) 390936.00N0873232.00W (5.1NM WNW SIV) 836.6FT (364.2FT AGL) U/S"
   },
   {
     "lat": 35.344858,
@@ -10746,12 +10152,6 @@
     "text": "OBST TOWER LGT (ASR 1259561) 301320.30N0973602.90W (4.0NM ENE AUS) 669.0FT (257.9FT AGL) U/S"
   },
   {
-    "lat": 46.524167,
-    "lon": -91.271944,
-    "agl": "319.9",
-    "text": "OBST TOWER LGT (ASR 1034703) 463127.00N0911619.00W (8.2NM ESE Y77) 1556.8FT (319.9FT AGL) U/S"
-  },
-  {
     "lat": 37.218056,
     "lon": -87.845833,
     "agl": "255.9",
@@ -10786,12 +10186,6 @@
     "lon": -77.150467,
     "agl": "65",
     "text": "OBST POLE LGT (ASN 2008-AEA-853-OE) 385703N0770902W (7.9NM NW DCA) 330FT (65FT AGL) U/S"
-  },
-  {
-    "lat": 39.777556,
-    "lon": -79.703028,
-    "agl": "311.7",
-    "text": "OBST TOWER LGT (ASR 1027986) 394639.20N0794210.90W (11.2NM S VVS) 2981.6FT (311.7FT AGL) U/S"
   },
   {
     "lat": 43.557,
@@ -10900,18 +10294,6 @@
     "lon": -84.2325,
     "agl": "368.8",
     "text": "OBST TOWER LGT (ASR 1021829) 453056.00N0841357.00W (3.3NM ESE 2M7) 1111.5FT (368.8FT AGL) U/S"
-  },
-  {
-    "lat": 33.212778,
-    "lon": -86.853056,
-    "agl": "255.9",
-    "text": "OBST TOWER LGT (ASR 1010733) 331246.00N0865111.00W (4.1NM WNW EET) 916.0FT (255.9FT AGL) U/S"
-  },
-  {
-    "lat": 36.575889,
-    "lon": -86.556639,
-    "agl": "297.9",
-    "text": "OBST TOWER LGT (ASR 1038118) 363433.20N0863323.90W (4.0NM WSW 1M5) 1107.0FT (297.9FT AGL) U/S"
   },
   {
     "lat": 41.965,
@@ -11124,18 +10506,6 @@
     "text": "OBST TOWER LGT (ASR 1001945) 292647.90N0954013.80W (7.3NM SE T54) 381.9FT (319.9FT AGL) U/S"
   },
   {
-    "lat": 38.346167,
-    "lon": -121.123,
-    "agl": "444.9",
-    "text": "OBST TOWER LGT (ASR 1299595) 382046.20N1210722.80W (8.5NM S RIU) 624.0FT (444.9FT AGL) U/S"
-  },
-  {
-    "lat": 41.5559,
-    "lon": -87.263922,
-    "agl": "315",
-    "text": "OBST TOWER LGT (ASR 1325649) 413805.10N0870607.70W (8.68NM ENE 3HO) 920FT (315FT AGL) U/S"
-  },
-  {
     "lat": 36.976222,
     "lon": -101.811917,
     "agl": "328.1",
@@ -11170,12 +10540,6 @@
     "lon": -80.006722,
     "agl": "249.0",
     "text": "OBST TOWER LGT (ASR 1225070) 371624.50N0800024.20W (3.5NM SSW ROA) 1302.8FT (249.0FT AGL) U/S"
-  },
-  {
-    "lat": 36.834694,
-    "lon": -76.26925,
-    "agl": "545.9",
-    "text": "OBST TOWER LGT (ASR 1024387) 365004.90N0761609.30W (4.9NM SW ORF) 554.5FT (545.9FT AGL) U/S"
   },
   {
     "lat": 30.821389,
@@ -11370,12 +10734,6 @@
     "text": "OBST TOWER LGT (ASR 1008247) 351357.00N0811634.00W (6.4NM WNW AKH) 1848.1FT (268.0FT AGL) U/S"
   },
   {
-    "lat": 34.712278,
-    "lon": -118.176444,
-    "agl": "183.1",
-    "text": "OBST TOWER LGT (ASR 1244322) 344244.20N1181035.20W (2.7NM SE WJF) 2498.0FT (183.1FT AGL) U/S"
-  },
-  {
     "lat": 32.451611,
     "lon": -89.283056,
     "agl": "309.7",
@@ -11542,12 +10900,6 @@
     "lon": -85.797694,
     "agl": "310.0",
     "text": "OBST TOWER LGT (ASR 1219965) 414829.90N0854751.70W (9.2NM NE 0IN) 1185.0FT (310.0FT AGL) U/S"
-  },
-  {
-    "lat": 34.470833,
-    "lon": -81.881389,
-    "agl": "317.9",
-    "text": "OBST TOWER LGT (ASR 1049548) 342815.00N0815253.00W (3.9NM SE LUX) 988.8FT (317.9FT AGL) U/S"
   },
   {
     "lat": 38.748361,
@@ -11934,12 +11286,6 @@
     "text": "OBST TOWER LGT (ASR 1316046) 370600.80N0844636.40W (8.2NM WNW SME) 1448FT (317FT AGL) U/S"
   },
   {
-    "lat": 36.252711,
-    "lon": -91.249844,
-    "agl": "270",
-    "text": "OBST TOWER LGT (ASN 2018-ASW-17682-OE) 361510N0911459W (14.3NM W M70) 743FT (270FT AGL) U/S"
-  },
-  {
     "lat": 42.314444,
     "lon": -77.285556,
     "agl": "336.0",
@@ -12066,12 +11412,6 @@
     "text": "OBST TOWER LGT (ASR 1049865) 401717.00N0745224.00W (2.8NM WNW TTN) 362.2FT (303.1FT AGL) U/S"
   },
   {
-    "lat": 31.111944,
-    "lon": -97.29725,
-    "agl": "299.9",
-    "text": "OBST TOWER LGT (ASR 1281494) 310643.00N0971750.10W (6.2NM ESE TPL) 960.0FT (299.9FT AGL) U/S"
-  },
-  {
     "lat": 18.278528,
     "lon": -66.110139,
     "agl": "304.1",
@@ -12130,12 +11470,6 @@
     "lon": -88.496972,
     "agl": "259.8",
     "text": "OBST TOWER LGT (ASR 1207540) 372317.90N0882949.10W (17.4NM NE M30) 794.9FT (259.8FT AGL) U/S"
-  },
-  {
-    "lat": 39.913278,
-    "lon": -84.400413,
-    "agl": "259",
-    "text": "OBST TOWER LGT (ASR 1327456) 395344.00N0843818.50W (11.03NM W 3I7) 1360FT (259FT AGL) U/S"
   },
   {
     "lat": 43.3436,
@@ -12348,12 +11682,6 @@
     "text": "OBST TOWER LGT (ASR 1251020) 373741.30N0985414.30W (8.7NM WSW PTT) 2357.3FT (319.9FT AGL) U/S"
   },
   {
-    "lat": 45.490583,
-    "lon": -89.726306,
-    "agl": "499.0",
-    "text": "OBST TOWER LGT (ASR 1288568) 452926.10N0894334.70W (3.5NM ENE TKV) 1961.0FT (499.0FT AGL) U/S"
-  },
-  {
     "lat": 33.555833,
     "lon": -90.205556,
     "agl": "247.0",
@@ -12426,12 +11754,6 @@
     "text": "OBST TOWER LGT (ASN 2012-AWP-8442-OE) 373511N1221450W (4.5NM NE SQL) 320FT (317FT AGL) U/S"
   },
   {
-    "lat": 36.665618,
-    "lon": -76.320656,
-    "agl": "128",
-    "text": "OBST WIND TURBINE LGT (ASN 2021-AEA-9269-OE) 364525N0761822W (5.6NM NE CPK) 132FT (128FT AGL) U/S"
-  },
-  {
     "lat": 38.670556,
     "lon": -84.449722,
     "agl": "299.9",
@@ -12442,12 +11764,6 @@
     "lon": -89.022583,
     "agl": "408.8",
     "text": "OBST TOWER LGT (ASR 1030697) 315446.50N0890121.30W (11.1NM ESE 00M) 816.9FT (408.8FT AGL) U/S"
-  },
-  {
-    "lat": 45.567722,
-    "lon": -122.414328,
-    "agl": "271",
-    "text": "OBST TOWER LGT (ASN 2020-ANM-6295-OE) 453404N1222452W (1.2NM NNW TTD) 278FT (271FT AGL) U/S"
   },
   {
     "lat": 31.242861,
@@ -12580,12 +11896,6 @@
     "lon": -90.659833,
     "agl": "499.0",
     "text": "OBST TOWER LGT (ASR 1287818) 382432.50N0903935.40W (15.2NM S SUS) 1388.1FT (499.0FT AGL) U/S"
-  },
-  {
-    "lat": 44.248056,
-    "lon": -88.300333,
-    "agl": "242.1",
-    "text": "OBST TOWER LGT (ASR 1052712) 441453.00N0881801.20W (9.4NM E ATW) 992.1FT (242.1FT AGL) U/S"
   },
   {
     "lat": 40.462778,
@@ -13290,12 +12600,6 @@
     "text": "OBST TOWER LGT (ASR 1047886) 320341.00N0951851.00W (2.4NM SSW 6X0) 2047.2FT (1466.5FT AGL) U/S"
   },
   {
-    "lat": 42.203961,
-    "lon": -89.071667,
-    "agl": "79",
-    "text": "OBST TOWER LGT (ASN 2016-AGL-8986-OE) 421214N0890418W (1.2NM ENE RFD) 814FT (79FT AGL) U/S"
-  },
-  {
     "lat": 43.3436,
     "lon": -72.5173,
     "agl": "75",
@@ -13434,12 +12738,6 @@
     "text": "OBST TOWER LGT (ASR 1263838) 360155.20N0821208.40W (11.2NM WNW 7A8) 4287.7FT (257.9FT AGL) U/S"
   },
   {
-    "lat": 27.147525,
-    "lon": -81.8901,
-    "agl": "260",
-    "text": "OBST TOWER LGT (ASN 2024-ASO-13412-OE) 270851N0815324W (4.1NM SW X06) 301FT (260FT AGL) U/S"
-  },
-  {
     "lat": 33.346111,
     "lon": -87.3875,
     "agl": "405.2",
@@ -13498,12 +12796,6 @@
     "lon": -86.469806,
     "agl": "275.9",
     "text": "OBST TOWER LGT (ASR 1030494) 303142.40N0862811.30W (4.0NM NE VPS) 335.0FT (275.9FT AGL) U/S"
-  },
-  {
-    "lat": 37.093417,
-    "lon": -98.944917,
-    "agl": "308.1",
-    "text": "OBST TOWER LGT (ASR 1281143) 370536.20N0985641.60W (18.2NM W 4KS) 1977.0FT (308.1FT AGL) U/S"
   },
   {
     "lat": 32.375917,
@@ -13638,12 +12930,6 @@
     "text": "OBST TOWER LGT (ASR 1298164) 412109.40N0793429.90W (9.7NM NW AXQ) 1879.3FT (345.1FT AGL) U/S"
   },
   {
-    "lat": 34.101333,
-    "lon": -82.849636,
-    "agl": "106",
-    "text": "OBST POWER LINE LGT (ASN 2016-ASO-9460-OE) 340605N0825059W (1.6NM WNW EBA) 785FT (106FT AGL) U/S"
-  },
-  {
     "lat": 41.274464,
     "lon": -83.352103,
     "agl": "284",
@@ -13708,12 +12994,6 @@
     "lon": -93.017222,
     "agl": "414.0",
     "text": "OBST TOWER LGT (ASR 1006203) 364551.00N0930106.30W (13.1NM NE PLK) 1508.2FT (414.0FT AGL) U/S"
-  },
-  {
-    "lat": 40.128917,
-    "lon": -102.741278,
-    "agl": "194.9",
-    "text": "OBST TOWER LGT (ASR 1242632) 400744.10N1024428.60W (1.9NM NW 2V6) 4348.8FT (194.9FT AGL) U/S"
   },
   {
     "lat": 38.847972,
@@ -14094,12 +13374,6 @@
     "text": "OBST TOWER LGT (ASR 1235609) 293025.90N0972443.00W (3.0NM ESE T20) 498.0FT (203.1FT AGL) U/S"
   },
   {
-    "lat": 34.103158,
-    "lon": -82.851561,
-    "agl": "106",
-    "text": "OBST POWER LINE LGT (ASN 2016-ASO-9456-OE) 340611N0825106W (1.7NM WNW EBA) 794FT (106FT AGL) U/S"
-  },
-  {
     "lat": 63.515972,
     "lon": -162.278,
     "agl": "230",
@@ -14188,12 +13462,6 @@
     "lon": -106.388056,
     "agl": "304.8",
     "text": "OBST TOWER LGT (ASR 1056567) 355308.00N1062317.00W (5.8NM W LAM) 10294.6FT (304.8FT AGL) U/S"
-  },
-  {
-    "lat": 39.799111,
-    "lon": -89.446139,
-    "agl": "1449.1",
-    "text": "OBST TOWER LGT (ASR 1008934) 394756.80N0892646.10W (11.0NM ESE SPI) 2049.2FT (1449.1FT AGL) U/S"
   },
   {
     "lat": 40.441308,
@@ -14352,22 +13620,10 @@
     "text": "OBST TOWER LGT (ASR 1252033) 320929.00N0805927.00W (11.0NM E SAV) 520.0FT (500.0FT AGL) U/S"
   },
   {
-    "lat": 45.158833,
-    "lon": -93.843306,
-    "agl": "261",
-    "text": "OBST TOWER LGT (ASR 1043246) 451423.00N0934110.00W\n(8.24NM NE CFE) 1251FT (261FT AGL) U/S"
-  },
-  {
     "lat": 35.068611,
     "lon": -78.902222,
     "agl": "352.0",
     "text": "OBST TOWER LGT (ASR 1059252) 350407.00N0785408.00W (4.8NM NNW FAY) 492.8FT (352.0FT AGL) U/S"
-  },
-  {
-    "lat": 40.644633,
-    "lon": -86.874025,
-    "agl": "599",
-    "text": "OBST WIND TURBINE LGT (ASN 2020-WTE-3097-OE) 403841N0865226W (6.3NM SW MCX) 1304FT (599FT AGL) U/S"
   },
   {
     "lat": 41.270556,
@@ -14536,12 +13792,6 @@
     "lon": -95.084611,
     "agl": "290",
     "text": "OBST TOWER LGT (ASR 1303213) 370108.77N0950504.60W (8.7NM SSW K67) 1129FT (290FT AGL) U/S"
-  },
-  {
-    "lat": 42.114279,
-    "lon": -87.901541,
-    "agl": "102",
-    "text": "OBST POWER LINE LGT (ASN 2023-AGL-6953-OE) 420712N0875509W (.86NM WNW PWK) 749FT (102FT AGL) U/S"
   },
   {
     "lat": 38.365,
@@ -14736,12 +13986,6 @@
     "text": "OBST TOWER LGT (ASR 1039785) 283635.00N0811927.00W (3.9NM NE ORL) 412.1FT (329.1FT AGL) U/S"
   },
   {
-    "lat": 39.948889,
-    "lon": -88.836917,
-    "agl": "1351.0",
-    "text": "OBST TOWER LGT (ASR 1215843) 395656.00N0885012.90W (7.0NM NE DEC) 2034.8FT (1351.0FT AGL) U/S"
-  },
-  {
     "lat": 35.245528,
     "lon": -90.14775,
     "agl": "306.1",
@@ -14832,12 +14076,6 @@
     "text": "OBST TOWER LGT (ASR 1304166) 362156.20N0951749.70W (8.55NM N H71) 880FT (240FT AGL) U/S"
   },
   {
-    "lat": 36.621865,
-    "lon": -87.414948,
-    "agl": "280",
-    "text": "OBST TOWER LGT (ASR UNKNOWN) 365200N0874831W (6NM NE 1M9) 850FT (280FT AGL) U/S"
-  },
-  {
     "lat": 39.244556,
     "lon": -77.30025,
     "agl": "202.1",
@@ -14884,12 +14122,6 @@
     "lon": -87.159389,
     "agl": "309.1",
     "text": "OBST TOWER LGT (ASR 1213850) 381144.10N0870933.80W (10.3NM WSW HNB) 791.0FT (309.1FT AGL) U/S"
-  },
-  {
-    "lat": 45.620556,
-    "lon": -91.745833,
-    "agl": "495.4",
-    "text": "OBST TOWER LGT (ASR 1065406) 453714.00N0914445.00W (9.9NM SE SSQ) 1758.5FT (495.4FT AGL) U/S"
   },
   {
     "lat": 33.040278,
@@ -14968,12 +14200,6 @@
     "lon": -93.173611,
     "agl": "309.7",
     "text": "OBST TOWER LGT (ASR 1294024) 343418.00N0931025.00W (6.8NM NW HOT) 785.4FT (309.7FT AGL) U/S"
-  },
-  {
-    "lat": 47.424167,
-    "lon": -92.496556,
-    "agl": "255",
-    "text": "OBST TOWER LGT (ASR 1330017) 472723.10N0923611.20W (4.74NM WNW EVM) 1663FT (255FT AGL) U/S"
   },
   {
     "lat": 44.889608,
@@ -15058,18 +14284,6 @@
     "lon": -122.710653,
     "agl": "491",
     "text": "OBST POWER LINE LGT (ASN 2020-ANM-6293-OE) 453826N1224238W (2.6NM WNW VUO) 519FT (491FT AGL) U/S"
-  },
-  {
-    "lat": 38.597049,
-    "lon": -77.072458,
-    "agl": "85",
-    "text": "OBST POWER LINE LGT (ASN 2008-AEA-844-OE) 384403N0771230W (10.3NM NW 2W5) 308FT (85FT AGL) U/S"
-  },
-  {
-    "lat": 33.348194,
-    "lon": -117.391861,
-    "agl": "41.0",
-    "text": "OBST TOWER LGT (ASR 1229520) 332053.50N1172330.70W (7.1NM W L18) 680.1FT (41.0FT AGL) U/S"
   },
   {
     "lat": 39.682028,
@@ -15408,18 +14622,6 @@
     "text": "OBST TOWER LGT (ASR 1215750) 400348.00N0803536.00W (7.1NM SSE HLG) 1617.1FT (314.0FT AGL) U/S"
   },
   {
-    "lat": 43.887222,
-    "lon": -85.593611,
-    "agl": "319.9",
-    "text": "OBST TOWER LGT (ASR 1060515) 435314.00N0853537.00W (10.6NM NNW RQB) 1565.0FT (319.9FT AGL) U/S"
-  },
-  {
-    "lat": 44.997197,
-    "lon": -92.853686,
-    "agl": "320",
-    "text": "OBST TOWER LGT (ASR 1323040) 445734.80N0923630.20W (10.67NM E 21D) 1341FT (320FT AGL) U/S"
-  },
-  {
     "lat": 42.443056,
     "lon": -94.620833,
     "agl": "345.1",
@@ -15624,22 +14826,10 @@
     "text": "OBST TOWER LGT (ASR 1022066) 420747.00N0900823.00W (5.2NM NNW SFY) 1225.7FT (421.9FT AGL) U/S"
   },
   {
-    "lat": 36.355556,
-    "lon": -76.551944,
-    "agl": "350.1",
-    "text": "OBST TOWER LGT (ASR 1003902) 362120.00N0763307.00W (18.9NM WNW ECG) 396.0FT (350.1FT AGL) U/S"
-  },
-  {
     "lat": 33.003469,
     "lon": -83.086569,
     "agl": "299",
     "text": "OBST TOWER LGT (ASR 1309016) 330012.49N0830511.65W (11.8NM SE MLJ) 604FT (299FT AGL) U/S"
-  },
-  {
-    "lat": 30.32,
-    "lon": -97.624444,
-    "agl": "249.3",
-    "text": "OBST TOWER LGT (ASR 1052841) 301912.00N0973728.00W (5.5NM SSW EDC) 879.3FT (249.3FT AGL) U/S"
   },
   {
     "lat": 29.622249,
@@ -15766,12 +14956,6 @@
     "lon": -100.498967,
     "agl": "499",
     "text": "OBST WIND TURBINE LGT (ASN 2019-WTW-5169-OE) 330333N1002956W (10.7NM SSE 22F) 2572FT (499FT AGL) U/S"
-  },
-  {
-    "lat": 42.879167,
-    "lon": -82.784722,
-    "agl": "232.9",
-    "text": "OBST TOWER LGT (ASR 1061278) 425245.00N0824705.00W (4.4NM S 2E2) 988.8FT (232.9FT AGL) U/S"
   },
   {
     "lat": 32.830792,
@@ -16186,12 +15370,6 @@
     "lon": -100.312222,
     "agl": "352.7",
     "text": "OBST TOWER LGT (ASR 1041494) 340026.00N1001844.00W (1.9NM SW 3F6) 2231.6FT (352.7FT AGL) U/S"
-  },
-  {
-    "lat": 40.560486,
-    "lon": -89.688758,
-    "agl": "268",
-    "text": "OBST POWER LINE LGT (ASN 2016-AGL-8936-OE) 403338N0894120W (4.4NM N C15) 712FT (268FT AGL) U/S"
   },
   {
     "lat": 40.337533,
@@ -17406,12 +16584,6 @@
     "text": "OBST TOWER LGT (ASR 1226266) 340858.70N0964319.10W (3.8NM SW 0F9) 1131.9FT (330.1FT AGL) U/S"
   },
   {
-    "lat": 48.995556,
-    "lon": -97.408056,
-    "agl": "1437.7",
-    "text": "OBST TOWER LGT (ASR 1048882) 485944.00N0972429.00W (7.3NM WNW PMB) 2235.6FT (1437.7FT AGL) U/S"
-  },
-  {
     "lat": 46.607889,
     "lon": -94.101167,
     "agl": "417.0",
@@ -17538,12 +16710,6 @@
     "text": "OBST TOWER LGT (ASN 2021-ASO-36849-OE) 334250N0872243W (11.8NM SSW JFX) 690FT (315FT AGL) U/S"
   },
   {
-    "lat": 40.425722,
-    "lon": -89.788167,
-    "agl": "257.9",
-    "text": "OBST TOWER LGT (ASR 1272490) 402532.60N0894717.40W (6.4NM SW C15) 787.7FT (257.9FT AGL) U/S"
-  },
-  {
     "lat": 42.441558,
     "lon": -77.561253,
     "agl": "150",
@@ -17638,12 +16804,6 @@
     "lon": -95.206389,
     "agl": "351.0",
     "text": "OBST TOWER LGT (ASR 1211385) 321618.00N0951223.00W (11.1NM ESE TYR) 771.0FT (351.0FT AGL) U/S"
-  },
-  {
-    "lat": 29.193056,
-    "lon": -82.170556,
-    "agl": "313.3",
-    "text": "OBST TOWER LGT (ASR 1062088) 291135.00N0821014.00W (3.1NM ENE OCF) 393.7FT (313.3FT AGL) U/S"
   },
   {
     "lat": 40.193833,
@@ -17880,12 +17040,6 @@
     "text": "OBST TOWER LGT (ASR 1224271) 351728.10N0781122.40W (8.4NM WNW W40) 404.9FT (255.9FT AGL) U/S"
   },
   {
-    "lat": 40.615556,
-    "lon": -103.034444,
-    "agl": "303.1",
-    "text": "OBST TOWER LGT (ASR 1061103) 403656.00N1030204.00W (10.5NM E STK) 4773.0FT (303.1FT AGL) U/S"
-  },
-  {
     "lat": 30.572222,
     "lon": -97.44,
     "agl": "188.0",
@@ -18028,12 +17182,6 @@
     "lon": -84.272222,
     "agl": "314.0",
     "text": "OBST TOWER LGT (ASR 1041726) 353350.00N0841623.80W (5.4NM ENE MNV) 1410.1FT (314.0FT AGL) U/S"
-  },
-  {
-    "lat": 38.597049,
-    "lon": -77.072458,
-    "agl": "110",
-    "text": "OBST POWER LINE LGT (ASN 2008-AEA-845-OE) 384403N0771219W (10.2NM NW 2W5) 242FT (110FT AGL) U/S"
   },
   {
     "lat": 33.822556,
@@ -18462,12 +17610,6 @@
     "text": "OBST TOWER LGT (ASR 1059908) 300658.30N0971754.80W (8.6NM NW 84R) 960.0FT (467.8FT AGL) U/S"
   },
   {
-    "lat": 42.556389,
-    "lon": -73.8675,
-    "agl": "252.6",
-    "text": "OBST TOWER LGT (ASR 1049073) 423323.00N0735203.00W (1.5NM W 4B0) 777.6FT (252.6FT AGL) U/S"
-  },
-  {
     "lat": 31.329806,
     "lon": -83.927556,
     "agl": "419.9",
@@ -18738,12 +17880,6 @@
     "text": "OBST TOWER LGT (ASR 1233917) 302639.70N0855237.90W (6.6NM NW ECP) 382.9FT (319.9FT AGL) U/S"
   },
   {
-    "lat": 35.9375,
-    "lon": -79.441389,
-    "agl": "941.3",
-    "text": "OBST TOWER LGT (ASR 1024643) 355615.00N0792629.00W (5.7NM NE N61) 1843.8FT (941.3FT AGL) U/S"
-  },
-  {
     "lat": 40.488194,
     "lon": -89.675889,
     "agl": "268",
@@ -18840,12 +17976,6 @@
     "text": "OBST TOWER LGT (ASR 1032505) 382006.00N0954027.90W (3.1NM NE UKL) 1618.1FT (414.0FT AGL) U/S"
   },
   {
-    "lat": 36.958775,
-    "lon": -97.675314,
-    "agl": "443",
-    "text": "OBST WIND TURBINE LGT (ASN 2015-WTW-7976-OE) 365732N0974031W (6.4NM SW 01K) 1690FT (443FT AGL) U/S"
-  },
-  {
     "lat": 44.974128,
     "lon": -84.894281,
     "agl": "330",
@@ -18858,12 +17988,6 @@
     "text": "OBST TOWER LGT (ASR 1268966) 333254.90N0953032.20W (6.0NM SSW PRX) 721.8FT (254.9FT AGL) U/S"
   },
   {
-    "lat": 36.950986,
-    "lon": -97.583169,
-    "agl": "443",
-    "text": "OBST WIND TURBINE LGT (ASN 2015-WTW-7964-OE) 365704N0973459W (5.1NM S 01K) 1632FT (443FT AGL) U/S"
-  },
-  {
     "lat": 32.183444,
     "lon": -101.459556,
     "agl": "499.0",
@@ -18874,12 +17998,6 @@
     "lon": -115.194443,
     "agl": "138",
     "text": "OBST TOWER LGT (ASR UNKNOWN) 362933.00N1153000.00W (22NM NW VGT) UNKNOWN (138FT AGL) U/S"
-  },
-  {
-    "lat": 41.315611,
-    "lon": -85.642056,
-    "agl": "258.9",
-    "text": "OBST TOWER LGT (ASR 1227612) 411856.20N0853831.40W (1.9NM ESE IN9) 1169.9FT (258.9FT AGL) U/S"
   },
   {
     "lat": 31.257056,
@@ -19018,12 +18136,6 @@
     "lon": -112.252892,
     "agl": "155",
     "text": "OBST POWER LINE LGT (ASN 2012-ANM-443-OE) 403108N1121510W (7.2NM SE TVY) 6310FT (155FT AGL) U/S"
-  },
-  {
-    "lat": 35.504722,
-    "lon": -78.316944,
-    "agl": "254.9",
-    "text": "OBST TOWER LGT (ASR 1051540) 353017.00N0781901.00W (4.1NM ESE JNX) 404.9FT (254.9FT AGL) U/S"
   },
   {
     "lat": 31.202603,
@@ -19210,12 +18322,6 @@
     "lon": -87.180833,
     "agl": "414.0",
     "text": "OBST TOWER LGT (ASR 1030535) 383849.40N0871052.50W (4.0NM SW DCY) 985.9FT (414.0FT AGL) U/S"
-  },
-  {
-    "lat": 39.547028,
-    "lon": -74.638194,
-    "agl": "503.9",
-    "text": "OBST TOWER LGT (ASR 1049923) 393249.30N0743817.50W (6.0NM NNW ACY) 570.9FT (503.9FT AGL) U/S"
   },
   {
     "lat": 27.329722,
@@ -19494,12 +18600,6 @@
     "text": "OBST WIND TURBINE LGT (ASN 2016-WTW-7187-OE) 374020N1042955W (13.7NM E 4V1) 6928FT (427FT AGL) U/S"
   },
   {
-    "lat": 33.927639,
-    "lon": -117.617444,
-    "agl": "287.1",
-    "text": "OBST TOWER LGT (ASR 1065900) 335539.50N1173702.80W (2.0NM NNW AJO) 836.9FT (287.1FT AGL) U/S"
-  },
-  {
     "lat": 34.162222,
     "lon": -82.194444,
     "agl": "302.5",
@@ -19690,12 +18790,6 @@
     "lon": -87.563472,
     "agl": "259.8",
     "text": "OBST TOWER LGT (ASR 1219343) 382851.80N0873348.50W (10.7NM SE AJG) 726.7FT (259.8FT AGL) U/S"
-  },
-  {
-    "lat": 37.772889,
-    "lon": -83.632528,
-    "agl": "278.9",
-    "text": "OBST TOWER LGT (ASR 1044845) 374622.40N0833757.10W (11.0NM ESE I50) 1567.9FT (278.9FT AGL) U/S"
   },
   {
     "lat": 44.588175,
@@ -19896,12 +18990,6 @@
     "text": "OBST TOWER LGT (ASR 1007081) 402200.00N0943904.00W (8.7NM ENE 78Y) 1368.1FT (229.7FT AGL) U/S"
   },
   {
-    "lat": 44.241667,
-    "lon": -92.972222,
-    "agl": "344",
-    "text": "OBST WIND TURBINE LGT (ASN 2024-WTE-10522-OE) 441430N0925820W (14.2NM S SYN) 1594FT (344FT AGL) U/S"
-  },
-  {
     "lat": 35.658642,
     "lon": -120.042342,
     "agl": "165",
@@ -19942,12 +19030,6 @@
     "lon": -76.568333,
     "agl": "347.8",
     "text": "OBST TOWER LGT (ASR 1037342) 391216.00N0763406.00W (4.1NM S 4MD) 375.7FT (347.8FT AGL) U/S"
-  },
-  {
-    "lat": 36.594708,
-    "lon": -93.838333,
-    "agl": "254",
-    "text": "OBST TOWER LGT (ASN 2021-ACE-4473-OE) 363541N0935018W (6.8NM SSE 94K) 1596FT (254FT AGL) U/S"
   },
   {
     "lat": 30.356444,
@@ -20052,12 +19134,6 @@
     "text": "OBST TOWER LGT (ASR 1219501) 465305.00N1024303.90W (6.2NM NE DIK) 2849.1FT (349.1FT AGL) U/S"
   },
   {
-    "lat": 33.550139,
-    "lon": -89.283717,
-    "agl": "390",
-    "text": "OBST TOWER LGT (ASR 1329451) 333300.50N0891701.38W (1.7NM ENE 06M) 831FT (390FT AGL) U/S"
-  },
-  {
     "lat": 35.747,
     "lon": -90.630556,
     "agl": "354.0",
@@ -20086,12 +19162,6 @@
     "lon": -95.312778,
     "agl": "319.9",
     "text": "OBST TOWER LGT (ASR 1231968) 352842.00N0951846.00W (11.0NM SSE MKO) 906.8FT (319.9FT AGL) U/S"
-  },
-  {
-    "lat": 39.928611,
-    "lon": -86.181944,
-    "agl": "1039.4",
-    "text": "OBST TOWER LGT (ASR 1024109) 395543.00N0861055.00W (6.3NM W UMP) 1863.2FT (1039.4FT AGL) U/S"
   },
   {
     "lat": 33.781389,
@@ -20310,12 +19380,6 @@
     "text": "OBST POLE LGT (ASN 2013-AWP-4097-OE) 324038N1154017W (7.8NM W CXL) 113FT (129FT AGL) U/S"
   },
   {
-    "lat": 46.641329,
-    "lon": -96.104144,
-    "agl": "1100.7",
-    "text": "OBST TOWER LGT (ASR 1049364) 464029.00N0961341.00W (5.5NM WNW 47Y) 2554.8FT (1100.7FT AGL) U/S"
-  },
-  {
     "lat": 40.152222,
     "lon": -87.466111,
     "agl": "269.0",
@@ -20422,12 +19486,6 @@
     "lon": -80.32275,
     "agl": "160.1",
     "text": "OBST TOWER LGT (ASR 1283784) 253956.80N0801921.90W (6.2NM E TMB) 171.3FT (160.1FT AGL) U/S"
-  },
-  {
-    "lat": 30.591028,
-    "lon": -88.275694,
-    "agl": "260.8",
-    "text": "OBST TOWER LGT (ASR 1293187) 303527.70N0881632.50W (5.3NM NE 2R5) 417.7FT (260.8FT AGL) U/S"
   },
   {
     "lat": 25.786806,
@@ -20676,12 +19734,6 @@
     "text": "OBST TOWER LGT (ASR 1204828) 401824.20N0830522.60W (2.0NM NNE DLZ) 1120.1FT (180.1FT AGL) U/S"
   },
   {
-    "lat": 35.851444,
-    "lon": -83.714861,
-    "agl": "282.2",
-    "text": "OBST TOWER LGT (ASR 1034568) 355105.20N0834253.50W (9.1NM W GKT) 1393.0FT (282.2FT AGL) U/S"
-  },
-  {
     "lat": 28.574167,
     "lon": -81.462222,
     "agl": "386.8",
@@ -20796,12 +19848,6 @@
     "text": "OBST TOWER LGT (ASR 1214925) 314857.30N0902439.30W (5.7NM SSW M11) 669.6FT (305.8FT AGL) U/S"
   },
   {
-    "lat": 33.044167,
-    "lon": -85.3375,
-    "agl": "500.0",
-    "text": "OBST TOWER LGT (ASR 1053971) 330239.00N0852015.00W (5.4NM SSE 7A5) 1355.0FT (500.0FT AGL) U/S"
-  },
-  {
     "lat": 29.019444,
     "lon": -98.574167,
     "agl": "304.8",
@@ -20914,12 +19960,6 @@
     "lon": -90.409694,
     "agl": "325.1",
     "text": "OBST TOWER LGT (ASR 1022146) 300004.30N0902434.90W (7.9NM W MSY) 333.0FT (325.1FT AGL) U/S"
-  },
-  {
-    "lat": 42.253167,
-    "lon": -86.336361,
-    "agl": "265.1",
-    "text": "OBST TOWER LGT (ASR 1223440) 421511.40N0862010.90W (5.0NM NW 40C) 903.2FT (265.1FT AGL) U/S"
   },
   {
     "lat": 36.961333,
@@ -21082,12 +20122,6 @@
     "lon": -90.396944,
     "agl": "350.1",
     "text": "OBST TOWER LGT (ASR 1008886) 392700.00N0902349.00W (18.9NM W 5K1) 950.1FT (350.1FT AGL) U/S"
-  },
-  {
-    "lat": 44.853667,
-    "lon": -74.328944,
-    "agl": "262",
-    "text": "OBST WIND TURBINE LGT (ASN 2016-WTE-1296-OE) 445442N0735306W (19.0NM E MAL) 1433FT (262FT AGL) U/S"
   },
   {
     "lat": 35.048333,
@@ -21466,12 +20500,6 @@
     "lon": -76.772383,
     "agl": "119",
     "text": "OBST TOWER LGT (ASR UNKNOWN) 385714.00N0764627.00W (0.75NM N W00) 304FT (119FT AGL) U/S"
-  },
-  {
-    "lat": 38.286108,
-    "lon": -85.705153,
-    "agl": "250",
-    "text": "OBST POWER LINE LGT (ASN 2013-AGL-12188-OE) 381710N0854219W (4.0NM NNW LOU) 697FT (250FT AGL) U/S"
   },
   {
     "lat": 36.662778,
@@ -22260,12 +21288,6 @@
     "text": "OBST TOWER LGT (ASR 1312077) 363957.73N0951829.32W (8.1NM WNW H04) 1068FT (305FT AGL) U/S"
   },
   {
-    "lat": 40.311944,
-    "lon": -90.055278,
-    "agl": "299.9",
-    "text": "OBST TOWER LGT (ASR 1045104) 401843.00N0900319.00W (5.6NM NNW 9I0) 331.0FT (299.9FT AGL) U/S"
-  },
-  {
     "lat": 39.555889,
     "lon": -82.511361,
     "agl": "266.1",
@@ -22416,12 +21438,6 @@
     "text": "OBST TOWER LGT (ASN 2017-AGL-9473-OE) 414511N0875222W (5.7NM WSW MDW) 837FT (235FT AGL) U/S"
   },
   {
-    "lat": 39.075194,
-    "lon": -96.898167,
-    "agl": "74.8",
-    "text": "OBST TOWER LGT (ASR 1272232) 390430.70N0965353.40W (3.2NM NW 3JC) 1289.7FT (74.8FT AGL) U/S"
-  },
-  {
     "lat": 31.338444,
     "lon": -86.544278,
     "agl": "361.9",
@@ -22476,12 +21492,6 @@
     "text": "OBST TOWER LGT (ASR 1244729) 485129.70N0994553.80W (5.9NM WSW 06D) 2378.0FT (280.8FT AGL) U/S"
   },
   {
-    "lat": 38.976139,
-    "lon": -76.454111,
-    "agl": "599.7",
-    "text": "OBST TOWER LGT (ASR 1244335) 385834.10N0762714.80W (5.6NM NW 3W3) 619.4FT (599.7FT AGL) U/S"
-  },
-  {
     "lat": 39.776778,
     "lon": -82.627364,
     "agl": "95",
@@ -22522,12 +21532,6 @@
     "lon": -80.179386,
     "agl": "305",
     "text": "OBST TOWER LGT (ASR 1303062) 331632.78N0801045.79W (8.9NM NW MKS) 396FT (305FT AGL) U/S"
-  },
-  {
-    "lat": 42.180278,
-    "lon": -92.310556,
-    "agl": "281.5",
-    "text": "OBST TOWER LGT (ASR 1045074) 421049.00N0921838.00W (6.6NM E 8C6) 1242.1FT (281.5FT AGL) U/S"
   },
   {
     "lat": 30.239111,
@@ -22738,12 +21742,6 @@
     "lon": -80.419444,
     "agl": "287.1",
     "text": "OBST TOWER LGT (ASR 1027237) 255029.00N0802510.00W (7.5NM WNW MIA) 292.0FT (287.1FT AGL) U/S"
-  },
-  {
-    "lat": 42.563194,
-    "lon": -92.95625,
-    "agl": "323.2",
-    "text": "OBST TOWER LGT (ASR 1212629) 423347.50N0925722.50W (3.5NM ENE 4C7) 1383.2FT (323.2FT AGL) U/S"
   },
   {
     "lat": 29.984435,
@@ -23064,12 +22062,6 @@
     "text": "OBST TOWER LGT (ASR 1008556) 381631.30N0880354.60W (11.5NM NNE CUL) 778.9FT (213.9FT AGL) U/S"
   },
   {
-    "lat": 37.865278,
-    "lon": -122.221389,
-    "agl": "307.7",
-    "text": "OBST TOWER LGT (ASR 1016115) 375155.00N1221317.00W (8.7NM NE OAK) 1786.7FT (307.7FT AGL) U/S"
-  },
-  {
     "lat": 33.176778,
     "lon": -90.220417,
     "agl": "305.1",
@@ -23244,12 +22236,6 @@
     "text": "OBST TOWER LGT (ASR 1300127) 434341.20N0884622.10W (12.6NM WSW FLD) 1244.8FT (258.9FT AGL) U/S"
   },
   {
-    "lat": 30.746889,
-    "lon": -95.587167,
-    "agl": "360",
-    "text": "OBST TOWER LGT (ASR 1302776) 303014.00N0954228.80W (15.8NM SSW UTS) 699FT (360FT AGL) U/S"
-  },
-  {
     "lat": 30.386222,
     "lon": -99.899083,
     "agl": "460.0",
@@ -23352,12 +22338,6 @@
     "text": "OBST TOWER LGT (ASR 1276294) 335201.20N0893631.50W (9.7NM ENE GNF) 740.2FT (449.1FT AGL) U/S"
   },
   {
-    "lat": 29.844741,
-    "lon": -82.047539,
-    "agl": "255",
-    "text": "OBST TOWER LGT (ASR 1328144) 294553.30N0820012.60W (5.3NM SSE 42J) 400FT (255FT AGL) U/S"
-  },
-  {
     "lat": 41.691806,
     "lon": -70.146611,
     "agl": "250.0",
@@ -23410,12 +22390,6 @@
     "lon": -70.241472,
     "agl": "190.0",
     "text": "OBST TOWER LGT (ASR 1240931) 441151.80N0701429.30W (9.3NM NNE LEW) 613.8FT (190.0FT AGL) U/S"
-  },
-  {
-    "lat": 30.177694,
-    "lon": -82.587528,
-    "agl": "159.8",
-    "text": "OBST TOWER LGT (ASR 1276649) 301039.70N0823515.10W (0.6NM WSW LCQ) 345.1FT (159.8FT AGL) U/S"
   },
   {
     "lat": 42.124778,
@@ -23592,12 +22566,6 @@
     "text": "OBST TOWER LGT (ASR 1228103) 400739.10N0800938.40W (3.0NM W 22D) 1683.1FT (310.0FT AGL) U/S"
   },
   {
-    "lat": 36.509111,
-    "lon": -86.283333,
-    "agl": "259.8",
-    "text": "OBST TOWER LGT (ASR 1251647) 363032.80N0861660.00W (10.1NM NE XNX) 1207.7FT (259.8FT AGL) U/S"
-  },
-  {
     "lat": 36.508694,
     "lon": -99.510472,
     "agl": "245.1",
@@ -23700,12 +22668,6 @@
     "text": "OBST TOWER LGT (ASN 2014-ASW-2182-OE) 352550N0942231W (5.6NM N FSM) 723FT (293FT AGL) U/S"
   },
   {
-    "lat": 33.999608,
-    "lon": -117.641581,
-    "agl": "179",
-    "text": "OBST TOWER LGT (ASN 2011-AWP-7806-OE) 335959N1173830W (1.5NM N CNO) 879FT (179FT AGL) U/S"
-  },
-  {
     "lat": 30.134333,
     "lon": -95.71875,
     "agl": "257.9",
@@ -23760,12 +22722,6 @@
     "text": "OBST TOWER LGT (ASN 2018-AGL-1284-OE) 471836N0952232W (11.8NM NNE M49) 1993FT (415FT AGL) U/S"
   },
   {
-    "lat": 30.389028,
-    "lon": -85.541083,
-    "agl": "232.9",
-    "text": "OBST TOWER LGT (ASR 1252285) 302320.50N0853227.90W (13.4NM E ECP) 327.1FT (232.9FT AGL) U/S"
-  },
-  {
     "lat": 32.499639,
     "lon": -90.980917,
     "agl": "359.9",
@@ -23778,34 +22734,16 @@
     "text": "OBST TOWER LGT (ASR 1036068) 450333.00N0892610.00W (11.4NM NE AUW) 2478.7FT (1013.8FT AGL) U/S"
   },
   {
-    "lat": 42.092306,
-    "lon": -71.303083,
-    "agl": "216.9",
-    "text": "OBST TOWER LGT (ASR 1232361) 420532.50N0711810.50W (7.2NM NW 1B9) 464.9FT (216.9FT AGL) U/S"
-  },
-  {
     "lat": 41.223056,
     "lon": -84.376667,
     "agl": "334.6",
     "text": "OBST TOWER LGT (ASR 1038621) 411323.00N0842236.00W (7.3NM SSE DFI) 1043.3FT (334.6FT AGL) U/S"
   },
   {
-    "lat": 29.618889,
-    "lon": -97.776944,
-    "agl": "265.1",
-    "text": "OBST TOWER LGT (ASR 1058096) 293708.00N0974637.00W (11.3NM E E70) 841.2FT (265.1FT AGL) U/S"
-  },
-  {
     "lat": 39.809583,
     "lon": -90.734611,
     "agl": "308.1",
     "text": "OBST TOWER LGT (ASR 1257021) 394834.50N0904404.60W (10.5NM NE PPQ) 828.1FT (308.1FT AGL) U/S"
-  },
-  {
-    "lat": 34.103083,
-    "lon": -117.51955,
-    "agl": "231",
-    "text": "OBST POWER LINE LGT (ASN 2019-AWP-6978-OE) 340611N1173110W (4.9NM NE ONT) 1401FT (231FT AGL) U/S"
   },
   {
     "lat": 38.535278,
@@ -23938,12 +22876,6 @@
     "lon": -97.918389,
     "agl": "256.9",
     "text": "OBST TOWER LGT (ASR 1242084) 354051.30N0975506.20W (11.4NM WNW HSD) 1447.8FT (256.9FT AGL) U/S"
-  },
-  {
-    "lat": 41.469306,
-    "lon": -73.131056,
-    "agl": "81",
-    "text": "OBST POWER LINE LGT (ASN 2008-ANE-825-OE) 412810N0730752W (0.6NM SSE OXC) 734FT (81FT AGL) U/S"
   },
   {
     "lat": 47.547139,
@@ -24148,12 +23080,6 @@
     "lon": -89.205222,
     "agl": "270.0",
     "text": "OBST TOWER LGT (ASR 1216924) 302047.90N0891218.80W (8.0NM WSW GPT) 295.9FT (270.0FT AGL) U/S"
-  },
-  {
-    "lat": 31.194444,
-    "lon": -90.335722,
-    "agl": "301.8",
-    "text": "OBST TOWER LGT (ASR 1254847) 311140.00N0902008.60W (7.1NM E MCB) 691.9FT (301.8FT AGL) U/S"
   },
   {
     "lat": 32.663444,
@@ -24420,12 +23346,6 @@
     "text": "OBST WIND TURBINE LGT (ASN 2017-WTW-2617-OE) 311126N1011304W (13.2NM E E41) 3145FT (486FT AGL) U/S"
   },
   {
-    "lat": 30.761389,
-    "lon": -86.571667,
-    "agl": "254.9",
-    "text": "OBST TOWER LGT (ASR 1058430) 304541.00N0863418.00W (2.8NM WSW CEW) 489.5FT (254.9FT AGL) U/S"
-  },
-  {
     "lat": 46.321944,
     "lon": -94.165556,
     "agl": "499.0",
@@ -24520,12 +23440,6 @@
     "lon": -94.101944,
     "agl": "193.9",
     "text": "OBST TOWER LGT (ASR 1037476) 361218.00N0940607.00W (1.9NM NNE ASG) 1770.0FT (193.9FT AGL) U/S"
-  },
-  {
-    "lat": 37.281778,
-    "lon": -76.796556,
-    "agl": "404.9",
-    "text": "OBST TOWER LGT (ASR 1253271) 371654.40N0764747.60W (4.6NM NW JGG) 457.0FT (404.9FT AGL) U/S"
   },
   {
     "lat": 41.762989,
@@ -25476,12 +24390,6 @@
     "text": "OBST TOWER LGT (ASR 1231692) 401610.40N0740417.50W (5.6NM NNE BLM) 304.1FT (204.1FT AGL) U/S"
   },
   {
-    "lat": 36.761694,
-    "lon": -83.674722,
-    "agl": "424.9",
-    "text": "OBST TOWER LGT (ASR 1215974) 364542.10N0834029.00W (9.6NM NNE 1A6) 2672.9FT (424.9FT AGL) U/S"
-  },
-  {
     "lat": 39.981222,
     "lon": -86.776028,
     "agl": "254.9",
@@ -25492,12 +24400,6 @@
     "lon": -95.276111,
     "agl": "315.0",
     "text": "OBST TOWER LGT (ASR 1250573) 371129.00N0951634.00W (11.4NM W K67) 1203.7FT (315.0FT AGL) U/S"
-  },
-  {
-    "lat": 34.753556,
-    "lon": -87.034333,
-    "agl": "259.8",
-    "text": "OBST TOWER LGT (ASR 1254346) 344512.80N0870203.60W (7.4NM NW DCU) 928.8FT (259.8FT AGL) U/S"
   },
   {
     "lat": 32.069167,
@@ -25704,12 +24606,6 @@
     "text": "OBST TOWER LGT (ASR 1207373) 552021.20N1313819.30W (.09NM ESE 5KE) 362.9FT (293.0FT AGL) U/S"
   },
   {
-    "lat": 40.428028,
-    "lon": -95.522389,
-    "agl": "348.1",
-    "text": "OBST TOWER LGT (ASR 1224092) 402540.90N0953120.60W (7.2NM W K57) 1443.2FT (348.1FT AGL) U/S"
-  },
-  {
     "lat": 43.999167,
     "lon": -105.254722,
     "agl": "1152.9",
@@ -25744,12 +24640,6 @@
     "lon": -84.350869,
     "agl": "214",
     "text": "OBST TOWER LGT (ASR 1327435) 301627.60N0842125.20W (7.32NM S TLH) 244FT (214FT AGL) U/S"
-  },
-  {
-    "lat": 31.699833,
-    "lon": -89.616389,
-    "agl": "254.9",
-    "text": "OBST TOWER LGT (ASR 1248925) 314159.40N0893659.00W (13.5NM SE 17M) 652.9FT (254.9FT AGL) U/S"
   },
   {
     "lat": 43.461944,
@@ -25840,12 +24730,6 @@
     "lon": -91.673222,
     "agl": "415.0",
     "text": "OBST TOWER LGT (ASR 1218411) 305220.70N0914023.60W (11.3NM NNE 7L9) 458.0FT (415.0FT AGL) U/S"
-  },
-  {
-    "lat": 63.02458,
-    "lon": -145.500551,
-    "agl": "195",
-    "text": "OBST TOWER LGT (ASR 1315904) 625808.80N1452816.20W (3.42NM SE PXK) 3944FT (195FT AGL) U/S"
   },
   {
     "lat": 31.8755,
@@ -25986,12 +24870,6 @@
     "text": "OBST TOWER LGT (ASR 1211104) 344910.40N0913615.70W (4.0NM NNE 6M0) 485.9FT (259.8FT AGL) U/S"
   },
   {
-    "lat": 40.510833,
-    "lon": -79.505278,
-    "agl": "264.8",
-    "text": "OBST TOWER LGT (ASR 1054791) 403039.00N0793019.00W (9.4NM NNE 5G8) 1606.6FT (264.8FT AGL) U/S"
-  },
-  {
     "lat": 37.009694,
     "lon": -85.10275,
     "agl": "285",
@@ -26122,12 +25000,6 @@
     "lon": -89.1377,
     "agl": "525",
     "text": "OBST WIND TURBINE LGT (ASN 2020-WTE-6306-OE) 411232N0890816W (8.5NM S VYS) 1216FT (525FT AGL) U/S"
-  },
-  {
-    "lat": 32.235139,
-    "lon": -89.896194,
-    "agl": "303.1",
-    "text": "OBST TOWER LGT (ASR 1061019) 321406.50N0895346.30W (10.2NM ESE JAN) 854.3FT (303.1FT AGL) U/S"
   },
   {
     "lat": 36.163167,
@@ -26376,12 +25248,6 @@
     "text": "OBST TOWER LGT (ASR 1303599) 302930.57N0994728.20W (1.9NM SW JCT) 2336FT (338FT AGL) U/S"
   },
   {
-    "lat": 38.181028,
-    "lon": -87.486861,
-    "agl": "306.1",
-    "text": "OBST TOWER LGT (ASR 1030266) 381051.70N0872912.70W (8.7NM NNE EVV) 839.2FT (306.1FT AGL) U/S"
-  },
-  {
     "lat": 41.081639,
     "lon": -101.673194,
     "agl": "349.7",
@@ -26512,12 +25378,6 @@
     "lon": -93.455417,
     "agl": "375",
     "text": "OBST TOWER LGT (ASN 2023-ASW-467-OE) 313408N0932720W (2.1NM NE 3R4) 694FT (375FT AGL) U/S"
-  },
-  {
-    "lat": 35.670833,
-    "lon": -84.311278,
-    "agl": "280.2",
-    "text": "OBST TOWER LGT (ASR 1034745) 354015.00N0841840.60W (8.3NM NNE MNV) 1250.3FT (280.2FT AGL) U/S"
   },
   {
     "lat": 34.100025,
@@ -26910,12 +25770,6 @@
     "text": "OBST WIND TURBINE LGT (ASN 2021-WTW-7758-OE) 355100N0963816W (3.7NM NNE SUD) 1264FT (265FT AGL) U/S"
   },
   {
-    "lat": 32.488056,
-    "lon": -100.729167,
-    "agl": "210.0",
-    "text": "OBST TOWER LGT (ASR 1051959) 322917.00N1004345.00W (9.8NM E T88) 2650.9FT (210.0FT AGL) U/S"
-  },
-  {
     "lat": 41.736722,
     "lon": -72.649444,
     "agl": "238",
@@ -27034,12 +25888,6 @@
     "lon": -95.786917,
     "agl": "319.9",
     "text": "OBST TOWER LGT (ASR 1201275) 373256.20N0954712.90W (3.1NM SE 1K7) 1274.0FT (319.9FT AGL) U/S"
-  },
-  {
-    "lat": 36.947461,
-    "lon": -97.616714,
-    "agl": "442",
-    "text": "OBST WIND TURBINE LGT (ASN 2015-WTW-2651-OE) 365651N0973700W (5.5NM SSW 01K) 1648FT (442FT AGL) U/S"
   },
   {
     "lat": 34.016636,
@@ -27300,12 +26148,6 @@
     "text": "OBST WIND TURBINE LGT (ASN 2012-WTE-4803-OE) 444359N0680924W (7.0NM W 43B) 975FT (476FT AGL) U/S"
   },
   {
-    "lat": 38.584889,
-    "lon": -93.751083,
-    "agl": "319.9",
-    "text": "OBST TOWER LGT (ASR 1245095) 383505.60N0934503.90W (12.2NM SSE RCM) 1307.7FT (319.9FT AGL) U/S"
-  },
-  {
     "lat": 44.902778,
     "lon": -95.656667,
     "agl": "470.1",
@@ -27534,12 +26376,6 @@
     "text": "OBST TOWER LGT (ASR 1330991) 383928.70N0861611.90W (6.4NM NW I83) 1129FT (305FT AGL) U/S"
   },
   {
-    "lat": 39.570222,
-    "lon": -76.32025,
-    "agl": "259.8",
-    "text": "OBST TOWER LGT (ASR 1219114) 393412.80N0761912.90W (5.3NM W 0W3) 680.8FT (259.8FT AGL) U/S"
-  },
-  {
     "lat": 37.218222,
     "lon": -92.290083,
     "agl": "275.9",
@@ -27556,12 +26392,6 @@
     "lon": -88.726194,
     "agl": "320",
     "text": "OBST TOWER LGT (ASR 1327104) 330659.32N0884805.72W (7.11NM NNW 5A4) 634FT (320FT AGL) U/S"
-  },
-  {
-    "lat": 41.528142,
-    "lon": -72.834958,
-    "agl": "78",
-    "text": "OBST POWER LINE LGT (ASN 2017-ANE-4098-OE) 413141N0725006W (1.2NM NNW MMK) 353FT (78FT AGL) U/S"
   },
   {
     "lat": 34.155611,
@@ -27720,12 +26550,6 @@
     "text": "OBST TOWER LGT (ASR 1306367) 352730.70N0762234.50W (21.48NM W 7W6) 311FT (310FT AGL) U/S"
   },
   {
-    "lat": 39.215194,
-    "lon": -78.266694,
-    "agl": "195",
-    "text": "OBST TOWER LGT (ASN 2021-AEA-16494-OE) 391255N0781600W (7.1NM NW OKV) 989FT (195FT AGL) U/S"
-  },
-  {
     "lat": 36.509136,
     "lon": -115.528808,
     "agl": "138",
@@ -27754,12 +26578,6 @@
     "lon": -94.69,
     "agl": "225.1",
     "text": "OBST TOWER LGT (ASR 1063241) 391226.00N0944124.00W (5.5NM SSE MCI) 1185.0FT (225.1FT AGL) U/S"
-  },
-  {
-    "lat": 41.593056,
-    "lon": -93.630278,
-    "agl": "536.7",
-    "text": "OBST TOWER LGT (ASR 1016800) 413535.00N0933749.00W (3.8NM NNE DSM) 1416.0FT (536.7FT AGL) U/S"
   },
   {
     "lat": 39.974472,
@@ -27846,12 +26664,6 @@
     "text": "OBST TOWER LGT (ASR 1014092) 332026.80N0863733.30W (12.7NM NE EET) 773.0FT (253.0FT AGL) U/S"
   },
   {
-    "lat": 40.679056,
-    "lon": -87.418806,
-    "agl": "250.0",
-    "text": "OBST TOWER LGT (ASR 1292998) 404044.60N0872507.70W (4.8NM S 50I) 1035.4FT (250.0FT AGL) U/S"
-  },
-  {
     "lat": 34.847028,
     "lon": -89.103806,
     "agl": "435.0",
@@ -27862,12 +26674,6 @@
     "lon": -97.752611,
     "agl": "254.9",
     "text": "OBST TOWER LGT (ASR 1227830) 295929.10N0974509.40W (8.3NM NE HYI) 841.9FT (254.9FT AGL) U/S"
-  },
-  {
-    "lat": 31.893839,
-    "lon": -96.859783,
-    "agl": "394",
-    "text": "OBST TOWER LGT (ASN 2025-WTW-12650-OE) 315338N0965135W (16.6NM SE INJ) 901FT (394FT AGL) U/S"
   },
   {
     "lat": 37.337778,
@@ -28048,12 +26854,6 @@
     "lon": -95.65,
     "agl": "265.1",
     "text": "OBST TOWER LGT (ASR 1010717) 362935.00N0953900.00W (13.7NM S H66) 1044.9FT (265.1FT AGL) U/S"
-  },
-  {
-    "lat": 37.771972,
-    "lon": -76.465361,
-    "agl": "267.1",
-    "text": "OBST TOWER LGT (ASR 1260534) 374619.10N0762755.30W (10.2NM N W75) 334.0FT (267.1FT AGL) U/S"
   },
   {
     "lat": 34.829167,
@@ -28294,12 +27094,6 @@
     "lon": -79.354167,
     "agl": "208.0",
     "text": "OBST TOWER LGT (ASR 1005905) 360424.80N0792115.00W (6.0NM ENE BUY) 767.1FT (208.0FT AGL) U/S"
-  },
-  {
-    "lat": 38.979139,
-    "lon": -76.451417,
-    "agl": "599.7",
-    "text": "OBST TOWER LGT (ASR 1244337) 385844.90N0762705.10W (5.6NM NW 3W3) 610.6FT (599.7FT AGL) U/S"
   },
   {
     "lat": 42.271833,
@@ -28668,12 +27462,6 @@
     "text": "OBST TOWER LGT (ASN 2025-AGL-7053-OE) 390629N0891701W (8.9NM NW VLA) 886FT (259FT AGL) U/S"
   },
   {
-    "lat": 41.490728,
-    "lon": -73.121228,
-    "agl": "94",
-    "text": "OBST TOWER LGT (ASN 2016-ANE-2806-OE) 412927N0730716W (1.0NM NE OXC) 882FT (94FT AGL) U/S"
-  },
-  {
     "lat": 30.156139,
     "lon": -85.219111,
     "agl": "283.1",
@@ -28702,12 +27490,6 @@
     "lon": -84.382944,
     "agl": "250.0",
     "text": "OBST TOWER LGT (ASR 1254172) 394102.70N0842258.60W (5.2NM SSW I44) 1082.0FT (250.0FT AGL) U/S"
-  },
-  {
-    "lat": 34.231278,
-    "lon": -93.279639,
-    "agl": "498.7",
-    "text": "OBST TOWER LGT (ASR 1267154) 341352.60N0931646.70W (13.2NM NW ADF) 978.7FT (498.7FT AGL) U/S"
   },
   {
     "lat": 40.855056,
@@ -28932,12 +27714,6 @@
     "text": "OBST TOWER LGT (ASR 1240280) 351606.60N0793556.70W (8.3NM NE N26) 898.0FT (259.8FT AGL) U/S"
   },
   {
-    "lat": 39.601,
-    "lon": -94.936972,
-    "agl": "467.8",
-    "text": "OBST TOWER LGT (ASR 1248106) 393603.60N0945613.10W (9.9NM NW 0C1) 1617.8FT (467.8FT AGL) U/S"
-  },
-  {
     "lat": 34.123917,
     "lon": -117.238667,
     "agl": "198.8",
@@ -28962,12 +27738,6 @@
     "text": "OBST TOWER LGT (ASR 1307297) 385326.00N0842240.70W (11.2NM N K62) 1081FT (310FT AGL) U/S"
   },
   {
-    "lat": 37.101389,
-    "lon": -92.268056,
-    "agl": "359.9",
-    "text": "OBST TOWER LGT (ASR 1007471) 370605.00N0921605.00W (2.3NM ESE 1MO) 1919.6FT (359.9FT AGL) U/S"
-  },
-  {
     "lat": 36.28,
     "lon": -97.067222,
     "agl": "259.8",
@@ -28990,12 +27760,6 @@
     "lon": -75.09575,
     "agl": "302.8",
     "text": "OBST TOWER LGT (ASR 1007835) 443210.20N0750544.70W (9.1NM N 1E8) 982.6FT (302.8FT AGL) U/S"
-  },
-  {
-    "lat": 28.667778,
-    "lon": -97.430556,
-    "agl": "493.1",
-    "text": "OBST TOWER LGT (ASR 1048287) 284005.70N0972550.10W (22.0NM NNE TX2) 709.0FT (493.1FT AGL) U/S"
   },
   {
     "lat": 40.442222,
@@ -29056,12 +27820,6 @@
     "lon": -85.935222,
     "agl": "997.4",
     "text": "OBST TOWER LGT (ASR 1029953) 400856.10N0855606.80W (8.9NM NE I80) 1817.6FT (997.4FT AGL) U/S"
-  },
-  {
-    "lat": 33.49025,
-    "lon": -89.354667,
-    "agl": "306.1",
-    "text": "OBST TOWER LGT (ASR 1253402) 332924.90N0892116.80W (3.4NM SW 06M) 655.2FT (306.1FT AGL) U/S"
   },
   {
     "lat": 32.360389,
@@ -29136,12 +27894,6 @@
     "text": "OBST TOWER LGT (ASR 1027199) 282113.00N0804644.00W (5.0NM W COI) 285.4FT (267.4FT AGL) U/S"
   },
   {
-    "lat": 30.963611,
-    "lon": -87.180278,
-    "agl": "277",
-    "text": "OBST STACK LGT (ASN 2012-ASO-1865-OE) 305749N0871049W (8.0NM SW 12J) 477FT (277FT AGL) U/S"
-  },
-  {
     "lat": 37.768075,
     "lon": -90.774344,
     "agl": "330",
@@ -29152,12 +27904,6 @@
     "lon": -91.289722,
     "agl": "350.1",
     "text": "OBST TOWER LGT (ASR 1018102) 420405.00N0911723.00W (10.8NM SSW MXO) 1299.9FT (350.1FT AGL) U/S"
-  },
-  {
-    "lat": 39.7647,
-    "lon": -90.398044,
-    "agl": "260",
-    "text": "OBST TOWER LGT (ASR 1318310) 394552.92N0902352.96W (7.4NM W IJX) 882FT (260FT AGL) U/S"
   },
   {
     "lat": 42.291306,
@@ -29466,12 +28212,6 @@
     "text": "OBST TOWER LGT (ASR 1327449) 414229.80N0843844.20W (8.75NM ESE 57P) 1226FT (265FT AGL) U/S"
   },
   {
-    "lat": 48.78,
-    "lon": -98.038056,
-    "agl": "319.9",
-    "text": "OBST TOWER LGT (ASR 1039536) 484648.00N0980217.00W (11.0NM SSW 96D) 1879.9FT (319.9FT AGL) U/S"
-  },
-  {
     "lat": 36.0615,
     "lon": -80.267944,
     "agl": "407.2",
@@ -29482,12 +28222,6 @@
     "lon": -105.035833,
     "agl": "268.0",
     "text": "OBST TOWER LGT (ASR 1008262) 422049.00N1050209.00W (10.4NM S 76V) 5541.0FT (268.0FT AGL) U/S"
-  },
-  {
-    "lat": 31.765889,
-    "lon": -88.090833,
-    "agl": "412.1",
-    "text": "OBST TOWER LGT (ASR 1254981) 314557.20N0880527.00W (19.6NM NNE 5R1) 585.0FT (412.1FT AGL) U/S"
   },
   {
     "lat": 38.383944,
@@ -29640,12 +28374,6 @@
     "text": "OBST WIND TURBINE LGT (ASN 2017-WTE-2190-OE) 410724N0991802W (17.1NM SW 0F4) 2731FT (263FT AGL) U/S"
   },
   {
-    "lat": 32.285472,
-    "lon": -90.503889,
-    "agl": "310.0",
-    "text": "OBST TOWER LGT (ASR 1264396) 321707.70N0903014.00W (4.9NM WSW JVW) 579.1FT (310.0FT AGL) U/S"
-  },
-  {
     "lat": 32.719056,
     "lon": -85.786306,
     "agl": "310.0",
@@ -29710,12 +28438,6 @@
     "lon": -83.239083,
     "agl": "240.2",
     "text": "OBST TOWER LGT (ASR 1034647) 390658.20N0831420.70W (14.5NM ESE HOC) 1505.2FT (240.2FT AGL) U/S"
-  },
-  {
-    "lat": 39.814167,
-    "lon": -97.368333,
-    "agl": "253.0",
-    "text": "OBST TOWER LGT (ASR 1033546) 394851.00N0972206.00W (13.4NM E RPB) 1851.0FT (253.0FT AGL) U/S"
   },
   {
     "lat": 46.416617,
@@ -29862,12 +28584,6 @@
     "text": "OBST TOWER LGT (ASR 1284109) 392107.10N0792136.80W (13.9NM S 2G4) 3462.6FT (364.8FT AGL) U/S"
   },
   {
-    "lat": 41.838778,
-    "lon": -75.598056,
-    "agl": "300.2",
-    "text": "OBST TOWER LGT (ASR 1255648) 415019.60N0753553.00W (16.8NM NNE 9N3) 1872.0FT (300.2FT AGL) U/S"
-  },
-  {
     "lat": 44.970458,
     "lon": -99.490536,
     "agl": "305",
@@ -29878,12 +28594,6 @@
     "lon": -82.478861,
     "agl": "259.8",
     "text": "OBST TOWER LGT (ASR 1293316) 300036.20N0822843.90W (11.3NM SSE LCQ) 411.4FT (259.8FT AGL) U/S"
-  },
-  {
-    "lat": 39.610833,
-    "lon": -88.692222,
-    "agl": "557.1",
-    "text": "OBST TOWER LGT (ASR 1057132) 393639.00N0884132.00W (14.0NM NNE 2H0) 1211.9FT (557.1FT AGL) U/S"
   },
   {
     "lat": 45.584667,
@@ -30102,12 +28812,6 @@
     "text": "OBST TOWER LGT (ASR 1267495) 300158.00N0953141.20W (2.1NM SE DWH) 352.0FT (216.9FT AGL) U/S"
   },
   {
-    "lat": 35.402611,
-    "lon": -78.022917,
-    "agl": "206.0",
-    "text": "OBST TOWER LGT (ASR 1290951) 352409.40N0780122.50W (4.6NM SW GWW) 271.7FT (206.0FT AGL) U/S"
-  },
-  {
     "lat": 34.0175,
     "lon": -96.1575,
     "agl": "365.2",
@@ -30216,12 +28920,6 @@
     "text": "OBST TOWER LGT (ASR 1308471) 325154.83N0860530.62W (7.2NM WSW ALX) 997FT (269FT AGL) U/S"
   },
   {
-    "lat": 33.069444,
-    "lon": -111.054167,
-    "agl": "231.0",
-    "text": "OBST TOWER LGT (ASR 1008963) 330410.00N1110315.00W (7.5NM W E67) 3613.8FT (231.0FT AGL) U/S"
-  },
-  {
     "lat": 39.295306,
     "lon": -87.488083,
     "agl": "298.9",
@@ -30256,12 +28954,6 @@
     "lon": -93.286556,
     "agl": "276.9",
     "text": "OBST TOWER LGT (ASR 1237838) 363109.00N0931711.60W (4.2NM W BBG) 1539.0FT (276.9FT AGL) U/S"
-  },
-  {
-    "lat": 41.060611,
-    "lon": -105.481611,
-    "agl": "257.9",
-    "text": "OBST TOWER LGT (ASR 1212946) 410338.20N1052853.80W (17.5NM SSE LAR) 8242.8FT (257.9FT AGL) U/S"
   },
   {
     "lat": 35.360769,
@@ -30972,12 +29664,6 @@
     "text": "OBST TOWER LGT (ASR 1034379) 422624.70N1242500.70W (1.5NM NNE 4S1) 833.0FT (136.2FT AGL) U/S"
   },
   {
-    "lat": 41.486139,
-    "lon": -73.123322,
-    "agl": "94",
-    "text": "OBST POWER LINE LGT (ASN 2016-ANE-2803-OE) 412910N0730724W (0.7NM NE OXC) 951FT (94FT AGL) U/S"
-  },
-  {
     "lat": 41.420361,
     "lon": -80.525167,
     "agl": "409.1",
@@ -31030,12 +29716,6 @@
     "lon": -94.823414,
     "agl": "355",
     "text": "OBST TOWER LGT (ASR 1312228) 335048.61N0944924.29W (4.1NM SSE 4O4) 763FT (355FT AGL) U/S"
-  },
-  {
-    "lat": 42.189775,
-    "lon": -72.489733,
-    "agl": "132",
-    "text": "OBST POWER LINE LGT (ASN 2011-ANE-219-OE) 421123N0722923W (2.0NM E CEF) 460FT (132FT AGL) U/S"
   },
   {
     "lat": 36.498783,
@@ -31416,12 +30096,6 @@
     "text": "OBST TOWER LGT (ASR 1047398) 261301.00N0974649.00W (6.8NM W HRL) 1049.9FT (1000.7FT AGL) U/S"
   },
   {
-    "lat": 36.120278,
-    "lon": -78.379722,
-    "agl": "328.1",
-    "text": "OBST TOWER LGT (ASR 1007192) 360713.00N0782247.00W (6.3NM NNW LHZ) 656.2FT (328.1FT AGL) U/S"
-  },
-  {
     "lat": 33.512472,
     "lon": -89.327194,
     "agl": "359.9",
@@ -31770,12 +30444,6 @@
     "text": "OBST TOWER LGT (ASR 1037197) 471310.00N1020728.00W (12.8NM W 95D) 2570.9FT (278.9FT AGL) U/S"
   },
   {
-    "lat": 41.504444,
-    "lon": -93.804444,
-    "agl": "297.9",
-    "text": "OBST TOWER LGT (ASR 1017079) 413015.60N0934815.50W (6.6NM WSW DSM) 1265.7FT (297.9FT AGL) U/S"
-  },
-  {
     "lat": 43.019285,
     "lon": -91.123733,
     "agl": "307",
@@ -31810,12 +30478,6 @@
     "lon": -94.701111,
     "agl": "419.9",
     "text": "OBST TOWER LGT (ASR 1049618) 295134.00N0944204.00W (5.7NM NNW T00) 442.9FT (419.9FT AGL) U/S"
-  },
-  {
-    "lat": 41.486906,
-    "lon": -73.122797,
-    "agl": "91",
-    "text": "OBST POWER LINE LGT (ASN 2016-ANE-4731-OE) 412913N0730722W (0.8NM NE OXC) 961FT (91FT AGL) U/S"
   },
   {
     "lat": 38.308056,
@@ -31896,12 +30558,6 @@
     "text": "OBST TOWER LGT (ASR 1016996) 415242.00N0931227.00W (14.8NM NW TNU) 1415.0FT (415.0FT AGL) U/S"
   },
   {
-    "lat": 33.201167,
-    "lon": -93.910972,
-    "agl": "499.0",
-    "text": "OBST TOWER LGT (ASR 1047255) 331204.20N0935439.50W (11.8NM N L87) 745.1FT (499.0FT AGL) U/S"
-  },
-  {
     "lat": 31.0776,
     "lon": -97.688086,
     "agl": "25",
@@ -31956,12 +30612,6 @@
     "text": "OBST TOWER LGT (ASN 2025-ASO-3851-OE) 332918N0852952W (18.9NM ESE ANB) 1620FT (260FT AGL) U/S"
   },
   {
-    "lat": 18.356861,
-    "lon": -64.970056,
-    "agl": "250.0",
-    "text": "OBST TOWER LGT (ASR 1296470) 182124.70N0645812.20W (1.2NM NE STT) 1732.0FT (250.0FT AGL) U/S"
-  },
-  {
     "lat": 29.766028,
     "lon": -96.231,
     "agl": "293.0",
@@ -31978,12 +30628,6 @@
     "lon": -70.295778,
     "agl": "505.9",
     "text": "OBST TOWER LGT (ASR 1016803) 435704.40N0701744.80W (6.0NM S LEW) 976.0FT (505.9FT AGL) U/S"
-  },
-  {
-    "lat": 41.49005,
-    "lon": -73.121364,
-    "agl": "96",
-    "text": "OBST POWER LINE LGT (ASN 2016-ANE-4733-OE) 412924N0730717W (0.9NM NE OXC) 911FT (96FT AGL) U/S"
   },
   {
     "lat": 34.984722,
@@ -32098,12 +30742,6 @@
     "lon": -81.633,
     "agl": "184.7",
     "text": "OBST TOWER LGT (ASR 1295677) 315300.10N0813758.80W (3.6NM W LHW) 252.0FT (184.7FT AGL) U/S"
-  },
-  {
-    "lat": 42.15625,
-    "lon": -114.692806,
-    "agl": "204.1",
-    "text": "OBST TOWER LGT (ASR 1238184) 420922.50N1144134.10W (11.0NM N 06U) 5474.1FT (204.1FT AGL) U/S"
   },
   {
     "lat": 41.485308,
@@ -32478,12 +31116,6 @@
     "text": "OBST TOWER LGT (ASN 2018-AEA-4851-OE) 380935N0781030W (0.5NM WNW GVE) 632FT (118FT AGL) U/S"
   },
   {
-    "lat": 28.920975,
-    "lon": -95.341008,
-    "agl": "208",
-    "text": "OBST TOWER LGT (ASN 2016-ASW-6111-OE) 285516N0952028W (12.8NM SSE LBX) 211FT (208FT AGL) U/S"
-  },
-  {
     "lat": 38.515889,
     "lon": -77.815111,
     "agl": "270.0",
@@ -32506,12 +31138,6 @@
     "lon": -83.510778,
     "agl": "315.0",
     "text": "OBST TOWER LGT (ASR 1267943) 401623.70N0833038.80W (7.8NM WNW MRT) 1409.1FT (315.0FT AGL) U/S"
-  },
-  {
-    "lat": 38.644597,
-    "lon": -82.166894,
-    "agl": "213",
-    "text": "OBST STACK LGT (ASN 2025-AEA-12803-OE) 383841N0821001W (11.4NM S GAS) 795FT (213FT AGL) U/S"
   },
   {
     "lat": 32.860556,
@@ -32650,12 +31276,6 @@
     "lon": -87.617861,
     "agl": "300",
     "text": "OBST TOWER LGT (ASN 2025-ASO-448-OE) 372825N0873704W (6.4NM ENE 8M9) 725FT (300FT AGL) U/S"
-  },
-  {
-    "lat": 35.016861,
-    "lon": -85.387111,
-    "agl": "270.0",
-    "text": "OBST TOWER LGT (ASR 1064238) 350100.70N0852313.60W (9.1NM W CHA) 1174.9FT (270.0FT AGL) U/S"
   },
   {
     "lat": 34.354361,
@@ -33000,12 +31620,6 @@
     "text": "OBST TOWER LGT (ASR 1226413) 180413.40N0662349.70W (10.8NM ENE PSE) 1179.8FT (256.9FT AGL) U/S"
   },
   {
-    "lat": 41.484947,
-    "lon": -73.123728,
-    "agl": "96",
-    "text": "OBST POWER LINE LGT (ASN 2016-ANE-2852-OE) 412906N0730725W (0.6NM NE OXC) 903FT (96FT AGL) U/S"
-  },
-  {
     "lat": 28.590083,
     "lon": -98.547578,
     "agl": "310",
@@ -33288,12 +31902,6 @@
     "text": "OBST TOWER LGT (ASR 1228242) 400840.80N0793430.80W (2.5NM NNW P99) 1551.8FT (254.9FT AGL) U/S"
   },
   {
-    "lat": 39.539889,
-    "lon": -87.122167,
-    "agl": "323.2",
-    "text": "OBST TOWER LGT (ASR 1209004) 393223.60N0870719.80W (3.9NM NNW 0I2) 993.1FT (323.2FT AGL) U/S"
-  },
-  {
     "lat": 47.111944,
     "lon": -118.365833,
     "agl": "117.1",
@@ -33454,12 +32062,6 @@
     "lon": -76.779444,
     "agl": "330.1",
     "text": "OBST TOWER LGT (ASR 1053420) 420429.00N0764646.00W (7.1NM SE ELM) 1169.9FT (330.1FT AGL) U/S"
-  },
-  {
-    "lat": 35.808333,
-    "lon": -83.981194,
-    "agl": "150.9",
-    "text": "OBST TOWER LGT (ASR 1229585) 354830.00N0835852.30W (0.6NM ESE TYS) 1107.9FT (150.9FT AGL) U/S"
   },
   {
     "lat": 41.436511,
@@ -33810,12 +32412,6 @@
     "text": "OBST TOWER LGT (ASR 1041794) 403514.00N0984811.00W (7.8NM NE 0V3) 3166.0FT (1071.2FT AGL) U/S"
   },
   {
-    "lat": 38.945278,
-    "lon": -88.28,
-    "agl": "315.9",
-    "text": "OBST TOWER LGT (ASR 1012614) 385643.00N0881648.00W (12.8NM ESE 2T2) 863.8FT (315.9FT AGL) U/S"
-  },
-  {
     "lat": 39.030389,
     "lon": -85.642528,
     "agl": "199",
@@ -33972,12 +32568,6 @@
     "text": "OBST TOWER LGT (ASN 2012-AWP-2746-OE) 342630N1180759W (9.8NM ESE L70) 3811FT (254FT AGL) U/S"
   },
   {
-    "lat": 43.412364,
-    "lon": -72.199856,
-    "agl": "56",
-    "text": "OBST TOWER LGT (ASN 2020-ANE-6212-OE) 432445N0721159W (1.6NM NNW 2B3) 1170FT (56FT AGL) U/S"
-  },
-  {
     "lat": 31.153333,
     "lon": -81.966667,
     "agl": "774.9",
@@ -34000,12 +32590,6 @@
     "lon": -94.191,
     "agl": "308.7",
     "text": "OBST TOWER LGT (ASR 1295811) 471246.50N0941127.60W (13.4NM NE XVG) 1628.6FT (308.7FT AGL) U/S"
-  },
-  {
-    "lat": 41.569444,
-    "lon": -84.193333,
-    "agl": "211.9",
-    "text": "OBST TOWER LGT (ASR 1019251) 413410.00N0841136.00W (3.8NM SW USE) 981.0FT (211.9FT AGL) U/S"
   },
   {
     "lat": 33.278944,
@@ -34380,18 +32964,6 @@
     "text": "OBST TOWER LGT (ASR 1281213) 430005.00N1023233.90W (2.0NM SW IEN) 3514.8FT (219.8FT AGL) U/S"
   },
   {
-    "lat": 41.194778,
-    "lon": -92.941278,
-    "agl": "259.8",
-    "text": "OBST TOWER LGT (ASR 1245511) 411141.20N0925628.60W (10.0NM SE OXV) 1063.6FT (259.8FT AGL) U/S"
-  },
-  {
-    "lat": 32.457056,
-    "lon": -91.741083,
-    "agl": "253.9",
-    "text": "OBST TOWER LGT (ASR 1225603) 322725.40N0914427.90W (2.3NM SE M79) 331.7FT (253.9FT AGL) U/S"
-  },
-  {
     "lat": 35.373417,
     "lon": -93.84445,
     "agl": "265",
@@ -34606,12 +33178,6 @@
     "lon": -80.735694,
     "agl": "217.8",
     "text": "OBST TOWER LGT (ASR 1049555) 343555.20N0804408.50W (5.3NM SSW T73) 888.8FT (217.8FT AGL) U/S"
-  },
-  {
-    "lat": 32.147111,
-    "lon": -94.501306,
-    "agl": "290.0",
-    "text": "OBST TOWER LGT (ASR 1268452) 320849.60N0943004.70W (10.5NM W 4F2) 619.1FT (290.0FT AGL) U/S"
   },
   {
     "lat": 42.674278,
@@ -34864,12 +33430,6 @@
     "lon": -88.887222,
     "agl": "499.0",
     "text": "OBST TOWER LGT (ASR 1202276) 322951.90N0885314.00W (11.9NM NW MEI) 1013.1FT (499.0FT AGL) U/S"
-  },
-  {
-    "lat": 39.474139,
-    "lon": -75.144639,
-    "agl": "424.9",
-    "text": "OBST TOWER LGT (ASR 1046137) 392826.90N0750840.70W (1.8NM E 00N) 536.7FT (424.9FT AGL) U/S"
   },
   {
     "lat": 34.827556,
@@ -35700,12 +34260,6 @@
     "text": "OBST TOWER LGT (ASR 1227300) 410511.40N0954244.70W (10.6NM SSE CBF) 1260.2FT (247.0FT AGL) U/S"
   },
   {
-    "lat": 28.786222,
-    "lon": -97.049889,
-    "agl": "306.8",
-    "text": "OBST TOWER LGT (ASR 1200316) 284710.40N0970259.60W (8.1NM WSW VCT) 391.7FT (306.8FT AGL) U/S"
-  },
-  {
     "lat": 39.724611,
     "lon": -84.254889,
     "agl": "1153.9",
@@ -36046,12 +34600,6 @@
     "lon": -101.230278,
     "agl": "298.6",
     "text": "OBST TOWER LGT (ASR 1037194) 464817.00N1011349.00W (14.0NM W Y19) 2539.4FT (298.6FT AGL) U/S"
-  },
-  {
-    "lat": 34.481389,
-    "lon": -92.7295,
-    "agl": "259.8",
-    "text": "OBST TOWER LGT (ASR 1206658) 342853.00N0924346.20W (9.0NM NE M78) 704.7FT (259.8FT AGL) U/S"
   },
   {
     "lat": 42.139028,
@@ -36408,12 +34956,6 @@
     "text": "OBST TOWER LGT (ASR 1042694) 390000.00N0770325.00W (6.3NM W CGS) 1050.5FT (754.3FT AGL) U/S"
   },
   {
-    "lat": 35.578667,
-    "lon": -78.43575,
-    "agl": "500.0",
-    "text": "OBST TOWER LGT (ASR 1267863) 353443.20N0782608.70W (3.1NM NW JNX) 735.9FT (500.0FT AGL) U/S"
-  },
-  {
     "lat": 40.335444,
     "lon": -103.804167,
     "agl": "1995",
@@ -36582,12 +35124,6 @@
     "text": "OBST TOWER LGT (ASR 1266349) 365409.90N0941852.30W (6.7NM NE EOS) 1476.7FT (259.8FT AGL) U/S"
   },
   {
-    "lat": 36.927278,
-    "lon": -90.751833,
-    "agl": "259.8",
-    "text": "OBST TOWER LGT (ASR 1259978) 365538.20N0904506.60W (12.1NM S PYN) 1077.8FT (259.8FT AGL) U/S"
-  },
-  {
     "lat": 39.015694,
     "lon": -94.506944,
     "agl": "1102.0",
@@ -36640,12 +35176,6 @@
     "lon": -75.551667,
     "agl": "301.2",
     "text": "OBST TOWER LGT (ASR 1033558) 394346.00N0753306.00W (4.0NM NE ILG) 307.1FT (301.2FT AGL) U/S"
-  },
-  {
-    "lat": 37.395,
-    "lon": -88.939722,
-    "agl": "953.1",
-    "text": "OBST TOWER LGT (ASR 1013331) 372342.00N0885623.00W (15.5NM NW M30) 1519.0FT (953.1FT AGL) U/S"
   },
   {
     "lat": 38.317833,
@@ -36972,18 +35502,6 @@
     "text": "OBST TOWER LGT (ASR 1000778) 460027.00N1122633.00W (3.9NM NE BTM) 8458.0FT (212.9FT AGL) U/S"
   },
   {
-    "lat": 47.977222,
-    "lon": -96.609167,
-    "agl": "702.1",
-    "text": "OBST TOWER LGT (ASR 1024158) 475838.00N0963633.00W (8.2NM NE CKN) 1604.3FT (702.1FT AGL) U/S"
-  },
-  {
-    "lat": 32.365,
-    "lon": -81.328611,
-    "agl": "315.0",
-    "text": "OBST TOWER LGT (ASR 1047951) 322154.00N0811943.00W (15.5NM NNW SAV) 370.1FT (315.0FT AGL) U/S"
-  },
-  {
     "lat": 40.960833,
     "lon": -73.9225,
     "agl": "425.2",
@@ -37260,12 +35778,6 @@
     "text": "OBST TOWER LGT (ASN 2024-WTW-13689-OE) 361529N0932226W (10.6NM W HRO) 2365FT (400FT AGL) U/S"
   },
   {
-    "lat": 38.284167,
-    "lon": -95.264722,
-    "agl": "484.9",
-    "text": "OBST TOWER LGT (ASR 1040902) 381703.00N0951553.00W (2.4NM W K68) 1542.7FT (484.9FT AGL) U/S"
-  },
-  {
     "lat": 40.321639,
     "lon": -79.877583,
     "agl": "422.9",
@@ -37288,12 +35800,6 @@
     "lon": -88.273833,
     "agl": "300",
     "text": "OBST TOWER LGT (ASN 2022-ASO-37497-OE) 311033N0881626W (17.1NM SSW 5R1) 481FT (300FT AGL) U/S"
-  },
-  {
-    "lat": 32.1645,
-    "lon": -90.016528,
-    "agl": "230.0",
-    "text": "OBST TOWER LGT (ASR 1280155) 320952.20N0900059.50W (9.2NM SSE JAN) 580.4FT (230.0FT AGL) U/S"
   },
   {
     "lat": 42.768056,
@@ -37630,12 +36136,6 @@
     "lon": -87.054167,
     "agl": "1131.9",
     "text": "OBST TOWER LGT (ASR 1047180) 373630.50N0870315.20W (9.4NM SE OWB) 1573.8FT (1131.9FT AGL) U/S"
-  },
-  {
-    "lat": 43.931469,
-    "lon": -85.572469,
-    "agl": "255",
-    "text": "OBST TOWER LGT (ASN 2025-AGL-5048-OE) 435553N0853421W (12.1NM ENE 7D3) 1430FT (255FT AGL) U/S"
   },
   {
     "lat": 40.738639,
@@ -38136,12 +36636,6 @@
     "text": "OBST TOWER LGT (ASR 1244306) 373853.30N0821646.50W (7.8NM WSW EBD) 1705.1FT (325.1FT AGL) U/S"
   },
   {
-    "lat": 41.380556,
-    "lon": -75.593889,
-    "agl": "284.8",
-    "text": "OBST TOWER LGT (ASR 1028054) 412250.00N0753538.00W (6.4NM ENE AVP) 2339.9FT (284.8FT AGL) U/S"
-  },
-  {
     "lat": 33.311389,
     "lon": -90.527222,
     "agl": "301.8",
@@ -38280,12 +36774,6 @@
     "text": "OBST TOWER LGT (ASN 2016-AEA-10513-OE) 415957N0800924W (4.0NM WSW 03G) 1240FT (260FT AGL) U/S"
   },
   {
-    "lat": 44.887633,
-    "lon": -89.844183,
-    "agl": "304",
-    "text": "OBST TOWER LGT (ASN 2021-AGL-35190-OE) 445315N0895039W (9.5NM WSW AUW) 1721FT (304FT AGL) U/S"
-  },
-  {
     "lat": 41.306833,
     "lon": -96.027139,
     "agl": "1345.8",
@@ -38388,12 +36876,6 @@
     "text": "OBST TOWER LGT (ASR UNKNOWN) 424317.94N0910026.16W (1.5NM NW C74) 817FT (197FT AGL) U/S"
   },
   {
-    "lat": 42.053842,
-    "lon": -89.889622,
-    "agl": "210",
-    "text": "OBST TOWER LGT (ASN 2018-AGL-17640-OE) 420314N0895323W (9.7NM E SFY) 1015FT (210FT AGL) U/S"
-  },
-  {
     "lat": 33.999711,
     "lon": -117.65775,
     "agl": "147",
@@ -38410,12 +36892,6 @@
     "lon": -84.898056,
     "agl": "271.0",
     "text": "OBST TOWER LGT (ASR 1024981) 412028.00N0845353.00W (6.6NM SE 4C2) 1110.9FT (271.0FT AGL) U/S"
-  },
-  {
-    "lat": 33.458611,
-    "lon": -84.429444,
-    "agl": "227.0",
-    "text": "OBST TOWER LGT (ASR 1020247) 332731.00N0842546.00W (6.4NM NW HMP) 1071.2FT (227.0FT AGL) U/S"
   },
   {
     "lat": 31.736667,
@@ -38964,12 +37440,6 @@
     "text": "OBST TOWER LGT (ASR 1329314) 354130.00N0972837.80W (10.01NM S GOK) 1596FT (410FT AGL) U/S"
   },
   {
-    "lat": 44.102778,
-    "lon": -89.306667,
-    "agl": "267.1",
-    "text": "OBST TOWER LGT (ASR 1030373) 440610.00N0891824.00W (3.6NM N Y50) 1323.2FT (267.1FT AGL) U/S"
-  },
-  {
     "lat": 41.502514,
     "lon": -72.837786,
     "agl": "86",
@@ -39166,12 +37636,6 @@
     "lon": -81.845625,
     "agl": "260",
     "text": "OBST TOWER LGT (ASN 2024-ASO-10871-OE) 294037N0815044W (8.2NM W 28J) 407FT (260FT AGL) U/S"
-  },
-  {
-    "lat": 36.758528,
-    "lon": -88.169833,
-    "agl": "319.9",
-    "text": "OBST TOWER LGT (ASR 1043411) 364530.70N0881011.40W (11.3NM ENE CEY) 832.0FT (319.9FT AGL) U/S"
   },
   {
     "lat": 43.702694,
@@ -40302,12 +38766,6 @@
     "text": "OBST TOWER LGT (ASR 1029267) 394337.90N0871755.80W (11.4NM NNE 3I3) 1049.9FT (399.9FT AGL) U/S"
   },
   {
-    "lat": 39.696419,
-    "lon": -90.722594,
-    "agl": "259",
-    "text": "OBST TOWER LGT (ASR 1316910) 394147.11N0904321.34W (4.3NM NE PPQ) 908FT (259FT AGL) U/S"
-  },
-  {
     "lat": 30.709944,
     "lon": -83.623944,
     "agl": "261.2",
@@ -40524,12 +38982,6 @@
     "text": "OBST TOWER LGT (ASR 1259001) 302219.70N0952209.90W (2.6NM ENE CXO) 535.1FT (290.0FT AGL) U/S"
   },
   {
-    "lat": 31.329139,
-    "lon": -83.618639,
-    "agl": "370.1",
-    "text": "OBST TOWER LGT (ASR 1219349) 311944.90N0833707.10W (9.1NM SW TMA) 640.1FT (370.1FT AGL) U/S"
-  },
-  {
     "lat": 39.210833,
     "lon": -84.492722,
     "agl": "267.1",
@@ -40704,12 +39156,6 @@
     "text": "OBST TOWER LGT (ASR 1051679) 302130.20N0955005.80W (14.5NM E 60R) 731.3FT (408.1FT AGL) U/S"
   },
   {
-    "lat": 18.356833,
-    "lon": -64.971306,
-    "agl": "180.1",
-    "text": "OBST TOWER LGT (ASR 1288906) 182124.60N0645816.70W (1.2NM NE STT) 1704.1FT (180.1FT AGL) U/S"
-  },
-  {
     "lat": 37.152139,
     "lon": -92.124278,
     "agl": "249.0",
@@ -40828,12 +39274,6 @@
     "lon": -89.357806,
     "agl": "299.9",
     "text": "OBST TOWER LGT (ASR 1253504) 443717.80N0892128.10W (8.7NM ENE STE) 1518.0FT (299.9FT AGL) U/S"
-  },
-  {
-    "lat": 29.875694,
-    "lon": -96.877778,
-    "agl": "460.0",
-    "text": "OBST TOWER LGT (ASR 1291952) 295232.50N0965240.00W (4.2NM ESE 3T5) 887.8FT (460.0FT AGL) U/S"
   },
   {
     "lat": 38.154167,
@@ -41352,12 +39792,6 @@
     "text": "OBST TOWER LGT (ASR 1258367) 341625.80N0890444.20W (2.0NM W 22M) 650.6FT (223.8FT AGL) U/S"
   },
   {
-    "lat": 30.614889,
-    "lon": -94.409861,
-    "agl": "270.0",
-    "text": "OBST TOWER LGT (ASR 1214620) 303653.60N0942435.50W (9.9NM SSE 09R) 437.0FT (270.0FT AGL) U/S"
-  },
-  {
     "lat": 34.159139,
     "lon": -89.628583,
     "agl": "290.0",
@@ -41862,28 +40296,10 @@
     "text": "OBST TOWER LGT (ASR 1253035) 354513.50N0972939.30W (7.0NM SSW GOK) 1307.4FT (204.7FT AGL) U/S"
   },
   {
-    "lat": 33.661722,
-    "lon": -101.23975,
-    "agl": "109.9",
-    "text": "OBST TOWER LGT (ASR 1280570) 333942.20N1011423.10W (2.3NM NE 8F3) 3128.9FT (109.9FT AGL) U/S"
-  },
-  {
     "lat": 27.654444,
     "lon": -99.4625,
     "agl": "498.7",
     "text": "OBST TOWER LGT (ASR 1051188) 273916.00N0992745.00W (6.5NM NE LRD) 1141.7FT (498.7FT AGL) U/S"
-  },
-  {
-    "lat": 40.012778,
-    "lon": -92.485,
-    "agl": "315.0",
-    "text": "OBST TOWER LGT (ASR 1006832) 400046.00N0922906.00W (5.6NM SSE IRK) 1243.1FT (315.0FT AGL) U/S"
-  },
-  {
-    "lat": 39.965,
-    "lon": -91.991389,
-    "agl": "314.6",
-    "text": "OBST TOWER LGT (ASR 1250842) 395754.00N0915929.00W (9.6NM NNE 6K2) 1057.4FT (314.6FT AGL) U/S"
   },
   {
     "lat": 33.897654,
@@ -41902,12 +40318,6 @@
     "lon": -89.411556,
     "agl": "194.9",
     "text": "OBST TOWER LGT (ASR 1247835) 303810.60N0892441.60W (10.1NM SSE M13) 434.7FT (194.9FT AGL) U/S"
-  },
-  {
-    "lat": 29.127278,
-    "lon": -90.214472,
-    "agl": "262.1",
-    "text": "OBST TOWER LGT (ASR 1213219) 290738.10N0901252.00W (18.8NM S GAO) 265.1FT (262.1FT AGL) U/S"
   },
   {
     "lat": 30.488639,
@@ -41940,28 +40350,10 @@
     "text": "OBST TOWER LGT (ASN 2011-AWP-7807-OE) 335959N1173816W (1.5NM N CNO) 880FT (180FT AGL) U/S"
   },
   {
-    "lat": 31.443833,
-    "lon": -81.429278,
-    "agl": "419.9",
-    "text": "OBST TOWER LGT (ASR 1019993) 312637.80N0812545.40W (11.3NM NE BQK) 459.6FT (419.9FT AGL) U/S"
-  },
-  {
     "lat": 32.261861,
     "lon": -81.527333,
     "agl": "364.8",
     "text": "OBST TOWER LGT (ASR 1020010) 321542.70N0813138.40W (16.8NM SE TBR) 459.6FT (364.8FT AGL) U/S"
-  },
-  {
-    "lat": 41.334972,
-    "lon": -88.650278,
-    "agl": "229.0",
-    "text": "OBST TOWER LGT (ASR 1249637) 412005.90N0883901.00W (7.5NM ESE 8N2) 873.0FT (229.0FT AGL) U/S"
-  },
-  {
-    "lat": 40.371083,
-    "lon": -89.567083,
-    "agl": "270.0",
-    "text": "OBST TOWER LGT (ASR 1224444) 402215.90N0893401.50W (8.6NM SE C15) 831.0FT (270.0FT AGL) U/S"
   },
   {
     "lat": 42.278056,
@@ -42036,18 +40428,6 @@
     "text": "OBST WATERTOWER LGT (ASN 2014-AGL-8732-OE) 421528N0853112W (2.0NM NE AZO) 1023FT (163FT AGL) U/S"
   },
   {
-    "lat": 41.531722,
-    "lon": -81.360667,
-    "agl": "290.0",
-    "text": "OBST TOWER LGT (ASR 1019669) 413154.10N0812138.40W (6.0NM ESE CGF) 1524.9FT (290.0FT AGL) U/S"
-  },
-  {
-    "lat": 39.995556,
-    "lon": -92.177194,
-    "agl": "310.0",
-    "text": "OBST TOWER LGT (ASR 1270659) 395944.00N0921037.90W (12.4NM NNW 6K2) 1119.1FT (310.0FT AGL) U/S"
-  },
-  {
     "lat": 34.859028,
     "lon": -92.085528,
     "agl": "219.8",
@@ -42070,12 +40450,6 @@
     "lon": -84.516611,
     "agl": "285.1",
     "text": "OBST TOWER LGT (ASR 1213859) 360448.20N0843059.80W (12.8NM NE RKW) 1629.3FT (285.1FT AGL) U/S"
-  },
-  {
-    "lat": 41.200944,
-    "lon": -94.114306,
-    "agl": "260.2",
-    "text": "OBST TOWER LGT (ASR 1252928) 411203.40N0940651.50W (10.6NM SSW 3Y3) 1442.3FT (260.2FT AGL) U/S"
   },
   {
     "lat": 38.456389,
@@ -42294,22 +40668,10 @@
     "text": "OBST TOWER LGT (ASR 1253568) 374843.00N0921303.00W (5.6NM NW TBN) 1209.3FT (244.8FT AGL) U/S"
   },
   {
-    "lat": 39.836778,
-    "lon": -91.736806,
-    "agl": "259.8",
-    "text": "OBST TOWER LGT (ASR 1263603) 395012.40N0914412.50W (6.6NM W 93M) 965.9FT (259.8FT AGL) U/S"
-  },
-  {
     "lat": 38.404722,
     "lon": -82.489167,
     "agl": "230.0",
     "text": "OBST TOWER LGT (ASR 1044206) 382417.00N0822921.00W (0.9NM SSE HTW) 759.8FT (230.0FT AGL) U/S"
-  },
-  {
-    "lat": 30.464611,
-    "lon": -88.410056,
-    "agl": "333.0",
-    "text": "OBST TOWER LGT (ASR 1054846) 302752.60N0882436.20W (6.2NM E PQL) 344.8FT (333.0FT AGL) U/S"
   },
   {
     "lat": 39.988306,
@@ -42334,12 +40696,6 @@
     "lon": -94.225,
     "agl": "505.9",
     "text": "OBST TOWER LGT (ASR 1053809) 462055.00N0941328.90W (5.0NM SW BRD) 1695.9FT (505.9FT AGL) U/S"
-  },
-  {
-    "lat": 41.386222,
-    "lon": -83.416722,
-    "agl": "289.7",
-    "text": "OBST TOWER LGT (ASR 1259625) 412310.40N0832500.20W (9.6NM E 1G0) 953.7FT (289.7FT AGL) U/S"
   },
   {
     "lat": 30.2305,
@@ -42444,12 +40800,6 @@
     "text": "OBST TOWER LGT (ASR 1253191) 353208.90N0980958.40W (8.7NM WNW RQO) 1884.8FT (305.1FT AGL) U/S"
   },
   {
-    "lat": 44.4425,
-    "lon": -96.012222,
-    "agl": "499.0",
-    "text": "OBST TOWER LGT (ASR 1023779) 442633.00N0960044.00W (8.1NM W MML) 1969.2FT (499.0FT AGL) U/S"
-  },
-  {
     "lat": 32.823056,
     "lon": -94.475556,
     "agl": "500.0",
@@ -42520,12 +40870,6 @@
     "lon": -97.339444,
     "agl": "254.9",
     "text": "OBST TOWER LGT (ASR 1263037) 365540.00N0972022.00W (11.0NM NE BKN) 1305.1FT (254.9FT AGL) U/S"
-  },
-  {
-    "lat": 35.051111,
-    "lon": -106.643333,
-    "agl": "214.9",
-    "text": "OBST TOWER LGT (ASR 1006431) 350304.00N1063836.00W (1.9NM WNW ABQ) 5166.0FT (214.9FT AGL) U/S"
   },
   {
     "lat": 37.75682,
@@ -42768,12 +41112,6 @@
     "text": "OBST TOWER LGT (ASR 1237850) 404753.40N0740525.50W (3.4NM SSW TEB) 674.5FT (668.6FT AGL) U/S"
   },
   {
-    "lat": 36.785833,
-    "lon": -76.806861,
-    "agl": "259.8",
-    "text": "OBST TOWER LGT (ASR 1219686) 364709.00N0764824.70W (7.0NM NE FKN) 315.6FT (259.8FT AGL) U/S"
-  },
-  {
     "lat": 35.558972,
     "lon": -84.545639,
     "agl": "282.2",
@@ -42804,22 +41142,10 @@
     "text": "OBST TOWER LGT (ASR 1264318) 345532.40N0881528.20W (10.1NM NNW 15M) 753.9FT (254.9FT AGL) U/S"
   },
   {
-    "lat": 36.341861,
-    "lon": -80.046917,
-    "agl": "319.9",
-    "text": "OBST TOWER LGT (ASR 1218049) 362030.70N0800248.90W (5.6NM ENE N63) 968.8FT (319.9FT AGL) U/S"
-  },
-  {
     "lat": 42.35056,
     "lon": -92.841614,
     "agl": "410",
     "text": "OBST TOWER LGT (ASR 1304333) 422208.60N0924648.80W (2.94NM ENE 6K7) 1394FT (410FT AGL) U/S"
-  },
-  {
-    "lat": 34.883778,
-    "lon": -76.505833,
-    "agl": "844.2",
-    "text": "OBST TOWER LGT (ASR 1253623) 345301.60N0763021.00W (12.0NM NE MRH) 849.1FT (844.2FT AGL) U/S"
   },
   {
     "lat": 30.478694,
@@ -42930,12 +41256,6 @@
     "text": "OBST TOWER LGT (ASR 1243237) 322328.60N0812214.10W (17.8NM NNW SAV) 404.9FT (315.0FT AGL) U/S"
   },
   {
-    "lat": 36.3075,
-    "lon": -95.565556,
-    "agl": "279.9",
-    "text": "OBST TOWER LGT (ASR 1011506) 361827.00N0953356.00W (4.3NM WNW GCM) 1010.8FT (279.9FT AGL) U/S"
-  },
-  {
     "lat": 31.803944,
     "lon": -83.517083,
     "agl": "257.9",
@@ -42976,12 +41296,6 @@
     "lon": -96.952361,
     "agl": "257.9",
     "text": "OBST TOWER LGT (ASR 1278343) 444359.20N0965708.50W (13.9NM SE ATY) 1994.8FT (257.9FT AGL) U/S"
-  },
-  {
-    "lat": 37.323028,
-    "lon": -92.881694,
-    "agl": "419.9",
-    "text": "OBST TOWER LGT (ASR 1004536) 371922.90N0925254.10W (10.8NM NW H58) 1991.8FT (419.9FT AGL) U/S"
   },
   {
     "lat": 32.460472,
@@ -43054,12 +41368,6 @@
     "lon": -117.653333,
     "agl": "167.3",
     "text": "OBST TOWER LGT (ASR 1016150) 340400.00N1173912.00W (2.7NM WNW ONT) 1190.9FT (167.3FT AGL) U/S"
-  },
-  {
-    "lat": 35.977578,
-    "lon": -97.654189,
-    "agl": "660",
-    "text": "OBST WIND TURBINE LGT (ASN 2021-WTW-1519-OE) 355839N0973915W (13.8NM WNW GOK) 1811FT (660FT AGL) U/S"
   },
   {
     "lat": 34.880842,
@@ -43188,40 +41496,16 @@
     "text": "OBST TOWER LGT (ASR 1219518) 465112.00N1000418.60W (23.6NM NNE 6H8) 2201.1FT (349.1FT AGL) U/S"
   },
   {
-    "lat": 36.713917,
-    "lon": -102.507417,
-    "agl": "496.1",
-    "text": "OBST TOWER LGT (ASR 1203203) 364250.10N1023026.70W (3.6NM S 17K) 4656.2FT (496.1FT AGL) U/S"
-  },
-  {
     "lat": 32.609722,
     "lon": -88.196667,
     "agl": "490.2",
     "text": "OBST TOWER LGT (ASR 1038073) 323636.40N0881148.20W (15.0NM NW DYA) 674.9FT (490.2FT AGL) U/S"
   },
   {
-    "lat": 32.967667,
-    "lon": -80.046472,
-    "agl": "248.0",
-    "text": "OBST TOWER LGT (ASR 1044906) 325803.60N0800247.30W (4.1NM N CHS) 277.9FT (248.0FT AGL) U/S"
-  },
-  {
     "lat": 40.256389,
     "lon": -94.156667,
     "agl": "358.9",
     "text": "OBST TOWER LGT (ASR 1003479) 401522.10N0940924.20W (7.0NM W 75K) 1372.0FT (358.9FT AGL) U/S"
-  },
-  {
-    "lat": 29.62,
-    "lon": -99.049194,
-    "agl": "1501.0",
-    "text": "OBST TOWER LGT (ASR 1058179) 293712.00N0990257.10W (14.7NM WNW 8T8) 3047.9FT (1501.0FT AGL) U/S"
-  },
-  {
-    "lat": 38.705056,
-    "lon": -82.203556,
-    "agl": "315.0",
-    "text": "OBST TOWER LGT (ASR 1281568) 384218.20N0821212.80W (8.0NM SSW GAS) 1154.9FT (315.0FT AGL) U/S"
   },
   {
     "lat": 37.500556,
@@ -43276,12 +41560,6 @@
     "lon": -88.169472,
     "agl": "297.9",
     "text": "OBST TOWER LGT (ASR 1037088) 351416.30N0881010.10W (4.7NM NNE SNH) 910.8FT (297.9FT AGL) U/S"
-  },
-  {
-    "lat": 30.35725,
-    "lon": -96.507694,
-    "agl": "327.1",
-    "text": "OBST TOWER LGT (ASR 1050612) 302126.10N0963027.70W (10.7NM NW 11R) 567.3FT (327.1FT AGL) U/S"
   },
   {
     "lat": 37.792889,
@@ -43368,12 +41646,6 @@
     "text": "OBST TOWER LGT (ASR 1291890) 461541.30N0994617.40W (9.7NM W 6L5) 2432.7FT (299.9FT AGL) U/S"
   },
   {
-    "lat": 32.466278,
-    "lon": -95.294111,
-    "agl": "339.9",
-    "text": "OBST TOWER LGT (ASR 1222054) 322758.60N0951738.80W (8.8NM NE TYR) 935.0FT (339.9FT AGL) U/S"
-  },
-  {
     "lat": 37.190083,
     "lon": -87.515083,
     "agl": "293.0",
@@ -43396,12 +41668,6 @@
     "lon": -72.610111,
     "agl": "195.9",
     "text": "OBST TOWER LGT (ASR 1042341) 441026.60N0723636.40W (2.7NM SW MPV) 2383.9FT (195.9FT AGL) U/S"
-  },
-  {
-    "lat": 36.197917,
-    "lon": -80.7565,
-    "agl": "254.9",
-    "text": "OBST TOWER LGT (ASR 1289794) 361152.50N0804523.40W (5.1NM SSE ZEF) 1375.0FT (254.9FT AGL) U/S"
   },
   {
     "lat": 33.073889,
@@ -43428,18 +41694,6 @@
     "text": "OBST TOWER LGT (ASR 1244797) 604652.70N1615304.60W (1.4NM W BET) 383.2FT (224.1FT AGL) U/S"
   },
   {
-    "lat": 30.7535,
-    "lon": -101.742639,
-    "agl": "416.0",
-    "text": "OBST TOWER LGT (ASR 1024017) 304512.60N1014433.50W (11.9NM SE 2F0) 3175.9FT (416.0FT AGL) U/S"
-  },
-  {
-    "lat": 42.718333,
-    "lon": -78.383056,
-    "agl": "319.9",
-    "text": "OBST TOWER LGT (ASR 1023818) 424306.00N0782259.00W (9.4NM NNE D23) 2034.8FT (319.9FT AGL) U/S"
-  },
-  {
     "lat": 41.729,
     "lon": -70.166639,
     "agl": "362.9",
@@ -43450,12 +41704,6 @@
     "lon": -91.552778,
     "agl": "399.9",
     "text": "OBST TOWER LGT (ASR 1005660) 363035.00N0913310.00W (1.2NM SE 42M) 1109.9FT (399.9FT AGL) U/S"
-  },
-  {
-    "lat": 34.081222,
-    "lon": -81.193944,
-    "agl": "255.9",
-    "text": "OBST TOWER LGT (ASR 1047905) 340452.40N0811138.20W (9.2NM NNW CAE) 656.8FT (255.9FT AGL) U/S"
   },
   {
     "lat": 41.428306,
@@ -43620,18 +41868,6 @@
     "text": "OBST TOWER LGT (ASR 1221901) 295630.40N0833511.90W (7.7NM S FPY) 300.5FT (261.8FT AGL) U/S"
   },
   {
-    "lat": 36.3175,
-    "lon": -97.265833,
-    "agl": "494.8",
-    "text": "OBST TOWER LGT (ASR 1010902) 361903.00N0971557.00W (4.1NM S F22) 1479.7FT (494.8FT AGL) U/S"
-  },
-  {
-    "lat": 32.335528,
-    "lon": -101.124556,
-    "agl": "277.9",
-    "text": "OBST TOWER LGT (ASR 1227095) 322007.90N1010728.40W (13.1NM SW T88) 2507.9FT (277.9FT AGL) U/S"
-  },
-  {
     "lat": 31.709325,
     "lon": -103.599936,
     "agl": "275",
@@ -43654,12 +41890,6 @@
     "lon": -82.461817,
     "agl": "12",
     "text": "OBST TOWER LGT (ASN 2001-AGL-1807-NRA) 400129N0822743W (0.0NM WSW VTA) 896FT (12FT AGL) U/S"
-  },
-  {
-    "lat": 35.5855,
-    "lon": -86.645611,
-    "agl": "291.0",
-    "text": "OBST TOWER LGT (ASR 1244829) 353507.80N0863844.20W (6.4NM SSW 50M) 1032.2FT (291.0FT AGL) U/S"
   },
   {
     "lat": 29.089222,
@@ -43710,12 +41940,6 @@
     "text": "OBST TOWER LGT (ASR 1216927) 303157.30N0874838.00W (5.6NM NE CQF) 352.0FT (270.0FT AGL) U/S"
   },
   {
-    "lat": 30.254472,
-    "lon": -95.347639,
-    "agl": "548.9",
-    "text": "OBST TOWER LGT (ASR 1048504) 301516.10N0952051.50W (6.8NM SSE CXO) 703.7FT (548.9FT AGL) U/S"
-  },
-  {
     "lat": 40.388978,
     "lon": -91.583767,
     "agl": "332",
@@ -43734,22 +41958,10 @@
     "text": "OBST TOWER LGT (ASR 1019556) 330352.10N0824705.30W (6.5NM NNE OKZ) 942.9FT (500.0FT AGL) U/S"
   },
   {
-    "lat": 33.183444,
-    "lon": -95.769889,
-    "agl": "258.9",
-    "text": "OBST TOWER LGT (ASR 1207557) 331100.40N0954611.60W (7.6NM W SLR) 807.7FT (258.9FT AGL) U/S"
-  },
-  {
     "lat": 39.768681,
     "lon": -88.274736,
     "agl": "229",
     "text": "OBST TOWER LGT (ASN 2022-AGL-12244-OE) 394607N0881629W (1.6NM ESE K96) 875FT (229FT AGL) U/S"
-  },
-  {
-    "lat": 31.241111,
-    "lon": -84.170556,
-    "agl": "391.1",
-    "text": "OBST TOWER LGT (ASR 1013671) 311427.60N0841013.40W (3.8NM ENE CXU) 570.9FT (391.1FT AGL) U/S"
   },
   {
     "lat": 46.593917,
@@ -43786,18 +41998,6 @@
     "lon": -93.504056,
     "agl": "292.0",
     "text": "OBST TOWER LGT (ASR 1284286) 302848.00N0933014.60W (2.8NM NW 5R8) 389.1FT (292.0FT AGL) U/S"
-  },
-  {
-    "lat": 35.945333,
-    "lon": -78.453389,
-    "agl": "271.0",
-    "text": "OBST TOWER LGT (ASR 1032354) 355643.30N0782712.20W (7.7NM SW LHZ) 677.8FT (271.0FT AGL) U/S"
-  },
-  {
-    "lat": 28.89225,
-    "lon": -82.372806,
-    "agl": "267.1",
-    "text": "OBST TOWER LGT (ASR 1011013) 285332.10N0822222.10W (5.9NM NNW INF) 336.0FT (267.1FT AGL) U/S"
   },
   {
     "lat": 36.008611,
@@ -44040,22 +42240,10 @@
     "text": "OBST TOWER LGT (ASN 2025-AGL-5941-OE) 403729N0854508W (7.4NM ENE 1I8) 1083FT (260FT AGL) U/S"
   },
   {
-    "lat": 29.849111,
-    "lon": -94.142472,
-    "agl": "217.8",
-    "text": "OBST TOWER LGT (ASR 1242937) 295056.80N0940832.90W (8.8NM SW BPT) 226.7FT (217.8FT AGL) U/S"
-  },
-  {
     "lat": 42.632222,
     "lon": -85.537778,
     "agl": "1129.9",
     "text": "OBST TOWER LGT (ASR 1000688) 423756.00N0853216.00W (6.0NM SE 41C) 1899.6FT (1129.9FT AGL) U/S"
-  },
-  {
-    "lat": 34.891722,
-    "lon": -84.194167,
-    "agl": "307.1",
-    "text": "OBST TOWER LGT (ASR 1052430) 345330.20N0841139.00W (9.9NM WNW DZJ) 2116.1FT (307.1FT AGL) U/S"
   },
   {
     "lat": 38.704833,
@@ -44088,12 +42276,6 @@
     "text": "OBST TOWER LGT (ASN 2011-ACE-1302-OE) 384217N0920030W (8.0NM S FTT) 1317FT (479FT AGL) U/S"
   },
   {
-    "lat": 31.066528,
-    "lon": -84.074028,
-    "agl": "254.9",
-    "text": "OBST TOWER LGT (ASR 1027831) 310359.50N0840426.50W (11.6NM NNE 70J) 543.6FT (254.9FT AGL) U/S"
-  },
-  {
     "lat": 40.869833,
     "lon": -82.436861,
     "agl": "309.7",
@@ -44122,18 +42304,6 @@
     "lon": -80.299444,
     "agl": "260.2",
     "text": "OBST TOWER LGT (ASR 1253788) 332338.20N0801758.00W (7.4NM NE 5J5) 355.3FT (260.2FT AGL) U/S"
-  },
-  {
-    "lat": 39.574833,
-    "lon": -89.27025,
-    "agl": "264.8",
-    "text": "OBST TOWER LGT (ASR 1224618) 393429.40N0891612.90W (3.8NM NE TAZ) 879.9FT (264.8FT AGL) U/S"
-  },
-  {
-    "lat": 31.726472,
-    "lon": -86.747278,
-    "agl": "288.7",
-    "text": "OBST TOWER LGT (ASR 1036057) 314335.30N0864450.20W (10.1NM SW PRN) 683.7FT (288.7FT AGL) U/S"
   },
   {
     "lat": 36.434389,
@@ -44316,12 +42486,6 @@
     "text": "OBST TOWER LGT (ASR 1331024) 362735.60N0873633.30W (13.48NM SW CKV) 968FT (270FT AGL) U/S"
   },
   {
-    "lat": 31.451306,
-    "lon": -98.120083,
-    "agl": "249.0",
-    "text": "OBST TOWER LGT (ASR 1052675) 312704.70N0980712.30W (12.9NM S MNZ) 1700.1FT (249.0FT AGL) U/S"
-  },
-  {
     "lat": 35.2875,
     "lon": -80.695556,
     "agl": "1246.7",
@@ -44376,28 +42540,10 @@
     "text": "OBST TOWER LGT (ASR 1330131) 373655.00N076091.01W (2.81NM ENE ORF) 163FT (150FT AGL) U/S"
   },
   {
-    "lat": 31.145917,
-    "lon": -91.041333,
-    "agl": "424.9",
-    "text": "OBST TOWER LGT (ASR 1039911) 310845.30N0910228.80W (9.0NM S C71) 839.9FT (424.9FT AGL) U/S"
-  },
-  {
     "lat": 37.936667,
     "lon": -90.417778,
     "agl": "282.8",
     "text": "OBST TOWER LGT (ASR 1007091) 375612.00N0902504.00W (7.5NM E 1BT) 1114.8FT (282.8FT AGL) U/S"
-  },
-  {
-    "lat": 31.301694,
-    "lon": -96.602944,
-    "agl": "424.9",
-    "text": "OBST TOWER LGT (ASR 1057703) 311806.10N0963610.60W (13.1NM E T15) 943.9FT (424.9FT AGL) U/S"
-  },
-  {
-    "lat": 27.317694,
-    "lon": -98.703222,
-    "agl": "390.1",
-    "text": "OBST TOWER LGT (ASR 1277919) 271903.70N0984211.60W (2.6NM SE HBV) 971.1FT (390.1FT AGL) U/S"
   },
   {
     "lat": 44.762861,
@@ -44418,28 +42564,10 @@
     "text": "OBST TOWER LGT (ASR 1033856) 450544.10N0913118.30W (13.6NM SSE Y23) 1542.7FT (424.9FT AGL) U/S"
   },
   {
-    "lat": 33.088361,
-    "lon": -90.325028,
-    "agl": "349.1",
-    "text": "OBST TOWER LGT (ASR 1274329) 330518.10N0901930.10W (10.1NM ESE 1M2) 457.0FT (349.1FT AGL) U/S"
-  },
-  {
     "lat": 40.411389,
     "lon": -78.774444,
     "agl": "226.4",
     "text": "OBST TOWER LGT (ASR 1026500) 402441.00N0784628.00W (3.0NM S 9G8) 2545.9FT (226.4FT AGL) U/S"
-  },
-  {
-    "lat": 46.356667,
-    "lon": -98.659472,
-    "agl": "497.0",
-    "text": "OBST TOWER LGT (ASR 1031569) 462124.00N0983934.10W (3.2NM E 51D) 2044.0FT (497.0FT AGL) U/S"
-  },
-  {
-    "lat": 32.304333,
-    "lon": -89.673361,
-    "agl": "349.1",
-    "text": "OBST TOWER LGT (ASR 1044142) 321815.60N0894024.10W (10.0NM WSW 2M4) 795.9FT (349.1FT AGL) U/S"
   },
   {
     "lat": 42.265028,
@@ -44460,22 +42588,10 @@
     "text": "OBST TOWER LGT (ASN 2023-AEA-14568-OE) 411257N0785517W (2.5NM NNW DUJ) 2097FT (175FT AGL) U/S"
   },
   {
-    "lat": 26.129722,
-    "lon": -98.1825,
-    "agl": "311.7",
-    "text": "OBST TOWER LGT (ASR 1046018) 260747.00N0981057.00W (4.1NM SE MFE) 398.6FT (311.7FT AGL) U/S"
-  },
-  {
     "lat": 38.997111,
     "lon": -96.857444,
     "agl": "250.0",
     "text": "OBST TOWER LGT (ASR 1256958) 385949.60N0965126.80W (2.9NM SSW 3JC) 1350.7FT (250.0FT AGL) U/S"
-  },
-  {
-    "lat": 33.702222,
-    "lon": -83.939972,
-    "agl": "253.9",
-    "text": "OBST TOWER LGT (ASR 1208208) 334208.00N0835623.90W (6.2NM NW CVC) 1108.9FT (253.9FT AGL) U/S"
   },
   {
     "lat": 43.1399,
@@ -44488,12 +42604,6 @@
     "lon": -84.525361,
     "agl": "307.1",
     "text": "OBST TOWER LGT (ASR 1212005) 304842.00N0843131.30W (11.0NM SSE BGE) 608.9FT (307.1FT AGL) U/S"
-  },
-  {
-    "lat": 30.779889,
-    "lon": -96.076056,
-    "agl": "410.1",
-    "text": "OBST TOWER LGT (ASR 1245454) 304647.60N0960433.80W (10.2NM SW 51R) 746.1FT (410.1FT AGL) U/S"
   },
   {
     "lat": 35.7585,
@@ -44536,12 +42646,6 @@
     "lon": -92.47825,
     "agl": "264.8",
     "text": "OBST TOWER LGT (ASR 1231159) 344016.70N0922841.70W (4.8NM NE SUZ) 755.6FT (264.8FT AGL) U/S"
-  },
-  {
-    "lat": 30.693917,
-    "lon": -95.522639,
-    "agl": "332.0",
-    "text": "OBST TOWER LGT (ASR 1048518) 304138.10N0953121.50W (4.6NM SE UTS) 780.8FT (332.0FT AGL) U/S"
   },
   {
     "lat": 44.2071,
@@ -44596,12 +42700,6 @@
     "lon": -88.822861,
     "agl": "274.9",
     "text": "OBST TOWER LGT (ASR 1057099) 412103.20N0884922.30W (3.2NM SSW 8N2) 763.8FT (274.9FT AGL) U/S"
-  },
-  {
-    "lat": 29.332361,
-    "lon": -99.265917,
-    "agl": "316.9",
-    "text": "OBST TOWER LGT (ASR 1288795) 291956.50N0991557.30W (4.9NM WSW HDO) 1203.7FT (316.9FT AGL) U/S"
   },
   {
     "lat": 33.535972,
@@ -44662,12 +42760,6 @@
     "lon": -95.690278,
     "agl": "258.9",
     "text": "OBST TOWER LGT (ASR 1050691) 323930.00N0954125.00W (9.2NM W 3F9) 636.8FT (258.9FT AGL) U/S"
-  },
-  {
-    "lat": 39.137222,
-    "lon": -84.852778,
-    "agl": "299.9",
-    "text": "OBST TOWER LGT (ASR 1025437) 390814.00N0845110.00W (8.2NM SSW I67) 1028.5FT (299.9FT AGL) U/S"
   },
   {
     "lat": 48.548028,
@@ -44760,12 +42852,6 @@
     "text": "OBST TOWER LGT (ASR 1245688) 392931.10N0950746.50W (5.3NM SSE K59) 1326.8FT (259.8FT AGL) U/S"
   },
   {
-    "lat": 31.27075,
-    "lon": -86.334278,
-    "agl": "352.0",
-    "text": "OBST TOWER LGT (ASR 1211678) 311614.70N0862003.40W (3.7NM SE 79J) 640.1FT (352.0FT AGL) U/S"
-  },
-  {
     "lat": 29.226833,
     "lon": -98.994806,
     "agl": "467.2",
@@ -44800,12 +42886,6 @@
     "lon": -80.653722,
     "agl": "128.0",
     "text": "OBST TOWER LGT (ASR 1206622) 282133.40N0803913.40W (2.0NM ENE COI) 132.9FT (128.0FT AGL) U/S"
-  },
-  {
-    "lat": 27.098611,
-    "lon": -99.417306,
-    "agl": "319.9",
-    "text": "OBST TOWER LGT (ASR 1207556) 270555.00N0992502.30W (11.9NM NW APY) 714.9FT (319.9FT AGL) U/S"
   },
   {
     "lat": 39.201389,
@@ -44872,12 +42952,6 @@
     "lon": -99.393056,
     "agl": "520.0",
     "text": "OBST TOWER LGT (ASR 1052071) 311528.00N0992335.00W (5.9NM NW BBD) 2422.9FT (520.0FT AGL) U/S"
-  },
-  {
-    "lat": 33.197278,
-    "lon": -81.963361,
-    "agl": "310.0",
-    "text": "OBST TOWER LGT (ASR 1241308) 331150.20N0815748.10W (9.7NM NNE BXG) 591.9FT (310.0FT AGL) U/S"
   },
   {
     "lat": 33.170708,
@@ -44956,12 +43030,6 @@
     "lon": -88.367,
     "agl": "587.9",
     "text": "OBST TOWER LGT (ASR 1275858) 340128.60N0882201.20W (11.0NM NE M40) 960.0FT (587.9FT AGL) U/S"
-  },
-  {
-    "lat": 26.700944,
-    "lon": -98.51825,
-    "agl": "305.1",
-    "text": "OBST TOWER LGT (ASR 1271879) 264203.50N0983105.70W (24.3NM NE 67R) 645.0FT (305.1FT AGL) U/S"
   },
   {
     "lat": 35.048222,
@@ -45144,12 +43212,6 @@
     "text": "OBST TOWER LGT (ASR 1027114) 404710.00N0764148.00W (7.2NM WSW N79) 1698.8FT (357.0FT AGL) U/S"
   },
   {
-    "lat": 34.471278,
-    "lon": -86.806028,
-    "agl": "314.0",
-    "text": "OBST TOWER LGT (ASR 1211971) 342816.60N0864821.70W (7.4NM ENE 5M0) 982.9FT (314.0FT AGL) U/S"
-  },
-  {
     "lat": 32.94375,
     "lon": -85.413,
     "agl": "319.9",
@@ -45294,12 +43356,6 @@
     "text": "OBST TOWER LGT (ASR 1035749) 331158.00N0861804.00W (1.7NM NE SCD) 940.6FT (185.7FT AGL) U/S"
   },
   {
-    "lat": 37.481361,
-    "lon": -76.937944,
-    "agl": "298.9",
-    "text": "OBST TOWER LGT (ASR 1016382) 372852.90N0765616.60W (8.7NM WSW FYJ) 389.8FT (298.9FT AGL) U/S"
-  },
-  {
     "lat": 40.110611,
     "lon": -89.063056,
     "agl": "257.9",
@@ -45310,12 +43366,6 @@
     "lon": -85.903389,
     "agl": "265.1",
     "text": "OBST TOWER LGT (ASR 1274353) 335559.30N0855412.20W (9.6NM ESE GAD) 1427.2FT (265.1FT AGL) U/S"
-  },
-  {
-    "lat": 39.052806,
-    "lon": -86.708528,
-    "agl": "357.9",
-    "text": "OBST TOWER LGT (ASR 1224966) 390310.10N0864230.70W (7.1NM SW BMG) 1163.1FT (357.9FT AGL) U/S"
   },
   {
     "lat": 34.437361,
@@ -45388,12 +43438,6 @@
     "lon": -88.830917,
     "agl": "310.7",
     "text": "OBST TOWER LGT (ASR 1269817) 335028.90N0884951.30W (9.9NM ESE M44) 629.3FT (310.7FT AGL) U/S"
-  },
-  {
-    "lat": 33.863333,
-    "lon": -87.193306,
-    "agl": "319.9",
-    "text": "OBST TOWER LGT (ASR 1240319) 335148.00N0871135.90W (6.4NM ESE JFX) 780.8FT (319.9FT AGL) U/S"
   },
   {
     "lat": 30.491694,
@@ -45496,12 +43540,6 @@
     "lon": -90.658806,
     "agl": "258.9",
     "text": "OBST TOWER LGT (ASR 1296428) 443348.20N0903931.70W (6.3NM W VIQ) 1445.9FT (258.9FT AGL) U/S"
-  },
-  {
-    "lat": 35.513222,
-    "lon": -76.913556,
-    "agl": "233.9",
-    "text": "OBST TOWER LGT (ASR 1259538) 353047.60N0765448.80W (7.4NM ESE OCW) 265.7FT (233.9FT AGL) U/S"
   },
   {
     "lat": 35.219639,
@@ -45666,12 +43704,6 @@
     "text": "OBST TOWER LGT (ASR 1049561) 331233.20N0800056.80W (1.8NM NE MKS) 291.7FT (227.7FT AGL) U/S"
   },
   {
-    "lat": 31.199694,
-    "lon": -89.885861,
-    "agl": "325.1",
-    "text": "OBST TOWER LGT (ASR 1010594) 311158.90N0895309.10W (7.1NM SSW 0R0) 687.0FT (325.1FT AGL) U/S"
-  },
-  {
     "lat": 30.582694,
     "lon": -83.348361,
     "agl": "260.8",
@@ -45744,34 +43776,16 @@
     "text": "OBST TOWER LGT (ASR 1005981) 340700.40N0780646.70W (11.3NM N SUT) 255.9FT (217.8FT AGL) U/S"
   },
   {
-    "lat": 34.472528,
-    "lon": -84.98525,
-    "agl": "305.1",
-    "text": "OBST TOWER LGT (ASR 1040383) 342821.10N0845906.90W (2.5NM WNW CZL) 1050.2FT (305.1FT AGL) U/S"
-  },
-  {
     "lat": 38.736417,
     "lon": -95.958583,
     "agl": "337.9",
     "text": "OBST TOWER LGT (ASR 1063764) 384411.10N0955730.90W (9.6NM NW 53K) 1528.9FT (337.9FT AGL) U/S"
   },
   {
-    "lat": 32.913417,
-    "lon": -83.697472,
-    "agl": "243.1",
-    "text": "OBST TOWER LGT (ASR 1005844) 325448.30N0834150.90W (8.7NM NW MAC) 611.2FT (243.1FT AGL) U/S"
-  },
-  {
     "lat": 38.495736,
     "lon": -87.172939,
     "agl": "300",
     "text": "OBST TOWER LGT (ASR 1312040) 382944.65N0871022.58W (12.5NM S DCY) 866FT (300FT AGL) U/S"
-  },
-  {
-    "lat": 41.635667,
-    "lon": -70.234472,
-    "agl": "306.1",
-    "text": "OBST TOWER LGT (ASR 1007748) 413807.70N0701404.90W (2.9NM SE HYA) 314.0FT (306.1FT AGL) U/S"
   },
   {
     "lat": 31.55925,
@@ -45790,18 +43804,6 @@
     "lon": -98.593333,
     "agl": "205.1",
     "text": "OBST TOWER LGT (ASR 1035877) 330737.00N0983536.00W (2.2NM WNW RPH) 1260.2FT (205.1FT AGL) U/S"
-  },
-  {
-    "lat": 31.131861,
-    "lon": -83.78025,
-    "agl": "247.0",
-    "text": "OBST TOWER LGT (ASR 1219986) 310754.70N0834648.90W (3.0NM NNE MGR) 548.9FT (247.0FT AGL) U/S"
-  },
-  {
-    "lat": 35.050944,
-    "lon": -81.624778,
-    "agl": "487.9",
-    "text": "OBST TOWER LGT (ASR 1044330) 350303.40N0813729.20W (12.4NM S EHO) 1315.9FT (487.9FT AGL) U/S"
   },
   {
     "lat": 32.642306,
@@ -45930,12 +43932,6 @@
     "text": "OBST TOWER LGT (ASN 2019-AGL-4142-OE) 485616N1013827W (11.0NM NNW HBC) 2052FT (404FT AGL) U/S"
   },
   {
-    "lat": 35.901778,
-    "lon": -93.991528,
-    "agl": "274.0",
-    "text": "OBST TOWER LGT (ASR 1247229) 355406.40N0935929.50W (10.6NM SE FYV) 2495.1FT (274.0FT AGL) U/S"
-  },
-  {
     "lat": 27.884778,
     "lon": -81.028861,
     "agl": "306.8",
@@ -46026,12 +44022,6 @@
     "text": "OBST TOWER LGT (2021-AWP-11543-OE) 333450N1132000W (26.3NM NW BXK) 1400FT (159FT AGL) U/S"
   },
   {
-    "lat": 35.734139,
-    "lon": -80.859917,
-    "agl": "281.8",
-    "text": "OBST TOWER LGT (ASR 1000310) 354402.90N0805135.70W (4.9NM ESE SVH) 1102.7FT (281.8FT AGL) U/S"
-  },
-  {
     "lat": 43.430703,
     "lon": -83.940592,
     "agl": "217",
@@ -46114,12 +44104,6 @@
     "lon": -95.872583,
     "agl": "249.0",
     "text": "OBST TOWER LGT (ASR 1298724) 300617.90N0955221.30W (11.4NM WNW T51) 513.8FT (249.0FT AGL) U/S"
-  },
-  {
-    "lat": 31.205222,
-    "lon": -86.281167,
-    "agl": "361.9",
-    "text": "OBST TOWER LGT (ASR 1221475) 311218.80N0861652.20W (8.3NM SE 79J) 680.8FT (361.9FT AGL) U/S"
   },
   {
     "lat": 33.751667,
@@ -46212,12 +44196,6 @@
     "text": "OBST TOWER LGT (ASR 1004824) 345343.70N0785332.80W (2.4NM W 2GC) 551.2FT (383.2FT AGL) U/S"
   },
   {
-    "lat": 40.321361,
-    "lon": -85.502917,
-    "agl": "205.1",
-    "text": "OBST TOWER LGT (ASR 1211620) 401916.90N0853010.50W (6.8NM NW MIE) 1095.1FT (205.1FT AGL) U/S"
-  },
-  {
     "lat": 39.269667,
     "lon": -122.031806,
     "agl": "190.0",
@@ -46270,12 +44248,6 @@
     "lon": -116.806675,
     "agl": "297",
     "text": "OBST TOWER LGT (ASN 2019-ANM-4934-OE) 462250N1164824W (8.6NM E LWS) 2126FT (297FT AGL) U/S"
-  },
-  {
-    "lat": 38.857667,
-    "lon": -98.892889,
-    "agl": "259.8",
-    "text": "OBST TOWER LGT (ASR 1237263) 385127.60N0985334.40W (3.9NM WSW RSL) 2114.8FT (259.8FT AGL) U/S"
   },
   {
     "lat": 37.131889,
@@ -46380,18 +44352,6 @@
     "text": "OBST TOWER LGT (ASR 1063351) 303314.40N0961535.80W (5.7NM ESE CLL) 536.1FT (225.1FT AGL) U/S"
   },
   {
-    "lat": 33.85,
-    "lon": -84.036389,
-    "agl": "270.0",
-    "text": "OBST TOWER LGT (ASR 1048763) 335100.00N0840211.00W (8.6NM SSW LZU) 1390.1FT (270.0FT AGL) U/S"
-  },
-  {
-    "lat": 33.850944,
-    "lon": -84.042139,
-    "agl": "206.0",
-    "text": "OBST TOWER LGT (ASR 1019898) 335103.70N0840231.30W (8.7NM SSW LZU) 1334.0FT (206.0FT AGL) U/S"
-  },
-  {
     "lat": 44.10125,
     "lon": -85.254083,
     "agl": "285.1",
@@ -46440,12 +44400,6 @@
     "text": "OBST TOWER LGT (ASR 1223208) 381001.10N0880421.70W (5.2NM NNE CUL) 653.2FT (263.1FT AGL) U/S"
   },
   {
-    "lat": 29.748222,
-    "lon": -82.672778,
-    "agl": "419.9",
-    "text": "OBST TOWER LGT (ASR 1213286) 294453.60N0824022.00W (1.7NM NNW 6J8) 530.8FT (419.9FT AGL) U/S"
-  },
-  {
     "lat": 35.881333,
     "lon": -83.19025,
     "agl": "319.9",
@@ -46462,18 +44416,6 @@
     "lon": -116.230222,
     "agl": "289",
     "text": "OBST TOWER LGT (ASR 1315346) 455032.18N1161348.80W (7.5NM SW GIC) 4866FT (289FT AGL) U/S"
-  },
-  {
-    "lat": 33.357972,
-    "lon": -94.308028,
-    "agl": "440.0",
-    "text": "OBST TOWER LGT (ASR 1047259) 332128.70N0941828.90W (16.3NM NNW ATA) 737.9FT (440.0FT AGL) U/S"
-  },
-  {
-    "lat": 32.831778,
-    "lon": -96.912556,
-    "agl": "361.9",
-    "text": "OBST TOWER LGT (ASR 1037336) 324954.40N0965445.20W (3.2NM WSW DAL) 859.9FT (361.9FT AGL) U/S"
   },
   {
     "lat": 33.000667,
@@ -46512,18 +44454,6 @@
     "text": "OBST TOWER LGT (ASR 1256693) 404305.70N0923347.90W (6.2NM W 4K6) 1252.6FT (309.7FT AGL) U/S"
   },
   {
-    "lat": 46.688139,
-    "lon": -109.742278,
-    "agl": "306.1",
-    "text": "OBST TOWER LGT (ASR 1267682) 464117.20N1094432.30W (15.1NM NNE HWQ) 5048.2FT (306.1FT AGL) U/S"
-  },
-  {
-    "lat": 32.464694,
-    "lon": -91.651694,
-    "agl": "482.9",
-    "text": "OBST TOWER LGT (ASR 1042068) 322752.90N0913906.10W (6.2NM ESE M79) 565.6FT (482.9FT AGL) U/S"
-  },
-  {
     "lat": 45.277611,
     "lon": -107.3515,
     "agl": "349.1",
@@ -46540,18 +44470,6 @@
     "lon": -80.912222,
     "agl": "1004.9",
     "text": "OBST TOWER LGT (ASR 1037208) 281823.00N0805444.00W (12.3NM W COI) 1044.9FT (1004.9FT AGL) U/S"
-  },
-  {
-    "lat": 31.44025,
-    "lon": -88.155167,
-    "agl": "210.0",
-    "text": "OBST TOWER LGT (ASR 1268557) 312624.90N0880918.60W (2.1NM ESE 5R1) 328.1FT (210.0FT AGL) U/S"
-  },
-  {
-    "lat": 35.509583,
-    "lon": -81.225306,
-    "agl": "336.9",
-    "text": "OBST TOWER LGT (ASR 1002569) 353034.50N0811331.10W (3.5NM WNW IPJ) 1253.0FT (336.9FT AGL) U/S"
   },
   {
     "lat": 29.843611,
@@ -46588,12 +44506,6 @@
     "lon": -90.447111,
     "agl": "422.9",
     "text": "OBST TOWER LGT (ASR 1004142) 371040.30N0902649.60W (13.2NM ENE PYN) 1003.0FT (422.9FT AGL) U/S"
-  },
-  {
-    "lat": 38.407222,
-    "lon": -75.598889,
-    "agl": "424.9",
-    "text": "OBST TOWER LGT (ASR 1053178) 382426.00N0753556.00W (0.9NM ESE 1N5) 460.0FT (424.9FT AGL) U/S"
   },
   {
     "lat": 31.512583,
@@ -46638,12 +44550,6 @@
     "text": "OBST TOWER LGT (ASR 1266601) 402314.10N0915510.20W (10.0NM WSW 0H7) 1000.7FT (259.8FT AGL) U/S"
   },
   {
-    "lat": 43.051889,
-    "lon": -78.050444,
-    "agl": "241.1",
-    "text": "OBST TOWER LGT (ASR 1007686) 430306.80N0780301.60W (5.3NM ENE GVQ) 696.9FT (241.1FT AGL) U/S"
-  },
-  {
     "lat": 31.379736,
     "lon": -86.625289,
     "agl": "416",
@@ -46686,18 +44592,6 @@
     "text": "OBST TOWER LGT (ASR 1015644) 392937.00N0815316.00W (10.5NM SSW I71) 1351.7FT (307.7FT AGL) U/S"
   },
   {
-    "lat": 35.546667,
-    "lon": -82.470556,
-    "agl": "240.2",
-    "text": "OBST TOWER LGT (ASR 1019293) 353248.00N0822814.00W (7.6NM NNE AVL) 2560.0FT (240.2FT AGL) U/S"
-  },
-  {
-    "lat": 36.627139,
-    "lon": -78.126,
-    "agl": "278.9",
-    "text": "OBST TOWER LGT (ASR 1202746) 363737.70N0780733.60W (5.1NM SW AVC) 633.9FT (278.9FT AGL) U/S"
-  },
-  {
     "lat": 39.239389,
     "lon": -99.308417,
     "agl": "259.8",
@@ -46710,18 +44604,6 @@
     "text": "OBST TOWER LGT (ASR 1001787) 305731.70N0955421.90W (3.6NM NE 51R) 774.0FT (499.0FT AGL) U/S"
   },
   {
-    "lat": 48.778389,
-    "lon": -94.708139,
-    "agl": "490.2",
-    "text": "OBST TOWER LGT (ASR 1239584) 484642.30N0944230.00W (4.8NM NW BDE) 1567.3FT (490.2FT AGL) U/S"
-  },
-  {
-    "lat": 47.168417,
-    "lon": -88.489069,
-    "agl": "349",
-    "text": "OBST TOWER LGT (ASR 1281798) 472542.90N0875843.90W (26.06NM NE CMX) 1474FT (349FT AGL) U/S"
-  },
-  {
     "lat": 40.533917,
     "lon": -82.730833,
     "agl": "363.8",
@@ -46732,12 +44614,6 @@
     "lon": -95.428056,
     "agl": "419.9",
     "text": "OBST TOWER LGT (ASR 1040567) 473533.00N0952541.00W (4.9NM NNW 7Y4) 1980.0FT (419.9FT AGL) U/S"
-  },
-  {
-    "lat": 29.775444,
-    "lon": -81.634389,
-    "agl": "212.9",
-    "text": "OBST TOWER LGT (ASR 1050701) 294631.60N0813803.80W (7.7NM NNE 28J) 242.8FT (212.9FT AGL) U/S"
   },
   {
     "lat": 26.408861,
@@ -46756,12 +44632,6 @@
     "lon": -90.789889,
     "agl": "316.9",
     "text": "OBST TOWER LGT (ASR 1239218) 351441.10N0904723.60W (7.7NM NNE DRP) 569.9FT (316.9FT AGL) U/S"
-  },
-  {
-    "lat": 30.137297,
-    "lon": -93.823383,
-    "agl": "295",
-    "text": "OBST TOWER LGT (ASN 2023-ASW-5074-OE) 300814N0934924W (4.2NM NNW ORG) 310FT (295FT AGL) U/S"
   },
   {
     "lat": 40.398333,
@@ -46878,12 +44748,6 @@
     "text": "OBST TOWER LGT (ASR 1010510) 362430.10N0992849.30W (2.7NM SE WWR) 2560.0FT (297.9FT AGL) U/S"
   },
   {
-    "lat": 33.820417,
-    "lon": -92.713417,
-    "agl": "255.9",
-    "text": "OBST TOWER LGT (ASR 1247547) 334913.50N0924248.30W (12.1NM NNE CDH) 505.9FT (255.9FT AGL) U/S"
-  },
-  {
     "lat": 28.603056,
     "lon": -82.2,
     "agl": "287.7",
@@ -46894,12 +44758,6 @@
     "lon": -82.242417,
     "agl": "309.7",
     "text": "OBST TOWER LGT (ASR 1266702) 393720.10N0821432.70W (4.7NM SSW I86) 1241.8FT (309.7FT AGL) U/S"
-  },
-  {
-    "lat": 37.81,
-    "lon": -80.187806,
-    "agl": "303.8",
-    "text": "OBST TOWER LGT (ASR 1259970) 374836.00N0801116.10W (10.4NM ESE LWB) 2585.6FT (303.8FT AGL) U/S"
   },
   {
     "lat": 34.3125,
@@ -46924,12 +44782,6 @@
     "lon": -78.617,
     "agl": "145.0",
     "text": "OBST TOWER LGT (ASR 1237530) 414752.40N0783701.20W (1.1NM ESE BFD) 2260.2FT (145.0FT AGL) U/S"
-  },
-  {
-    "lat": 37.824111,
-    "lon": -80.156139,
-    "agl": "356.0",
-    "text": "OBST TOWER LGT (ASR 1264048) 374926.80N0800922.10W (11.6NM E LWB) 3033.8FT (356.0FT AGL) U/S"
   },
   {
     "lat": 32.059444,
@@ -46984,12 +44836,6 @@
     "lon": -95.871667,
     "agl": "409.8",
     "text": "OBST TOWER LGT (ASR 1249057) 341618.00N0955218.00W (12.0NM WNW 80F) 960.6FT (409.8FT AGL) U/S"
-  },
-  {
-    "lat": 29.261722,
-    "lon": -82.70875,
-    "agl": "220.1",
-    "text": "OBST TOWER LGT (ASR 1030236) 291542.20N0824231.50W (13.9NM WSW X60) 236.2FT (220.1FT AGL) U/S"
   },
   {
     "lat": 36.898139,
@@ -47154,12 +45000,6 @@
     "text": "OBST TOWER LGT (ASR 1003935) 384320.40N0942504.20W (7.6NM NNW LRY) 1177.8FT (210.0FT AGL) U/S"
   },
   {
-    "lat": 46.767275,
-    "lon": -88.918689,
-    "agl": "295",
-    "text": "OBST TOWER LGT (ASR 1319004) 464602.19N0885507.28W (17.9NM NNW 6Y9) 1564FT (295FT AGL) U/S"
-  },
-  {
     "lat": 40.921667,
     "lon": -81.076944,
     "agl": "361.2",
@@ -47304,22 +45144,10 @@
     "text": "OBST TOWER LGT (ASR 1252833) 323622.10N0971538.10W (3.5NM NE FWS) 892.1FT (284.1FT AGL) U/S"
   },
   {
-    "lat": 46.469389,
-    "lon": -86.985122,
-    "agl": "263",
-    "text": "OBST TOWER LGT (ASR 1309055) 462809.80N0865906.44W (16.6NM WNW 5Y7) 1294FT (263FT AGL) U/S"
-  },
-  {
     "lat": 41.453611,
     "lon": -92.247833,
     "agl": "310.0",
     "text": "OBST TOWER LGT (ASR 1255699) 412713.00N0921452.20W (17.6NM NE OOA) 1184.1FT (310.0FT AGL) U/S"
-  },
-  {
-    "lat": 42.664028,
-    "lon": -73.677833,
-    "agl": "303.1",
-    "text": "OBST TOWER LGT (ASR 1027446) 423950.50N0734040.20W (4.6NM WSW 5B7) 788.1FT (303.1FT AGL) U/S"
   },
   {
     "lat": 39.513833,
@@ -47338,6 +45166,12 @@
     "lon": -90.180961,
     "agl": "310",
     "text": "OBST TOWER LGT (ASN 2017-ASW-4682-OE) 304415N0901051W (6.1NM SW 2R7) 497FT (310FT AGL) U/S"
+  },
+  {
+    "lat": 36.252711,
+    "lon": -91.249844,
+    "agl": "270",
+    "text": "OBST TOWER LGT (ASN 2018-ASW-17682-OE) 361510N0911459W (14.3NM W M70) 743FT (270FT AGL) U/S"
   },
   {
     "lat": 44.249239,
@@ -47376,6 +45210,12 @@
     "text": "OBST TOWER LGT (ASR 1322406) 394028.97N0870624.15W (11.9NM N 0I2) 907FT (290FT AGL) U/S"
   },
   {
+    "lat": 32.329722,
+    "lon": -96.148028,
+    "agl": "257.9",
+    "text": "OBST TOWER LGT (ASR 1228536) 321947.00N0960853.00W (19.1NM WNW F44) 612.9FT (257.9FT AGL) U/S"
+  },
+  {
     "lat": 32.396389,
     "lon": -98.773889,
     "agl": "455.1",
@@ -47400,12 +45240,6 @@
     "text": "OBST TOWER LGT (ASR UNKNOWN) 344452N1173531W (12.8NM NW VCV) UNKNOWN (260FT AGL) U/S"
   },
   {
-    "lat": 45.498278,
-    "lon": -89.277222,
-    "agl": "319.9",
-    "text": "OBST TOWER LGT (ASR 1263393) 452953.80N0891638.00W (11.3NM SE RHI) 1995.7FT (319.9FT AGL) U/S"
-  },
-  {
     "lat": 40.7965,
     "lon": -74.090694,
     "agl": "668.6",
@@ -47416,12 +45250,6 @@
     "lon": -97.376111,
     "agl": "249.0",
     "text": "OBST TOWER LGT (ASR 1234764) 425216.30N0972234.50W (2.8NM S YKN) 1416.0FT (249.0FT AGL) U/S"
-  },
-  {
-    "lat": 30.731111,
-    "lon": -86.153778,
-    "agl": "260",
-    "text": "OBST TOWER LGT (ASR 1304036) 303532.39N0855738.61W (12.99NM SE 54J) 443FT (260FT AGL) U/S"
   },
   {
     "lat": 38.121667,
@@ -47436,15 +45264,1707 @@
     "text": "OBST TOWER LGT (ASR 1286639) 440005.30N0892133.40W (3.4NM SW Y50) 1097.1FT (250.0FT AGL) U/S"
   },
   {
-    "lat": 46.533889,
-    "lon": -85.590139,
-    "agl": "500.0",
-    "text": "OBST TOWER LGT (ASR 1251951) 463202.00N0853524.50W (11.8NM SW 6Y5) 1276.9FT (500.0FT AGL) U/S"
+    "lat": 44.273611,
+    "lon": -84.265278,
+    "agl": "290.0",
+    "text": "OBST TOWER LGT (ASR 1053938) 441625.00N0841555.00W (4.0NM WNW Y31) 1357.9FT (290.0FT AGL) U/S"
   },
   {
     "lat": 38.366164,
     "lon": -84.283344,
     "agl": "97",
     "text": "OBST TOWER LGT (ASR UNKNOWN) 382229.23N0841607.95W (0.9NM NE 0I8) 972FT (97FT AGL) U/S"
+  },
+  {
+    "lat": 47.539944,
+    "lon": -111.283167,
+    "agl": "408.1",
+    "text": "OBST TOWER LGT (ASR 1228868) 473223.80N1111659.40W (5.0NM NE GTF) 3954.1FT (408.1FT AGL) U/S"
+  },
+  {
+    "lat": 43.412364,
+    "lon": -72.199856,
+    "agl": "56",
+    "text": "OBST TOWER LGT (ASN 2020-ANE-6212-OE) 432445N0721159W (1.6NM NNW 2B3) 1170FT (56FT AGL) U/S"
+  },
+  {
+    "lat": 32.128583,
+    "lon": -86.082694,
+    "agl": "347.1",
+    "text": "OBST TOWER LGT (ASR 1210063) 320742.90N0860457.70W (14.1NM W 07A) 668.0FT (347.1FT AGL) U/S"
+  },
+  {
+    "lat": 43.155222,
+    "lon": -78.268111,
+    "agl": "200.1",
+    "text": "OBST TOWER LGT (ASR 1249333) 430918.80N0781605.20W (1.1NM SSE 9G6) 842.2FT (200.1FT AGL) U/S"
+  },
+  {
+    "lat": 42.253361,
+    "lon": -90.555417,
+    "agl": "413.1",
+    "text": "OBST TOWER LGT (ASR 1008155) 421512.10N0903319.50W (11.2NM SE DBQ) 1420.9FT (413.1FT AGL) U/S"
+  },
+  {
+    "lat": 44.241667,
+    "lon": -92.972222,
+    "agl": "344",
+    "text": "OBST WIND TURBINE LGT (ASN 2024-WTE-10522-OE) 441430N0925820W (14.2NM S SYN) 1594FT (344FT AGL) U/S"
+  },
+  {
+    "lat": 39.913278,
+    "lon": -84.400413,
+    "agl": "259",
+    "text": "OBST TOWER LGT (ASR 1327456) 395344.00N0843818.50W (11.03NM W 3I7) 1360FT (259FT AGL) U/S"
+  },
+  {
+    "lat": 43.887222,
+    "lon": -85.593611,
+    "agl": "319.9",
+    "text": "OBST TOWER LGT (ASR 1060515) 435314.00N0853537.00W (10.6NM NNW RQB) 1565.0FT (319.9FT AGL) U/S"
+  },
+  {
+    "lat": 38.739772,
+    "lon": -77.507692,
+    "agl": "128",
+    "text": "OBST POWER LINE LGT (ASN 2023-AEA-13070-OE) 384423N0773028W (1.2NM NNE HEF) 350FT (128FT AGL) U/S"
+  },
+  {
+    "lat": 32.896944,
+    "lon": -96.410278,
+    "agl": "206.0",
+    "text": "OBST TOWER LGT (ASR 1043985) 325349.00N0962437.00W (2.4NM SSE F46) 813.0FT (206.0FT AGL) U/S"
+  },
+  {
+    "lat": 31.623056,
+    "lon": -100.4375,
+    "agl": "468.8",
+    "text": "OBST TOWER LGT (ASR 1054170) 313723.00N1002615.00W (16.1NM NE SJT) 2718.8FT (468.8FT AGL) U/S"
+  },
+  {
+    "lat": 41.060611,
+    "lon": -105.481611,
+    "agl": "257.9",
+    "text": "OBST TOWER LGT (ASR 1212946) 410338.20N1052853.80W (17.5NM SSE LAR) 8242.8FT (257.9FT AGL) U/S"
+  },
+  {
+    "lat": 29.618889,
+    "lon": -97.776944,
+    "agl": "265.1",
+    "text": "OBST TOWER LGT (ASR 1058096) 293708.00N0974637.00W (11.3NM E E70) 841.2FT (265.1FT AGL) U/S"
+  },
+  {
+    "lat": 37.771972,
+    "lon": -76.465361,
+    "agl": "267.1",
+    "text": "OBST TOWER LGT (ASR 1260534) 374619.10N0762755.30W (10.2NM N W75) 334.0FT (267.1FT AGL) U/S"
+  },
+  {
+    "lat": 28.667778,
+    "lon": -97.430556,
+    "agl": "493.1",
+    "text": "OBST TOWER LGT (ASR 1048287) 284005.70N0972550.10W (22.0NM NNE TX2) 709.0FT (493.1FT AGL) U/S"
+  },
+  {
+    "lat": 32.267342,
+    "lon": -108.406367,
+    "agl": "279",
+    "text": "OBST WIND TURBINE LGT (ASN 2024-WTW-9361-OE) 321602N1082423W (15.1NM ESE LSB) 5012FT (279FT AGL) U/S"
+  },
+  {
+    "lat": 36.509111,
+    "lon": -86.283333,
+    "agl": "259.8",
+    "text": "OBST TOWER LGT (ASR 1251647) 363032.80N0861660.00W (10.1NM NE XNX) 1207.7FT (259.8FT AGL) U/S"
+  },
+  {
+    "lat": 35.808333,
+    "lon": -83.981194,
+    "agl": "150.9",
+    "text": "OBST TOWER LGT (ASR 1229585) 354830.00N0835852.30W (0.6NM ESE TYS) 1107.9FT (150.9FT AGL) U/S"
+  },
+  {
+    "lat": 35.016861,
+    "lon": -85.387111,
+    "agl": "270.0",
+    "text": "OBST TOWER LGT (ASR 1064238) 350100.70N0852313.60W (9.1NM W CHA) 1174.9FT (270.0FT AGL) U/S"
+  },
+  {
+    "lat": 39.474139,
+    "lon": -75.144639,
+    "agl": "424.9",
+    "text": "OBST TOWER LGT (ASR 1046137) 392826.90N0750840.70W (1.8NM E 00N) 536.7FT (424.9FT AGL) U/S"
+  },
+  {
+    "lat": 31.699833,
+    "lon": -89.616389,
+    "agl": "254.9",
+    "text": "OBST TOWER LGT (ASR 1248925) 314159.40N0893659.00W (13.5NM SE 17M) 652.9FT (254.9FT AGL) U/S"
+  },
+  {
+    "lat": 33.49025,
+    "lon": -89.354667,
+    "agl": "306.1",
+    "text": "OBST TOWER LGT (ASR 1253402) 332924.90N0892116.80W (3.4NM SW 06M) 655.2FT (306.1FT AGL) U/S"
+  },
+  {
+    "lat": 48.386111,
+    "lon": -101.9275,
+    "agl": "330.1",
+    "text": "OBST TOWER LGT (ASR 1059678) 482310.00N1015539.00W (17.6NM SSE 7K5) 2649.9FT (330.1FT AGL) U/S"
+  },
+  {
+    "lat": 32.285472,
+    "lon": -90.503889,
+    "agl": "310.0",
+    "text": "OBST TOWER LGT (ASR 1264396) 321707.70N0903014.00W (4.9NM WSW JVW) 579.1FT (310.0FT AGL) U/S"
+  },
+  {
+    "lat": 47.977222,
+    "lon": -96.609167,
+    "agl": "702.1",
+    "text": "OBST TOWER LGT (ASR 1024158) 475838.00N0963633.00W (8.2NM NE CKN) 1604.3FT (702.1FT AGL) U/S"
+  },
+  {
+    "lat": 31.194444,
+    "lon": -90.335722,
+    "agl": "301.8",
+    "text": "OBST TOWER LGT (ASR 1254847) 311140.00N0902008.60W (7.1NM E MCB) 691.9FT (301.8FT AGL) U/S"
+  },
+  {
+    "lat": 42.15625,
+    "lon": -114.692806,
+    "agl": "204.1",
+    "text": "OBST TOWER LGT (ASR 1238184) 420922.50N1144134.10W (11.0NM N 06U) 5474.1FT (204.1FT AGL) U/S"
+  },
+  {
+    "lat": 42.092306,
+    "lon": -71.303083,
+    "agl": "216.9",
+    "text": "OBST TOWER LGT (ASR 1232361) 420532.50N0711810.50W (7.2NM NW 1B9) 464.9FT (216.9FT AGL) U/S"
+  },
+  {
+    "lat": 32.365,
+    "lon": -81.328611,
+    "agl": "315.0",
+    "text": "OBST TOWER LGT (ASR 1047951) 322154.00N0811943.00W (15.5NM NNW SAV) 370.1FT (315.0FT AGL) U/S"
+  },
+  {
+    "lat": 30.177694,
+    "lon": -82.587528,
+    "agl": "159.8",
+    "text": "OBST TOWER LGT (ASR 1276649) 301039.70N0823515.10W (0.6NM WSW LCQ) 345.1FT (159.8FT AGL) U/S"
+  },
+  {
+    "lat": 48.995556,
+    "lon": -97.408056,
+    "agl": "1437.7",
+    "text": "OBST TOWER LGT (ASR 1048882) 485944.00N0972429.00W (7.3NM WNW PMB) 2235.6FT (1437.7FT AGL) U/S"
+  },
+  {
+    "lat": 30.389028,
+    "lon": -85.541083,
+    "agl": "232.9",
+    "text": "OBST TOWER LGT (ASR 1252285) 302320.50N0853227.90W (13.4NM E ECP) 327.1FT (232.9FT AGL) U/S"
+  },
+  {
+    "lat": 37.395,
+    "lon": -88.939722,
+    "agl": "953.1",
+    "text": "OBST TOWER LGT (ASR 1013331) 372342.00N0885623.00W (15.5NM NW M30) 1519.0FT (953.1FT AGL) U/S"
+  },
+  {
+    "lat": 34.481389,
+    "lon": -92.7295,
+    "agl": "259.8",
+    "text": "OBST TOWER LGT (ASR 1206658) 342853.00N0924346.20W (9.0NM NE M78) 704.7FT (259.8FT AGL) U/S"
+  },
+  {
+    "lat": 41.76075,
+    "lon": -87.721328,
+    "agl": "102",
+    "text": "OBST POWER LINE LGT (ASN 2017-AGL-1184-OE) 414539N0874317W (2.1NM SE MDW) 720FT (102FT AGL) U/S"
+  },
+  {
+    "lat": 44.853667,
+    "lon": -74.328944,
+    "agl": "262",
+    "text": "OBST WIND TURBINE LGT (ASN 2016-WTE-1296-OE) 445442N0735306W (19.0NM E MAL) 1433FT (262FT AGL) U/S"
+  },
+  {
+    "lat": 34.753556,
+    "lon": -87.034333,
+    "agl": "259.8",
+    "text": "OBST TOWER LGT (ASR 1254346) 344512.80N0870203.60W (7.4NM NW DCU) 928.8FT (259.8FT AGL) U/S"
+  },
+  {
+    "lat": 38.8849,
+    "lon": -102.257,
+    "agl": "266",
+    "text": "OBST WIND TURBINE LGT (ASN 2023-WTW-191-OE) 385306N1021525W (21.5NM S ITR) 4386FT (266FT AGL) U/S"
+  },
+  {
+    "lat": 31.765889,
+    "lon": -88.090833,
+    "agl": "412.1",
+    "text": "OBST TOWER LGT (ASR 1254981) 314557.20N0880527.00W (19.6NM NNE 5R1) 585.0FT (412.1FT AGL) U/S"
+  },
+  {
+    "lat": 36.780765,
+    "lon": -76.45128,
+    "agl": "187",
+    "text": "OBST POWER LINE LGT (ASN 2016-AEA-5452-OE) 365233N0763004W (6.2NM NNW PVG) 258FT (187FT AGL) U/S"
+  },
+  {
+    "lat": 34.101333,
+    "lon": -82.849636,
+    "agl": "106",
+    "text": "OBST POWER LINE LGT (ASN 2016-ASO-9460-OE) 340605N0825059W (1.6NM WNW EBA) 785FT (106FT AGL) U/S"
+  },
+  {
+    "lat": 41.543167,
+    "lon": -79.692222,
+    "agl": "254.9",
+    "text": "OBST TOWER LGT (ASR 1225657) 413235.40N0794132.00W (4.5NM SSE 6G1) 1826.8FT (254.9FT AGL) U/S"
+  },
+  {
+    "lat": 42.114279,
+    "lon": -87.901541,
+    "agl": "102",
+    "text": "OBST POWER LINE LGT (ASN 2023-AGL-6953-OE) 420712N0875509W (.86NM WNW PWK) 749FT (102FT AGL) U/S"
+  },
+  {
+    "lat": 35.546667,
+    "lon": -82.470556,
+    "agl": "240.2",
+    "text": "OBST TOWER LGT (ASR 1019293) 353248.00N0822814.00W (7.6NM NNE AVL) 2560.0FT (240.2FT AGL) U/S"
+  },
+  {
+    "lat": 43.948161,
+    "lon": -75.717828,
+    "agl": "199",
+    "text": "OBST TOWER LGT (ASR 1301165) 435653.38N0754304.18W (13.1NM ESE ART) 1371FT (199FT AGL) U/S"
+  },
+  {
+    "lat": 34.103158,
+    "lon": -82.851561,
+    "agl": "106",
+    "text": "OBST POWER LINE LGT (ASN 2016-ASO-9456-OE) 340611N0825106W (1.7NM WNW EBA) 794FT (106FT AGL) U/S"
+  },
+  {
+    "lat": 34.104836,
+    "lon": -82.853289,
+    "agl": "111",
+    "text": "OBST POWER LINE LGT (ASN 2016-ASO-9453-OE) 340617N0825112W (1.9NM WNW EBA) 803FT (111FT AGL) U/S"
+  },
+  {
+    "lat": 38.597049,
+    "lon": -77.072458,
+    "agl": "110",
+    "text": "OBST POWER LINE LGT (ASN 2008-AEA-845-OE) 384403N0771219W (10.2NM NW 2W5) 242FT (110FT AGL) U/S"
+  },
+  {
+    "lat": 30.133722,
+    "lon": -91.946972,
+    "agl": "190.0",
+    "text": "OBST TOWER LGT (ASR 1227344) 300801.40N0915649.10W (4.7NM SSE LFT) 222.8FT (190.0FT AGL) U/S"
+  },
+  {
+    "lat": 48.473361,
+    "lon": -93.333333,
+    "agl": "311.0",
+    "text": "OBST TOWER LGT (ASR 1278979) 482824.10N0931960.00W (6.2NM SSE INL) 1433.1FT (311.0FT AGL) U/S"
+  },
+  {
+    "lat": 28.011389,
+    "lon": -82.497778,
+    "agl": "232.6",
+    "text": "OBST TOWER LGT (ASR 1040049) 280041.00N0822952.00W (2.9NM NE TPA) 275.6FT (232.6FT AGL) U/S"
+  },
+  {
+    "lat": 30.190028,
+    "lon": -82.010722,
+    "agl": "270.0",
+    "text": "OBST TOWER LGT (ASR 1219710) 301124.10N0820038.60W (7.2NM WSW VQQ) 351.7FT (270.0FT AGL) U/S"
+  },
+  {
+    "lat": 27.347722,
+    "lon": -80.951,
+    "agl": "282.2",
+    "text": "OBST TOWER LGT (ASR 1238081) 272051.80N0805703.60W (7.1NM NW OBE) 318.2FT (282.2FT AGL) U/S"
+  },
+  {
+    "lat": 40.466306,
+    "lon": -89.582722,
+    "agl": "254.9",
+    "text": "OBST TOWER LGT (ASR 1295299) 402758.70N0893457.80W (4.4NM ESE C15) 844.8FT (254.9FT AGL) U/S"
+  },
+  {
+    "lat": 40.648278,
+    "lon": -100.028889,
+    "agl": "259.8",
+    "text": "OBST TOWER LGT (ASR 1267053) 403853.80N1000144.00W (13.3NM S CZD) 2970.8FT (259.8FT AGL) U/S"
+  },
+  {
+    "lat": 29.592056,
+    "lon": -81.567,
+    "agl": "270.0",
+    "text": "OBST TOWER LGT (ASR 1245413) 293531.40N0813401.20W (7.5NM ESE 28J) 298.9FT (270.0FT AGL) U/S"
+  },
+  {
+    "lat": 33.984972,
+    "lon": -88.893306,
+    "agl": "412.1",
+    "text": "OBST TOWER LGT (ASR 1274812) 335905.90N0885335.90W (8.6NM WSW 5A4) 794.0FT (412.1FT AGL) U/S"
+  },
+  {
+    "lat": 37.093417,
+    "lon": -98.944917,
+    "agl": "308.1",
+    "text": "OBST TOWER LGT (ASR 1281143) 370536.20N0985641.60W (18.2NM W 4KS) 1977.0FT (308.1FT AGL) U/S"
+  },
+  {
+    "lat": 42.471111,
+    "lon": -83.200278,
+    "agl": "799.9",
+    "text": "OBST TOWER LGT (ASR 1002474) 422816.00N0831201.00W (4.5NM SSW VLL) 1475.7FT (799.9FT AGL) U/S"
+  },
+  {
+    "lat": 36.894604,
+    "lon": -76.201229,
+    "agl": "280",
+    "text": "OBST POWER LINE LGT (ASN 2005-AEA-539-OE) 365027N0761626W (4.8NM SW ORF) 287FT (280FT AGL) U/S"
+  },
+  {
+    "lat": 40.803861,
+    "lon": -81.730389,
+    "agl": "265.7",
+    "text": "OBST TOWER LGT (ASR 1210136) 404813.90N0814349.40W (8.3NM ESE BJJ) 1403.9FT (265.7FT AGL) U/S"
+  },
+  {
+    "lat": 32.401508,
+    "lon": -86.884844,
+    "agl": "265",
+    "text": "OBST TOWER LGT (ASR 1325038) 322405.43N0865305.44W (6.3NM ENE SEM) 402FT (265FT AGL) U/S"
+  },
+  {
+    "lat": 36.834694,
+    "lon": -76.26925,
+    "agl": "545.9",
+    "text": "OBST TOWER LGT (ASR 1024387) 365004.90N0761609.30W (4.9NM SW ORF) 554.5FT (545.9FT AGL) U/S"
+  },
+  {
+    "lat": 38.648583,
+    "lon": -75.539083,
+    "agl": "210.0",
+    "text": "OBST TOWER LGT (ASR 1250143) 383854.90N0753220.70W (7.0NM NNE N06) 235.9FT (210.0FT AGL) U/S"
+  },
+  {
+    "lat": 41.695889,
+    "lon": -72.097056,
+    "agl": "250.0",
+    "text": "OBST TOWER LGT (ASR 1205146) 414145.20N0720549.40W (4.7NM SE IJD) 610.9FT (250.0FT AGL) U/S"
+  },
+  {
+    "lat": 29.105811,
+    "lon": -97.948394,
+    "agl": "259",
+    "text": "OBST TOWER LGT (ASN 2018-ASW-3025-OE) 290621N0975654W (17.2NM NNW 2R9) 634FT (259FT AGL) U/S"
+  },
+  {
+    "lat": 34.099133,
+    "lon": -82.840558,
+    "agl": "88",
+    "text": "OBST POWER LINE LGT (ASN 2016-ASO-9477-OE) 340557N0825026W (1.2NM W EBA) 748FT (88FT AGL) U/S"
+  },
+  {
+    "lat": 40.554003,
+    "lon": -89.688942,
+    "agl": "268",
+    "text": "OBST POWER LINE LGT (ASN 2016-AGL-13451-OE) 403314N0894120W (4.0NM N C15) 731FT (268FT AGL) U/S"
+  },
+  {
+    "lat": 40.560486,
+    "lon": -89.688758,
+    "agl": "268",
+    "text": "OBST POWER LINE LGT (ASN 2016-AGL-8936-OE) 403338N0894120W (4.4NM N C15) 712FT (268FT AGL) U/S"
+  },
+  {
+    "lat": 38.597049,
+    "lon": -77.072458,
+    "agl": "85",
+    "text": "OBST POWER LINE LGT (ASN 2008-AEA-844-OE) 384403N0771230W (10.3NM NW 2W5) 308FT (85FT AGL) U/S"
+  },
+  {
+    "lat": 45.567722,
+    "lon": -122.414328,
+    "agl": "271",
+    "text": "OBST TOWER LGT (ASN 2020-ANM-6295-OE) 453404N1222452W (1.2NM NNW TTD) 278FT (271FT AGL) U/S"
+  },
+  {
+    "lat": 41.237194,
+    "lon": -87.629194,
+    "agl": "264.1",
+    "text": "OBST TOWER LGT (ASR 1214552) 411413.90N0873745.10W (5.5NM W C97) 949.1FT (264.1FT AGL) U/S"
+  },
+  {
+    "lat": 43.401778,
+    "lon": -83.449389,
+    "agl": "309.7",
+    "text": "OBST TOWER LGT (ASR 1280749) 432406.40N0832657.80W (3.4NM S CFS) 1002.0FT (309.7FT AGL) U/S"
+  },
+  {
+    "lat": 33.854917,
+    "lon": -94.422833,
+    "agl": "256.9",
+    "text": "OBST TOWER LGT (ASR 1250969) 335117.70N0942522.20W (11.6NM S DEQ) 599.7FT (256.9FT AGL) U/S"
+  },
+  {
+    "lat": 42.966311,
+    "lon": -92.632261,
+    "agl": "267",
+    "text": "OBST WIND TURBINE LGT (ASN 2024-WTE-2382-OE) 425759N0923756W (6.5NM S CCY) 1333FT (267FT AGL) U/S"
+  },
+  {
+    "lat": 60.533611,
+    "lon": -150.995556,
+    "agl": "379.9",
+    "text": "OBST TOWER LGT (ASR 1064907) 603154.50N1505158.20W (3.8NM ENE L85) 677.8FT (379.9FT AGL) U/S"
+  },
+  {
+    "lat": 41.374561,
+    "lon": -80.523125,
+    "agl": "343",
+    "text": "OBST TOWER LGT (ASR 1308345) 412228.42N0803123.25W (7.4NM SW 4G1) 1614FT (343FT AGL) U/S"
+  },
+  {
+    "lat": 36.068389,
+    "lon": -86.634972,
+    "agl": "195.9",
+    "text": "OBST TOWER LGT (ASR 1037933) 360406.20N0863805.90W (3.9NM SSE BNA) 806.8FT (195.9FT AGL) U/S"
+  },
+  {
+    "lat": 39.073333,
+    "lon": -94.485278,
+    "agl": "1022.0",
+    "text": "OBST TOWER LGT (ASR 1003521) 390424.00N0942907.00W (5.8NM ESE MKC) 1903.9FT (1022.0FT AGL) U/S"
+  },
+  {
+    "lat": 45.803806,
+    "lon": -92.997472,
+    "agl": "313.0",
+    "text": "OBST TOWER LGT (ASR 1023401) 454813.70N0925950.90W (6.7NM NNW ROS) 1328.1FT (313.0FT AGL) U/S"
+  },
+  {
+    "lat": 33.550761,
+    "lon": -88.403422,
+    "agl": "255",
+    "text": "OBST TOWER LGT (ASR 1303954) 333302.74N0882412.32W (5.2NM NNW UBS) 583FT (255FT AGL) U/S"
+  },
+  {
+    "lat": 32.678603,
+    "lon": -88.580853,
+    "agl": "300",
+    "text": "OBST TOWER LGT (ASN 2022-ASO-45973-OE) 324043N0883451W (22.6NM NNE MEI) 731FT (300FT AGL) U/S"
+  },
+  {
+    "lat": 30.114444,
+    "lon": -95.3885,
+    "agl": "256.9",
+    "text": "OBST TOWER LGT (ASR 1259600) 300652.00N0952318.60W (8.1NM NNW IAH) 365.8FT (256.9FT AGL) U/S"
+  },
+  {
+    "lat": 33.596111,
+    "lon": -79.052778,
+    "agl": "799.9",
+    "text": "OBST TOWER LGT (ASR 1046190) 333546.00N0790310.00W (8.1NM SW MYR) 815.0FT (799.9FT AGL) U/S"
+  },
+  {
+    "lat": 41.320278,
+    "lon": -86.273611,
+    "agl": "384.8",
+    "text": "OBST TOWER LGT (ASR 1063263) 411913.00N0861625.00W (2.9NM SSE C65) 1214.6FT (384.8FT AGL) U/S"
+  },
+  {
+    "lat": 42.556389,
+    "lon": -73.8675,
+    "agl": "252.6",
+    "text": "OBST TOWER LGT (ASR 1049073) 423323.00N0735203.00W (1.5NM W 4B0) 777.6FT (252.6FT AGL) U/S"
+  },
+  {
+    "lat": 32.235139,
+    "lon": -89.896194,
+    "agl": "303.1",
+    "text": "OBST TOWER LGT (ASR 1061019) 321406.50N0895346.30W (10.2NM ESE JAN) 854.3FT (303.1FT AGL) U/S"
+  },
+  {
+    "lat": 45.620556,
+    "lon": -91.745833,
+    "agl": "495.4",
+    "text": "OBST TOWER LGT (ASR 1065406) 453714.00N0914445.00W (9.9NM SE SSQ) 1758.5FT (495.4FT AGL) U/S"
+  },
+  {
+    "lat": 32.373056,
+    "lon": -90.152222,
+    "agl": "253.9",
+    "text": "OBST TOWER LGT (ASR 1047131) 322223.00N0900908.00W (4.3NM ENE HKS) 554.8FT (253.9FT AGL) U/S"
+  },
+  {
+    "lat": 34.965194,
+    "lon": -82.088167,
+    "agl": "239.8",
+    "text": "OBST TOWER LGT (ASR 1297946) 345754.70N0820517.40W (7.1NM WNW SPA) 1005.6FT (239.8FT AGL) U/S"
+  },
+  {
+    "lat": 34.157694,
+    "lon": -81.39225,
+    "agl": "261.2",
+    "text": "OBST TOWER LGT (ASR 1018398) 340927.70N0812332.10W (15.1NM SE EOE) 697.2FT (261.2FT AGL) U/S"
+  },
+  {
+    "lat": 30.218611,
+    "lon": -97.181389,
+    "agl": "259.8",
+    "text": "OBST TOWER LGT (ASR 1000188) 301308.70N0971051.10W (10.9NM WNW GYB) 870.7FT (259.8FT AGL) U/S"
+  },
+  {
+    "lat": 41.764528,
+    "lon": -80.180889,
+    "agl": "458.0",
+    "text": "OBST TOWER LGT (ASR 1031965) 414552.30N0801051.20W (8.5NM NE GKJ) 1903.9FT (458.0FT AGL) U/S"
+  },
+  {
+    "lat": 34.497222,
+    "lon": -82.512222,
+    "agl": "315.0",
+    "text": "OBST TOWER LGT (ASR 1033175) 342950.00N0823044.00W (9.8NM E AND) 1085.0FT (315.0FT AGL) U/S"
+  },
+  {
+    "lat": 32.306833,
+    "lon": -88.811556,
+    "agl": "264.8",
+    "text": "OBST TOWER LGT (ASR 1008175) 321824.60N0884841.60W (3.5NM WSW MEI) 762.8FT (264.8FT AGL) U/S"
+  },
+  {
+    "lat": 33.93425,
+    "lon": -83.979778,
+    "agl": "289.0",
+    "text": "OBST TOWER LGT (ASR 1020472) 335603.30N0835847.20W (2.8NM SSW LZU) 1369.1FT (289.0FT AGL) U/S"
+  },
+  {
+    "lat": 26.563583,
+    "lon": -80.518389,
+    "agl": "222.1",
+    "text": "OBST TOWER LGT (ASR 1030009) 263348.90N0803106.20W (10.9NM SE X10) 235.2FT (222.1FT AGL) U/S"
+  },
+  {
+    "lat": 41.004083,
+    "lon": -80.654028,
+    "agl": "261.2",
+    "text": "OBST TOWER LGT (ASR 1014463) 410014.70N0803914.50W (2.8NM NNE 4G4) 1389.1FT (261.2FT AGL) U/S"
+  },
+  {
+    "lat": 32.522944,
+    "lon": -89.484361,
+    "agl": "306.1",
+    "text": "OBST TOWER LGT (ASR 1258756) 323122.60N0892903.70W (10.0NM NE 2M4) 769.0FT (306.1FT AGL) U/S"
+  },
+  {
+    "lat": 39.711897,
+    "lon": -81.275028,
+    "agl": "310",
+    "text": "OBST TOWER LGT (ASN 2025-AGL-1282-OE) 394243N0811630W (8.9NM WSW 4G5) 1374FT (310FT AGL) U/S"
+  },
+  {
+    "lat": 32.321667,
+    "lon": -89.97,
+    "agl": "194.9",
+    "text": "OBST TOWER LGT (ASR 1039606) 321918.00N0895812.00W (5.4NM E JAN) 592.8FT (194.9FT AGL) U/S"
+  },
+  {
+    "lat": 30.99325,
+    "lon": -93.719056,
+    "agl": "499.0",
+    "text": "OBST TOWER LGT (ASR 1055108) 305935.70N0934308.60W (6.6NM NE 61R) 724.1FT (499.0FT AGL) U/S"
+  },
+  {
+    "lat": 34.8705,
+    "lon": -86.845528,
+    "agl": "270.0",
+    "text": "OBST TOWER LGT (ASR 1228140) 345213.80N0865043.90W (10.2NM WSW M38) 1065.0FT (270.0FT AGL) U/S"
+  },
+  {
+    "lat": 27.394639,
+    "lon": -82.454028,
+    "agl": "215.9",
+    "text": "OBST TOWER LGT (ASR 1011628) 272340.70N0822714.50W (5.4NM E SRQ) 232.0FT (215.9FT AGL) U/S"
+  },
+  {
+    "lat": 28.741778,
+    "lon": -97.119667,
+    "agl": "301.8",
+    "text": "OBST TOWER LGT (ASR 1233328) 284430.40N0970710.80W (12.6NM WSW VCT) 401.9FT (301.8FT AGL) U/S"
+  },
+  {
+    "lat": 26.762,
+    "lon": -80.078111,
+    "agl": "519.0",
+    "text": "OBST TOWER LGT (ASR 1031315) 264543.20N0800441.20W (4.8NM NE PBI) 536.1FT (519.0FT AGL) U/S"
+  },
+  {
+    "lat": 35.249722,
+    "lon": -96.931111,
+    "agl": "254.9",
+    "text": "OBST TOWER LGT (ASR 1245567) 351459.00N0965552.00W (6.5NM S SNL) 1320.9FT (254.9FT AGL) U/S"
+  },
+  {
+    "lat": 34.619111,
+    "lon": -92.723944,
+    "agl": "308.1",
+    "text": "OBST TOWER LGT (ASR 1240421) 343708.80N0924326.20W (12.2NM W SUZ) 783.1FT (308.1FT AGL) U/S"
+  },
+  {
+    "lat": 36.958775,
+    "lon": -97.675314,
+    "agl": "443",
+    "text": "OBST WIND TURBINE LGT (ASN 2015-WTW-7976-OE) 365732N0974031W (6.4NM SW 01K) 1690FT (443FT AGL) U/S"
+  },
+  {
+    "lat": 36.950986,
+    "lon": -97.583169,
+    "agl": "443",
+    "text": "OBST WIND TURBINE LGT (ASN 2015-WTW-7964-OE) 365704N0973459W (5.1NM S 01K) 1632FT (443FT AGL) U/S"
+  },
+  {
+    "lat": 36.947461,
+    "lon": -97.616714,
+    "agl": "442",
+    "text": "OBST WIND TURBINE LGT (ASN 2015-WTW-2651-OE) 365651N0973700W (5.5NM SSW 01K) 1648FT (442FT AGL) U/S"
+  },
+  {
+    "lat": 33.044167,
+    "lon": -85.3375,
+    "agl": "500.0",
+    "text": "OBST TOWER LGT (ASR 1053971) 330239.00N0852015.00W (5.4NM SSE 7A5) 1355.0FT (500.0FT AGL) U/S"
+  },
+  {
+    "lat": 18.434778,
+    "lon": -66.604222,
+    "agl": "248.7",
+    "text": "OBST TOWER LGT (ASR 1228817) 182605.20N0663615.20W (4.1NM ESE ABO) 575.5FT (248.7FT AGL) U/S"
+  },
+  {
+    "lat": 40.069639,
+    "lon": -95.194778,
+    "agl": "414.7",
+    "text": "OBST TOWER LGT (ASR 1007070) 400410.70N0951141.20W (18.3NM E FNB) 1529.5FT (414.7FT AGL) U/S"
+  },
+  {
+    "lat": 34.228561,
+    "lon": -98.714933,
+    "agl": "305",
+    "text": "OBST TOWER LGT (ASN 2019-ASW-17264-OE) 341343N0984254W (1.5NM ESE 1O1) 1403FT (305FT AGL) U/S"
+  },
+  {
+    "lat": 43.168833,
+    "lon": -93.124556,
+    "agl": "381.9",
+    "text": "OBST TOWER LGT (ASR 1023692) 431007.80N0930728.40W (9.1NM E MCW) 1545.9FT (381.9FT AGL) U/S"
+  },
+  {
+    "lat": 35.375556,
+    "lon": -80.285278,
+    "agl": "375.0",
+    "text": "OBST TOWER LGT (ASR 1008105) 352232.00N0801707.00W (7.1NM WSW VUJ) 1032.2FT (375.0FT AGL) U/S"
+  },
+  {
+    "lat": 41.23975,
+    "lon": -90.428444,
+    "agl": "294.9",
+    "text": "OBST TOWER LGT (ASR 1008680) 411423.10N0902542.40W (13.0NM SSE MLI) 1003.9FT (294.9FT AGL) U/S"
+  },
+  {
+    "lat": 32.683836,
+    "lon": -88.844411,
+    "agl": "290",
+    "text": "OBST TOWER LGT (ASN 2022-ASO-28566-OE) 324102N0885040W (15.8NM ESE MPE) 844FT (290FT AGL) U/S"
+  },
+  {
+    "lat": 38.035124,
+    "lon": -102.116671,
+    "agl": "266",
+    "text": "OBST WIND TURBINE LGT (ASN 2020-WTE-4124-OE) 381304N1015850W (12.7NM NNE K08) 4062FT (266FT AGL) U/S"
+  },
+  {
+    "lat": 39.375889,
+    "lon": -85.941389,
+    "agl": "264.1",
+    "text": "OBST TOWER LGT (ASR 1057021) 392233.20N0855628.90W (6.2NM ESE 3FK) 941.3FT (264.1FT AGL) U/S"
+  },
+  {
+    "lat": 39.16,
+    "lon": -87.542222,
+    "agl": "364.2",
+    "text": "OBST TOWER LGT (ASR 1060535) 390936.00N0873232.00W (5.1NM WNW SIV) 836.6FT (364.2FT AGL) U/S"
+  },
+  {
+    "lat": 40.250853,
+    "lon": -94.017256,
+    "agl": "245",
+    "text": "OBST TOWER LGT (ASR 1304674) 401503.07N0940102.12W (1.6NM SSW 75K) 1249FT (245FT AGL) U/S"
+  },
+  {
+    "lat": 18.434361,
+    "lon": -66.605861,
+    "agl": "303.1",
+    "text": "OBST TOWER LGT (ASR 1011205) 182603.70N0663621.10W (4.0NM ESE ABO) 651.2FT (303.1FT AGL) U/S"
+  },
+  {
+    "lat": 32.559528,
+    "lon": -94.410222,
+    "agl": "394.7",
+    "text": "OBST TOWER LGT (ASR 1052608) 323334.30N0942436.80W (5.7NM WNW ASL) 824.8FT (394.7FT AGL) U/S"
+  },
+  {
+    "lat": 31.531722,
+    "lon": -97.1555,
+    "agl": "270.7",
+    "text": "OBST TOWER LGT (ASR 1002650) 313154.20N0970919.80W (6.1NM SE ACT) 769.4FT (270.7FT AGL) U/S"
+  },
+  {
+    "lat": 28.970556,
+    "lon": -81.274444,
+    "agl": "375.0",
+    "text": "OBST TOWER LGT (ASR 1061170) 285814.00N0811628.00W (5.8NM S DED) 433.1FT (375.0FT AGL) U/S"
+  },
+  {
+    "lat": 40.349139,
+    "lon": -79.942083,
+    "agl": "125.0",
+    "text": "OBST TOWER LGT (ASR 1284611) 402056.90N0795631.50W (0.7NM WSW AGC) 1338.9FT (125.0FT AGL) U/S"
+  },
+  {
+    "lat": 30.949222,
+    "lon": -83.901167,
+    "agl": "265.1",
+    "text": "OBST TOWER LGT (ASR 1227798) 305657.20N0835404.20W (3.0NM NNW TVI) 508.2FT (265.1FT AGL) U/S"
+  },
+  {
+    "lat": 39.951333,
+    "lon": -80.771611,
+    "agl": "257.9",
+    "text": "OBST TOWER LGT (ASR 1249243) 395704.80N0804617.80W (4.5NM NNW MPG) 1413.7FT (257.9FT AGL) U/S"
+  },
+  {
+    "lat": 42.723694,
+    "lon": -93.226333,
+    "agl": "263",
+    "text": "OBST WIND TURBINE LGT (ASN 2022-WTE-5746-OE) 424219N0932514W (8.6NM W HPT) 1489FT (263FT AGL) U/S"
+  },
+  {
+    "lat": 38.411944,
+    "lon": -92.348139,
+    "agl": "411.1",
+    "text": "OBST TOWER LGT (ASR 1210338) 382443.00N0922053.30W (11.0NM ENE H79) 1269.0FT (411.1FT AGL) U/S"
+  },
+  {
+    "lat": 33.382525,
+    "lon": -80.244311,
+    "agl": "265",
+    "text": "OBST TOWER LGT (ASR 1321802) 332257.09N0801439.52W (9.0NM ENE 5J5) 355FT (265FT AGL) U/S"
+  },
+  {
+    "lat": 37.363778,
+    "lon": -90.69775,
+    "agl": "258.9",
+    "text": "OBST TOWER LGT (ASR 1268749) 372149.60N0904151.90W (14.3NM NE PYN) 1008.9FT (258.9FT AGL) U/S"
+  },
+  {
+    "lat": 40.415556,
+    "lon": -79.356944,
+    "agl": "263.8",
+    "text": "OBST TOWER LGT (ASR 1036937) 402456.00N0792125.00W (9.0NM NNE LBE) 1590.6FT (263.8FT AGL) U/S"
+  },
+  {
+    "lat": 31.988889,
+    "lon": -84.933056,
+    "agl": "464.9",
+    "text": "OBST TOWER LGT (ASR 1020134) 315920.00N0845559.00W (10.3NM ENE EUF) 1011.8FT (464.9FT AGL) U/S"
+  },
+  {
+    "lat": 42.700361,
+    "lon": -78.06275,
+    "agl": "311.0",
+    "text": "OBST TOWER LGT (ASR 1057991) 424201.30N0780345.90W (2.5NM S 01G) 1991.1FT (311.0FT AGL) U/S"
+  },
+  {
+    "lat": 42.732778,
+    "lon": -78.110556,
+    "agl": "294.9",
+    "text": "OBST TOWER LGT (ASR 1002702) 424358.00N0780638.00W (2.6NM W 01G) 1901.9FT (294.9FT AGL) U/S"
+  },
+  {
+    "lat": 30.47975,
+    "lon": -90.361167,
+    "agl": "210.0",
+    "text": "OBST TOWER LGT (ASR 1292696) 302847.10N0902140.20W (3.9NM SE HDC) 236.9FT (210.0FT AGL) U/S"
+  },
+  {
+    "lat": 40.931083,
+    "lon": -80.721528,
+    "agl": "208.0",
+    "text": "OBST TOWER LGT (ASR 1235914) 405551.90N0804317.50W (2.7NM SW 4G4) 1375.0FT (208.0FT AGL) U/S"
+  },
+  {
+    "lat": 32.593611,
+    "lon": -94.819722,
+    "agl": "1098.1",
+    "text": "OBST TOWER LGT (ASR 1063557) 323537.00N0944911.00W (8.7NM ENE 07F) 1562.0FT (1098.1FT AGL) U/S"
+  },
+  {
+    "lat": 39.591389,
+    "lon": -91.679444,
+    "agl": "270.0",
+    "text": "OBST TOWER LGT (ASR 1004627) 393528.50N0914045.50W (3.4NM SE K52) 998.0FT (270.0FT AGL) U/S"
+  },
+  {
+    "lat": 38.067767,
+    "lon": -87.264947,
+    "agl": "320",
+    "text": "OBST TOWER LGT (ASN 2018-AGL-10260-OE) 380404N0871554W (2.9NM ENE I91) 788FT (320FT AGL) U/S"
+  },
+  {
+    "lat": 18.12325,
+    "lon": -67.146639,
+    "agl": "274.9",
+    "text": "OBST TOWER LGT (ASR 1226294) 180723.70N0670847.90W (7.9NM S MAZ) 604.0FT (274.9FT AGL) U/S"
+  },
+  {
+    "lat": 43.238139,
+    "lon": -123.375611,
+    "agl": "95.1",
+    "text": "OBST TOWER LGT (ASR 1272806) 431417.30N1232232.20W (0.9NM W RBG) 948.2FT (95.1FT AGL) U/S"
+  },
+  {
+    "lat": 38.245,
+    "lon": -86.195,
+    "agl": "372.0",
+    "text": "OBST TOWER LGT (ASR 1203626) 381442.00N0861142.00W (21.7NM S I83) 1095.1FT (372.0FT AGL) U/S"
+  },
+  {
+    "lat": 34.568611,
+    "lon": -79.032222,
+    "agl": "281.2",
+    "text": "OBST TOWER LGT (ASR 1062667) 343407.00N0790156.00W (2.8NM SSE LBT) 409.1FT (281.2FT AGL) U/S"
+  },
+  {
+    "lat": 28.98,
+    "lon": -81.455278,
+    "agl": "1499.3",
+    "text": "OBST TOWER LGT (ASR 1019248) 285848.00N0812719.00W (10.6NM WSW DED) 1549.2FT (1499.3FT AGL) U/S"
+  },
+  {
+    "lat": 37.428222,
+    "lon": -93.840778,
+    "agl": "362.9",
+    "text": "OBST TOWER LGT (ASR 1004371) 372541.60N0935026.80W (12.7NM NNE MO9) 1449.8FT (362.9FT AGL) U/S"
+  },
+  {
+    "lat": 38.385639,
+    "lon": -81.108306,
+    "agl": "350.1",
+    "text": "OBST TOWER LGT (ASR 1297049) 382308.30N0810629.90W (14.4NM NW SXL) 1775.9FT (350.1FT AGL) U/S"
+  },
+  {
+    "lat": 33.888056,
+    "lon": -86.859167,
+    "agl": "325.1",
+    "text": "OBST TOWER LGT (ASR 1035918) 335315.90N0865131.70W (20.0NM NNW BHM) 1290.0FT (325.1FT AGL) U/S"
+  },
+  {
+    "lat": 31.164722,
+    "lon": -83.447556,
+    "agl": "198.8",
+    "text": "OBST TOWER LGT (ASR 1213870) 310953.00N0832651.20W (1.7NM NNE 15J) 434.7FT (198.8FT AGL) U/S"
+  },
+  {
+    "lat": 39.318861,
+    "lon": -84.635833,
+    "agl": "261.2",
+    "text": "OBST TOWER LGT (ASR 1057403) 391907.90N0843809.00W (6.0NM WSW HAO) 846.1FT (261.2FT AGL) U/S"
+  },
+  {
+    "lat": 17.71025,
+    "lon": -64.81975,
+    "agl": "109.9",
+    "text": "OBST TOWER LGT (ASR 1284858) 174236.90N0644911.10W (1.1NM WNW STX) 389.8FT (109.9FT AGL) U/S"
+  },
+  {
+    "lat": 28.577278,
+    "lon": -82.412083,
+    "agl": "296.9",
+    "text": "OBST TOWER LGT (ASR 1027566) 283438.20N0822443.50W (6.7NM NNE BKV) 505.9FT (296.9FT AGL) U/S"
+  },
+  {
+    "lat": 28.579,
+    "lon": -82.411917,
+    "agl": "297.9",
+    "text": "OBST TOWER LGT (ASR 1209011) 283444.40N0822442.90W (6.8NM NNE BKV) 503.0FT (297.9FT AGL) U/S"
+  },
+  {
+    "lat": 40.68,
+    "lon": -84.109444,
+    "agl": "263.1",
+    "text": "OBST TOWER LGT (ASR 1011001) 404048.00N0840634.00W (4.1NM WSW AOH) 1164.0FT (263.1FT AGL) U/S"
+  },
+  {
+    "lat": 36.492722,
+    "lon": -99.881306,
+    "agl": "325.1",
+    "text": "OBST TOWER LGT (ASR 1260974) 362933.80N0995252.70W (12.1NM ENE T93) 2793.0FT (325.1FT AGL) U/S"
+  },
+  {
+    "lat": 35.262806,
+    "lon": -77.957583,
+    "agl": "280.8",
+    "text": "OBST TOWER LGT (ASR 1261394) 351546.10N0775727.30W (4.7NM ENE W40) 432.7FT (280.8FT AGL) U/S"
+  },
+  {
+    "lat": 46.524167,
+    "lon": -91.271944,
+    "agl": "319.9",
+    "text": "OBST TOWER LGT (ASR 1034703) 463127.00N0911619.00W (8.2NM ESE Y77) 1556.8FT (319.9FT AGL) U/S"
+  },
+  {
+    "lat": 37.421417,
+    "lon": -86.683333,
+    "agl": "299.9",
+    "text": "OBST TOWER LGT (ASR 1201055) 372517.10N0864060.00W (8.2NM ESE JQD) 939.6FT (299.9FT AGL) U/S"
+  },
+  {
+    "lat": 38.855139,
+    "lon": -82.812194,
+    "agl": "254.9",
+    "text": "OBST TOWER LGT (ASR 1014270) 385118.50N0824843.90W (1.9NM ENE PMH) 1141.1FT (254.9FT AGL) U/S"
+  },
+  {
+    "lat": 40.364167,
+    "lon": -79.8125,
+    "agl": "310.0",
+    "text": "OBST TOWER LGT (ASR 1025884) 402151.00N0794845.00W (2.4NM NW 31D) 1509.8FT (310.0FT AGL) U/S"
+  },
+  {
+    "lat": 39.87,
+    "lon": -80.133306,
+    "agl": "304.1",
+    "text": "OBST TOWER LGT (ASR 1037803) 395212.00N0800759.90W (1.9NM S WAY) 1809.1FT (304.1FT AGL) U/S"
+  },
+  {
+    "lat": 39.777556,
+    "lon": -79.703028,
+    "agl": "311.7",
+    "text": "OBST TOWER LGT (ASR 1027986) 394639.20N0794210.90W (11.2NM S VVS) 2981.6FT (311.7FT AGL) U/S"
+  },
+  {
+    "lat": 44.276972,
+    "lon": -84.313278,
+    "agl": "264.1",
+    "text": "OBST TOWER LGT (ASR 1205760) 441637.10N0841847.80W (6.0NM WNW Y31) 1547.2FT (264.1FT AGL) U/S"
+  },
+  {
+    "lat": 39.880833,
+    "lon": -80.735778,
+    "agl": "254",
+    "text": "OBST TOWER LGT (ASR 1326369) 393427.90N0804538.30W (18.34NM SSW MPG) 1232FT (254FT AGL) U/S"
+  },
+  {
+    "lat": 18.055111,
+    "lon": -66.623528,
+    "agl": "259.2",
+    "text": "OBST TOWER LGT (ASR 1263194) 180318.40N0663724.70W (4.1NM NW PSE) 1053.1FT (259.2FT AGL) U/S"
+  },
+  {
+    "lat": 30.228806,
+    "lon": -82.967778,
+    "agl": "500.0",
+    "text": "OBST TOWER LGT (ASR 1030221) 301343.70N0825804.00W (5.1NM SE 24J) 628.0FT (500.0FT AGL) U/S"
+  },
+  {
+    "lat": 46.143056,
+    "lon": -68.113333,
+    "agl": "350.1",
+    "text": "OBST TOWER LGT (ASR 1023115) 460835.00N0680648.00W (13.1NM W HUL) 1278.5FT (350.1FT AGL) U/S"
+  },
+  {
+    "lat": 39.547028,
+    "lon": -74.638194,
+    "agl": "503.9",
+    "text": "OBST TOWER LGT (ASR 1049923) 393249.30N0743817.50W (6.0NM NNW ACY) 570.9FT (503.9FT AGL) U/S"
+  },
+  {
+    "lat": 36.087278,
+    "lon": -87.400278,
+    "agl": "197.8",
+    "text": "OBST TOWER LGT (ASR 1038223) 360514.20N0872401.00W (2.8NM SSE M02) 1077.8FT (197.8FT AGL) U/S"
+  },
+  {
+    "lat": 36.077917,
+    "lon": -87.026833,
+    "agl": "297.9",
+    "text": "OBST TOWER LGT (ASR 1038115) 360440.50N0870136.60W (9.3NM SW JWN) 1086.9FT (297.9FT AGL) U/S"
+  },
+  {
+    "lat": 35.981722,
+    "lon": -86.5825,
+    "agl": "217.8",
+    "text": "OBST TOWER LGT (ASR 1038217) 355854.20N0863457.00W (3.5NM WSW MQY) 1116.8FT (217.8FT AGL) U/S"
+  },
+  {
+    "lat": 36.575889,
+    "lon": -86.556639,
+    "agl": "297.9",
+    "text": "OBST TOWER LGT (ASR 1038118) 363433.20N0863323.90W (4.0NM WSW 1M5) 1107.0FT (297.9FT AGL) U/S"
+  },
+  {
+    "lat": 28.814167,
+    "lon": -81.872639,
+    "agl": "309.1",
+    "text": "OBST TOWER LGT (ASR 1029744) 284851.00N0815221.50W (3.5NM W LEE) 380.9FT (309.1FT AGL) U/S"
+  },
+  {
+    "lat": 37.539722,
+    "lon": -120.064278,
+    "agl": "162",
+    "text": "OBST TOWER LGT (ASR 1301421) 373223.00N1200351.40W (2.1NM NW MPI) 4173FT (162FT AGL) U/S"
+  },
+  {
+    "lat": 42.748056,
+    "lon": -88.153056,
+    "agl": "315.0",
+    "text": "OBST TOWER LGT (ASR 1047212) 424453.00N0880911.00W (4.6NM SW 62C) 1165.0FT (315.0FT AGL) U/S"
+  },
+  {
+    "lat": 39.345639,
+    "lon": -79.123361,
+    "agl": "315.0",
+    "text": "OBST TOWER LGT (ASR 1034514) 392044.30N0790724.10W (17.1NM SE 2G4) 3274.9FT (315.0FT AGL) U/S"
+  },
+  {
+    "lat": 40.004722,
+    "lon": -84.512222,
+    "agl": "295.9",
+    "text": "OBST TOWER LGT (ASR 1058241) 400017.00N0843044.00W (7.5NM NW 3I7) 1324.1FT (295.9FT AGL) U/S"
+  },
+  {
+    "lat": 42.787278,
+    "lon": -77.808917,
+    "agl": "86.9",
+    "text": "OBST TOWER LGT (ASR 1026705) 424714.20N0774832.10W (1.8NM ESE D52) 997.0FT (86.9FT AGL) U/S"
+  },
+  {
+    "lat": 32.154722,
+    "lon": -83.798611,
+    "agl": "369.8",
+    "text": "OBST TOWER LGT (ASR 1020126) 320917.00N0834755.00W (10.0NM N CKF) 749.7FT (369.8FT AGL) U/S"
+  },
+  {
+    "lat": 35.956944,
+    "lon": -77.795833,
+    "agl": "254.9",
+    "text": "OBST TOWER LGT (ASR 1044496) 355725.00N0774745.00W (7.7NM NE RWI) 332.0FT (254.9FT AGL) U/S"
+  },
+  {
+    "lat": 46.7875,
+    "lon": -92.122778,
+    "agl": "838.3",
+    "text": "OBST TOWER LGT (ASR 1031880) 464715.00N0920722.00W (4.4NM SE DLH) 2043.3FT (838.3FT AGL) U/S"
+  },
+  {
+    "lat": 47.381389,
+    "lon": -92.954444,
+    "agl": "511.2",
+    "text": "OBST TOWER LGT (ASR 1033720) 472253.00N0925716.00W (4.7NM W HIB) 2131.2FT (511.2FT AGL) U/S"
+  },
+  {
+    "lat": 39.494972,
+    "lon": -87.382417,
+    "agl": "214.9",
+    "text": "OBST TOWER LGT (ASR 1021078) 392941.90N0872256.70W (3.2NM S 3I3) 717.8FT (214.9FT AGL) U/S"
+  },
+  {
+    "lat": 34.5565,
+    "lon": -87.12675,
+    "agl": "365.2",
+    "text": "OBST TOWER LGT (ASR 1217181) 343323.40N0870736.30W (10.8NM WSW DCU) 1137.1FT (365.2FT AGL) U/S"
+  },
+  {
+    "lat": 33.436222,
+    "lon": -112.303444,
+    "agl": "291.0",
+    "text": "OBST TOWER LGT (ASR 1006795) 332610.40N1121812.40W (3.7NM ENE GYR) 1279.9FT (291.0FT AGL) U/S"
+  },
+  {
+    "lat": 29.096394,
+    "lon": -99.565711,
+    "agl": "310",
+    "text": "OBST TOWER LGT (ASN 2023-ASW-9935-OE) 290547N0993357W (11.6NM SE UVA) 1189FT (310FT AGL) U/S"
+  },
+  {
+    "lat": 37.709556,
+    "lon": -93.519417,
+    "agl": "315.0",
+    "text": "OBST TOWER LGT (ASR 1296698) 374234.40N0933109.90W (10.6NM NW M17) 1524.9FT (315.0FT AGL) U/S"
+  },
+  {
+    "lat": 33.580083,
+    "lon": -101.846556,
+    "agl": "372.7",
+    "text": "OBST TOWER LGT (ASR 1062199) 333448.30N1015047.60W (5.2NM SSW LBB) 3569.6FT (372.7FT AGL) U/S"
+  },
+  {
+    "lat": 34.214222,
+    "lon": -84.949306,
+    "agl": "261.8",
+    "text": "OBST TOWER LGT (ASR 1218869) 341251.20N0845657.50W (7.3NM NW VPC) 1088.6FT (261.8FT AGL) U/S"
+  },
+  {
+    "lat": 33.452369,
+    "lon": -91.846736,
+    "agl": "265",
+    "text": "OBST TOWER LGT (ASN 2024-ASW-12960-OE) 332709N0915048W (12.2NM SSW LLQ) 479FT (265FT AGL) U/S"
+  },
+  {
+    "lat": 41.486906,
+    "lon": -73.122797,
+    "agl": "91",
+    "text": "OBST POWER LINE LGT (ASN 2016-ANE-4731-OE) 412913N0730722W (0.8NM NE OXC) 961FT (91FT AGL) U/S"
+  },
+  {
+    "lat": 41.486139,
+    "lon": -73.123322,
+    "agl": "94",
+    "text": "OBST POWER LINE LGT (ASN 2016-ANE-2803-OE) 412910N0730724W (0.7NM NE OXC) 951FT (94FT AGL) U/S"
+  },
+  {
+    "lat": 36.765056,
+    "lon": -78.830333,
+    "agl": "310.0",
+    "text": "OBST TOWER LGT (ASR 1221462) 364554.20N0784949.20W (3.5NM NNE W78) 748.0FT (310.0FT AGL) U/S"
+  },
+  {
+    "lat": 41.49005,
+    "lon": -73.121364,
+    "agl": "96",
+    "text": "OBST POWER LINE LGT (ASN 2016-ANE-4733-OE) 412924N0730717W (0.9NM NE OXC) 911FT (96FT AGL) U/S"
+  },
+  {
+    "lat": 41.484947,
+    "lon": -73.123728,
+    "agl": "96",
+    "text": "OBST POWER LINE LGT (ASN 2016-ANE-2852-OE) 412906N0730725W (0.6NM NE OXC) 903FT (96FT AGL) U/S"
+  },
+  {
+    "lat": 40.679056,
+    "lon": -87.418806,
+    "agl": "250.0",
+    "text": "OBST TOWER LGT (ASR 1292998) 404044.60N0872507.70W (4.8NM S 50I) 1035.4FT (250.0FT AGL) U/S"
+  },
+  {
+    "lat": 41.490728,
+    "lon": -73.121228,
+    "agl": "94",
+    "text": "OBST TOWER LGT (ASN 2016-ANE-2806-OE) 412927N0730716W (1.0NM NE OXC) 882FT (94FT AGL) U/S"
+  },
+  {
+    "lat": 35.664806,
+    "lon": -77.410806,
+    "agl": "208.0",
+    "text": "OBST TOWER LGT (ASR 1207563) 353953.30N0772438.90W (2.2NM NW PGV) 239.8FT (208.0FT AGL) U/S"
+  },
+  {
+    "lat": 39.075194,
+    "lon": -96.898167,
+    "agl": "74.8",
+    "text": "OBST TOWER LGT (ASR 1272232) 390430.70N0965353.40W (3.2NM NW 3JC) 1289.7FT (74.8FT AGL) U/S"
+  },
+  {
+    "lat": 42.189775,
+    "lon": -72.489733,
+    "agl": "132",
+    "text": "OBST POWER LINE LGT (ASN 2011-ANE-219-OE) 421123N0722923W (2.0NM E CEF) 460FT (132FT AGL) U/S"
+  },
+  {
+    "lat": 38.284167,
+    "lon": -95.264722,
+    "agl": "484.9",
+    "text": "OBST TOWER LGT (ASR 1040902) 381703.00N0951553.00W (2.4NM W K68) 1542.7FT (484.9FT AGL) U/S"
+  },
+  {
+    "lat": 41.469306,
+    "lon": -73.131056,
+    "agl": "81",
+    "text": "OBST POWER LINE LGT (ASN 2008-ANE-825-OE) 412810N0730752W (0.6NM SSE OXC) 734FT (81FT AGL) U/S"
+  },
+  {
+    "lat": 41.528142,
+    "lon": -72.834958,
+    "agl": "78",
+    "text": "OBST POWER LINE LGT (ASN 2017-ANE-4098-OE) 413141N0725006W (1.2NM NNW MMK) 353FT (78FT AGL) U/S"
+  },
+  {
+    "lat": 34.103083,
+    "lon": -117.51955,
+    "agl": "231",
+    "text": "OBST POWER LINE LGT (ASN 2019-AWP-6978-OE) 340611N1173110W (4.9NM NE ONT) 1401FT (231FT AGL) U/S"
+  },
+  {
+    "lat": 44.623889,
+    "lon": -88.055,
+    "agl": "252.0",
+    "text": "OBST TOWER LGT (ASR 1020965) 443729.30N0880318.40W (6.9NM E 92C) 870.1FT (252.0FT AGL) U/S"
+  },
+  {
+    "lat": 33.999608,
+    "lon": -117.641581,
+    "agl": "179",
+    "text": "OBST TOWER LGT (ASN 2011-AWP-7806-OE) 335959N1173830W (1.5NM N CNO) 879FT (179FT AGL) U/S"
+  },
+  {
+    "lat": 31.893839,
+    "lon": -96.859783,
+    "agl": "394",
+    "text": "OBST TOWER LGT (ASN 2025-WTW-12650-OE) 315338N0965135W (16.6NM SE INJ) 901FT (394FT AGL) U/S"
+  },
+  {
+    "lat": 28.920975,
+    "lon": -95.341008,
+    "agl": "208",
+    "text": "OBST TOWER LGT (ASN 2016-ASW-6111-OE) 285516N0952028W (12.8NM SSE LBX) 211FT (208FT AGL) U/S"
+  },
+  {
+    "lat": 46.884167,
+    "lon": -124.013583,
+    "agl": "254.9",
+    "text": "OBST TOWER LGT (ASR 1214859) 465303.00N1240048.90W (3.6NM ESE 14S) 321.9FT (254.9FT AGL) U/S"
+  },
+  {
+    "lat": 32.457778,
+    "lon": -86.492778,
+    "agl": "211.9",
+    "text": "OBST TOWER LGT (ASR 1063826) 322728.90N0862934.60W (1.5NM NE 1A9) 689.0FT (211.9FT AGL) U/S"
+  },
+  {
+    "lat": 32.599972,
+    "lon": -83.920944,
+    "agl": "305.8",
+    "text": "OBST TOWER LGT (ASR 1023722) 323559.90N0835515.40W (9.3NM NW PXE) 860.6FT (305.8FT AGL) U/S"
+  },
+  {
+    "lat": 31.414333,
+    "lon": -83.968667,
+    "agl": "257.9",
+    "text": "OBST TOWER LGT (ASR 1245814) 312451.60N0835807.20W (9.5NM SSW SYV) 669.6FT (257.9FT AGL) U/S"
+  },
+  {
+    "lat": 31.635278,
+    "lon": -91.018611,
+    "agl": "313.0",
+    "text": "OBST TOWER LGT (ASR 1040136) 313807.00N0910107.00W (14.4NM E HEZ) 797.9FT (313.0FT AGL) U/S"
+  },
+  {
+    "lat": 33.348194,
+    "lon": -117.391861,
+    "agl": "41.0",
+    "text": "OBST TOWER LGT (ASR 1229520) 332053.50N1172330.70W (7.1NM W L18) 680.1FT (41.0FT AGL) U/S"
+  },
+  {
+    "lat": 44.289083,
+    "lon": -84.742333,
+    "agl": "890.1",
+    "text": "OBST TOWER LGT (ASR 1049723) 441720.70N0844432.40W (3.3NM SE 5Y2) 2202.1FT (890.1FT AGL) U/S"
+  },
+  {
+    "lat": 31.61,
+    "lon": -91.056417,
+    "agl": "306.1",
+    "text": "OBST TOWER LGT (ASR 1255903) 313635.90N0910323.20W (12.4NM E HEZ) 758.9FT (306.1FT AGL) U/S"
+  },
+  {
+    "lat": 40.609056,
+    "lon": -91.181111,
+    "agl": "265",
+    "text": "OBST TOWER LGT (ASN 2018-AGL-18260-OE) 403633N0911052W (7.3NM ESE FSW) 960FT (265FT AGL) U/S"
+  },
+  {
+    "lat": 41.380556,
+    "lon": -75.593889,
+    "agl": "284.8",
+    "text": "OBST TOWER LGT (ASR 1028054) 412250.00N0753538.00W (6.4NM ENE AVP) 2339.9FT (284.8FT AGL) U/S"
+  },
+  {
+    "lat": 40.960306,
+    "lon": -78.108417,
+    "agl": "323.2",
+    "text": "OBST TOWER LGT (ASR 1208977) 405737.10N0780630.30W (4.7NM NNW PSB) 1825.5FT (323.2FT AGL) U/S"
+  },
+  {
+    "lat": 30.9555,
+    "lon": -87.773361,
+    "agl": "449.1",
+    "text": "OBST TOWER LGT (ASR 1037359) 305719.80N0874624.10W (5.7NM NNE 1R8) 727.0FT (449.1FT AGL) U/S"
+  },
+  {
+    "lat": 39.647861,
+    "lon": -82.809917,
+    "agl": "265.1",
+    "text": "OBST TOWER LGT (ASR 1203397) 393852.30N0824835.70W (9.6NM SW LHQ) 1339.2FT (265.1FT AGL) U/S"
+  },
+  {
+    "lat": 33.212778,
+    "lon": -86.853056,
+    "agl": "255.9",
+    "text": "OBST TOWER LGT (ASR 1010733) 331246.00N0865111.00W (4.1NM WNW EET) 916.0FT (255.9FT AGL) U/S"
+  },
+  {
+    "lat": 29.816944,
+    "lon": -98.741389,
+    "agl": "298.9",
+    "text": "OBST TOWER LGT (ASR 1200557) 294901.00N0984429.00W (6.1NM NNW 5C1) 1841.9FT (298.9FT AGL) U/S"
+  },
+  {
+    "lat": 35.770444,
+    "lon": -80.106361,
+    "agl": "263.1",
+    "text": "OBST TOWER LGT (ASR 1200951) 354613.60N0800622.90W (3.6NM S N97) 1025.3FT (263.1FT AGL) U/S"
+  },
+  {
+    "lat": 44.727722,
+    "lon": -90.084306,
+    "agl": "307.1",
+    "text": "OBST TOWER LGT (ASR 1218614) 444339.80N0900503.50W (7.1NM NE MFI) 1573.2FT (307.1FT AGL) U/S"
+  },
+  {
+    "lat": 46.732286,
+    "lon": -87.822689,
+    "agl": "310",
+    "text": "OBST TOWER LGT (ASN 2019-AGL-327-OE) 464356N0874922W (23.3NM N M61) 1789FT (310FT AGL) U/S"
+  },
+  {
+    "lat": 39.640286,
+    "lon": -78.789075,
+    "agl": "170",
+    "text": "OBST TOWER LGT (ASR 1306992) 393825.03N0784720.67W (2.0NM NW CBE) 1203FT (170FT AGL) U/S"
+  },
+  {
+    "lat": 45.846111,
+    "lon": -88.662972,
+    "agl": "369.8",
+    "text": "OBST TOWER LGT (ASR 1034954) 455046.00N0883946.70W (14.1NM S Y73) 2002.6FT (369.8FT AGL) U/S"
+  },
+  {
+    "lat": 45.444167,
+    "lon": -90.176944,
+    "agl": "319.9",
+    "text": "OBST TOWER LGT (ASR 1033850) 452636.60N0901034.00W (7.1NM SE 5N2) 2225.7FT (319.9FT AGL) U/S"
+  },
+  {
+    "lat": 34.980508,
+    "lon": -98.208297,
+    "agl": "680",
+    "text": "OBST WIND TURBINE LGT (ASN 2020-WTW-9750-OE) 345850N0981230W (5.1NM SSE F68) 2051FT (680FT AGL) U/S"
+  },
+  {
+    "lat": 31.688333,
+    "lon": -89.099444,
+    "agl": "499.0",
+    "text": "OBST TOWER LGT (ASR 1039105) 314118.00N0890558.00W (3.9NM ENE LUL) 748.0FT (499.0FT AGL) U/S"
+  },
+  {
+    "lat": 45.676889,
+    "lon": -87.957,
+    "agl": "304.1",
+    "text": "OBST TOWER LGT (ASR 1276469) 454036.80N0875725.20W (10.8NM SE IMT) 1321.2FT (304.1FT AGL) U/S"
+  },
+  {
+    "lat": 41.8985,
+    "lon": -85.793472,
+    "agl": "260",
+    "text": "OBST TOWER LGT (ASR 1302258) 415354.60N0854736.50W (9.7NM WSW HAI) 1193FT (260FT AGL) U/S"
+  },
+  {
+    "lat": 29.761056,
+    "lon": -81.476611,
+    "agl": "217.2",
+    "text": "OBST TOWER LGT (ASR 1028639) 294539.80N0812835.80W (12.9NM ENE 28J) 241.1FT (217.2FT AGL) U/S"
+  },
+  {
+    "lat": 40.131917,
+    "lon": -97.169833,
+    "agl": "199.1",
+    "text": "OBST TOWER LGT (ASR 1290140) 400754.90N0971011.40W (3.0NM S FBY) 1518.7FT (199.1FT AGL) U/S"
+  },
+  {
+    "lat": 36.542525,
+    "lon": -85.36225,
+    "agl": "270",
+    "text": "OBST TOWER LGT (ASN 2021-ASO-31055-OE) 363233N0852144W (8.1NM NNW 8A3) 1271FT (270FT AGL) U/S"
+  },
+  {
+    "lat": 42.363333,
+    "lon": -89.135,
+    "agl": "498.7",
+    "text": "OBST TOWER LGT (ASR 1009378) 422148.00N0890806.00W (4.3NM NE 1C8) 1378.0FT (498.7FT AGL) U/S"
+  },
+  {
+    "lat": 35.665028,
+    "lon": -87.002389,
+    "agl": "214.9",
+    "text": "OBST TOWER LGT (ASR 1202423) 353954.10N0870008.60W (11.0NM NE MRC) 1001.0FT (214.9FT AGL) U/S"
+  },
+  {
+    "lat": 34.482694,
+    "lon": -87.954556,
+    "agl": "310",
+    "text": "OBST TOWER LGT (ASR 1329088) 342857.70N0875716.40W (12.2NM W M22) 1107FT (310FT AGL) U/S"
+  },
+  {
+    "lat": 36.349722,
+    "lon": -89.37,
+    "agl": "311.0",
+    "text": "OBST TOWER LGT (ASR 1047381) 362059.00N0892212.00W (7.6NM S 0M2) 775.9FT (311.0FT AGL) U/S"
+  },
+  {
+    "lat": 42.338056,
+    "lon": -112.800556,
+    "agl": "310.0",
+    "text": "OBST TOWER LGT (ASR 1040318) 422017.00N1124802.00W (24.7NM WNW MLD) 6564.0FT (310.0FT AGL) U/S"
+  },
+  {
+    "lat": 31.862765,
+    "lon": -89.800614,
+    "agl": "315",
+    "text": "OBST TOWER LGT (ASR 1313727) 315608.10N0894114.06W (7.25NM NE 17M) 722FT (315FT AGL) U/S"
+  },
+  {
+    "lat": 31.436917,
+    "lon": -85.890917,
+    "agl": "198.8",
+    "text": "OBST TOWER LGT (ASR 1261947) 312612.90N0855327.30W (8.2NM NE EDN) 562.7FT (198.8FT AGL) U/S"
+  },
+  {
+    "lat": 43.087196,
+    "lon": -92.343232,
+    "agl": "267",
+    "text": "OBST TOWER LGT (ASN 2024-WTE-819-OE) 431813N0922651W (13.78NM NNW 1Y5) 1538FT (267 FT AGL) U/S"
+  },
+  {
+    "lat": 29.442222,
+    "lon": -95.361111,
+    "agl": "254.9",
+    "text": "OBST TOWER LGT (ASR 1037174) 292632.00N0952140.00W (2.9NM SW 3T2) 304.8FT (254.9FT AGL) U/S"
+  },
+  {
+    "lat": 41.455611,
+    "lon": -81.747611,
+    "agl": "309.7",
+    "text": "OBST TOWER LGT (ASR 1012572) 412720.20N0814451.40W (4.8NM SW BKL) 1054.5FT (309.7FT AGL) U/S"
+  },
+  {
+    "lat": 42.180278,
+    "lon": -92.310556,
+    "agl": "281.5",
+    "text": "OBST TOWER LGT (ASR 1045074) 421049.00N0921838.00W (6.6NM E 8C6) 1242.1FT (281.5FT AGL) U/S"
+  },
+  {
+    "lat": 42.053842,
+    "lon": -89.889622,
+    "agl": "210",
+    "text": "OBST TOWER LGT (ASN 2018-AGL-17640-OE) 420314N0895323W (9.7NM E SFY) 1015FT (210FT AGL) U/S"
+  },
+  {
+    "lat": 35.402611,
+    "lon": -78.022917,
+    "agl": "206.0",
+    "text": "OBST TOWER LGT (ASR 1290951) 352409.40N0780122.50W (4.6NM SW GWW) 271.7FT (206.0FT AGL) U/S"
+  },
+  {
+    "lat": 35.578667,
+    "lon": -78.43575,
+    "agl": "500.0",
+    "text": "OBST TOWER LGT (ASR 1267863) 353443.20N0782608.70W (3.1NM NW JNX) 735.9FT (500.0FT AGL) U/S"
+  },
+  {
+    "lat": 36.594708,
+    "lon": -93.838333,
+    "agl": "254",
+    "text": "OBST TOWER LGT (ASN 2021-ACE-4473-OE) 363541N0935018W (6.8NM SSE 94K) 1596FT (254FT AGL) U/S"
+  },
+  {
+    "lat": 35.9375,
+    "lon": -79.441389,
+    "agl": "941.3",
+    "text": "OBST TOWER LGT (ASR 1024643) 355615.00N0792629.00W (5.7NM NE N61) 1843.8FT (941.3FT AGL) U/S"
+  },
+  {
+    "lat": 38.403056,
+    "lon": -78.923333,
+    "agl": "268.7",
+    "text": "OBST TOWER LGT (ASR 1003491) 382411.00N0785524.00W (2.8NM NE VBW) 1679.8FT (268.7FT AGL) U/S"
+  },
+  {
+    "lat": 29.327883,
+    "lon": -99.934683,
+    "agl": "240",
+    "text": "OBST TOWER LGT (ASN 2023-ASW-1266-OE) 291940N0995605W (12.3NM NW UVA) 1277FT (240FT AGL) U/S"
+  },
+  {
+    "lat": 36.120278,
+    "lon": -78.379722,
+    "agl": "328.1",
+    "text": "OBST TOWER LGT (ASR 1007192) 360713.00N0782247.00W (6.3NM NNW LHZ) 656.2FT (328.1FT AGL) U/S"
+  },
+  {
+    "lat": 32.037431,
+    "lon": -91.560078,
+    "agl": "289",
+    "text": "OBST TOWER LGT (ASN 2016-ASW-7859-OE) 320215N0913336W (9.8NM SE F89) 355FT (289FT AGL) U/S"
+  },
+  {
+    "lat": 33.661139,
+    "lon": -115.717583,
+    "agl": "138.1",
+    "text": "OBST TOWER LGT (ASR 1214068) 333940.10N1154303.30W (0.4NM WSW L77) 1839.2FT (138.1FT AGL) U/S"
+  },
+  {
+    "lat": 35.114028,
+    "lon": -96.510694,
+    "agl": "349.1",
+    "text": "OBST TOWER LGT (ASR 1287370) 350650.50N0963038.50W (4.9NM WNW F99) 1299.2FT (349.1FT AGL) U/S"
+  },
+  {
+    "lat": 34.518556,
+    "lon": -109.37875,
+    "agl": "500",
+    "text": "OBST STACK LGT (ASN UNKNOWN) 343439.61N1091619.96W (6.35NM NE SJN) 6293FT (500FT AGL) U/S"
+  },
+  {
+    "lat": 43.810833,
+    "lon": -84.463889,
+    "agl": "397.0",
+    "text": "OBST TOWER LGT (ASR 1000398) 434839.00N0842750.00W (9.6NM S GDW) 1105.6FT (397.0FT AGL) U/S"
+  },
+  {
+    "lat": 31.4306,
+    "lon": -85.884736,
+    "agl": "270",
+    "text": "OBST TOWER LGT (ASN 2017-ASO-21395-OE) 312550N0855305W (7.9NM NE EDN) 711FT (270FT AGL) U/S"
+  },
+  {
+    "lat": 43.733661,
+    "lon": -103.619498,
+    "agl": "349",
+    "text": "OBST TOWER LGT (ASR 1314813) 434323.17N1035819.90W (15.38NM W CUT) 5440FT (349FT AGL) U/S"
+  },
+  {
+    "lat": 47.096433,
+    "lon": -101.424022,
+    "agl": "260",
+    "text": "OBST TOWER LGT (ASN 2018-AGL-21647-OE) 470547N1012526W (13.3NM SSE HZE) 2521FT (260FT AGL) U/S"
+  },
+  {
+    "lat": 35.506003,
+    "lon": -96.804097,
+    "agl": "333",
+    "text": "OBST TOWER LGT (ASN 2021-ASW-4315-OE) 353022N0964815W (4.4NM WNW O47) 1296FT (333FT AGL) U/S"
+  },
+  {
+    "lat": 38.286108,
+    "lon": -85.705153,
+    "agl": "250",
+    "text": "OBST POWER LINE LGT (ASN 2013-AGL-12188-OE) 381710N0854219W (4.0NM NNW LOU) 697FT (250FT AGL) U/S"
+  },
+  {
+    "lat": 38.739444,
+    "lon": -121.215278,
+    "agl": "434.7",
+    "text": "OBST TOWER LGT (ASR 1026717) 384422.00N1211255.00W (9.6NM ENE MCC) 704.7FT (434.7FT AGL) U/S"
+  },
+  {
+    "lat": 27.147525,
+    "lon": -81.8901,
+    "agl": "260",
+    "text": "OBST TOWER LGT (ASN 2024-ASO-13412-OE) 270851N0815324W (4.1NM SW X06) 301FT (260FT AGL) U/S"
+  },
+  {
+    "lat": 35.507361,
+    "lon": -96.790681,
+    "agl": "260",
+    "text": "OBST TOWER LGT (ASR 1308835) 353026.50N0964726.45W (3.9NM WNW O47) 1235FT (260FT AGL) U/S"
+  },
+  {
+    "lat": 44.996944,
+    "lon": -123.154444,
+    "agl": "200.1",
+    "text": "OBST TOWER LGT (ASR 1033804) 445949.00N1230916.00W (8.1NM NNE 7S5) 1182.1FT (200.1FT AGL) U/S"
+  },
+  {
+    "lat": 35.731444,
+    "lon": -81.611472,
+    "agl": "319.9",
+    "text": "OBST TOWER LGT (ASR 1004702) 354353.20N0813641.30W (5.3NM S MRN) 1583.0FT (319.9FT AGL) U/S"
+  },
+  {
+    "lat": 38.739722,
+    "lon": -121.214444,
+    "agl": "222.8",
+    "text": "OBST TOWER LGT (ASR 1026716) 384423.00N1211252.00W (9.6NM ENE MCC) 492.8FT (222.8FT AGL) U/S"
+  },
+  {
+    "lat": 38.739444,
+    "lon": -121.216111,
+    "agl": "227.0",
+    "text": "OBST TOWER LGT (ASR 1026718) 384422.00N1211258.00W (9.6NM ENE MCC) 492.1FT (227.0FT AGL) U/S"
+  },
+  {
+    "lat": 33.569278,
+    "lon": -82.126139,
+    "agl": "257.9",
+    "text": "OBST TOWER LGT (ASR 1243982) 333409.40N0820734.10W (7.5NM NW DNL) 512.1FT (257.9FT AGL) U/S"
+  },
+  {
+    "lat": 31.964167,
+    "lon": -83.753333,
+    "agl": "175.9",
+    "text": "OBST TOWER LGT (ASR 1241665) 315751.00N0834512.00W (1.8NM SE CKF) 520.0FT (175.9FT AGL) U/S"
+  },
+  {
+    "lat": 35.45,
+    "lon": -118.9475,
+    "agl": "258.5",
+    "text": "OBST TOWER LGT (ASR 1057537) 352700.00N1185651.00W (5.4NM E BFL) 788.4FT (258.5FT AGL) U/S"
+  },
+  {
+    "lat": 34.883778,
+    "lon": -76.505833,
+    "agl": "844.2",
+    "text": "OBST TOWER LGT (ASR 1253623) 345301.60N0763021.00W (12.0NM NE MRH) 849.1FT (844.2FT AGL) U/S"
+  },
+  {
+    "lat": 33.550139,
+    "lon": -89.283717,
+    "agl": "390",
+    "text": "OBST TOWER LGT (ASR 1329451) 333300.50N0891701.38W (1.7NM ENE 06M) 831FT (390FT AGL) U/S"
+  },
+  {
+    "lat": 39.341944,
+    "lon": -85.165722,
+    "agl": "269.7",
+    "text": "OBST TOWER LGT (ASR 1297002) 392031.60N0850957.50W (4.3NM E HLB) 1237.5FT (269.7FT AGL) U/S"
+  },
+  {
+    "lat": 46.641329,
+    "lon": -96.104144,
+    "agl": "1100.7",
+    "text": "OBST TOWER LGT (ASR 1049364) 464029.00N0961341.00W (5.5NM WNW 47Y) 2554.8FT (1100.7FT AGL) U/S"
   }
 ]
