@@ -173,12 +173,12 @@ def harvest_notams():
                         backup_match = re.search(r"MSL\s*\(\s*(\d+(?:\.\d+)?)\s*(?:FT)?\s*\)", text)
                         agl_val = backup_match.group(1) if backup_match else "Unknown"
                     
-                    processed_notams.append({
-                        "lat": lat_val,
-                        "lon": lon_val,
-                        "agl": agl_val,
-                        "text": text
-                    })
+                    processed_notams.append([
+                        lat_val,
+                        lon_val,
+                        agl_val,
+                        text
+                    ])
                     
     except Exception as e:
         print(f"    > [!] API request or parsing failed: {e}")
@@ -229,12 +229,13 @@ def process_data():
                         state = line[15:17].strip().upper() # ADDED: 2-Letter State Code
                         oas = line[0:9].strip()
                         
-                        obstacles.append({"id": oas, "state": state, "city": city, "lat": lat, "lon": lon, "agl": agl})
+                        obstacles.append([oas, state, lat, lon, agl])
                     except:
                         continue
         print(f"    > Parsed {len(obstacles)} Obstacles.")
     except Exception as e:
         print(f"[!] DOF Process failed: {e}")
+        sys.exit(1)
 
     # --- 2. DOWNLOAD & PARSE NASR APT (28-Day Cycle) ---
     print("\n[-] Fetching latest NASR APT ZIP...")
@@ -276,6 +277,7 @@ def process_data():
             print("[!] Could not find NASR ZIP link.")
     except Exception as e:
         print(f"[!] NASR Process failed: {e}")
+        sys.exit(1)
 
     # --- 3. SAVE WITH FAILSAFE ---
     print("\n[-] Compiling outputs...")
