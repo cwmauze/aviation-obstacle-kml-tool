@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EFB Touch Target Sketch</title>
+    <style>
+        :root {
+            --bg: #18191a; --card: #242526; --text: #e4e6eb; --border: #3e4042;
+            --primary: #478df5; --input-bg: #3a3b3c;
+        }
+        body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); padding: 20px; }
+        .container { max-width: 400px; margin: auto; background: var(--card); padding: 20px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 30px;}
+        h3 { margin-top: 0; color: #90949c; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;}
+
+        /* --- CURRENT STYLING --- */
+        .old-inline-control { display: flex; align-items: center; justify-content: space-between; background: var(--input-bg); padding: 6px 12px; border-radius: 6px; border: 1px solid var(--border); margin-bottom: 8px; min-height: 28px;}
+        .old-inline-control label { font-size: 12px; font-weight: normal; margin: 0; }
+        .old-inline-control input[type="number"] { width: 60px; height: 26px; padding: 2px 6px; margin: 0; background: var(--card); color: var(--text); border: 1px solid var(--border); border-radius: 5px; box-sizing: border-box; font-size: 13px; }
+        .old-checkbox-group { display: flex; align-items: center; gap: 8px; padding: 4px 0; margin-bottom: 10px;}
+        .old-checkbox-group input { transform: scale(1.1); margin: 0; }
+        .old-checkbox-group label { font-size: 12px; font-weight: normal; margin: 0; }
+
+        /* --- PROPOSED EFB STYLING --- */
+        .efb-inline-control { display: flex; align-items: center; justify-content: space-between; background: var(--input-bg); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 12px; min-height: 40px;}
+        .efb-inline-control label { font-size: 13px; font-weight: normal; margin: 0; }
+        .efb-inline-control input[type="number"] { width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); color: var(--text); border: 1px solid var(--border); border-radius: 6px; box-sizing: border-box; font-size: 15px; font-weight: bold; text-align: center;}
+        .efb-checkbox-group { display: flex; align-items: center; gap: 12px; padding: 8px 0; margin-bottom: 12px; cursor: pointer;}
+        /* Explicit larger hit area and primary color tint */
+        .efb-checkbox-group input { width: 22px; height: 22px; margin: 0; cursor: pointer; accent-color: var(--primary); }
+        .efb-checkbox-group label { font-size: 13px; font-weight: bold; margin: 0; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h3>Current (Desktop Focus)</h3>
+        
+        <div class="old-checkbox-group">
+            <input type="checkbox" checked>
+            <label>Enable shading for obstacle rings</label>
+        </div>
+
+        <div class="old-inline-control">
+            <label>Ring radius (NM)</label>
+            <input type="number" value="2.0" step="0.1">
+        </div>
+        
+        <div class="old-inline-control">
+            <label>Minimum height (ft AGL)</label>
+            <input type="number" value="200">
+        </div>
+    </div>
+
+    <div class="container" style="border-color: var(--primary); box-shadow: 0 4px 15px rgba(71, 141, 245, 0.2);">
+        <h3 style="color: var(--primary);">Proposed (EFB / Tablet Focus)</h3>
+        
+        <div class="efb-checkbox-group">
+            <input type="checkbox" checked id="mockCheck">
+            <label for="mockCheck">Enable shading for obstacle rings</label>
+        </div>
+
+        <div class="efb-inline-control">
+            <label>Ring radius (NM)</label>
+            <input type="number" value="2.0" step="0.1">
+        </div>
+        
+        <div class="efb-inline-control">
+            <label>Minimum height (ft AGL)</label>
+            <input type="number" value="200">
+        </div>
+    </div>
+
+</body>
+</html>

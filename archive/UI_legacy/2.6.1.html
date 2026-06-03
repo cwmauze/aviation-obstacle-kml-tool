@@ -9,7 +9,6 @@
     
     <style>
         :root {
-            color-scheme: dark;
             --bg: #18191a; --card: #242526; --text: #e4e6eb; --border: #3e4042;
             --primary: #478df5; --secondary: #3a3b3c; --danger: #fb6161;
             --success: #28a745; --earth: #2d81ff; --link: #a3c7ff; --dispatch: #f39c12;
@@ -19,7 +18,6 @@
             --input-bg: #3a3b3c;
         }
         [data-theme="light"] {
-            color-scheme: light;
             --bg: #f0f2f5; --card: #ffffff; --text: #1c1e21; --border: #dadde1;
             --primary: #1a73e8; --secondary: #e4e6eb; --danger: #fa3e3e;
             --link: #1a73e8; --dispatch: #f39c12;
@@ -50,22 +48,18 @@
 
         /* UI Grouping & Grid */
         .section-card { border: 1px solid var(--border); border-radius: 8px; padding: 15px 20px; margin-bottom: 15px; background: var(--section-bg); }
-        .section-title { font-weight: 800; color: var(--primary); margin-bottom: 14px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.8px; display: flex; justify-content: space-between; align-items: center; }
+        .section-title { font-weight: bold; color: var(--primary); margin-bottom: 12px; text-transform: uppercase; font-size: 10px; letter-spacing: 0.5px; display: flex; justify-content: space-between; align-items: center; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         @media (max-width: 500px) { .grid-2 { grid-template-columns: 1fr; gap: 10px; } }
-        
-        .col-divider { border-right: 1px solid var(--border); padding-right: 20px; }
-        @media (max-width: 500px) { .col-divider { border-right: none; padding-right: 0; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 5px; } }
 
         label { display: block; font-weight: bold; color: var(--text); font-size: 12px; opacity: 0.9; margin-bottom: 4px; }
-        input[type="number"], input[type="text"], select { width: 100%; height: 36px; padding: 8px 10px; background: var(--input-bg); color: var(--text); border: 1px solid var(--border); border-radius: 5px; box-sizing: border-box; font-size: 13px; font-family: inherit; }
-        input[type="range"] { flex: 1; margin: 0 10px; cursor: pointer; background: transparent; }
+        input[type="number"], input[type="text"] { width: 100%; padding: 8px 10px; background: var(--input-bg); color: var(--text); border: 1px solid var(--border); border-radius: 5px; box-sizing: border-box; font-size: 13px; }
+        input[type="range"] { flex: 1; margin: 0 10px; cursor: pointer; }
         
         /* EFB Optimized Inline Controls */
-        .inline-control { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--input-bg); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 12px; min-height: 40px; }
+        .inline-control { display: flex; align-items: center; justify-content: space-between; background: var(--input-bg); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 12px; min-height: 40px;}
         .inline-control label { margin: 0; font-weight: normal; font-size: 13px; }
         .inline-control input[type="color"] { width: 44px; height: 32px; padding: 0; border: 1px solid var(--border); background: none; cursor: pointer; border-radius: 6px; flex-shrink: 0; }
-        .inline-control input[type="number"] { flex-shrink: 0; }
         
         .checkbox-group { display: flex; align-items: center; gap: 12px; padding: 8px 0; cursor: pointer; }
         .checkbox-group input { width: 22px; height: 22px; margin: 0; cursor: pointer; accent-color: var(--primary); }
@@ -73,35 +67,25 @@
         
         #facilityName { font-size: 11px; font-weight: bold; margin-top: 6px; min-height: 14px; text-transform: uppercase; }
 
-        .btn-group { display: flex; gap: 12px; margin-top: 20px; }
+        .btn-group { display: flex; gap: 15px; margin-top: 25px; }
         button.action { flex: 1; padding: 14px; color: white; border: none; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.2s; }
         button.action span { display: block; font-size: 9px; font-weight: normal; opacity: 0.8; margin-top: 3px; }
         .btn-preview { background-color: #4a7ae6; }
         .btn-preview:hover { background-color: #3b66c4; }
-        .btn-download { background-color: #4cae64; }
+        .btn-download { background-color: #4cae64; display: flex; align-items: center; justify-content: center; font-size: 15px;}
         .btn-download:hover { background-color: #3e9151; }
         
         /* New Stacked Button Styles & Grid */
-        .btn-stacked { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 12px 8px; color: white; border: none; border-radius: 8px; cursor: pointer; transition: filter 0.2s; text-align: center; font-family: inherit; }
+        .btn-stacked { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 14px 8px; color: white; border: none; border-radius: 8px; cursor: pointer; transition: filter 0.2s; text-align: center; font-family: inherit; }
         .btn-stacked:hover { filter: brightness(0.9); }
-        .btn-stacked svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+        .btn-stacked svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
         .btn-stacked .btn-title { font-size: 15px; font-weight: bold; line-height: 1.2; margin-top: 2px; }
         .btn-stacked .btn-sub { font-size: 10px; font-weight: normal; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; }
         
         .btn-slate { background-color: #5c6e7a; }
         .btn-red { background-color: #cc544b; }
 
-        .top-action-bar { display: flex; gap: 12px; margin-bottom: 20px; }
-        .btn-flat { flex: 1; background: var(--secondary); border: 1px solid var(--border); color: var(--text); padding: 14px 10px; border-radius: 8px; font-size: 13px; font-weight: bold; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 6px rgba(0,0,0,0.15); }
-        .btn-flat:hover { filter: brightness(1.15); transform: translateY(-1px); }
-        .btn-flat svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-        .btn-flat.primary { color: var(--primary); border-color: rgba(71, 141, 245, 0.4); background: rgba(71, 141, 245, 0.08); }
-        .btn-flat.primary:hover { background: rgba(71, 141, 245, 0.15); }
-        
-        .btn-flat.danger { color: var(--danger); border-color: rgba(251, 97, 97, 0.4); background: rgba(251, 97, 97, 0.08); }
-        .btn-flat.danger:hover { background: rgba(251, 97, 97, 0.15); }
-
-        .bracket-grid { display: grid; grid-template-columns: 1fr 3fr 1fr; gap: 12px; align-items: stretch; margin-top: 15px; }
+        .bracket-grid { display: grid; grid-template-columns: 1fr 3fr 1fr; gap: 15px; align-items: center; margin-top: 15px; }
         .bracket-center { display: flex; flex-direction: column; gap: 4px; justify-content: center; }
         @media (max-width: 600px) { 
             .bracket-grid { grid-template-columns: 1fr; gap: 10px; } 
@@ -114,12 +98,10 @@
 /* Segmented Control */
         .segmented-control { display: flex; align-items: stretch; background: var(--section-bg); border-radius: 8px; padding: 4px; margin-bottom: 15px; border: 1px solid var(--border); gap: 2px; }
         .segmented-control input[type="radio"] { display: none; }
-        .segmented-control label { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px 4px; margin: 0; font-size: 11px; font-weight: bold; color: var(--text); cursor: pointer; border-radius: 6px; transition: 0.2s; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; box-sizing: border-box; border: 1px solid transparent; position: relative; }
+        .segmented-control label { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 10px 4px; margin: 0; font-size: 11px; font-weight: bold; color: var(--text); cursor: pointer; border-radius: 6px; transition: 0.2s; opacity: 0.6; text-transform: uppercase; letter-spacing: 0.5px; box-sizing: border-box; border: 1px solid transparent; position: relative; }
         .segmented-control label:not(:last-of-type)::after { content: ""; position: absolute; right: -2px; top: 15%; height: 70%; width: 1px; background: rgba(128, 128, 128, 0.4); z-index: 0; }
         .segmented-control input[type="radio"]:checked + label { background: var(--card); color: var(--primary); opacity: 1; box-shadow: 0 2px 6px rgba(0,0,0,0.3); border: 1px solid var(--border); z-index: 1; }
         .segmented-control input[type="radio"]:checked + label::after { display: none; }
-        .segmented-control label:hover { opacity: 1; background: rgba(128, 128, 128, 0.1); }
-        .segmented-control input[type="radio"]:checked + label:hover { background: var(--card); } /* Keeps the active tab looking solid */
         @media (max-width: 500px) { .segmented-control { flex-wrap: wrap; } .segmented-control label { flex: 1 1 40%; } .segmented-control label::after { display: none; } }
 
 /* Modal Styles */
@@ -201,7 +183,7 @@
     <div class="header-row">
         <div>
             <h2>Aviation obstacle .KML overlay generator</h2>
-            <span class="version-subtitle" onclick="openVersionModal()">v2.7</span>
+            <span class="version-subtitle" onclick="openVersionModal()">v2.6</span>
             <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub project home</a>
             <a href="mailto:cistern_fob3m@icloud.com" class="project-link">Contact / Feedback</a>
         </div>
@@ -209,44 +191,31 @@
     </div>
 
     <div style="font-size: 13px; color: #90949c; margin-bottom: 25px; line-height: 1.5; max-width: 1400px; border-left: 2px solid var(--border); padding-left: 15px;">
-        This tool generates custom obstacle overlays for use in ForeFlight, Google Earth, or any EFB/mapping platform that supports KML imports. The backend automatically synchronizes with the FAA's latest 56-Day Digital Obstacle File (DOF) and 28-Day NASR databases. NOTAM data for unlit obstacles is updated every 24 hours using the official FAA NMS-API. Set your search area (via FAA identifier(s), lat/lon, route, or state), define your radius and altitude thresholds, customize your styling, and export your KML. You can also save your configuration as a template to instantly reload your search/filter and overlay options.
+        This tool generates custom KML obstacle overlays for use in ForeFlight, Google Earth, or any EFB/mapping platform that supports KML imports. The backend automatically synchronizes with the FAA's latest 56-Day Digital Obstacle File (DOF) and 28-Day NASR databases. NOTAM data for unlit obstacles is updated every 24 hours using the official FAA NMS-API. Simply set your centerpoint via FAA Identifier or Lat/Lon, define your search radius and altitude thresholds, customize your visual styling, and export your overlay.
     </div>
 
     <div class="session-status-card">
         <div style="font-weight: bold; color: var(--primary); text-transform: uppercase; font-size: 10px;">Database Status</div>
         <div class="status-line">
-            <a href="https://www.faa.gov/air_traffic/flight_info/aeronav/aero_data/NASR_Subscription/" target="_blank" style="color: var(--text); text-decoration: underline;">Airport/heliport data (NASR):</a>
+            <span>Airport/heliport data (NASR):</span>
             <div style="display:flex; align-items:center; gap:8px;">
                 <span id="apt-status">Checking...</span>
                 <div class="status-dot loading" id="apt-dot"></div>
             </div>
         </div><div class="status-line">
-            <a href="https://www.faa.gov/air_traffic/flight_info/aeronav/digital_products/dof/" target="_blank" style="color: var(--text); text-decoration: underline;">Obstacle data (DOF):</a>
+            <span>Obstacle data (DOF):</span>
             <div style="display:flex; align-items:center; gap:8px;">
                 <span id="dof-status">Checking...</span>
                 <div class="status-dot loading" id="dof-dot"></div>
             </div>
         </div>
         <div class="status-line">
-            <a href="https://notams.aim.faa.gov/notamSearch/" target="_blank" style="color: var(--text); text-decoration: underline;">Unlit obstacle NOTAMs:</a>
+            <span>NOTAM data:</span>
             <div style="display:flex; align-items:center; gap:8px;">
                 <span id="notam-status">Checking...</span>
                 <div class="status-dot loading" id="notam-dot"></div>
             </div>
         </div>
-    </div>
-
-    <div class="top-action-bar">
-        <button class="btn-flat primary" onclick="document.getElementById('profileLoader').click()">
-            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-            Load Setup Template
-        </button>
-        <input type="file" id="profileLoader" accept=".json" style="display: none;" onchange="loadProfile(event)">
-        
-        <button class="btn-flat danger" onclick="resetToDefaults()">
-            <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-            Clear All Data
-        </button>
     </div>
 
 	<div class="section-card">
@@ -257,7 +226,6 @@
                 <span id="notamLiveCounter" style="background: var(--bg); color: var(--text); padding: 4px 10px; border-radius: 12px; font-weight: 600; font-size: 11px; border: 1px solid var(--border); text-transform: none; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);">0 active lighting outages</span>
             </div>
         </div>
-
         <div class="segmented-control">
             <input type="radio" name="centerMode" id="faaMode" value="faa" checked onchange="toggleCenterInput()">
             <label for="faaMode">FAA Identifier(s)</label>
@@ -272,58 +240,74 @@
             <label for="stateMode">Entire US State(s)</label>
         </div>
 
-        <div id="faaInputGroup">
-            <input type="text" id="faaId" placeholder="e.g. KRDU, W40, NC91" style="text-transform: uppercase;" oninput="updateFacilityName()">
-        </div>
+        <div class="bracket-grid">
+            <button class="btn-stacked btn-slate" onclick="document.getElementById('profileLoader').click()">
+                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                <div class="btn-title">Load Setup</div>
+                <div class="btn-sub">JSON TEMPLATE</div>
+            </button>
+            <input type="file" id="profileLoader" accept=".json" style="display: none;" onchange="loadProfile(event)">
 
-        <div id="coordInputGroup" class="grid-2" style="display: none; margin-bottom: 0px;">
-            <div>
-                <label>Latitude</label>
-                <input type="text" id="lat" placeholder="e.g. 36.0066 or 36 00.396 N" oninput="triggerCounterUpdate()">
+            <div class="bracket-center">
+                <div id="faaInputGroup">
+                    <input type="text" id="faaId" placeholder="e.g. KRDU, W40, NC91" style="text-transform: uppercase;" oninput="updateFacilityName()">
+                    <div id="facilityName"></div>
+                </div>
+
+                <div id="coordInputGroup" class="grid-2" style="display: none; margin-bottom: 0px;">
+                    <div>
+                        <label>Latitude</label>
+                        <input type="text" id="lat" placeholder="e.g. 36.0066 or 36 00.396 N" oninput="triggerCounterUpdate()">
+                    </div>
+                    <div>
+                        <label>Longitude</label>
+                        <input type="text" id="lon" placeholder="e.g. -78.9391 or 78 56.346 W" oninput="triggerCounterUpdate()">
+                    </div>
+                </div>
+
+                <div id="stateInputGroup" style="display: none; margin-bottom: 0px;">
+                    <input type="text" id="stateIds" placeholder="e.g. NC, VA, SC" style="text-transform: uppercase;" oninput="triggerCounterUpdate()">
+                </div>
+
+                <div id="radiusWrap" class="inline-control" style="margin-top: 0px; margin-bottom: 0px; padding: 6px 14px; min-height: auto;">
+                    <label style="margin-bottom: 0; font-weight: bold;">Search radius (NM)</label>
+                    <input type="number" id="radiusNM" value="150" oninput="triggerCounterUpdate()" style="width: 70px; height: 32px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 14px; font-weight: bold; text-align: center;">
+                </div>
+
+                <div id="sharedHelperText" style="font-size: 10px; color: #90949c; margin-top: 2px;">Enter a single ID (e.g. KABQ) or a comma-separated list for a multi-point search.</div>
             </div>
-            <div>
-                <label>Longitude</label>
-                <input type="text" id="lon" placeholder="e.g. -78.9391 or 78 56.346 W" oninput="triggerCounterUpdate()">
-            </div>
-        </div>
 
-        <div id="stateInputGroup" style="display: none; margin-bottom: 0px;">
-            <input type="text" id="stateIds" placeholder="e.g. NC, VA, SC" style="text-transform: uppercase;" oninput="triggerCounterUpdate()">
-        </div>
-
-        <div id="sharedHelperText" style="font-size: 11px; color: #90949c; margin-top: 6px; margin-left: 4px;">Enter a single ID (e.g. KABQ) or a comma-separated list for a multi-point search.</div>
-        
-        <div id="facilityName"></div>
-
-        <div id="radiusWrap" class="inline-control" style="margin-top: 15px; margin-bottom: 0px; border-color: var(--primary);">
-            <label style="margin-bottom: 0; font-weight: bold; color: var(--primary);">Search radius</label>
-            <input type="range" id="searchNMSlider" min="5" max="500" step="5" value="150" oninput="document.getElementById('radiusNM').value = this.value; triggerCounterUpdate();">
-            <div style="display: flex; align-items: center; gap: 6px;">
-                <input type="number" id="radiusNM" value="150" oninput="document.getElementById('searchNMSlider').value = this.value; triggerCounterUpdate();" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
-                <span style="font-size: 12px; font-weight: bold; color: var(--text); opacity: 0.8;">NM</span>
-            </div>
+            <button class="btn-stacked btn-red" onclick="resetToDefaults()">
+                <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                <div class="btn-title">CLEAR</div>
+                <div class="btn-sub">ALL DATA</div>
+            </button>
         </div>
 
         <div style="height: 1px; background: var(--border); margin: 20px 0 15px 0;"></div>
 
         <div class="grid-2">
-            <div class="col-divider">
-                <div class="checkbox-group" style="margin-bottom: 12px;">
-                    <input type="checkbox" id="stdInclude" checked onchange="triggerCounterUpdate(); toggleLayerOptions()">
-                    <label for="stdInclude" style="font-weight: bold; color: var(--primary); font-size: 13px; letter-spacing: 0.3px;">Include standard obstacles (DOF)</label>
+            <div>
+                <div style="display: flex; align-items: center; margin-bottom: 12px; background: var(--bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border);">
+                    <div class="checkbox-group" style="padding: 0; margin: 0;">
+                        <input type="checkbox" id="stdInclude" checked onchange="triggerCounterUpdate()">
+                        <label for="stdInclude" style="font-weight: bold; color: var(--primary); font-size: 13px; letter-spacing: 0.3px;">Include standard obstacles (DOF)</label>
+                    </div>
                 </div>
-                <div id="stdOptionsGroup">
+                <div>
                     <label>Minimum obstacle height (ft AGL)</label>
                     <input type="number" id="minAGL" value="1000" oninput="checkAGLWarning()">
                     <div id="aglWarning" style="display: none; color: var(--danger); font-size: 10px; margin-top: 5px; font-weight: bold;">FAA database excludes obstacles under 200 AGL.</div>
                 </div>
             </div>
             <div>
-                <div class="checkbox-group" style="margin-bottom: 12px;">
-                    <input type="checkbox" id="notamInclude" checked style="accent-color: var(--dispatch);" onchange="triggerCounterUpdate(); toggleLayerOptions()">
-                    <label for="notamInclude" style="font-weight: bold; color: var(--dispatch); font-size: 13px; letter-spacing: 0.3px;">Include active light outage NOTAMs</label>
+                <div style="display: flex; align-items: center; margin-bottom: 12px; background: var(--bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border);">
+                    <div class="checkbox-group" style="padding: 0; margin: 0;">
+                        <input type="checkbox" id="notamInclude" checked onchange="triggerCounterUpdate()">
+                        <label for="notamInclude" style="font-weight: bold; color: var(--dispatch); font-size: 13px; letter-spacing: 0.3px;">Include active light outage NOTAMs</label>
+                    </div>
                 </div>
-                <div id="notamOptionsGroup">
+                <div>
                     <label>Minimum height (ft AGL)</label>
                     <input type="number" id="notamMinAGL" value="200" oninput="triggerCounterUpdate()">
                 </div>
@@ -333,38 +317,36 @@
 
     <div class="section-card" id="boundaryWrap">
         <div class="section-title">Search Boundary Styling</div>
-        <div class="checkbox-group" style="margin-bottom: 12px;">
-            <input type="checkbox" id="enableBoundary" checked onchange="toggleBoundaryOpacitySlider()">
-            <label for="enableBoundary" style="font-weight: bold; color: var(--primary); font-size: 13px; letter-spacing: 0.3px;">Include search boundaries in KML overlay</label>
+        <div style="display: flex; align-items: center; margin-bottom: 12px; background: var(--bg); padding: 8px 12px; border-radius: 6px; border: 1px solid var(--border);">
+            <div class="checkbox-group" style="padding: 0; margin: 0;">
+                <input type="checkbox" id="enableBoundary" checked onchange="toggleBoundaryOpacitySlider()">
+                <label for="enableBoundary" style="font-weight: bold; color: var(--primary); font-size: 13px; letter-spacing: 0.3px;">Include search boundaries in KML overlay</label>
+            </div>
         </div>
         
-        <div class="grid-2" id="boundarySettingsGrid">
+        <div class="grid-2">
             <div class="inline-control">
                 <label>Line color</label>
                 <input type="color" id="boundaryColor" value="#ff0000">
             </div>
             <div class="inline-control">
-                <label>Line thickness</label>
-                <div style="display: flex; align-items: center; gap: 6px;">
-                    <input type="number" id="boundaryWidth" value="2" min="1" max="10" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
-                    <span style="font-size: 12px; font-weight: bold; color: var(--text); opacity: 0.8;">px</span>
-                </div>
+                <label>Line thickness (px)</label>
+                <input type="number" id="boundaryWidth" value="2" min="1" max="10" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
             </div>
             <div class="inline-control" id="boundaryOpacityGroup" style="grid-column: span 2;">
-                <label style="display:flex; align-items:center; width:100%; gap: 8px;">
-                    <span style="font-size: 13px; font-weight: bold; min-width: 60px;">Opacity</span>
-                    <input type="range" id="boundaryLineOpacity" min="0" max="100" step="5" value="100" oninput="updateBoundaryOpacityLabel()" style="height: 36px; flex: 1;">
-                    <span id="boundaryOpacityValue" style="color:var(--primary); font-size: 13px; font-weight: bold; min-width: 40px; text-align: right;">100%</span>
+                <label style="display:flex; align-items:center; width:100%;">
+                    <span style="font-size: 13px; font-weight: bold; min-width: 65px;">Opac (<span id="boundaryOpacityValue" style="color:var(--primary);">100%</span>)</span>
+                    <input type="range" id="boundaryLineOpacity" min="0" max="100" value="100" oninput="updateBoundaryOpacityLabel()" style="height: 36px;">
                 </label>
             </div>
         </div>
     </div>
 
-    <div class="section-card" id="stdStylingCard">
+    <div class="section-card">
         <div class="section-title">Standard Obstacle Styling</div>
         
-        <div class="inline-control" id="stdMasterWrap" style="margin-bottom: 15px; border-color: var(--danger);">
-            <label id="stdMasterLabel" style="font-weight: bold; color: var(--danger); white-space: nowrap;">Ring radius</label>
+        <div class="inline-control" id="stdMasterWrap" style="margin-bottom: 15px; border-color: #ff0000;">
+            <label id="stdMasterLabel" style="font-weight: bold; color: #ff0000; white-space: nowrap;">Ring radius</label>
             <input type="range" id="ringNMSlider" min="0.1" max="10.0" step="0.1" value="2.0" oninput="document.getElementById('ringNM').value = this.value">
             <div style="display: flex; align-items: center; gap: 6px;">
                 <input type="number" id="ringNM" value="2.0" step="0.1" min="0.1" max="10.0" oninput="document.getElementById('ringNMSlider').value = this.value" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
@@ -390,10 +372,9 @@
                     </div>
                 </div>
                 <div class="inline-control">
-                    <label style="display:flex; align-items:center; width:100%; gap: 8px;">
-                        <span style="font-size: 13px; font-weight: bold; min-width: 60px;">Opacity</span>
-                        <input type="range" id="outlineOpacity" min="0" max="100" step="5" value="100" oninput="updateOutlineOpacityLabel()" style="height: 36px; flex: 1;">
-                        <span id="outlineOpacityValue" style="color:var(--primary); font-size: 13px; font-weight: bold; min-width: 40px; text-align: right;">100%</span>
+                    <label style="display:flex; align-items:center; width:100%;">
+                        <span style="font-size: 13px; font-weight: bold; min-width: 65px;">Opac (<span id="outlineOpacityValue" style="color:var(--primary);">100%</span>)</span>
+                        <input type="range" id="outlineOpacity" min="0" max="100" value="100" oninput="updateOutlineOpacityLabel()" style="height: 36px;">
                     </label>
                 </div>
             </div>
@@ -409,10 +390,9 @@
                 </div>
                 
                 <div class="inline-control" id="opacityGroup">
-                    <label style="display:flex; align-items:center; width:100%; gap: 8px;">
-                        <span style="font-size: 13px; font-weight: bold; min-width: 60px;">Opacity</span>
-                        <input type="range" id="fillOpacity" min="0" max="100" step="5" value="50" oninput="updateOpacityLabel()" style="height: 36px; flex: 1;">
-                        <span id="opacityValue" style="color:var(--primary); font-size: 13px; font-weight: bold; min-width: 40px; text-align: right;">50%</span>
+                    <label style="display:flex; align-items:center; width:100%;">
+                        <span style="font-size: 13px; font-weight: bold; min-width: 65px;">Opac (<span id="opacityValue" style="color:var(--primary);">50%</span>)</span>
+                        <input type="range" id="fillOpacity" min="1" max="100" value="50" oninput="updateOpacityLabel()" style="height: 36px;">
                     </label>
                     <input type="color" id="fillColor" value="#ff0000">
                 </div>
@@ -421,11 +401,11 @@
         </div>
     </div>
 
-    <div class="section-card" id="notamStylingCard">
+    <div class="section-card">
         <div class="section-title">Unlit Obstacle Styling</div>
         
-        <div class="inline-control" id="notamMasterWrap" style="margin-bottom: 15px; border-color: var(--dispatch);">
-            <label id="notamMasterLabel" style="font-weight: bold; color: var(--dispatch); white-space: nowrap;">Ring radius</label>
+        <div class="inline-control" id="notamMasterWrap" style="margin-bottom: 15px; border-color: #ff9900;">
+            <label id="notamMasterLabel" style="font-weight: bold; color: #ff9900; white-space: nowrap;">Ring radius</label>
             <input type="range" id="notamRingNMSlider" min="0.1" max="10.0" step="0.1" value="3.0" oninput="document.getElementById('notamRingNM').value = this.value">
             <div style="display: flex; align-items: center; gap: 6px;">
                 <input type="number" id="notamRingNM" value="3.0" step="0.1" min="0.1" max="10.0" oninput="document.getElementById('notamRingNMSlider').value = this.value" style="width: 70px; height: 36px; padding: 4px 8px; margin: 0; background: var(--card); border-radius: 6px; font-size: 15px; font-weight: bold; text-align: center;">
@@ -451,10 +431,9 @@
                     </div>
                 </div>
                 <div class="inline-control">
-                    <label style="display:flex; align-items:center; width:100%; gap: 8px;">
-                        <span style="font-size: 13px; font-weight: bold; min-width: 60px;">Opacity</span>
-                        <input type="range" id="notamOutlineOpacity" min="0" max="100" step="5" value="100" oninput="updateNotamOutlineOpacityLabel()" style="height: 36px; flex: 1;">
-                        <span id="notamOutlineOpacityValue" style="color:var(--primary); font-size: 13px; font-weight: bold; min-width: 40px; text-align: right;">100%</span>
+                    <label style="display:flex; align-items:center; width:100%;">
+                        <span style="font-size: 13px; font-weight: bold; min-width: 65px;">Opac (<span id="notamOutlineOpacityValue" style="color:var(--primary);">100%</span>)</span>
+                        <input type="range" id="notamOutlineOpacity" min="0" max="100" value="100" oninput="updateNotamOutlineOpacityLabel()" style="height: 36px;">
                     </label>
                 </div>
             </div>
@@ -470,10 +449,9 @@
                 </div>
                 
                 <div class="inline-control" id="notamOpacityGroup">
-                    <label style="display:flex; align-items:center; width:100%; gap: 8px;">
-                        <span style="font-size: 13px; font-weight: bold; min-width: 60px;">Opacity</span>
-                        <input type="range" id="notamFillOpacity" min="0" max="100" step="5" value="60" oninput="updateNotamOpacityLabel()" style="height: 36px; flex: 1;">
-                        <span id="notamOpacityValue" style="color:var(--primary); font-size: 13px; font-weight: bold; min-width: 40px; text-align: right;">60%</span>
+                    <label style="display:flex; align-items:center; width:100%;">
+                        <span style="font-size: 13px; font-weight: bold; min-width: 65px;">Opac (<span id="notamOpacityValue" style="color:var(--primary);">60%</span>)</span>
+                        <input type="range" id="notamFillOpacity" min="1" max="100" value="60" oninput="updateNotamOpacityLabel()" style="height: 36px;">
                     </label>
                     <input type="color" id="notamFillColor" value="#ff9900">
                 </div>
@@ -490,7 +468,7 @@
             </div>
             <div>
                 <label>Filename Format</label>
-                <select id="fileNameFormat" style="cursor: pointer;">
+                <select id="fileNameFormat" style="width: 100%; padding: 8px 10px; background: var(--input-bg); color: var(--text); border: 1px solid var(--border); border-radius: 5px; box-sizing: border-box; font-size: 13px; cursor: pointer;">
                     <option value="verbose">Verbose (Name-[Height]AGL-[Radius]-Date)</option>
                     <option value="standard">Standard (Name_[Height]AGL)</option>
                     <option value="short">Short (Name Only)</option>
@@ -508,19 +486,19 @@
 
         <button class="btn-stacked btn-slate" onclick="saveProfile()" style="flex: 1;">
             <svg viewBox="0 0 24 24"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path><polyline points="17 21 17 13 7 13 7 21"></polyline><polyline points="7 3 7 8 15 8"></polyline></svg>
-            <div class="btn-title">Save setup as template</div>
-            <div class="btn-sub">.JSON FILE</div>
+            <div class="btn-title">Save Setup</div>
+            <div class="btn-sub">JSON TEMPLATE</div>
         </button>
 
         <button class="btn-stacked btn-download" onclick="generateKML()" style="flex: 1;">
             <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
             <div class="btn-title">Download .KML</div>
-            <div class="btn-sub">FOREFLIGHT/GOOGLE EARTH</div>
+            <div class="btn-sub">FOREFLIGHT EXPORT</div>
         </button>
     </div>
 
     <footer class="app-footer">
-        <span class="disclaimer-bold">DISCLAIMER:</span> This tool is for utility purposes only and is not a substitute for active visual scanning or an up-to-date TAWS. While the database is meticulously parsed, cumulo-granite and steel towers+guy wires remain strictly unforgiving. Generating a colorful KML file does not grant you invincibility. Cross-reference official charts and don't hit stuff.
+        <span class="disclaimer-bold">DISCLAIMER:</span> This tool is for utility purposes only and is not a substitute for aggressive scanning or an up-to-date TAWS. While the database is meticulously parsed, cumulo-granite and steel towers+guy wires remain strictly unforgiving. Generating a colorful KML file does not grant you invincibility. Cross-reference official charts and don't hit stuff.
     </footer>
 </div>
 
@@ -529,8 +507,6 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
-    	<li><strong>v2.7:</strong> Fixed database updater to download current DOF.</li>
-    	<li><strong>v2.6.1:</strong> Tweaked UI, added more sliders.</li>
     	<li><strong>v2.5:</strong> Implemented save/load profile functionality.</li>
     	<li><strong>v2.5:</strong> Major restyle - reorganized options into search area.</li>
     	<li><strong>v2.4.2:</strong> Added opacity options for obstacle/NOTAM rings.</li>
@@ -847,38 +823,23 @@ function toggleCenterInput(isProfileLoad = false) {
     const radiusInput = document.getElementById('radiusNM');
     const sharedHelper = document.getElementById('sharedHelperText');
 
-    const searchNMSlider = document.getElementById('searchNMSlider');
-    
     if (mode === 'route') {
         if (radiusLabel) radiusLabel.innerText = 'Corridor half-width (NM)';
         if (sharedHelper) sharedHelper.innerText = 'Enter at least two comma-separated IDs to define your route (e.g. KABQ, KSAF, KDEN).';
-        if (searchNMSlider) { searchNMSlider.max = "10"; searchNMSlider.min = "1"; searchNMSlider.step = "1"; }
-        if (radiusInput) { radiusInput.max = "10"; radiusInput.min = "1"; }
-        if (!isProfileLoad && radiusInput && radiusInput.value === "150") { radiusInput.value = "4"; if(searchNMSlider) searchNMSlider.value = "4"; } // Smart default swap bypassed on load
+        if (!isProfileLoad && radiusInput && radiusInput.value === "150") radiusInput.value = "4"; // Smart default swap bypassed on load
     } else if (mode === 'coord') {
         if (radiusLabel) radiusLabel.innerText = 'Search radius (NM)';
         if (sharedHelper) sharedHelper.innerText = 'Accepts decimal, DDM, or DMS formats. Use negative numbers or S/W for South/West.';
-        if (searchNMSlider) { searchNMSlider.max = "500"; searchNMSlider.min = "5"; searchNMSlider.step = "5"; }
-        if (radiusInput) { radiusInput.max = "500"; radiusInput.min = "5"; }
-        if (!isProfileLoad && radiusInput && radiusInput.value === "4") { radiusInput.value = "150"; if(searchNMSlider) searchNMSlider.value = "150"; }
+        if (!isProfileLoad && radiusInput && radiusInput.value === "4") radiusInput.value = "150";
     } else if (mode === 'state') {
         if (sharedHelper) sharedHelper.innerText = 'Enter comma-separated 2-letter state codes.';
     } else { // 'faa' mode
         if (radiusLabel) radiusLabel.innerText = 'Search radius (NM)';
         if (sharedHelper) sharedHelper.innerText = 'Enter a single ID (e.g. KABQ) or a comma-separated list for a multi-point search.';
-        if (searchNMSlider) { searchNMSlider.max = "500"; searchNMSlider.min = "5"; searchNMSlider.step = "5"; }
-        if (radiusInput) { radiusInput.max = "500"; radiusInput.min = "5"; }
-        if (!isProfileLoad && radiusInput && radiusInput.value === "4") { radiusInput.value = "150"; if(searchNMSlider) searchNMSlider.value = "150"; } // Smart default swap bypassed on load
+        if (!isProfileLoad && radiusInput && radiusInput.value === "4") radiusInput.value = "150"; // Smart default swap bypassed on load
     }
 
-    const facName = document.getElementById('facilityName');
-    if (mode === 'faa' || mode === 'route') {
-        if (facName) facName.style.display = 'block';
-        updateFacilityName();
-    } else {
-        if (facName) facName.style.display = 'none';
-    }
-    
+    if(mode === 'faa' || mode === 'route') updateFacilityName();
     triggerCounterUpdate();
 }
 
@@ -898,22 +859,7 @@ function toggleNotamOpacitySlider() { document.getElementById('notamOpacityGroup
 function updateOutlineOpacityLabel() { document.getElementById('outlineOpacityValue').textContent = document.getElementById('outlineOpacity').value + '%'; }
 function updateNotamOutlineOpacityLabel() { document.getElementById('notamOutlineOpacityValue').textContent = document.getElementById('notamOutlineOpacity').value + '%'; }
 function updateBoundaryOpacityLabel() { document.getElementById('boundaryOpacityValue').textContent = document.getElementById('boundaryLineOpacity').value + '%'; }
-function toggleBoundaryOpacitySlider() { document.getElementById('boundarySettingsGrid').style.display = document.getElementById('enableBoundary').checked ? 'grid' : 'none'; }
-
-function toggleLayerOptions() {
-    const stdChecked = document.getElementById('stdInclude').checked;
-    const notamChecked = document.getElementById('notamInclude').checked;
-    
-    const stdGroup = document.getElementById('stdOptionsGroup');
-    const stdCard = document.getElementById('stdStylingCard');
-    if (stdGroup) stdGroup.style.display = stdChecked ? 'block' : 'none';
-    if (stdCard) stdCard.style.display = stdChecked ? 'block' : 'none';
-    
-    const notamGroup = document.getElementById('notamOptionsGroup');
-    const notamCard = document.getElementById('notamStylingCard');
-    if (notamGroup) notamGroup.style.display = notamChecked ? 'block' : 'none';
-    if (notamCard) notamCard.style.display = notamChecked ? 'block' : 'none';
-}
+function toggleBoundaryOpacitySlider() { document.getElementById('boundaryOpacityGroup').style.display = document.getElementById('enableBoundary').checked ? 'flex' : 'none'; }
 
 // Dynamic Ring Radius UI Highlight Handlers
 function updateStdRingColor() {
@@ -939,10 +885,8 @@ function validateInputs() {
 
     if (mode !== 'state') {
         const radiusNM = parseFloat(document.getElementById('radiusNM').value);
-        const maxRadius = mode === 'route' ? 10 : 500;
-        const minRadius = mode === 'route' ? 1 : 5;
-        if (isNaN(radiusNM) || radiusNM < minRadius || radiusNM > maxRadius) {
-            alert(`Search radius/width must be between ${minRadius} and ${maxRadius} NM.`);
+        if (isNaN(radiusNM) || radiusNM < 1 || radiusNM > 500) {
+            alert("Search radius/width must be between 1 and 500 NM.");
             return false;
         }
     }
@@ -1645,34 +1589,10 @@ function saveProfile() {
     
     const now = new Date();
     const dtStr = now.getFullYear() + String(now.getMonth() + 1).padStart(2, '0') + String(now.getDate()).padStart(2, '0');
-    
-    // Dynamically build a descriptive filename based on search parameters
-    const mode = document.querySelector('input[name="centerMode"]:checked').value;
-    let centerLabel = "Template";
-    
-    if (mode === 'faa' || mode === 'route') {
-        const rawId = document.getElementById('faaId').value.trim().replace(/[^a-zA-Z0-9,]/g, '');
-        centerLabel = rawId ? rawId.replace(/,/g, '-') : "FAA";
-    } else if (mode === 'state') {
-        const rawState = document.getElementById('stateIds').value.trim().replace(/[^a-zA-Z,]/g, '');
-        centerLabel = rawState ? rawState.replace(/,/g, '-') : "State";
-    } else if (mode === 'coord') {
-        const lat = parseFloat(document.getElementById('lat').value) || 0;
-        const lon = parseFloat(document.getElementById('lon').value) || 0;
-        centerLabel = `${lat.toFixed(2)}_${lon.toFixed(2)}`;
-    }
-    
-    if (centerLabel.length > 20) centerLabel = centerLabel.substring(0, 20); // Keep filename manageable
-    
-    const minAGL = document.getElementById('minAGL').value;
-    const radius = mode === 'state' ? 'STATE' : `${document.getElementById('radiusNM').value}NM`;
-    
-    // Allow the Custom File Name input to override the auto-generation
-    const customName = document.getElementById('customFileName').value.trim().replace(/[<>:"/\\|?*]/g, '');
-    const baseName = customName || `Setup_${centerLabel}_${minAGL}AGL_${radius}`;
+    const customName = document.getElementById('customFileName').value.trim().replace(/[<>:"/\\|?*]/g, '') || "Profile";
     
     dlAnchorElem.setAttribute("href", dataStr);
-    dlAnchorElem.setAttribute("download", `${baseName}_${dtStr}.json`);
+    dlAnchorElem.setAttribute("download", `KML_Settings_${customName}_${dtStr}.json`);
     document.body.appendChild(dlAnchorElem);
     dlAnchorElem.click();
     document.body.removeChild(dlAnchorElem);
@@ -1691,7 +1611,6 @@ function applyProfileState(profile) {
     }
     
     // Sync the new range sliders with the loaded text box values
-    if (document.getElementById('searchNMSlider')) document.getElementById('searchNMSlider').value = document.getElementById('radiusNM').value;
     if (document.getElementById('ringNMSlider')) document.getElementById('ringNMSlider').value = document.getElementById('ringNM').value;
     if (document.getElementById('notamRingNMSlider')) document.getElementById('notamRingNMSlider').value = document.getElementById('notamRingNM').value;
 
@@ -1708,7 +1627,6 @@ function applyProfileState(profile) {
     updateStdRingColor();
     updateNotamRingColor();
     checkAGLWarning();
-    toggleLayerOptions();
 }
 
 function loadProfile(event) {

@@ -17,7 +17,7 @@ Because the NAS is filled with tall, pointy things, NOTAMs are perpetually flood
 ## How it Works
 The frontend application is entirely client-side. The HTML/JS interface reads from a set of lightweight, pre-parsed JSON databases (`obstacles.json`, `airports.json`, `notams.json`, `metadata.json`).
 
-The heavy lifting is handled by a backend Python script (`update_database.py`) that runs automatically via GitHub Actions. It navigates the FAA Aeronav portals and the FAA NMS-API, extracts the massive `.DAT` and `.txt` files directly into memory, crunches the coordinates using regular expressions, pulls live NOTAMs, updates the local JSON files, and silently pushes the updates to the live site. 
+The heavy lifting is handled by a backend Python script (`scripts/update_database.py`) that runs automatically via GitHub Actions. It navigates the FAA Aeronav portals and the FAA NMS-API, extracts the massive `.DAT` and `.txt` files directly into memory, crunches the coordinates using regular expressions, and pulls live NOTAMs. The GitHub Action then packages these updated JSON files with the web app and deploys them directly to GitHub Pages. This keeps the source repository lightweight and clean while ensuring the live tool always has the latest data. 
 
 ## Usage
 1. Open the [live GitHub Pages link](https://cwmauze.github.io/aviation-obstacle-kml-tool//).
