@@ -50,32 +50,34 @@
 
         /* UI Grouping & Grid */
         .section-card { border: 1px solid var(--border); border-radius: 8px; padding: 15px 20px; margin-bottom: 15px; background: var(--section-bg); }
-        .section-title { font-weight: 800; color: var(--primary); margin-bottom: 14px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.8px; display: flex; justify-content: space-between; align-items: center; }
+        .section-title { font-weight: 800; color: var(--primary); margin-bottom: 14px; text-transform: uppercase; font-size: 14px; letter-spacing: 0.8px; display: flex; justify-content: space-between; align-items: center; }
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         @media (max-width: 500px) { .grid-2 { grid-template-columns: 1fr; gap: 10px; } }
         
         .col-divider { border-right: 1px solid var(--border); padding-right: 20px; }
         @media (max-width: 500px) { .col-divider { border-right: none; padding-right: 0; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 5px; } }
 
-        label { display: block; font-weight: bold; color: var(--text); font-size: 12px; opacity: 0.9; margin-bottom: 4px; }
-        input[type="number"], input[type="text"], select { width: 100%; height: 36px; padding: 8px 10px; background: var(--input-bg); color: var(--text); border: 1px solid var(--border); border-radius: 5px; box-sizing: border-box; font-size: 13px; font-family: inherit; }
+        label { display: block; font-weight: bold; color: var(--text); font-size: 15px; opacity: 0.9; margin-bottom: 4px; }
+        input[type="number"], input[type="text"], select { width: 100%; height: 44px; padding: 8px 10px; background: var(--input-bg); color: var(--text); border: 1px solid var(--border); border-radius: 5px; box-sizing: border-box; font-size: 15px; font-family: inherit; }
         input[type="range"] { flex: 1; margin: 0 10px; cursor: pointer; background: transparent; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 28px; height: 28px; background: var(--primary); border-radius: 50%; cursor: pointer; }
+        input[type="range"]::-moz-range-thumb { width: 28px; height: 28px; background: var(--primary); border-radius: 50%; cursor: pointer; border: none; }
         
         /* EFB Optimized Inline Controls */
-        .inline-control { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--input-bg); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 12px; min-height: 40px; }
-        .inline-control label { margin: 0; font-weight: normal; font-size: 13px; }
-        .inline-control input[type="color"] { width: 44px; height: 32px; padding: 0; border: 1px solid var(--border); background: none; cursor: pointer; border-radius: 6px; flex-shrink: 0; }
+        .inline-control { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--input-bg); padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 12px; min-height: 48px; }
+        .inline-control label { margin: 0; font-weight: normal; font-size: 15px; }
+        .inline-control input[type="color"] { width: 44px; height: 40px; padding: 0; border: 1px solid var(--border); background: none; cursor: pointer; border-radius: 6px; flex-shrink: 0; }
         .inline-control input[type="number"] { flex-shrink: 0; }
         
         .checkbox-group { display: flex; align-items: center; gap: 12px; padding: 8px 0; cursor: pointer; }
         .checkbox-group input { width: 22px; height: 22px; margin: 0; cursor: pointer; accent-color: var(--primary); }
-        .checkbox-group label { margin: 0; font-weight: bold; font-size: 13px; cursor: pointer; }
+        .checkbox-group label { margin: 0; font-weight: bold; font-size: 15px; cursor: pointer; }
         
-        #facilityName { font-size: 11px; font-weight: bold; margin-top: 6px; min-height: 14px; text-transform: uppercase; }
+        #facilityName { font-size: 13px; font-weight: bold; margin-top: 6px; min-height: 14px; text-transform: uppercase; }
 
-        .btn-group { display: flex; gap: 12px; margin-top: 20px; }
-        button.action { flex: 1; padding: 14px; color: white; border: none; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.2s; }
-        button.action span { display: block; font-size: 9px; font-weight: normal; opacity: 0.8; margin-top: 3px; }
+        .btn-group { display: flex; gap: 12px; margin-top: 20px; position: sticky; bottom: 0; background: var(--glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 15px 30px 20px 30px; z-index: 50; border-top: 1px solid var(--border); margin-left: -30px; margin-right: -30px; }
+        button.action { flex: 1; padding: 14px; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        button.action span { display: block; font-size: 11px; font-weight: normal; opacity: 0.8; margin-top: 3px; }
         .btn-preview { background-color: #4a7ae6; }
         .btn-preview:hover { background-color: #3b66c4; }
         .btn-download { background-color: #4cae64; }
@@ -84,16 +86,18 @@
         /* New Stacked Button Styles & Grid */
         .btn-stacked { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 12px 8px; color: white; border: none; border-radius: 8px; cursor: pointer; transition: filter 0.2s; text-align: center; font-family: inherit; }
         .btn-stacked:hover { filter: brightness(0.9); }
+        .btn-stacked:active { transform: scale(0.96); opacity: 0.8; }
         .btn-stacked svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-        .btn-stacked .btn-title { font-size: 15px; font-weight: bold; line-height: 1.2; margin-top: 2px; }
-        .btn-stacked .btn-sub { font-size: 10px; font-weight: normal; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; }
+        .btn-stacked .btn-title { font-size: 17px; font-weight: bold; line-height: 1.2; margin-top: 2px; }
+        .btn-stacked .btn-sub { font-size: 12px; font-weight: normal; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; }
         
         .btn-slate { background-color: #5c6e7a; }
         .btn-red { background-color: #cc544b; }
 
         .top-action-bar { display: flex; gap: 12px; margin-bottom: 20px; }
-        .btn-flat { flex: 1; background: var(--secondary); border: 1px solid var(--border); color: var(--text); padding: 14px 10px; border-radius: 8px; font-size: 13px; font-weight: bold; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 6px rgba(0,0,0,0.15); }
+        .btn-flat { flex: 1; background: var(--secondary); border: 1px solid var(--border); color: var(--text); padding: 14px 10px; border-radius: 8px; font-size: 15px; font-weight: bold; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 6px rgba(0,0,0,0.15); }
         .btn-flat:hover { filter: brightness(1.15); transform: translateY(-1px); }
+        .btn-flat:active { transform: scale(0.96); opacity: 0.8; }
         .btn-flat svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
         .btn-flat.primary { color: var(--primary); border-color: rgba(71, 141, 245, 0.4); background: rgba(71, 141, 245, 0.08); }
         .btn-flat.primary:hover { background: rgba(71, 141, 245, 0.15); }
@@ -114,11 +118,12 @@
 /* Segmented Control */
         .segmented-control { display: flex; align-items: stretch; background: var(--section-bg); border-radius: 8px; padding: 4px; margin-bottom: 15px; border: 1px solid var(--border); gap: 2px; }
         .segmented-control input[type="radio"] { display: none; }
-        .segmented-control label { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 12px 4px; margin: 0; font-size: 11px; font-weight: bold; color: var(--text); cursor: pointer; border-radius: 6px; transition: 0.2s; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; box-sizing: border-box; border: 1px solid transparent; position: relative; }
+        .segmented-control label { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 14px 4px; margin: 0; font-size: 13px; font-weight: bold; color: var(--text); cursor: pointer; border-radius: 6px; transition: 0.2s; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; box-sizing: border-box; border: 1px solid transparent; position: relative; }
         .segmented-control label:not(:last-of-type)::after { content: ""; position: absolute; right: -2px; top: 15%; height: 70%; width: 1px; background: rgba(128, 128, 128, 0.4); z-index: 0; }
         .segmented-control input[type="radio"]:checked + label { background: var(--card); color: var(--primary); opacity: 1; box-shadow: 0 2px 6px rgba(0,0,0,0.3); border: 1px solid var(--border); z-index: 1; }
         .segmented-control input[type="radio"]:checked + label::after { display: none; }
         .segmented-control label:hover { opacity: 1; background: rgba(128, 128, 128, 0.1); }
+        .segmented-control label:active { transform: scale(0.96); opacity: 0.8; }
         .segmented-control input[type="radio"]:checked + label:hover { background: var(--card); } /* Keeps the active tab looking solid */
         @media (max-width: 500px) { .segmented-control { flex-wrap: wrap; } .segmented-control label { flex: 1 1 40%; } .segmented-control label::after { display: none; } }
 
@@ -173,9 +178,11 @@
         .cmd-group { display: flex; align-items: center; gap: 8px; position: relative; }
         .cmd-divider { width: 1px; height: 24px; background: var(--border); margin: 0 4px; }
         .layer-switch { display: flex; background: rgba(0,0,0,0.4); border-radius: 6px; padding: 2px; border: 1px solid var(--border); }
-        .layer-btn { background: transparent; border: none; color: #888; padding: 10px 16px; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 4px; transition: 0.2s; white-space: nowrap; height: 44px; display: flex; align-items: center; }
+        .layer-btn { background: transparent; border: none; color: #888; padding: 10px 16px; font-size: 15px; font-weight: 600; cursor: pointer; border-radius: 4px; transition: 0.2s; white-space: nowrap; height: 44px; display: flex; align-items: center; }
+        .layer-btn:active { transform: scale(0.96); opacity: 0.8; }
         .layer-btn.active { background: var(--primary); color: white; }
-        .action-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 10px 16px; font-size: 13px; border-radius: 6px; cursor: pointer; height: 44px; display: flex; align-items: center; gap: 6px; }
+        .action-btn { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 10px 16px; font-size: 15px; border-radius: 6px; cursor: pointer; height: 44px; display: flex; align-items: center; gap: 6px; transition: 0.2s; }
+        .action-btn:active { transform: scale(0.96); opacity: 0.8; }
 		.close { 
             position: sticky; 
             top: 0; 
@@ -201,7 +208,7 @@
     <div class="header-row">
         <div>
             <h2>Aviation obstacle .KML overlay generator</h2>
-            <span class="version-subtitle" onclick="openVersionModal()">v3.0</span>
+            <span class="version-subtitle" onclick="openVersionModal()">v3.1</span>
             <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub project home</a>
             <a href="mailto:cistern_fob3m@icloud.com" class="project-link">Contact / Feedback</a>
         </div>
@@ -213,7 +220,7 @@
     </div>
 
     <div class="session-status-card">
-        <div style="font-weight: bold; color: var(--primary); text-transform: uppercase; font-size: 10px;">Database Status</div>
+        <div style="font-weight: bold; color: var(--primary); text-transform: uppercase; font-size: 12px;">Database Status</div>
         <div class="status-line">
             <a href="https://www.faa.gov/air_traffic/flight_info/aeronav/aero_data/NASR_Subscription/" target="_blank" style="color: var(--text); text-decoration: underline;">Airport/heliport data (NASR):</a>
             <div style="display:flex; align-items:center; gap:8px;">
@@ -253,8 +260,8 @@
         <div class="section-title">
             <span>Search Area & Filtering</span>
             <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                <span id="liveCounter" style="background: var(--bg); color: var(--text); padding: 4px 10px; border-radius: 12px; font-weight: 600; font-size: 11px; border: 1px solid var(--border); text-transform: none; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);">0 obstacles</span>
-                <span id="notamLiveCounter" style="background: var(--bg); color: var(--text); padding: 4px 10px; border-radius: 12px; font-weight: 600; font-size: 11px; border: 1px solid var(--border); text-transform: none; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);">0 active lighting outages</span>
+                <span id="liveCounter" style="background: var(--bg); color: var(--text); padding: 4px 10px; border-radius: 12px; font-weight: 600; font-size: 13px; border: 1px solid var(--border); text-transform: none; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);">0 obstacles</span>
+                <span id="notamLiveCounter" style="background: var(--bg); color: var(--text); padding: 4px 10px; border-radius: 12px; font-weight: 600; font-size: 13px; border: 1px solid var(--border); text-transform: none; box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);">0 active lighting outages</span>
             </div>
         </div>
 
@@ -291,7 +298,7 @@
             <input type="text" id="stateIds" placeholder="e.g. NC, VA, SC" style="text-transform: uppercase;" oninput="triggerCounterUpdate()">
         </div>
 
-        <div id="sharedHelperText" style="font-size: 11px; color: #90949c; margin-top: 6px; margin-left: 4px;">Enter a single ID (e.g. KABQ) or a comma-separated list for a multi-point search.</div>
+        <div id="sharedHelperText" style="font-size: 13px; color: #90949c; margin-top: 6px; margin-left: 4px;">Enter a single ID (e.g. KABQ) or a comma-separated list for a multi-point search.</div>
         
         <div id="facilityName"></div>
 
@@ -529,6 +536,8 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
+    	<li><strong>v3.1:</strong> Major UI/UX optimization for iPad and tablets. Increased touch targets, improved typography legibility, and added a sticky bottom action bar.</li>
+    	<li><strong>v3.0.1:</strong> Backend architectural update. Compressed database JSON structure for 60% faster load times and pruned redundant data.</li>
     	<li><strong>v3.0:</strong> Complete architectural overhaul. Migrated database to GitHub Actions CI/CD for fully automated data publishing and streamlined repository.</li>
     	<li><strong>v2.7:</strong> Fixed database updater to download current DOF.</li>
     	<li><strong>v2.6.1:</strong> Tweaked UI, added more sliders.</li>
@@ -622,7 +631,13 @@ window.onload = async () => {
 		try {
             // NOTAMs change constantly, so we bypass the browser cache using a live timestamp
             const notamRes = await fetch(`notams.json?nocache=${new Date().getTime()}`);
-            globalNotams = await notamRes.json();
+            const rawNotams = await notamRes.json();
+            globalNotams = rawNotams.map(arr => ({
+                lat: arr[0],
+                lon: arr[1],
+                agl: arr[2],
+                text: arr[3]
+            }));
             const notamDate = meta.notam_date || "Unknown";
             document.getElementById('notam-status').innerText = `Verified (Updated: ${notamDate} | ${globalNotams.length} active outages)`;
             document.getElementById('notam-dot').className = globalNotams.length > 0 ? 'status-dot ready' : 'status-dot error';
@@ -646,7 +661,15 @@ window.onload = async () => {
 async function getObstacles() {
     if (!globalObstacles) {
         const response = await fetch(`obstacles.json?v=${dbVersion}`);
-        globalObstacles = await response.json();
+        const rawObs = await response.json();
+        globalObstacles = rawObs.map(arr => ({
+            id: arr[0],
+            state: arr[1],
+            city: "Obstacle",
+            lat: arr[2],
+            lon: arr[3],
+            agl: arr[4]
+        }));
     }
     return globalObstacles;
 }
