@@ -19,6 +19,8 @@ The frontend application is entirely client-side. The HTML/JS interface reads fr
 
 The heavy lifting is handled by a backend Python script (`scripts/update_database.py`) that runs automatically via GitHub Actions. It navigates the FAA Aeronav portals and the FAA NMS-API, extracts the massive `.DAT` and `.txt` files directly into memory, crunches the coordinates using regular expressions, and pulls live NOTAMs. The GitHub Action then packages these updated JSON files with the web app and deploys them directly to GitHub Pages. This keeps the source repository lightweight and clean while ensuring the live tool always has the latest data. 
 
+**For more detailed technical information, please see the [Developer Documentation](docs/ARCHITECTURE.md).**
+
 ## Usage
 1. Open the [live GitHub Pages link](https://cwmauze.github.io/aviation-obstacle-kml-tool//).
 2. Verify the Database Status card shows the data is current and verified.
