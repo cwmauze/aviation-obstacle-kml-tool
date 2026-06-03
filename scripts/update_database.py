@@ -115,7 +115,7 @@ def harvest_notams():
         token = auth_response.json().get("access_token")
     except Exception as e:
         print(f"    > [!] NMS-API Authentication failed: {e}")
-        sys.exit(1)
+        return None
 
     # 2. Request Nationwide NOTAMs Data
     # Requesting GEOJSON format simplifies coordinate extraction
@@ -182,7 +182,7 @@ def harvest_notams():
                     
     except Exception as e:
         print(f"    > [!] API request or parsing failed: {e}")
-        sys.exit(1)
+        return None
          
     # 3. Save to Disk
     try:
