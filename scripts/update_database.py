@@ -108,7 +108,10 @@ def harvest_notams():
             AUTH_URL,
             data={"grant_type": "client_credentials"},
             auth=(CLIENT_ID, CLIENT_SECRET),
-            headers={"Content-Type": "application/x-www-form-urlencoded"},
+            headers={
+                "Content-Type": "application/x-www-form-urlencoded",
+                "User-Agent": HEADERS["User-Agent"]
+            },
             timeout=15
         )
         auth_response.raise_for_status()
@@ -121,7 +124,8 @@ def harvest_notams():
     # Requesting GEOJSON format simplifies coordinate extraction
     headers = {
         "Authorization": f"Bearer {token}",
-        "nmsResponseFormat": "GEOJSON"
+        "nmsResponseFormat": "GEOJSON",
+        "User-Agent": HEADERS["User-Agent"]
     }
     # Using classification=DOMESTIC and feature=OBST to pull all domestic obstacles
     params = {
