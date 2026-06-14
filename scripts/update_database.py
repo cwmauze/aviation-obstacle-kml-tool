@@ -152,8 +152,8 @@ def harvest_notams():
                     
                     if point_geom:
                         coords = point_geom.get("coordinates", [0.0, 0.0])
-                        lon_val = round(coords[0], 6)
-                        lat_val = round(coords[1], 6)
+                        lon_val = round(float(coords[0]), 6)
+                        lat_val = round(float(coords[1]), 6)
                         
                         agl_match = re.search(r"(\d+(?:\.\d+)?)\s*(?:FT)?\s*AGL", text)
                         if agl_match:
