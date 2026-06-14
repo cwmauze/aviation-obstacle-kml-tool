@@ -208,7 +208,7 @@
     <div class="header-row">
         <div>
             <h2>Aviation obstacle .KML overlay generator</h2>
-            <span class="version-subtitle" onclick="openVersionModal()">v3.1.1</span>
+            <span class="version-subtitle" onclick="openVersionModal()">v3.2</span>
             <a href="https://github.com/cwmauze/aviation-obstacle-kml-tool" target="_blank" class="project-link">GitHub project home</a>
             <a href="mailto:cistern_fob3m@icloud.com" class="project-link">Contact / Feedback</a>
         </div>
@@ -536,6 +536,7 @@
     <span class="close" onclick="closeVersionModal()">&times;</span>
     <h3 style="margin-top: 0; color: var(--primary);">Version History</h3>
     <ul style="padding-left: 20px; line-height: 1.6; font-size: 13px;">
+        <li><strong>v3.2:</strong> Major optimization. Migrated the backend script to an ijson streaming architecture, resolving Raspberry Pi memory/OOM crashes and successfully stabilizing the fully automated pipeline.</li>
     	<li><strong>v3.1.1:</strong> Fixed an issue with the FAA NOTAM API blocking automated requests, restoring live unlit obstacle outage data.</li>
     	<li><strong>v3.1:</strong> Major UI/UX optimization for iPad and tablets. Increased touch targets, improved typography legibility, and added a sticky bottom action bar.</li>
     	<li><strong>v3.0.1:</strong> Backend architectural update. Compressed database JSON structure for 60% faster load times and pruned redundant data.</li>
