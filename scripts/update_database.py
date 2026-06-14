@@ -2,10 +2,10 @@ import sys
 import os
 import json
 import zipfile
-import io
 import requests
 import datetime
 import re
+import ijson
 from bs4 import BeautifulSoup
 
 # --- CONFIGURATION ---
@@ -44,8 +44,6 @@ def get_dof_zip_url():
             valid_links.append(full_url)
             
     if valid_links:
-        # FAA filenames contain dates (e.g., DOF_260412.zip). 
-        # Sorting puts the newest date at the end of the list.
         valid_links.sort()
         return valid_links[-1]
             
@@ -82,12 +80,6 @@ def parse_dof_dms(dms_str):
     return decimal
 
 def harvest_notams():
-    """
-    Official NMS-API version of the NOTAM Harvester.
-    Nationwide Pull: Uses DOMESTIC classification and OBST feature.
-    """
-    # --- NMS-API CONFIG ---
-    # Securely load API credentials from environment variables 
     CLIENT_ID = os.environ.get("FAA_CLIENT_ID")
     CLIENT_SECRET = os.environ.get("FAA_CLIENT_SECRET")
     
@@ -95,14 +87,12 @@ def harvest_notams():
         print("[!] NMS-API Credentials missing in environment. Aborting.")
         sys.exit(1)
     
-    # Using the Production environment endpoints
     AUTH_URL = "https://api-nms.aim.faa.gov/v1/auth/token"
     NOTAM_URL = "https://api-nms.aim.faa.gov/nmsapi/v1/notams"
 
     print("[-] Fetching nationwide public NOTAMs via NMS-API...")
     processed_notams = []
 
-    # 1. Authenticate with NMS-API
     try:
         auth_response = requests.post(
             AUTH_URL,
@@ -120,75 +110,72 @@ def harvest_notams():
         print(f"    > [!] NMS-API Authentication failed: {e}")
         sys.exit(1)
 
-    # 2. Request Nationwide NOTAMs Data
-    # Requesting GEOJSON format simplifies coordinate extraction
     headers = {
         "Authorization": f"Bearer {token}",
         "nmsResponseFormat": "GEOJSON",
         "User-Agent": "kml-obstacle-tool/2.0 (python-requests)"
     }
-    # Using classification=DOMESTIC and feature=OBST to pull all domestic obstacles
     params = {
         "classification": "DOMESTIC",
         "feature": "OBST"
     }
     
     try:
-        # Increased timeout to 60s for the larger nationwide payload
-        data_response = requests.get(NOTAM_URL, headers=headers, params=params, timeout=60)
+        print("    > Streaming NOTAM payload to disk...")
+        data_response = requests.get(NOTAM_URL, headers=headers, params=params, stream=True, timeout=60)
         data_response.raise_for_status()
-        data = data_response.json()
         
-        # Extract the GeoJSON features array
-        features = data.get("data", {}).get("geojson", [])
-        print(f"    > DIAGNOSTIC: NMS-API returned {len(features)} total nationwide OBST NOTAMs.")
+        with open("temp_notams.json", "wb") as f:
+            for chunk in data_response.iter_content(chunk_size=65536):
+                f.write(chunk)
+                
+        print("    > Streamed successfully. Iterative parsing starting...")
         
-        # Original regex and outage terminology logic (Locked Baseline)
         lighting_words = ["LGT", "LIGHT", "UNLGTD", "UNLIT"]
         outage_words = ["OUT", "U/S", "UNMON", "UNLIT", "OBSCURED", "OTS", "O/S", "INOP", "UNLGTD"]
         
-        for feature in features:
-            props = feature.get("properties", {}).get("coreNOTAMData", {}).get("notam", {})
-            text = props.get("text", "").upper()
-            
-            # Check for obstacle context, lighting keywords, AND outage keywords
-            has_obst = ("OBST" in text) or ("TWR" in text) or ("TOWER" in text)
-            has_lgt = any(w in text for w in lighting_words)
-            is_outage = any(w in text for w in outage_words)
-            
-            is_unlit_obstacle = has_obst and has_lgt and is_outage
-            
-            if is_unlit_obstacle:
-                # GeoJSON stores coordinates as [Longitude, Latitude]
-                geom_list = feature.get("geometry", {}).get("geometries", [])
-                point_geom = next((g for g in geom_list if g.get("type") == "Point"), None)
+        with open("temp_notams.json", "rb") as f:
+            features = ijson.items(f, 'data.geojson.item')
+            for feature in features:
+                props = feature.get("properties", {}).get("coreNOTAMData", {}).get("notam", {})
+                text = props.get("text", "").upper()
                 
-                if point_geom:
-                    coords = point_geom.get("coordinates", [0.0, 0.0])
-                    lon_val = round(coords[0], 6)
-                    lat_val = round(coords[1], 6)
+                has_obst = ("OBST" in text) or ("TWR" in text) or ("TOWER" in text)
+                has_lgt = any(w in text for w in lighting_words)
+                is_outage = any(w in text for w in outage_words)
+                
+                is_unlit_obstacle = has_obst and has_lgt and is_outage
+                
+                if is_unlit_obstacle:
+                    geom_list = feature.get("geometry", {}).get("geometries", [])
+                    point_geom = next((g for g in geom_list if g.get("type") == "Point"), None)
                     
-                    # Primary check: Decimals and AGL
-                    agl_match = re.search(r"(\d+(?:\.\d+)?)\s*(?:FT)?\s*AGL", text)
-                    if agl_match:
-                        agl_val = agl_match.group(1)
-                    else:
-                        # Backup check: MSL enclosures like 1049 MSL ( 250 )
-                        backup_match = re.search(r"MSL\s*\(\s*(\d+(?:\.\d+)?)\s*(?:FT)?\s*\)", text)
-                        agl_val = backup_match.group(1) if backup_match else "Unknown"
-                    
-                    processed_notams.append([
-                        lat_val,
-                        lon_val,
-                        agl_val,
-                        text
-                    ])
+                    if point_geom:
+                        coords = point_geom.get("coordinates", [0.0, 0.0])
+                        lon_val = round(coords[0], 6)
+                        lat_val = round(coords[1], 6)
+                        
+                        agl_match = re.search(r"(\d+(?:\.\d+)?)\s*(?:FT)?\s*AGL", text)
+                        if agl_match:
+                            agl_val = agl_match.group(1)
+                        else:
+                            backup_match = re.search(r"MSL\s*\(\s*(\d+(?:\.\d+)?)\s*(?:FT)?\s*\)", text)
+                            agl_val = backup_match.group(1) if backup_match else "Unknown"
+                        
+                        processed_notams.append([
+                            lat_val,
+                            lon_val,
+                            agl_val,
+                            text
+                        ])
+                        
+        if os.path.exists("temp_notams.json"):
+            os.remove("temp_notams.json")
                     
     except Exception as e:
         print(f"    > [!] API request or parsing failed: {e}")
         sys.exit(1)
          
-    # 3. Save to Disk
     try:
         with open("notams.json", 'w') as f:
             json.dump(processed_notams, f, indent=2)
@@ -203,14 +190,18 @@ def process_data():
     airports = {}
     metadata = {"dof_date": "Unknown", "apt_count": 0, "obs_count": 0}
 
-# --- 1. DOWNLOAD & PARSE DOF (56-Day Cycle) ---
     print("[-] Fetching latest DOF ZIP...")
     try:
         dof_zip_url = get_dof_zip_url()
         print(f"[-] Downloading: {dof_zip_url}")
         
-        r_dof = requests.get(dof_zip_url, headers=HEADERS)
-        with zipfile.ZipFile(io.BytesIO(r_dof.content)) as z:
+        r_dof = requests.get(dof_zip_url, headers=HEADERS, stream=True)
+        r_dof.raise_for_status()
+        with open("temp_dof.zip", "wb") as f:
+            for chunk in r_dof.iter_content(chunk_size=65536):
+                f.write(chunk)
+                
+        with zipfile.ZipFile("temp_dof.zip") as z:
             dat_filename = next(name for name in z.namelist() if name.upper().endswith('DOF.DAT'))
             with z.open(dat_filename) as f:
                 for line_bytes in f:
@@ -229,19 +220,21 @@ def process_data():
                         
                         lat = parse_dof_dms(line[35:47])
                         lon = parse_dof_dms(line[48:61])
-                        city = line[18:34].strip()
-                        state = line[15:17].strip().upper() # ADDED: 2-Letter State Code
+                        state = line[15:17].strip().upper() 
                         oas = line[0:9].strip()
                         
                         obstacles.append([oas, state, lat, lon, agl])
                     except:
                         continue
+                        
+        if os.path.exists("temp_dof.zip"):
+            os.remove("temp_dof.zip")
+            
         print(f"    > Parsed {len(obstacles)} Obstacles.")
     except Exception as e:
         print(f"[!] DOF Process failed: {e}")
         sys.exit(1)
 
-    # --- 2. DOWNLOAD & PARSE NASR APT (28-Day Cycle) ---
     print("\n[-] Fetching latest NASR APT ZIP...")
     cycle_date = get_current_airac_cycle()
     date_str = cycle_date.strftime("%Y-%m-%d")
@@ -260,8 +253,13 @@ def process_data():
             
             print(f"[-] Downloading: {zip_url}")
             r_nasr = requests.get(zip_url, headers=HEADERS, stream=True)
+            r_nasr.raise_for_status()
             
-            with zipfile.ZipFile(io.BytesIO(r_nasr.content)) as z:
+            with open("temp_nasr.zip", "wb") as f:
+                for chunk in r_nasr.iter_content(chunk_size=65536):
+                    f.write(chunk)
+            
+            with zipfile.ZipFile("temp_nasr.zip") as z:
                 apt_file_info = next(f for f in z.infolist() if f.filename.endswith('APT.txt'))
                 with z.open(apt_file_info) as f:
                     for line_bytes in f:
@@ -276,6 +274,10 @@ def process_data():
                                 lon = faa_to_decimal(lon_str)
                                 if lat != 0.0 and lon != 0.0:
                                     airports[loc_id] = {"name": name_str, "lat": lat, "lon": lon}
+                                    
+            if os.path.exists("temp_nasr.zip"):
+                os.remove("temp_nasr.zip")
+                                    
             print(f"    > Parsed {len(airports)} Airports/Heliports.")
         else:
             print("[!] Could not find NASR ZIP link.")
@@ -283,7 +285,6 @@ def process_data():
         print(f"[!] NASR Process failed: {e}")
         sys.exit(1)
 
-    # --- 3. SAVE WITH FAILSAFE ---
     print("\n[-] Compiling outputs...")
     
     if len(obstacles) > 0:
@@ -305,7 +306,6 @@ def process_data():
         metadata["apt_count"] = len(airports)
         print(f"[-] Saved {len(airports)} airports.")
         
-    # --- 4. NEW: NOTAM HARVEST (Version 2.0 MVP) ---
     notam_count = harvest_notams()
     
     metadata["notam_date"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%MZ")
