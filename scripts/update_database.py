@@ -110,7 +110,7 @@ def harvest_notams():
             auth=(CLIENT_ID, CLIENT_SECRET),
             headers={
                 "Content-Type": "application/x-www-form-urlencoded",
-                "User-Agent": HEADERS["User-Agent"]
+                "User-Agent": "kml-obstacle-tool/2.0 (python-requests)"
             },
             timeout=15
         )
@@ -125,7 +125,7 @@ def harvest_notams():
     headers = {
         "Authorization": f"Bearer {token}",
         "nmsResponseFormat": "GEOJSON",
-        "User-Agent": HEADERS["User-Agent"]
+        "User-Agent": "kml-obstacle-tool/2.0 (python-requests)"
     }
     # Using classification=DOMESTIC and feature=OBST to pull all domestic obstacles
     params = {
