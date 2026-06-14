@@ -29,14 +29,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
         with:
-          python-version: '3.10'
-          cache: 'pip'
-
-      - name: Install Dependencies
-        run: pip install -r requirements.txt
+          enable-cache: true
+          cache-dependency-glob: "requirements.txt"
+          python-version: "3.10"
 
       - name: Scrape and Process FAA Data
         env:
@@ -45,7 +43,7 @@ jobs:
         run: |
           # Ensure script fails on error
           set -e
-          python scripts/update_database.py
+          uv run --with -r requirements.txt scripts/update_database.py
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
