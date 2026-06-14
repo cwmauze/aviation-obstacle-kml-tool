@@ -92,8 +92,8 @@ def harvest_notams():
     CLIENT_SECRET = os.environ.get("FAA_CLIENT_SECRET")
     
     if not CLIENT_ID or not CLIENT_SECRET:
-        print("[!] NMS-API Credentials missing in environment. Skipping NOTAM harvest.")
-        return
+        print("[!] NMS-API Credentials missing in environment. Aborting.")
+        sys.exit(1)
     
     # Using the Production environment endpoints
     AUTH_URL = "https://api-nms.aim.faa.gov/v1/auth/token"
@@ -118,7 +118,7 @@ def harvest_notams():
         token = auth_response.json().get("access_token")
     except Exception as e:
         print(f"    > [!] NMS-API Authentication failed: {e}")
-        return None
+        sys.exit(1)
 
     # 2. Request Nationwide NOTAMs Data
     # Requesting GEOJSON format simplifies coordinate extraction
@@ -186,7 +186,7 @@ def harvest_notams():
                     
     except Exception as e:
         print(f"    > [!] API request or parsing failed: {e}")
-        return None
+        sys.exit(1)
          
     # 3. Save to Disk
     try:
@@ -196,7 +196,7 @@ def harvest_notams():
         return len(processed_notams)
     except Exception as e:
         print(f"    > [!] Failed to save notams.json: {e}")
-        return 0
+        sys.exit(1)
         
 def process_data():
     obstacles = []
@@ -308,19 +308,8 @@ def process_data():
     # --- 4. NEW: NOTAM HARVEST (Version 2.0 MVP) ---
     notam_count = harvest_notams()
     
-    if notam_count is not None:
-        metadata["notam_date"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%MZ")
-        metadata["notam_count"] = notam_count
-    else:
-        print("[!] NOTAM harvest skipped or failed. Preserving previous NOTAM metadata.")
-        if os.path.exists("metadata.json"):
-            try:
-                with open("metadata.json", 'r') as f:
-                    old_meta = json.load(f)
-                    metadata["notam_date"] = old_meta.get("notam_date", "Unknown")
-                    metadata["notam_count"] = old_meta.get("notam_count", 0)
-            except:
-                pass
+    metadata["notam_date"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%MZ")
+    metadata["notam_count"] = notam_count
         
     with open("metadata.json", 'w') as f:
         json.dump(metadata, f)
