@@ -43,7 +43,7 @@ jobs:
         run: |
           # Ensure script fails on error
           set -e
-          uv run --with -r requirements.txt scripts/update_database.py
+          uv run --with-requirements requirements.txt scripts/update_database.py
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
